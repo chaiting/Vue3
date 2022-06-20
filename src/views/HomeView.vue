@@ -14,7 +14,7 @@ function minus(a: number, b: number) {
 
 <template>
   <main>
-    <!-- <TheWelcome /> -->
+    <TheWelcome />
     <div>
       {{ counterStore.counter }}
     </div>
