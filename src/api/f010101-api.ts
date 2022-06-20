@@ -19,8 +19,13 @@ export interface UserList {
   total: number;
 }
 
+export interface Pagination {
+  page: number;
+  pageSize: number;
+}
+
 export default {
-  doFetchApi(payload: { page: number; pageSize: number }): {
+  doFetchApi(payload: Pagination): {
     data: User[];
     total: number;
   } {

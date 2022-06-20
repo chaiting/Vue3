@@ -1,23 +1,16 @@
-<script setup lang="ts">
-import TheWelcome from "@/components/TheWelcome.vue";
-import { useCounterStore } from "@/stores/counter";
-
-const counterStore = useCounterStore();
-const update = () => {
-  counterStore.counter = minus(10, 5);
-};
-
-function minus(a: number, b: number) {
-  return a - b;
-}
-</script>
-
 <template>
   <main>
-    <TheWelcome />
     <div>
-      {{ counterStore.counter }}
+      <h1>This is an home page</h1>
     </div>
-    <Button @click="update">update</Button>
+    <div>parentValue: {{ parentValue }}</div>
+    <Counter v-model:value="parentValue" />
   </main>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import Counter from "@/components/Counter.vue";
+
+const parentValue = ref<number>(0);
+</script>
