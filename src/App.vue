@@ -19,7 +19,7 @@ import { RouterLink, RouterView } from "vue-router";
 @import "@/assets/base.css";
 
 #app {
-  max-width: 1280px;
+  max-width: 1281px;
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;

@@ -79,3 +79,7 @@ body {
 .btn-group {
   margin-bottom: 10px;
 }
+
+body {
+  background-color: lightcyan;
+}
