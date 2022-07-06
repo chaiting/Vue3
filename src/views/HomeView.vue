@@ -17,24 +17,56 @@
       v-model:val3="val3"
       v-model:val4="val4"
     />
-    <img src="../assets/bg.jpeg" alt="" width="400">
+    <img src="../assets/bg.jpeg" alt="" width="400" />
   </main>
 </template>
-<script lang="ts">
-export default {
-  created() {},
-};
-</script>
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+import isBlank from "is-blank";
 import Counter from "@/components/Counter.vue";
+import { useRouter } from "vue-router";
+import type { User } from "@/type/common";
 
-const parentValue = ref<number>(0);
+const router = useRouter();
+const parentValue = ref(0);
 
 const val1 = ref("");
 const val2 = ref("");
 const val3 = ref("");
 const val4 = ref("");
+
+interface User {
+  id: number;
+  name: string;
+  age: string;
+  address: string;
+}
+
+let user: User;
+
+user = { id: 1, name: "string", age: "1", address: "string" };
+
+const userList = ref<any[]>([]);
+
+userList.value.push({ name: "joe" });
+
+userList.value;
+
+console.log(parentValue.value + "");
+
+console.log(isBlank(""));
+
+let a = "";
+
+let result = isBlank(a);
+
+onMounted(() => {
+  router.addRoute({
+    path: "/info",
+    name: "info",
+    component: () => import("../views/InfoView.vue"),
+  });
+});
 </script>
 
 <style>

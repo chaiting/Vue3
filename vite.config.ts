@@ -36,7 +36,14 @@ const config = defineConfig({
     include: [path.resolve(process.cwd(), "./src/utils.ts")],
   },
   server: {
-    port: 8889,
+    port: 8888,
+    proxy: {
+      "/api": {
+        target: "http://localhost:9000",
+        rewrite: (path) => path.replace(/^\/api/, ""),
+        changeOrigin: true,
+      },
+    },
   },
 });
 export default config;

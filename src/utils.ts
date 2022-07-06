@@ -4,5 +4,5 @@ export default {
   },
   minus: (a: number, b: number) => {
     return a - b;
-  }
+  },
 };

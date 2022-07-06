@@ -10,7 +10,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { UserList, Pagination } from "@/api/f010101-api";
+import type { UserList, Pagination } from "@/type/common";
 import f010101Api from "@/api/f010101-api";
 import { reactive } from "vue";
 
@@ -29,9 +29,12 @@ const pagination = reactive<Pagination>({
 });
 
 function fetchData() {
-  let result = f010101Api.doFetchApi(pagination);
+  const result = f010101Api.doFetchApi(pagination);
   list.data = result.data;
   list.total = result.total;
+  let age = result.age;
+  // list.data = result.data;
+  // list.total = result.total;
 }
 
 function resetData() {

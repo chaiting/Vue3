@@ -15,4 +15,9 @@ module.exports = {
       extends: ["plugin:cypress/recommended"],
     },
   ],
+  rules: {
+    "vue/multi-word-component-names": "off",
+    "prefer-const": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+  },
 };

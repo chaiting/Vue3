@@ -5,19 +5,9 @@ import router from "./router";
 import ViewUIPlus from "view-ui-plus";
 import "view-ui-plus/dist/styles/viewuiplus.css";
 import "@/assets/base.css";
-import utils from "./utils";
-// import lodash from "lodash";
+import setupAxiosConfig from "@/conf/axios-config";
 
-console.log(utils.add(1, 2));
-// console.log(lodash);
-let person: School.Person;
-person = {
-  name: "Joe",
-  age: 1,
-  course: "A",
-};
-
-console.log(person);
+setupAxiosConfig();
 
 const app = createApp(App);
 app.use(createPinia());

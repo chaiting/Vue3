@@ -24,7 +24,7 @@ const props = defineProps({
   val3: String,
   val4: String,
 });
-let innerValue = ref("inner");
+const innerValue = ref("inner");
 
 defineExpose({ innerValue });
 
@@ -36,9 +36,12 @@ function minus() {
   emit("update:value", props.value - 1);
 }
 
-watch([() => props.val1, () => props.val2, () => props.val3, () => props.val4], () => {
-  console.log(`watch`);
-});
+watch(
+  [() => props.val1, () => props.val2, () => props.val3, () => props.val4],
+  () => {
+    console.log(`watch`);
+  }
+);
 </script>
 <style>
 .child {
