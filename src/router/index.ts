@@ -22,6 +22,11 @@ const router = createRouter({
       name: "info",
       component: () => import("@/views/InfoView.vue"),
     },
+    {
+      path: "/lang",
+      name: "lang",
+      component: () => import("@/views/LangView.vue"),
+    },
   ],
 });
 

@@ -1,11 +1,13 @@
 import axios, { AxiosError, type AxiosRequestConfig, type AxiosResponse } from "axios";
 import router from "@/router";
 
-const { VITE_APP_AXIOS_BASE_URL, VITE_APP_AXIOS_DEFAULT_TIMEOUT } = import.meta.env;
+const { VITE_APP_AXIOS_BASE_URL, VITE_APP_AXIOS_DEFAULT_TIMEOUT, VITE_APP_AXIOS_WITH_CREDENTIALS } =
+  import.meta.env;
 
 export default () => {
   axios.defaults.timeout = VITE_APP_AXIOS_DEFAULT_TIMEOUT * 1000;
   axios.defaults.baseURL = VITE_APP_AXIOS_BASE_URL;
+  axios.defaults.withCredentials = VITE_APP_AXIOS_WITH_CREDENTIALS;
   axios.interceptors.request.use(handleRequest, handleRequestError);
   axios.interceptors.response.use(handleResponse, handleResponseError);
 };
