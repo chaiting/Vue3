@@ -6,8 +6,10 @@ import ViewUIPlus from "view-ui-plus";
 import "view-ui-plus/dist/styles/viewuiplus.css";
 import "@/assets/base.css";
 import setupAxiosConfig from "@/conf/axios-config";
+import setupAxiosMockConfig from "@/conf/axios-mock-adapter";
 
 setupAxiosConfig();
+setupAxiosMockConfig();
 
 const app = createApp(App);
 app.use(createPinia());

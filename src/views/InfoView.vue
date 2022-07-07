@@ -15,6 +15,9 @@
       <Col>
         <Button @click="reset">reset</Button>
       </Col>
+      <Col>
+        <Button @click="doQryUsers">doQryUsers</Button>
+      </Col>
     </Row>
   </div>
 </template>
@@ -34,5 +37,10 @@ async function search() {
 
 function reset() {
   formRef.value.resetFields();
+}
+
+async function doQryUsers() {
+  let result = await someApi.doQryUsers();
+  console.log(result);
 }
 </script>
