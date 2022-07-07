@@ -1,24 +1,18 @@
 import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import vueI18n from "@intlify/vite-plugin-vue-i18n";
 import path from "path";
-console.log(__dirname);
+
 // https://vitejs.dev/config/
 const config = defineConfig({
-  plugins: [
-    vue(),
-    // vueI18n({
-    //   include: [path.resolve(__dirname, "./src/locales/**")],
-    // }),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
-      "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js",
     },
   },
   build: {
+    sourcemap: true,
     cssCodeSplit: true, // true
     chunkSizeWarningLimit: 1000, // 500
     reportCompressedSize: true, // true
