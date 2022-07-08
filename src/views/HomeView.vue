@@ -17,7 +17,8 @@
       v-model:val3="val3"
       v-model:val4="val4"
     />
-    <img src="../assets/bg.jpeg" alt="" width="400" />
+    <!-- <pre>{{ $keycloak }}</pre> -->
+    <!-- <img src="../assets/bg.jpeg" alt="" width="400" /> -->
   </main>
 </template>
 <script setup lang="ts">
@@ -25,7 +26,6 @@ import { onMounted, ref } from "vue";
 import isBlank from "is-blank";
 import Counter from "@/components/Counter.vue";
 import { useRouter } from "vue-router";
-import type { User } from "@/type/common";
 
 const router = useRouter();
 const parentValue = ref(0);
@@ -34,31 +34,6 @@ const val1 = ref("");
 const val2 = ref("");
 const val3 = ref("");
 const val4 = ref("");
-
-interface User {
-  id: number;
-  name: string;
-  age: string;
-  address: string;
-}
-
-let user: User;
-
-user = { id: 1, name: "string", age: "1", address: "string" };
-
-const userList = ref<any[]>([]);
-
-userList.value.push({ name: "joe" });
-
-userList.value;
-
-console.log(parentValue.value + "");
-
-console.log(isBlank(""));
-
-let a = "";
-
-let result = isBlank(a);
 
 onMounted(() => {
   router.addRoute({

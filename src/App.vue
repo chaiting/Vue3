@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
   <header>
     <div class="wrapper">
@@ -11,11 +7,20 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink to="/info">Info</RouterLink>
         <RouterLink to="/lang">Lang</RouterLink>
       </nav>
+      <Button type="error" @click="logout">logout</Button>
     </div>
   </header>
 
   <RouterView />
 </template>
+<script setup lang="ts">
+import { RouterLink, RouterView } from "vue-router";
+
+function logout() {
+  // @ts-ignore
+  console.log(window.keycloak.logout());
+}
+</script>
 
 <style>
 @import "@/assets/base.css";

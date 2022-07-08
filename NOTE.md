@@ -18,3 +18,7 @@
 
 - https://vue-i18n.intlify.dev/guide/advanced/optimization.html
 - https://github.com/intlify/vue-i18n-next/issues/789
+
+
+### keycloak
+- https://github.com/dsb-norge/vue-keycloak-js/issues/141

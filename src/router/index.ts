@@ -27,6 +27,10 @@ const router = createRouter({
       name: "lang",
       component: () => import("@/views/LangView.vue"),
     },
+    {
+      path: "/:catchAll(.*)",
+      redirect: { name: "home" },
+    },
   ],
 });
 
