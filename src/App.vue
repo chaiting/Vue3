@@ -1,30 +1,40 @@
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/info">Info</RouterLink>
-        <RouterLink to="/lang">Lang</RouterLink>
-      </nav>
-      <Button type="error" @click="logout">logout</Button>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="layout">
+    <Layout>
+      <Header><Banner></Banner> </Header>
+      <Layout :style="{ minHeight: '100vh' }">
+        <Sider width="250">
+          <LeftNavigator></LeftNavigator>
+          <Button type="error" @click="logout">logout</Button>
+        </Sider>
+        <Layout>
+          <Content :style="{ padding: '40px 30px' }">
+            <FunctionTitle></FunctionTitle>
+            <RouterView />
+          </Content>
+          <Footer>@ E.SUN BANK</Footer>
+        </Layout>
+      </Layout>
+    </Layout>
+  </div>
 </template>
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import { getCurrentInstance } from "vue";
+import Banner from "@/components/layout/Banner.vue";
+import LeftNavigator from "@/components/layout/LeftNavigator.vue";
+import FunctionTitle from "@/components/layout/FunctionTitle.vue";
+
+const app = getCurrentInstance();
 
 function logout() {
-  // @ts-ignore
-  console.log(window.keycloak.logout());
+  app?.appContext.config.globalProperties.$keycloak.logoutFn();
 }
 </script>
 
 <style>
-@import "@/assets/base.css";
-
+/* @import "@/assets/base.css"; */
+/* 
 #app {
   max-width: 1281px;
   margin: 0 auto;
@@ -79,5 +89,5 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
-}
+} */
 </style>

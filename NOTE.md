@@ -21,4 +21,4 @@
 
 
 ### keycloak
-- https://github.com/dsb-norge/vue-keycloak-js/issues/141
+- https://www.keycloak.org/getting-started/getting-started-docker

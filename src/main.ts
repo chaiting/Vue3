@@ -11,6 +11,7 @@ import setupViewUiPlusConfig from "@/conf/view-ui-plus-config";
 import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
 
 const app = createApp(App);
+app.use(createPinia());
 
 setupAxiosConfig();
 setupAxiosMockConfig();
@@ -33,8 +34,7 @@ app.use(VueKeyCloak, {
     // @ts-ignore
     window.keycloak = key;
     console.log(`ready`);
+    app.use(router);
+    app.mount("#app");
   },
 });
-app.use(createPinia());
-app.use(router);
-app.mount("#app");
