@@ -1,5 +1,14 @@
 <template>
-  <header>這是Function title</header>
+  <header>{{ title }}</header>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useGlobalStore } from "@/stores/global";
+import { computed } from "@vue/reactivity";
+
+const globalStore = useGlobalStore();
+
+const title = computed(() => {
+  return globalStore.title;
+});
+</script>

@@ -11,7 +11,6 @@
 9. post message, ajax 轉圈, 時間倒數
 10. 既有元件轉 vue3 寫法
 
-
 #### i18n
 
 > Warning: You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
@@ -22,3 +21,10 @@
 
 ### keycloak
 - https://www.keycloak.org/getting-started/getting-started-docker
+
+
+### Loading 
+統一元件？
+
+### volar
+https://github.com/johnsoncodehk/volar/issues/1247#issuecomment-1139797104

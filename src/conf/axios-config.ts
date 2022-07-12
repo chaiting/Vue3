@@ -1,5 +1,6 @@
 import axios, { AxiosError, type AxiosRequestConfig, type AxiosResponse } from "axios";
 import router from "@/router";
+import { useGlobalStore } from "@/stores/global";
 
 const { VITE_APP_AXIOS_BASE_URL, VITE_APP_AXIOS_DEFAULT_TIMEOUT, VITE_APP_AXIOS_WITH_CREDENTIALS } =
   import.meta.env;
@@ -14,7 +15,8 @@ export default () => {
 
 // Request
 function handleRequest(config: AxiosRequestConfig) {
-  console.log(`xx`)
+  const globalStore = useGlobalStore();
+  globalStore.doIncrementAjaxReq();
   return config;
 }
 function handleRequestError(error: AxiosError) {
@@ -22,6 +24,8 @@ function handleRequestError(error: AxiosError) {
 }
 // Response
 function handleResponse(response: AxiosResponse) {
+  const globalStore = useGlobalStore();
+  globalStore.doDecrementAjaxReq();
   return response;
 }
 function handleResponseError(error: AxiosError<any>) {

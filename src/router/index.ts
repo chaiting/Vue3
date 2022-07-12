@@ -1,30 +1,34 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 import { useProfileStore } from "@/stores/profile";
 import userProfileApi from "@/api/core/user-profile-api";
+import frontendAccessLogApi from "@/api/core/frontend-access-log-api";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      /** Home page */
       path: "/",
-      name: "home",
-      component: HomeView,
+      name: "LandingPage",
+      redirect: { name: "F010101SCN" },
     },
+    // f01
     {
-      path: "/about",
-      name: "about",
-      component: () => import("../views/AboutView.vue"),
+      path: "/f010101scn",
+      name: "F010101SCN",
+      component: () => import("@/views/f01/F010101SCN.vue"),
     },
+    // f02
     {
-      path: "/info",
-      name: "info",
-      component: () => import("@/views/InfoView.vue"),
+      path: "/f020101scn",
+      name: "F020101SCN",
+      component: () => import("@/views/f02/F020101SCN.vue"),
     },
+    // f03
     {
-      path: "/lang",
-      name: "lang",
-      component: () => import("@/views/LangView.vue"),
+      path: "/f030101scn",
+      name: "F030101SCN",
+      component: () => import("@/views/f03/F030101SCN.vue"),
     },
     {
       path: "/forbidden",
@@ -54,6 +58,14 @@ router.beforeEach((to, from, next) => {
     return next({ name: "forbidden" });
   }
   // 3. 如果已經登入過，發送一個request到server端紀錄Access Log
+  if (profileStore.isLogin) {
+    frontendAccessLogApi
+      .doSaveFrontedAccessLog({
+        resourceUri: to.path,
+        resourceType: "N",
+      })
+      .finally(() => next());
+  }
 
   // 4. 如果尚未取得基本資料，發送一個 request到server端取得，並放入store裡
   if (!profileStore.isLogin) {

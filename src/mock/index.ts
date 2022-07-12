@@ -5,7 +5,7 @@ export default function (mock: MockAdapter) {
   f01Init(mock);
   // f02Init(mock);
   // f03Init(mock);
-
+  mock.onPost("/fronted_access_log/01").reply(200);
   mock.onPost("/users").reply(200, {
     body: {
       users: [
@@ -24,16 +24,31 @@ export default function (mock: MockAdapter) {
       email: "pro-019@testesunbank.com.tw",
       system: {
         sysId: "EPSP",
+        sysNm: "支付服務整合平台",
         leftMenuList: [
           {
             menuSeqNo: "1111",
-            item: "個人首頁",
+            itemNm: "個人首頁",
             itemUri: "/f010101scn",
+            iconText: "logo-angular",
+            redirectTypeCd: "P",
+            subMenuList: [],
           },
           {
             menuSeqNo: "2222",
-            item: "公告事項",
-            itemUri: "/f010201scn",
+            itemNm: "公告事項",
+            itemUri: "/f020101scn",
+            iconText: "md-analytics",
+            redirectTypeCd: "P",
+            subMenuList: [],
+          },
+          {
+            menuSeqNo: "333",
+            itemNm: "備忘錄",
+            itemUri: "/f030101scn",
+            iconText: "logo-android",
+            redirectTypeCd: "P",
+            subMenuList: [],
           },
         ],
       },

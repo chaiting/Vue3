@@ -4,7 +4,7 @@ import mockInit from "@/mock";
 
 export default () => {
   if ("Y" === import.meta.env.VITE_APP_ENABLE_MOCK) {
-    const mock = new MockAdapter(axios);
+    const mock = new MockAdapter(axios, { delayResponse: 200 });
     mockInit(mock);
     mock.onAny().passThrough();
   }
