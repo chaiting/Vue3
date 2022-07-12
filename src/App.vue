@@ -1,11 +1,12 @@
 <template>
   <div class="layout">
     <Layout>
-      <Header><Banner></Banner> </Header>
+      <Header
+        ><Banner></Banner>
+      </Header>
       <Layout :style="{ minHeight: '100vh' }">
         <Sider width="250">
           <LeftNavigator></LeftNavigator>
-          <Button type="error" @click="logout">logout</Button>
         </Sider>
         <Layout>
           <Content :style="{ padding: '40px 30px' }">
@@ -25,11 +26,7 @@ import Banner from "@/components/layout/Banner.vue";
 import LeftNavigator from "@/components/layout/LeftNavigator.vue";
 import FunctionTitle from "@/components/layout/FunctionTitle.vue";
 
-const app = getCurrentInstance();
 
-function logout() {
-  app?.appContext.config.globalProperties.$keycloak.logoutFn();
-}
 </script>
 
 <style>

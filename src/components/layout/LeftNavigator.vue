@@ -1,9 +1,10 @@
 <template>
   <Menu width="250">
     <div>
-      <MenuItem to="/">Home</MenuItem>
-      <MenuItem to="/about">About</MenuItem>
-      <MenuItem to="/info">Info</MenuItem>
+      <MenuItem name="home" to="/">Home</MenuItem>
+      <MenuItem name="about" to="/about">About</MenuItem>
+      <MenuItem name="info" to="/info">Info</MenuItem>
+      <MenuItem name="lang" to="/lang">Lang</MenuItem>
     </div>
   </Menu>
 </template>

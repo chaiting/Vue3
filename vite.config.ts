@@ -34,6 +34,11 @@ const config = defineConfig({
       },
     },
   },
+  css: {
+    preprocessorOptions: {
+      less: { javascriptEnabled: true },
+    },
+  },
   optimizeDeps: {
     include: [path.resolve(process.cwd(), "./src/utils.ts")],
   },

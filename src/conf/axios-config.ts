@@ -14,6 +14,7 @@ export default () => {
 
 // Request
 function handleRequest(config: AxiosRequestConfig) {
+  console.log(`xx`)
   return config;
 }
 function handleRequestError(error: AxiosError) {
