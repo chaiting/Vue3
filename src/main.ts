@@ -10,6 +10,10 @@ import setupI18nConfig from "@/conf/i18n-config";
 import setupViewUiPlusConfig from "@/conf/view-ui-plus-config";
 import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
 
+import "@/assets/commonStyle.css";
+import "@/assets/style.scss";
+
+
 const app = createApp(App);
 app.use(createPinia());
 

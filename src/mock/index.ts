@@ -48,7 +48,22 @@ export default function (mock: MockAdapter) {
             itemUri: "/f030101scn",
             iconText: "logo-android",
             redirectTypeCd: "P",
-            subMenuList: [],
+            subMenuList: [
+              {
+                menuSeqNo: "333",
+                itemNm: "備忘錄一",
+                itemUri: "/f030201scn",
+                iconText: "logo-android",
+                redirectTypeCd: "P",
+              },
+              {
+                menuSeqNo: "333",
+                itemNm: "備忘錄二",
+                itemUri: "/f030301scn",
+                iconText: "logo-android",
+                redirectTypeCd: "P",
+              },
+            ],
           },
         ],
       },
