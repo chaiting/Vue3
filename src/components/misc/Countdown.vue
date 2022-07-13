@@ -54,20 +54,19 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import moment from "moment";
-import { computed } from "@vue/reactivity";
-import { useGlobalStore } from "@/stores/global";
 import _ from "lodash";
-import sessionKeeperApi from "@/api/core/session-keeper-api";
-import messageBridgeApi from "@/api/core/message-bridge-api";
+import moment from "moment";
+import { onMounted, computed, ref } from "vue";
+import { useGlobalStore } from "@/stores/global";
+import { useAuth } from "@/hooks/useAuth";
 
+const { logout, doKeepSessionAlive } = useAuth();
 const globalStore = useGlobalStore();
-// const notifyUrl = import.meta.env.VITE_APP_EPSP_HOME_URL + "/message_bridge.html";
-const notifyUrl = "http://localhost:8888" + "/message_bridge.html";
+const notifyUrl = import.meta.env.VITE_APP_EPSP_HOME_URL + "/message_bridge.html";
+// const notifyUrl = "http://localhost:8888" + "/message_bridge.html";
 
-const logoutMsg = "系統登出中，請稍候!!";
 const now = ref(moment());
+const logoutMsg = "系統登出中，請稍候!!";
 const isShowSpinner = ref(false);
 
 /** Session timeout時間 */
@@ -109,14 +108,16 @@ function formatRemaining(time: any) {
   return _.padStart(time, 2, "0");
 }
 
-function doKeepSessionAlive() {
-  sessionKeeperApi.doKeepSessionAlive();
-}
+// function logout() {
+//   messageBridgeApi.notifySingleLogout();
+// }
 
+// function doKeepSessionAlive() {
+//   sessionKeeperApi.doKeepSessionAlive();
+// }
 
 onMounted(() => {
-  sessionKeeperApi.doKeepSessionAlive();
-
+  doKeepSessionAlive();
   /** 廣播訊息監聽器 */
   window.addEventListener("message", (e) => {
     console.log(e);

@@ -4,16 +4,19 @@ import moment from "moment";
 export const useGlobalStore = defineStore({
   id: "global",
   state: () => ({
+    // Axios AJAX訊息
     axios: {
       requestCount: 0,
       spanId: "",
-      sessionExpiredTime: moment().add(
-        import.meta.env.VITE_APP_SESSION_TIMEOUT,
-        "minutes"
-      ),
+      sessionExpiredTime: moment().add(import.meta.env.VITE_APP_SESSION_TIMEOUT, "minutes"),
     },
+    // 模式元件資訊
     layout: {
       title: "",
+    },
+    // 其他資訊
+    misc: {
+      showLogoutSpinner: false,
     },
   }),
   getters: {
@@ -42,6 +45,9 @@ export const useGlobalStore = defineStore({
     },
     doUpdateFunctionTitle(payload: { title: string }) {
       this.layout.title = payload.title;
+    },
+    doUpdateIsShowLogoutSpinner(payload: { isShowLogoutSpinner: boolean }) {
+      this.misc.showLogoutSpinner = payload.isShowLogoutSpinner;
     },
   },
 });

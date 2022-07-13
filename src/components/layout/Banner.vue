@@ -32,16 +32,13 @@
 
 <script setup lang="ts">
 import { computed } from "@vue/reactivity";
-import { getCurrentInstance } from "vue";
 import { useProfileStore } from "@/stores/profile";
+import { useAuth } from "@/hooks/useAuth";
 import Countdown from "@/components/misc/Countdown.vue";
 
+const { logout } = useAuth();
 const profileStore = useProfileStore();
-const app = getCurrentInstance();
-
-function logout() {
-  app?.appContext.config.globalProperties.$keycloak.logoutFn();
-}
+const homeUrl = import.meta.env.VITE_APP_EPSP_HOME_URL;
 
 const systemTitle = computed(() => {
   return `${profileStore.loginUserProfile.system.sysId} ${profileStore.loginUserProfile.system.sysNm}`;
@@ -50,8 +47,6 @@ const systemTitle = computed(() => {
 const loginUserProfile = computed(() => {
   return profileStore.loginUserProfile;
 });
-
-const homeUrl = "";
 </script>
 
 <style lang="scss" scoped>
