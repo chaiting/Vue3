@@ -1,5 +1,4 @@
 ### Issue
-
 1. JS or TS => TS
 2. Vue3 + Vue router + Linter / Formatter => npm init@latest
 3. Pinia Pinia-plugin-persist
@@ -11,33 +10,19 @@
 9. post message, ajax 轉圈, 時間倒數
 10. 既有元件轉 vue3 寫法
 
-#### i18n
-
+***i18n***
 > Warning: You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
-
-- https://vue-i18n.intlify.dev/guide/advanced/optimization.html
-- https://github.com/intlify/vue-i18n-next/issues/789
-
-### keycloak
-
-- https://www.keycloak.org/getting-started/getting-started-docker
-
-### Loading
-
-統一元件？
-
-### volar
-
+https://vue-i18n.intlify.dev/guide/advanced/optimization.html
+https://github.com/intlify/vue-i18n-next/issues/789
+***keycloak***
+https://www.keycloak.org/getting-started/getting-started-docker
+***Loading***
+BlockUI vs vue-loading-overlay vs iview(Spinner)
+***Volar***
 https://github.com/johnsoncodehk/volar/issues/1247#issuecomment-113979710
 
-### fontawesome
-
-https://fontawesome.com/docs/web/use-with/vue/
-
-### countdown
-
+***countdown***
 時間比較問題 (string vs number)
-
 ```js
 let diff = new Date() - new Date(); // x
 let diff = new Date().valueOf() - new Date.valueOf(); // v
