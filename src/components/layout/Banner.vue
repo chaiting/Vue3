@@ -1,38 +1,38 @@
 <template>
-  <Row>
-    <Col span="8">
-      <div class="navPageLogo">
-        <a :href="homeUrl" target="_blank">
-          <img src="@/assets/images/logo_white_esun.svg" title="玉山銀行E.SUN Bank" />
-        </a>
-      </div>
-      <div class="navPageTitle">| {{ systemTitle }}</div>
-    </Col>
-    <Col span="16">
-      <div class="navBar">
-        <!-- <Button type="error" @click="logout">logout</Button> -->
-        <div class="navFunction userContainer">
-          {{ loginUserProfile.grpNm }}
-          {{ loginUserProfile.empName }}
-          {{ loginUserProfile.empNo }}
+  <div class="nav">
+    <Row>
+      <Col span="8">
+        <div class="navPageLogo">
+          <a :href="homeUrl" target="_blank">
+            <img src="@/assets/images/logo_white_esun.svg" title="玉山銀行E.SUN Bank" />
+          </a>
         </div>
-        <!-- countdown -->
-        <div class="navFunction">
-          <!-- <countdown></countdown> -->
+        <div class="navPageTitle">| {{ systemTitle }}</div>
+      </Col>
+      <Col span="16">
+        <div class="navBar">
+          <div class="navFunction userContainer">
+            {{ loginUserProfile.grpNm }}
+            {{ loginUserProfile.empName }}
+            {{ loginUserProfile.empNo }}
+          </div>
+          <!-- countdown -->
+          <div class="navFunction">
+            <countdown></countdown>
+          </div>
+          <!-- logout -->
+          <div class="navFunction functionContainer">
+            <button class="btnUiStyle btnNavImage" @click="logout"></button>
+          </div>
         </div>
-        <!-- logout -->
-        <div class="navFunction functionContainer">
-          <button class="btnUiStyle btnNavImage" @click="logout"></button>
-        </div>
-      </div>
-    </Col>
-  </Row>
+      </Col>
+    </Row>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from "@vue/reactivity";
 import { getCurrentInstance } from "vue";
-import { useGlobalStore } from "@/stores/global";
 import { useProfileStore } from "@/stores/profile";
 import Countdown from "@/components/misc/Countdown.vue";
 
@@ -67,7 +67,6 @@ const homeUrl = "";
   float: left;
 }
 .navPageTitle {
-  color: white;
   margin-top: calc((60px - 54px) / 2);
   margin-left: 10px;
   font-size: 20px;
@@ -86,7 +85,6 @@ const homeUrl = "";
   margin-right: 0;
 }
 .userContainer {
-  color: white;
   padding-left: 29px;
   background-size: 24px;
   background-position: left center;

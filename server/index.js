@@ -5,6 +5,10 @@ app.use(cors());
 
 const port = 9000;
 
+app.get("/ping", (req, res) => {
+  res.send("pong");
+});
+
 app.post("/something", (req, res) => {
   const response = {
     body: {

@@ -27,4 +27,10 @@
 統一元件？
 
 ### volar
-https://github.com/johnsoncodehk/volar/issues/1247#issuecomment-1139797104
+https://github.com/johnsoncodehk/volar/issues/1247#issuecomment-113979710
+
+### fontawesome
+https://fontawesome.com/docs/web/use-with/vue/
+
+### countdown
+時間比較問題 (string vs number)

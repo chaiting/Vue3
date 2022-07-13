@@ -6,6 +6,9 @@ export default function (mock: MockAdapter) {
   // f02Init(mock);
   // f03Init(mock);
   mock.onPost("/fronted_access_log/01").reply(200);
+  mock.onPost("/session_keeper/01").reply(200);
+  mock.onPost("/session_keeper/02").reply(200);
+
   mock.onPost("/users").reply(200, {
     body: {
       users: [

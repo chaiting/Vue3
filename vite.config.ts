@@ -40,9 +40,6 @@ const config = defineConfig({
       less: { javascriptEnabled: true },
     },
   },
-  optimizeDeps: {
-    include: [path.resolve(process.cwd(), "./src/utils.ts")],
-  },
   server: {
     port: 8888,
     proxy: {

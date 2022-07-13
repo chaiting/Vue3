@@ -2,7 +2,7 @@
   <h2>form</h2>
   <Row :gutter="20">
     <Col>
-      <Form :model="searchForm" :label-width="60" ref="formRef">
+      <Form :model="searchForm" :label-width="70" ref="formRef">
         <FormItem label="顧客ID" prop="customerId">
           <Input v-model="searchForm.customerId"></Input>
         </FormItem>

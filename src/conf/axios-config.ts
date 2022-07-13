@@ -1,6 +1,7 @@
 import axios, { AxiosError, type AxiosRequestConfig, type AxiosResponse } from "axios";
 import router from "@/router";
 import { useGlobalStore } from "@/stores/global";
+import messageBridgeApi from "@/api/core/message-bridge-api";
 
 const { VITE_APP_AXIOS_BASE_URL, VITE_APP_AXIOS_DEFAULT_TIMEOUT, VITE_APP_AXIOS_WITH_CREDENTIALS } =
   import.meta.env;
@@ -17,6 +18,9 @@ export default () => {
 function handleRequest(config: AxiosRequestConfig) {
   const globalStore = useGlobalStore();
   globalStore.doIncrementAjaxReq();
+
+  messageBridgeApi.notifyCountdownReset();
+  globalStore.doResetSessionExpiredTime();
   return config;
 }
 function handleRequestError(error: AxiosError) {
