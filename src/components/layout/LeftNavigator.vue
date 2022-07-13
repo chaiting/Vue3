@@ -125,7 +125,6 @@ div {
 :deep(.ivu-menu-submenu-title):hover {
   font-weight: bolder !important;
   color: #3c4c5e !important;
-  color: red !important;
 }
 :deep(.ivu-menu-submenu) {
   width: 90%;

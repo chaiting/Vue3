@@ -9,7 +9,7 @@
     ></iframe>
     <Modal
       title="閒置時間逾時提醒!!"
-      :value="showReminder"
+      :model-value="showReminder"
       :closable="false"
       :mask-closable="false"
       @on-ok="doKeepSessionAlive"
@@ -17,10 +17,7 @@
       ok-text="繼續使用"
       cancel-text="登出系統"
     >
-      <p>
-        您的閒置時間過長，系統即將於{{ remainingMinutes }}:
-        {{ remainingSeconds }}後自動登出，請問是否繼續使用?
-      </p>
+      <p>您的閒置時間過長，系統即將於{{ remainingTime }} 後自動登出，請問是否繼續使用?</p>
     </Modal>
 
     <!-- <BlockUI :message="logoutMsg" v-show="isShowSpinner">
@@ -56,7 +53,7 @@
 <script setup lang="ts">
 import _ from "lodash";
 import moment from "moment";
-import { onMounted, computed, ref } from "vue";
+import { onMounted, computed, ref, watch } from "vue";
 import { useGlobalStore } from "@/stores/global";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -75,18 +72,21 @@ const sessionExpiredTime = computed(() => {
 });
 /** 彈出提醒視窗時間 */
 const warningDateTime = computed(() => {
-  return moment(sessionExpiredTime.value).subtract(1, "minutes");
+  return moment(sessionExpiredTime.value.valueOf()).subtract(1, "minutes");
 });
 
 /** 剩餘時間(分) */
 const remainingMinutes = computed(() => {
-  let distance = (moment(sessionExpiredTime.value).toDate() as any) - (now.value.toDate() as any);
+  let distance =
+    moment(sessionExpiredTime.value.valueOf()).toDate().valueOf() - now.value.toDate().valueOf();
   return Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 });
 
 /** 剩餘時間(秒) */
 const remainingSeconds = computed(() => {
-  let distance = (moment(sessionExpiredTime.value).toDate() as any) - (now.value.toDate() as any);
+  // let distance = moment(sessionExpiredTime.value).toDate() - now.value.toDate(); // ts錯誤
+  let distance =
+    moment(sessionExpiredTime.value.valueOf()).toDate().valueOf() - now.value.toDate().valueOf();
   return Math.floor((distance % (1000 * 60)) / 1000);
 });
 
@@ -107,14 +107,6 @@ function formatRemaining(time: any) {
   }
   return _.padStart(time, 2, "0");
 }
-
-// function logout() {
-//   messageBridgeApi.notifySingleLogout();
-// }
-
-// function doKeepSessionAlive() {
-//   sessionKeeperApi.doKeepSessionAlive();
-// }
 
 onMounted(() => {
   doKeepSessionAlive();
@@ -147,6 +139,12 @@ onMounted(() => {
   window.setInterval(() => {
     now.value = moment();
   }, 1 * 1000);
+});
+
+watch(now, () => {
+  if (now.value.isAfter(sessionExpiredTime.value.valueOf())) {
+    logout();
+  }
 });
 </script>
 
