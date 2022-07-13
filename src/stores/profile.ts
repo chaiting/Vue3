@@ -3,10 +3,12 @@ import { defineStore } from "pinia";
 const INIT_USER_PROFILE = {
   empName: "",
   empNo: "",
+  sysNm: "",
+  grpNm: "",
   adAccount: null, // 需添加 for ts
   system: {
-    sysNm: "",
     sysId: "",
+    grpNm: "",
     leftMenuList: [],
   },
 };

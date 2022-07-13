@@ -127,11 +127,11 @@ div {
   color: #3c4c5e !important;
   color: red !important;
 }
-/deep/ .ivu-menu-submenu {
+:deep(.ivu-menu-submenu) {
   width: 90%;
   margin-left: 9px;
 }
-/deep/ .ivu-menu-submenu-title {
+:deep(.ivu-menu-submenu-title) {
   padding: 8px 0px !important;
 }
 :deep(.ivu-menu-submenu-title-icon) {

@@ -10,7 +10,20 @@
     </Col>
     <Col span="16">
       <div class="navBar">
-        <Button type="error" @click="logout">logout</Button>
+        <!-- <Button type="error" @click="logout">logout</Button> -->
+        <div class="navFunction userContainer">
+          {{ loginUserProfile.grpNm }}
+          {{ loginUserProfile.empName }}
+          {{ loginUserProfile.empNo }}
+        </div>
+        <!-- countdown -->
+        <div class="navFunction">
+          <!-- <countdown></countdown> -->
+        </div>
+        <!-- logout -->
+        <div class="navFunction functionContainer">
+          <button class="btnUiStyle btnNavImage" @click="logout"></button>
+        </div>
       </div>
     </Col>
   </Row>
@@ -21,6 +34,7 @@ import { computed } from "@vue/reactivity";
 import { getCurrentInstance } from "vue";
 import { useGlobalStore } from "@/stores/global";
 import { useProfileStore } from "@/stores/profile";
+import Countdown from "@/components/misc/Countdown.vue";
 
 const profileStore = useProfileStore();
 const app = getCurrentInstance();
@@ -31,6 +45,10 @@ function logout() {
 
 const systemTitle = computed(() => {
   return `${profileStore.loginUserProfile.system.sysId} ${profileStore.loginUserProfile.system.sysNm}`;
+});
+
+const loginUserProfile = computed(() => {
+  return profileStore.loginUserProfile;
 });
 
 const homeUrl = "";
@@ -62,15 +80,18 @@ const homeUrl = "";
 .navFunction {
   margin-right: 15px;
   float: left;
+  background-repeat: no-repeat;
 }
 .navBar > div:last-child {
   margin-right: 0;
 }
 .userContainer {
+  color: white;
   padding-left: 29px;
   background-size: 24px;
   background-position: left center;
   background-repeat: no-repeat;
+  background-image: url("@/assets/images/ic_white_user.svg");
 }
 .btnUiStyle {
   height: 36px;
@@ -88,6 +109,7 @@ const homeUrl = "";
   background-size: 20px;
   background-repeat: no-repeat;
   background-position: center;
+  background-image: url("@/assets/images/ic_white_log_out.svg");
 }
 .btnNavImage:hover {
   background-color: rgba(0, 0, 0, 0.1);

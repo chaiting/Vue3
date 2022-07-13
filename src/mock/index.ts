@@ -22,6 +22,9 @@ export default function (mock: MockAdapter) {
     body: {
       adAccount: "PRO-019",
       email: "pro-019@testesunbank.com.tw",
+      grpNm: "其他",
+      empName: "JOE",
+      empNo: null,
       system: {
         sysId: "EPSP",
         sysNm: "支付服務整合平台",
