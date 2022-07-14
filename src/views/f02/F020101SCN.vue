@@ -1,16 +1,14 @@
 <template>
   <div>
-    <FormDemo />
     <Divider />
+    <h3>#js-file-download</h3>
     <FileDownloadDemo />
-    <p>{{ $t("hi") }}</p>
-    <p>{{ t("hi") }}</p>
+    <Divider />
+    <h3>#i18n</h3>
+    <I18nDemo />
   </div>
 </template>
 <script setup lang="ts">
-import FileDownloadDemo from "@/components/FileDownloadDemo.vue";
-import FormDemo from "@/components/FormDemo.vue";
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
+import FileDownloadDemo from "@/components/demo/FileDownloadDemo.vue";
+import I18nDemo from "@/components/demo/I18nDemo.vue";
 </script>

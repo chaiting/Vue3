@@ -53,10 +53,11 @@
 <script setup lang="ts">
 import _ from "lodash";
 import moment from "moment";
-import { onMounted, computed, ref, watch } from "vue";
+import { getCurrentInstance, onMounted, computed, ref, watch, type App } from "vue";
 import { useGlobalStore } from "@/stores/global";
 import { useAuth } from "@/hooks/useAuth";
 
+const app = getCurrentInstance();
 const { logout, doKeepSessionAlive } = useAuth();
 const globalStore = useGlobalStore();
 const notifyUrl = import.meta.env.VITE_APP_EPSP_HOME_URL + "/message_bridge.html";
@@ -109,10 +110,18 @@ function formatRemaining(time: any) {
 }
 
 onMounted(() => {
+  console.log(`ct (2)`)
+  // console.log(app?.appContext.config.globalProperties);
+  // app?.appContext.config.globalProperties.$Modal.warning({
+  //   title: "登出通知",
+  //   content: "<p>您已於其他系統登出，請重新操作!!</p>",
+  //   onOk: () => {
+  //     location.reload();
+  //   },
+  // });
   doKeepSessionAlive();
   /** 廣播訊息監聽器 */
   window.addEventListener("message", (e) => {
-    console.log(e);
     // 倒數計時重置 ----------------------------------------------------------------------------------------------------
     if (
       "countdown-reset" === e.data.toString() &&

@@ -1,11 +1,12 @@
 import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import { visualizer } from "rollup-plugin-visualizer";
 import path from "path";
-
+console.log(`@import "${path.resolve(__dirname, "src/assets/theme.less")}";`)
 // https://vitejs.dev/config/
 const config = defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), visualizer({ open: true })],
   resolve: {
     alias: {
       // "@": fileURLToPath(new URL("./src", import.meta.url)),
@@ -20,24 +21,21 @@ const config = defineConfig({
     reportCompressedSize: true, // true
     rollupOptions: {
       output: {
-        entryFileNames: () => {
-          return "entry-[hash].js";
-        },
-        chunkFileNames: () => {
-          return "js/chunk-[hash].js";
-        },
-        assetFileNames: (info) => {
-          if (/.css$/.test(info.name as string)) {
-            return "css/[name]-[hash][extname]";
-          }
-          return "assets/[name]-[hash][extname]"; // default
-        },
+        chunkFileNames: "js/[name].[hash].js",
+        entryFileNames: "js/[name].[hash].js",
+        // assetFileNames: (path) => {
+        //   console.log(path);
+        //   return "assets/[name].[hash].[ext]";
+        // },
       },
     },
   },
   css: {
     preprocessorOptions: {
-      less: { javascriptEnabled: true },
+      less: {
+        javascriptEnabled: true,
+        // additionalData: `@import "${path.resolve(__dirname, "src/assets/theme.less")}";`,
+      },
     },
   },
   server: {

@@ -1,5 +1,5 @@
 <template>
-  <Menu width="250">
+  <Menu width="250" ref="leftMenusRef" accordion :active-name="activeItem" :open-names="openItem">
     <div v-for="(item, index) in leftMenus" :key="index">
       <Submenu v-if="item.subMenuList.length > 0" :name="item.menuSeqNo">
         <template #title> <Icon :type="item.iconText" />{{ item.itemNm }} </template>
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { useProfileStore } from "@/stores/profile";
 import { computed } from "@vue/reactivity";
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch, nextTick } from "vue";
 import { useRoute } from "vue-router";
 import _ from "lodash";
 import { useGlobalStore } from "@/stores/global";
@@ -43,20 +43,18 @@ interface Menu {
 }
 
 const route = useRoute();
-const profileStore = useProfileStore();
 const globalStore = useGlobalStore();
-const leftMenus = computed<Menu[]>(() => profileStore.leftMenus);
-
+const profileStore = useProfileStore();
+const leftMenusRef = ref<any>(null);
+const openItem = ref<string[]>([]);
 const activeItem = ref("");
-const openItem = ref([]);
 const itemName = ref("");
 
-onMounted(() => {
-  console.log(leftMenus.value);
-});
+const leftMenus = computed<Menu[]>(() => profileStore.leftMenus);
 
+/** Focus左側選單項目 */
 function doFocusLeftMenuItem(itemUri: string) {
-  leftMenus.value.some((element) => {
+  leftMenus.value.forEach((element) => {
     // 1. 第一層選單 ------------------------------------------------------------------------------------------------
     if (itemUri && itemUri === element.itemUri) {
       itemName.value = element.itemNm;
@@ -67,12 +65,11 @@ function doFocusLeftMenuItem(itemUri: string) {
     let item = _.find(element.subMenuList, { itemUri: itemUri });
     if (item) {
       itemName.value = item.itemNm;
-      // this.$set(this.openItem, 0, element.menuSeqNo);
-      // this.$nextTick(() => {
-      //   this.$refs.leftMenus.updateOpened();
-      //   this.$refs.leftMenus.updateActiveName();
-      // });
-
+      openItem.value = [element.menuSeqNo];
+      nextTick(() => {
+        leftMenusRef.value.updateOpened();
+        leftMenusRef.value.updateActiveName();
+      });
       return true;
     }
   });
@@ -128,12 +125,15 @@ div {
 }
 :deep(.ivu-menu-submenu) {
   width: 90%;
-  margin-left: 9px;
+  margin-left: 15px;
 }
 :deep(.ivu-menu-submenu-title) {
   padding: 8px 0px !important;
 }
 :deep(.ivu-menu-submenu-title-icon) {
   right: 0px !important;
+}
+.ivu-menu-submenu-title > .ivu-icon {
+  margin-right: 10px;
 }
 </style>

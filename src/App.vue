@@ -9,10 +9,14 @@
         <Layout>
           <Content :style="{ padding: '40px 30px' }">
             <FunctionTitle></FunctionTitle>
-            <RouterView />
+            <router-view v-slot="{ Component }">
+              <keep-alive>
+                <component :is="Component" />
+              </keep-alive>
+            </router-view>
             <Spinner></Spinner>
           </Content>
-          <Footer>@ E.SUN BANK</Footer>
+          <Footer :style="{ textAlign: 'center' }">© E.SUN BANK</Footer>
         </Layout>
       </Layout>
     </Layout>

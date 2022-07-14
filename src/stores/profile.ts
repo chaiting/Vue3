@@ -46,4 +46,9 @@ export const useProfileStore = defineStore({
       this.userProfile.loginUserProfile = INIT_USER_PROFILE;
     },
   },
+  persist: {
+    key: "profile",
+    storage: window.sessionStorage,
+    paths: ["userProfile"],
+  },
 });

@@ -1,7 +1,7 @@
 import { createApp } from "vue";
-import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
+import setupPiniaConfig from "@/conf/pinia-config";
 import setupAxiosConfig from "@/conf/axios-config";
 import setupAxiosMockConfig from "@/conf/axios-mock-adapter-config";
 import setupI18nConfig from "@/conf/i18n-config";
@@ -12,17 +12,16 @@ import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
 import "@/assets/commonStyle.css";
 import "@/assets/style.scss";
 
-
 const app = createApp(App);
-app.use(createPinia());
-
+/** setup */
 setupAxiosConfig();
 setupAxiosMockConfig();
+setupPiniaConfig(app);
 setupI18nConfig(app);
 setupViewUiPlusConfig(app);
 setupFontawesomeConfig(app);
 
-// 帳號 / 密碼: myuser@gmail.com / 123456
+// myuser@gmail.com / 123456 (帳號/密碼)
 app.use(VueKeyCloak, {
   init: {
     onLoad: "login-required",
@@ -34,6 +33,7 @@ app.use(VueKeyCloak, {
     clientId: import.meta.env.VITE_APP_KEYCLOAK_CLIENT_ID,
   },
   onReady: () => {
+    console.log(`mount (1)`)
     app.use(router);
     app.mount("#app");
   },
