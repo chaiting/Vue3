@@ -32,8 +32,10 @@ app.use(VueKeyCloak, {
     realm: import.meta.env.VITE_APP_KEYCLOAK_REALM,
     clientId: import.meta.env.VITE_APP_KEYCLOAK_CLIENT_ID,
   },
-  onReady: () => {
-    console.log(`mount (1)`)
+  onReady: (keycloak: any) => {
+    console.log(`mount (1)`);
+    // @ts-ignore
+    window.keycloak = keycloak;
     app.use(router);
     app.mount("#app");
   },

@@ -31,23 +31,32 @@ export const useGlobalStore = defineStore({
     },
   },
   actions: {
+    /** AJAX Request執行中次數加1 */
     doIncrementAjaxReq() {
       this.axios.requestCount++;
     },
+    /** AJAX Request執行中次數減1 */
     doDecrementAjaxReq() {
       this.axios.requestCount--;
     },
+    /** 重設Session逾期操作時間 */
     doResetSessionExpiredTime() {
       this.axios.sessionExpiredTime = moment().add(
         import.meta.env.VITE_APP_SESSION_TIMEOUT,
         "minutes"
       );
     },
+    /** 更新當前URI功能標題 */
     doUpdateFunctionTitle(payload: { title: string }) {
       this.layout.title = payload.title;
     },
-    doUpdateIsShowLogoutSpinner(payload: { isShowLogoutSpinner: boolean }) {
+    /** 更新是否顯示登出SPINNER */
+    doUpdateShowLogoutSpinner(payload: { isShowLogoutSpinner: boolean }) {
       this.misc.showLogoutSpinner = payload.isShowLogoutSpinner;
+    },
+    /** 更新SpanId資訊 */
+    doUpdateAjaxSpanId(payload: { spanId: string }) {
+      this.axios.spanId = payload.spanId;
     },
   },
 });

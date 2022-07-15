@@ -1,48 +1,49 @@
 <template>
-  <div class="about">
+  <div>
+    <div>list = {{ list }}</div>
+    <Divider></Divider>
     <div class="btn-group">
-      <Button @click="fetchData" type="primary">fetch data</Button>
-      <Button @click="resetData">reset data</Button>
+      <Button type="primary" @click="case1">case 1</Button>
+      <Button type="error" @click="case2">case 2</Button>
+      <Button type="error" @click="case3">case 3</Button>
     </div>
-    <Table :columns="columns" :data="list.data" stripe :border="true"> </Table>
-    <Page class="pagination" show-total :total="list.total" @on-change="onChangePage"> </Page>
   </div>
 </template>
+
 <script setup lang="ts">
-import type { UserList, Pagination } from "@/type/common";
-import f010101Api from "@/api/f010101-api";
 import { reactive } from "vue";
 
-const columns = reactive([
-  { key: "id", title: "Id" },
-  { key: "name", title: "Name" },
-  { key: "age", title: "Age" },
-  { key: "address", title: "Address" },
-]);
+let list = reactive<any>([]);
 
-const list = reactive<UserList>({ data: [], total: 0 });
-
-const pagination = reactive<Pagination>({
-  page: 1,
-  pageSize: 10,
-});
-
-function fetchData() {
-  const result = f010101Api.doFetchApi(pagination);
-  list.data = result.data;
-  list.total = result.total;
-  let age = result.age;
-  // list.data = result.data;
-  // list.total = result.total;
+function case1() {
+  list.push(list.length + 1);
 }
 
-function resetData() {
-  list.data = [];
-  list.total = 0;
+function case2() {
+  list = [4, 5, 6];
 }
 
-function onChangePage(value: number) {
-  pagination.page = value;
-  fetchData();
+function case3() {
+  list.concat = [4, 5, 6];
 }
+/**
+ * 
+mutable
+-----------------------
+Array.prototype.pop()
+Array.prototype.push()
+Array.prototype.shift()
+Array.prototype.unshift()
+Array.prototype.reverse()
+Array.prototype.sort()
+Array.prototype.splice()
+
+immutable
+-----------------------
+Array.prototype.slice()
+Array.prototype.concat()
+Array.prototype.map()
+Array.prototype.filter()
+
+ */
 </script>

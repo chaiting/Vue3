@@ -1,48 +1,30 @@
 <template>
-  <div class="about">
-    <div class="btn-group">
-      <Button @click="fetchData" type="primary">fetch data</Button>
-      <Button @click="resetData">reset data</Button>
-    </div>
-    <Table :columns="columns" :data="list.data" stripe :border="true"> </Table>
-    <Page class="pagination" show-total :total="list.total" @on-change="onChangePage"> </Page>
+  <div class="btn-group">
+    <Button @click="$router.push('/notfound')">NotFound</Button>
+    <Button @click="$router.push('/error')">error</Button>
+    <Button @click="$router.push('/forbidden')">forbidden</Button>
+    <Button @click="$router.push('/user_profile_not_found')">UserProfileNotFound</Button>
+  </div>
+
+  <div class="btn-group">
+    <Button @click="getError401">Error 401</Button>
+    <Button @click="getError403">Error 403</Button>
+    <Button @click="getError412">Error 412</Button>
   </div>
 </template>
+
 <script setup lang="ts">
-import type { UserList, Pagination } from "@/type/common";
-import f010101Api from "@/api/f010101-api";
-import { reactive } from "vue";
+import f030201Api from "@/api/f03/f030201-api";
 
-const columns = reactive([
-  { key: "id", title: "Id" },
-  { key: "name", title: "Name" },
-  { key: "age", title: "Age" },
-  { key: "address", title: "Address" },
-]);
-
-const list = reactive<UserList>({ data: [], total: 0 });
-
-const pagination = reactive<Pagination>({
-  page: 1,
-  pageSize: 10,
-});
-
-function fetchData() {
-  const result = f010101Api.doFetchApi(pagination);
-  list.data = result.data;
-  list.total = result.total;
-  let age = result.age;
-  // list.data = result.data;
-  // list.total = result.total;
+function getError401() {
+  f030201Api.doGetError401();
 }
 
-function resetData() {
-  list.data = [];
-  list.total = 0;
+function getError403() {
+  f030201Api.doGetError403();
 }
 
-function onChangePage(value: number) {
-  pagination.page = value;
-  fetchData();
+function getError412() {
+  f030201Api.doGetError412();
 }
 </script>

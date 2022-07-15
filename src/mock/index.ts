@@ -8,17 +8,13 @@ export default function (mock: MockAdapter) {
   mock.onPost("/fronted_access_log/01").reply(200);
   mock.onPost("/session_keeper/01").reply(200);
   mock.onPost("/session_keeper/02").reply(200);
-
-  mock.onPost("/users").reply(200, {
-    body: {
-      users: [
-        { id: 1, name: "John Smith1" },
-        { id: 2, name: "John Smith2" },
-        { id: 3, name: "John Smith3" },
-        { id: 4, name: "John Smith4" },
-        { id: 5, name: "John Smith5" },
-      ],
-    },
+  
+  mock.onPost("/error401").reply(401);
+  mock.onPost("/error403").reply(403);
+  mock.onPost("/error412").reply(412, {
+    status: "412",
+    msg: ["這是錯誤訊息"],
+    body: [],
   });
 
   mock.onPost("/user_profile/01").reply(200, {
@@ -53,7 +49,7 @@ export default function (mock: MockAdapter) {
           {
             menuSeqNo: "3-1",
             itemNm: "備忘錄",
-            itemUri: "/f030101scn",
+            itemUri: "",
             // iconText: "md-analytics",
             iconText: "",
             redirectTypeCd: "P",
@@ -61,7 +57,7 @@ export default function (mock: MockAdapter) {
               {
                 menuSeqNo: "3-2-1",
                 itemNm: "備忘錄一",
-                itemUri: "/f030201scn",
+                itemUri: "/f030101scn",
                 // iconText: "logo-android",
                 iconText: "",
                 redirectTypeCd: "P",
@@ -69,13 +65,12 @@ export default function (mock: MockAdapter) {
               {
                 menuSeqNo: "3-2-2",
                 itemNm: "備忘錄二",
-                itemUri: "/f030301scn",
+                itemUri: "/f030201scn",
                 // iconText: "logo-android",
                 iconText: "",
                 redirectTypeCd: "P",
               },
             ],
-            
           },
         ],
       },

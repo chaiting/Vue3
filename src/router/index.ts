@@ -36,23 +36,36 @@ const router = createRouter({
       component: () => import("@/views/f03/F030201SCN.vue"),
     },
     {
-      path: "/f030301scn",
-      name: "F030301SCN",
-      component: () => import("@/views/f03/F030301SCN.vue"),
-    },
-    {
       path: "/forbidden",
-      name: "forbidden",
+      name: "Forbidden",
       component: () => import("@/views/Forbidden.vue"),
     },
     {
       path: "/notfound",
-      name: "notfound",
+      name: "NotFound",
       component: () => import("@/views/NotFound.vue"),
     },
     {
+      /** 500 Server Internal Server Error */
+      path: "/error",
+      name: "UnknownError",
+      component: () => import("@/views/UnknownError.vue"),
+    },
+    {
+      /** 403 Forbidden */
+      path: "/forbidden",
+      name: "Forbidden",
+      component: () => import("@/views/Forbidden.vue"),
+    },
+    {
+      /** User Profile not found */
+      path: "/user_profile_not_found",
+      name: "UserProfileNotFound",
+      component: () => import("@/views/UserProfileNotFound.vue"),
+    },
+    {
       path: "/:catchAll(.*)",
-      redirect: { name: "home" },
+      redirect: { name: "NotFound" },
     },
   ],
 });
@@ -60,7 +73,12 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const profileStore = useProfileStore();
   // 1. 如果到下面頁面，直接放行
-  if (to.name == "notfound" || to.name == "forbidden") {
+  if (
+    to.name === "NotFound" ||
+    to.name === "Forbidden" ||
+    to.name === "UnknownError" ||
+    to.name === "UserProfileNotFound"
+  ) {
     return next();
   }
   // 2. 如果是正式環境且要去代理人身份切換頁面，直接導到存取被拒頁
