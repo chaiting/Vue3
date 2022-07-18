@@ -13,7 +13,9 @@
           <div class="errorPageContent">
             <div class="mainContent">親愛的主管/同仁，您好：</div>
             <div class="mainContent">
-              <font class="emp">目前系統暫時無法使用！造成不便，敬請見諒。</font>
+              <font class="emp"
+                >目前系統暫時無法使用！造成不便，敬請見諒。</font
+              >
             </div>
             <div class="errorNo">（錯誤碼：{{ spanId }}）</div>
           </div>
@@ -25,7 +27,7 @@
 
 <script setup lang="ts">
 import { useGlobalStore } from "@/stores/global";
-import { computed } from "@vue/reactivity";
+import { computed } from "vue";
 
 const globalStore = useGlobalStore();
 

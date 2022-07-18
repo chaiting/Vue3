@@ -1,12 +1,18 @@
 import axios from "axios";
-import { handleRequest, handleRequestError } from "@/misc/interceptors/axios-request-interceptor";
+import {
+  handleRequest,
+  handleRequestError,
+} from "@/misc/interceptors/axios-request-interceptor";
 import {
   handleResponse,
   handleResponseError,
 } from "@/misc/interceptors/axios-response-interceptor";
 
-const { VITE_APP_AXIOS_BASE_URL, VITE_APP_AXIOS_DEFAULT_TIMEOUT, VITE_APP_AXIOS_WITH_CREDENTIALS } =
-  import.meta.env;
+const {
+  VITE_APP_AXIOS_BASE_URL,
+  VITE_APP_AXIOS_DEFAULT_TIMEOUT,
+  VITE_APP_AXIOS_WITH_CREDENTIALS,
+} = import.meta.env;
 
 export default () => {
   axios.defaults.timeout = VITE_APP_AXIOS_DEFAULT_TIMEOUT * 1000;

@@ -14,10 +14,11 @@ export function useAuth() {
   const logout = () => {
     app?.appContext.config.globalProperties.$keycloak.logoutFn();
     messageBridgeApi.notifySingleLogout();
-    globalStore.doUpdateIsShowLogoutSpinner({ isShowLogoutSpinner: true });
+    globalStore.doUpdateShowLogoutSpinner({ isShowLogoutSpinner: true });
     sessionKeeperApi.doLogOut().then(() => {
       const epspHome = import.meta.env.VITE_APP_EPSP_HOME_URL;
-      window.location.href = epspHome + "/logout_page.html?redirect_uri=" + epspHome;
+      window.location.href =
+        epspHome + "/logout_page.html?redirect_uri=" + epspHome;
     });
   };
 

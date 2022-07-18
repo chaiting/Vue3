@@ -8,7 +8,10 @@ export const useGlobalStore = defineStore({
     axios: {
       requestCount: 0,
       spanId: "",
-      sessionExpiredTime: moment().add(import.meta.env.VITE_APP_SESSION_TIMEOUT, "minutes"),
+      sessionExpiredTime: moment().add(
+        import.meta.env.VITE_APP_SESSION_TIMEOUT,
+        "minutes"
+      ),
     },
     // 模式元件資訊
     layout: {
@@ -20,14 +23,21 @@ export const useGlobalStore = defineStore({
     },
   }),
   getters: {
+    /** 是否顯示資料處理中Spinner */
     isShowSpinner: (state) => {
       return state.axios.requestCount > 0;
     },
+    /** 取得SpanId，發生異常時前端顯示(用於除錯) */
     spanId: (state) => {
       return state.axios.spanId;
     },
+    /** 取得功能標題 */
     title: (state) => {
       return state.layout.title;
+    },
+    /** 是否顯示登出處理中Spinner  */
+    isShowLogoutSpinner: (state) => {
+      return state.misc.showLogoutSpinner;
     },
   },
   actions: {

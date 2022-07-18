@@ -4,7 +4,10 @@
       <Col span="8">
         <div class="navPageLogo">
           <a :href="homeUrl" target="_blank">
-            <img src="@/assets/images/logo_white_esun.svg" title="玉山銀行E.SUN Bank" />
+            <img
+              src="@/assets/images/logo_white_esun.svg"
+              title="玉山銀行E.SUN Bank"
+            />
           </a>
         </div>
         <div class="navPageTitle">| {{ systemTitle }}</div>
@@ -31,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "@vue/reactivity";
+import { computed } from "vue";
 import { useProfileStore } from "@/stores/profile";
 import { useAuth } from "@/hooks/useAuth";
 import Countdown from "@/components/misc/Countdown.vue";

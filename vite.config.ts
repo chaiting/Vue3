@@ -3,7 +3,6 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { visualizer } from "rollup-plugin-visualizer";
 import path from "path";
-console.log(`@import "${path.resolve(__dirname, "src/assets/theme.less")}";`)
 // https://vitejs.dev/config/
 const config = defineConfig({
   plugins: [vue(), visualizer({ open: true })],
@@ -24,7 +23,6 @@ const config = defineConfig({
         chunkFileNames: "js/[name].[hash].js",
         entryFileNames: "js/[name].[hash].js",
         // assetFileNames: (path) => {
-        //   console.log(path);
         //   return "assets/[name].[hash].[ext]";
         // },
       },

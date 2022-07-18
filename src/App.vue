@@ -14,12 +14,14 @@
                 <component :is="Component" />
               </keep-alive>
             </router-view>
-            <Spinner></Spinner>
           </Content>
           <Footer :style="{ textAlign: 'center' }">© E.SUN BANK</Footer>
         </Layout>
       </Layout>
     </Layout>
+    <BackTop></BackTop>
+    <Spinner></Spinner>
+    <LogoutSpinner></LogoutSpinner>
   </div>
 </template>
 <script setup lang="ts">
@@ -28,4 +30,6 @@ import Banner from "@/components/layout/Banner.vue";
 import LeftNavigator from "@/components/layout/LeftNavigator.vue";
 import FunctionTitle from "@/components/layout/FunctionTitle.vue";
 import Spinner from "./components/misc/Spinner.vue";
+import LogoutSpinner from "./components/misc/LogoutSpinner.vue";
+import { BackTop } from "view-ui-plus";
 </script>

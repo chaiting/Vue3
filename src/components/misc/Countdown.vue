@@ -17,7 +17,10 @@
       ok-text="繼續使用"
       cancel-text="登出系統"
     >
-      <p>您的閒置時間過長，系統即將於{{ remainingTime }} 後自動登出，請問是否繼續使用?</p>
+      <p>
+        您的閒置時間過長，系統即將於{{ remainingTime }}
+        後自動登出，請問是否繼續使用?
+      </p>
     </Modal>
 
     <!-- <BlockUI :message="logoutMsg" v-show="isShowSpinner">
@@ -51,16 +54,24 @@
   </div>
 </template>
 <script setup lang="ts">
-import _ from "lodash";
+import { padStart } from "lodash";
 import moment from "moment";
-import { getCurrentInstance, onMounted, computed, ref, watch, type App } from "vue";
+import {
+  getCurrentInstance,
+  onMounted,
+  computed,
+  ref,
+  watch,
+  type App,
+} from "vue";
 import { useGlobalStore } from "@/stores/global";
 import { useAuth } from "@/hooks/useAuth";
 
 const app = getCurrentInstance();
 const { logout, doKeepSessionAlive } = useAuth();
 const globalStore = useGlobalStore();
-const notifyUrl = import.meta.env.VITE_APP_EPSP_HOME_URL + "/message_bridge.html";
+const notifyUrl =
+  import.meta.env.VITE_APP_EPSP_HOME_URL + "/message_bridge.html";
 // const notifyUrl = "http://localhost:8888" + "/message_bridge.html";
 
 const now = ref(moment());
@@ -79,7 +90,8 @@ const warningDateTime = computed(() => {
 /** 剩餘時間(分) */
 const remainingMinutes = computed(() => {
   let distance =
-    moment(sessionExpiredTime.value.valueOf()).toDate().valueOf() - now.value.toDate().valueOf();
+    moment(sessionExpiredTime.value.valueOf()).toDate().valueOf() -
+    now.value.toDate().valueOf();
   return Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 });
 
@@ -87,13 +99,16 @@ const remainingMinutes = computed(() => {
 const remainingSeconds = computed(() => {
   // let distance = moment(sessionExpiredTime.value).toDate() - now.value.toDate(); // ts錯誤
   let distance =
-    moment(sessionExpiredTime.value.valueOf()).toDate().valueOf() - now.value.toDate().valueOf();
+    moment(sessionExpiredTime.value.valueOf()).toDate().valueOf() -
+    now.value.toDate().valueOf();
   return Math.floor((distance % (1000 * 60)) / 1000);
 });
 
 /** 剩餘時間 */
 const remainingTime = computed(() => {
-  return `${formatRemaining(remainingMinutes.value)}:${formatRemaining(remainingSeconds.value)}`;
+  return `${formatRemaining(remainingMinutes.value)}:${formatRemaining(
+    remainingSeconds.value
+  )}`;
 });
 
 /** 是否彈出提醒視窗 */
@@ -102,23 +117,14 @@ const showReminder = computed(() => {
 });
 
 /** 格式化時間(若小於0，則回傳00，若為個位數，則前面補0) */
-function formatRemaining(time: any) {
+function formatRemaining(time: number) {
   if (time < 1) {
     return "00";
   }
-  return _.padStart(time, 2, "0");
+  return padStart(time.toString(), 2, "0");
 }
 
 onMounted(() => {
-  console.log(`ct (2)`)
-  // console.log(app?.appContext.config.globalProperties);
-  // app?.appContext.config.globalProperties.$Modal.warning({
-  //   title: "登出通知",
-  //   content: "<p>您已於其他系統登出，請重新操作!!</p>",
-  //   onOk: () => {
-  //     location.reload();
-  //   },
-  // });
   doKeepSessionAlive();
   /** 廣播訊息監聽器 */
   window.addEventListener("message", (e) => {
@@ -135,13 +141,11 @@ onMounted(() => {
       "single-logout" === e.data.toString() &&
       import.meta.env.VITE_APP_EPSP_HOME_URL === e.origin
     ) {
-      // this.$Modal.warning({
-      //   title: "登出通知",
-      //   content: "<p>您已於其他系統登出，請重新操作!!</p>",
-      //   onOk: () => {
-      //     location.reload();
-      //   },
-      // });
+      app?.appContext.config.globalProperties.$Modal.warning({
+        title: "登出通知",
+        content: "<p>您已於其他系統登出，請重新操作!!</p>",
+        onOk: () => location.reload(),
+      });
     }
   });
 

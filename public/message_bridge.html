@@ -14,13 +14,10 @@
     <script type="text/javascript">
         const broadcastChannel = new BroadcastChannel("ESUN_CARD");
         window.onload = function () {
-            console.log(`📈 message html onload`)
             window.addEventListener('message', function (e) {
-                // console.log(e.data)
                 broadcastChannel.postMessage(e.data)
             })
             broadcastChannel.onmessage = function (e) {
-                console.log(e)
                 window.parent.postMessage(e.data, "*")
             }
         }

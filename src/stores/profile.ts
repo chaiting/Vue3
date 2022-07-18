@@ -1,5 +1,18 @@
 import { defineStore } from "pinia";
 
+interface UserProfile {
+  empName: string;
+  empNo: string;
+  grpNm: string;
+  adAccount: null;
+  system: {
+    sysId: string;
+    sysNm: string;
+    grpNm: string;
+    leftMenuList: never[];
+  };
+}
+
 const INIT_USER_PROFILE = {
   empName: "",
   empNo: "",
@@ -37,7 +50,7 @@ export const useProfileStore = defineStore({
     },
   },
   actions: {
-    doStoredUserProfile(payload: any) {
+    doStoredUserProfile(payload: UserProfile) {
       this.userProfile.optUserProfile = payload;
       this.userProfile.loginUserProfile = payload;
     },

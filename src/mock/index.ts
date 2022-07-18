@@ -8,12 +8,12 @@ export default function (mock: MockAdapter) {
   mock.onPost("/fronted_access_log/01").reply(200);
   mock.onPost("/session_keeper/01").reply(200);
   mock.onPost("/session_keeper/02").reply(200);
-  
+
   mock.onPost("/error401").reply(401);
   mock.onPost("/error403").reply(403);
   mock.onPost("/error412").reply(412, {
     status: "412",
-    msg: ["這是錯誤訊息"],
+    msg: ["這是錯誤訊息1", "這是錯誤訊息2"],
     body: [],
   });
 

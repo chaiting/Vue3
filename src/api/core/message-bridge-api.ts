@@ -17,7 +17,7 @@ const singleLogoutNtifier = throttle(() => {
 
 export default {
   postMessage: function (message: string, targetOrigin: string) {
-    window.frames["message_bridge_iframe" as any].postMessage(message, targetOrigin);
+    window.frames["message_bridge_iframe"].postMessage(message, targetOrigin);
   },
   notifyCountdownReset: function () {
     countdownNtifier();

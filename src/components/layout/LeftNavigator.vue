@@ -1,8 +1,16 @@
 <template>
-  <Menu width="250" ref="leftMenusRef" accordion :active-name="activeItem" :open-names="openItem">
+  <Menu
+    width="250"
+    ref="leftMenusRef"
+    accordion
+    :active-name="activeItem"
+    :open-names="openItem"
+  >
     <div v-for="(item, index) in leftMenus" :key="index">
       <Submenu v-if="item.subMenuList.length > 0" :name="item.menuSeqNo">
-        <template #title> <Icon :type="item.iconText" />{{ item.itemNm }} </template>
+        <template #title>
+          <Icon :type="item.iconText" />{{ item.itemNm }}
+        </template>
         <MenuItem
           v-for="(subItem, index) in item.subMenuList"
           :key="index"
@@ -27,10 +35,10 @@
 
 <script setup lang="ts">
 import { useProfileStore } from "@/stores/profile";
-import { computed } from "@vue/reactivity";
+import { computed } from "vue";
 import { onMounted, ref, watch, nextTick } from "vue";
 import { useRoute } from "vue-router";
-import _ from "lodash";
+import { find } from "lodash";
 import { useGlobalStore } from "@/stores/global";
 
 interface Menu {
@@ -39,7 +47,7 @@ interface Menu {
   itemUri: string;
   iconText: string;
   redirectTypeCd: string;
-  subMenuList: any[];
+  subMenuList: Menu[] | [];
 }
 
 const route = useRoute();
@@ -62,7 +70,7 @@ function doFocusLeftMenuItem(itemUri: string) {
     }
 
     // 2. 第二層選單 ------------------------------------------------------------------------------------------------
-    let item = _.find(element.subMenuList, { itemUri: itemUri });
+    let item = find(element.subMenuList, { itemUri: itemUri });
     if (item) {
       itemName.value = item.itemNm;
       openItem.value = [element.menuSeqNo];
@@ -102,7 +110,8 @@ div {
   margin-left: 3px;
   z-index: 2;
 }
-.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu)::after {
+.ivu-menu-light.ivu-menu-vertical
+  .ivu-menu-item-active:not(.ivu-menu-submenu)::after {
   right: auto;
   width: 3px;
   height: 50%;
