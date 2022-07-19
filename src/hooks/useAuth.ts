@@ -12,7 +12,7 @@ export function useAuth() {
   };
 
   const logout = () => {
-    app?.appContext.config.globalProperties.$keycloak.logoutFn();
+    app?.appContext.config.globalProperties.$keycloak.logoutFn(); // todo
     messageBridgeApi.notifySingleLogout();
     globalStore.doUpdateShowLogoutSpinner({ isShowLogoutSpinner: true });
     sessionKeeperApi.doLogOut().then(() => {
