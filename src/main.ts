@@ -7,6 +7,8 @@ import setupAxiosMockConfig from "@/conf/axios-mock-adapter-config";
 import setupI18nConfig from "@/conf/i18n-config";
 import setupViewUiPlusConfig from "@/conf/view-ui-plus-config";
 import setupFontawesomeConfig from "@/conf/fontawesome-config";
+import setupVueEchartsConfig from "@/conf/vue-echarts-config";
+
 import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
 import "@/assets/commonStyle.css";
 import "@/assets/style.scss";
@@ -19,6 +21,7 @@ setupPiniaConfig(app);
 setupI18nConfig(app);
 setupViewUiPlusConfig(app);
 setupFontawesomeConfig(app);
+setupVueEchartsConfig(app);
 
 // myuser@gmail.com / 123456 (帳號/密碼)
 app.use(VueKeyCloak, {
