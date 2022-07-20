@@ -9,9 +9,10 @@
   </div>
 
   <div class="btn-group">
-    <Button @click="getError401">Error 401</Button>
-    <Button @click="getError403">Error 403</Button>
-    <Button @click="getError412">Error 412</Button>
+    <Button type="error" @click="getError401">Error 401</Button>
+    <Button type="error" @click="getError403">Error 403</Button>
+    <Button type="error" @click="getError404">Error 404</Button>
+    <Button type="error" @click="getError412">Error 412</Button>
   </div>
 </template>
 
@@ -24,6 +25,10 @@ function getError401() {
 
 function getError403() {
   f030201Api.doGetError403();
+}
+
+function getError404() {
+  f030201Api.doGetError404();
 }
 
 function getError412() {

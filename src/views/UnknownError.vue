@@ -13,9 +13,7 @@
           <div class="errorPageContent">
             <div class="mainContent">親愛的主管/同仁，您好：</div>
             <div class="mainContent">
-              <font class="emp"
-                >目前系統暫時無法使用！造成不便，敬請見諒。</font
-              >
+              <p class="emp">目前系統暫時無法使用！造成不便，敬請見諒。</p>
             </div>
             <div class="errorNo">（錯誤碼：{{ spanId }}）</div>
           </div>
@@ -91,7 +89,7 @@ header {
   line-height: 1.5;
   margin-bottom: 15px;
 }
-.errorPageContent .mainContent font.emp {
+.errorPageContent .mainContent p.emp {
   color: #f94e4e;
 }
 .errorNo {

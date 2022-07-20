@@ -11,6 +11,11 @@ export default function (mock: MockAdapter) {
 
   mock.onPost("/error401").reply(401);
   mock.onPost("/error403").reply(403);
+  mock.onPost("/error404").reply(404, {
+    status: "404",
+    msg: [],
+    spanId: "123456",
+  });
   mock.onPost("/error412").reply(412, {
     status: "412",
     msg: ["這是錯誤訊息1", "這是錯誤訊息2"],

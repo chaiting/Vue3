@@ -14,7 +14,14 @@ import {
 } from "echarts/components";
 import { ref } from "vue";
 
-use([CanvasRenderer, BarChart, TitleComponent, TooltipComponent, LegendComponent, GridComponent]);
+use([
+  CanvasRenderer,
+  BarChart,
+  TitleComponent,
+  TooltipComponent,
+  LegendComponent,
+  GridComponent,
+]);
 
 const option = ref({
   title: {

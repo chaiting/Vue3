@@ -11,11 +11,17 @@
 10. 既有元件轉 vue3 寫法
 11. 登出後,keycloak.logoutFn()？
 12. 412 error彈窗
-13. chart: https://github.com/ecomfe/vue-echarts
+13. v-charts -> vue-chart (https://github.com/ecomfe/vue-echarts)
 
 
-***node***
-14.18.2
+***環境***
+- node: 16.16 
+- vscode: 1.67 
+- Vue Language Features (Volar): 0.38.5
+- TypeScript Vue Plugin (Volar): 0.38.5
+- 禁用 vetur
+- vue.js devtool (chrome): 6.2.1
+
 
 ***i18n***
 > Warning: You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.

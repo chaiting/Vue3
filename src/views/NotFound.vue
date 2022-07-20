@@ -13,7 +13,7 @@
           <div class="errorPageContent">
             <div class="mainContent">親愛的主管/同仁，您好：</div>
             <div class="mainContent">
-              <font class="emp">很抱歉，您所查詢的網頁不存在！</font>
+              <p class="emp">很抱歉，您所查詢的網頁不存在！</p>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ header {
   line-height: 1.5;
   margin-bottom: 15px;
 }
-.errorPageContent .mainContent font.emp {
+.errorPageContent .mainContent p.emp {
   color: #f94e4e;
 }
 </style>
