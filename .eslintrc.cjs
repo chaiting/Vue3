@@ -19,9 +19,9 @@ module.exports = {
     "vue/multi-word-component-names": "off",
     "prefer-const": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-unused-vars": "off",
+    // "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-comment": "off",
   },
-  ignorePatterns: ["**/server/**"],
+  ignorePatterns: ["**/__tests__/**", "**/server/**"],
 };

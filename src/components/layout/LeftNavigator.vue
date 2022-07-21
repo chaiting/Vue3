@@ -36,7 +36,7 @@
 <script setup lang="ts">
 import { useProfileStore } from "@/stores/profile";
 import { computed } from "vue";
-import { onMounted, ref, watch, nextTick } from "vue";
+import { ref, watch, nextTick } from "vue";
 import { useRoute } from "vue-router";
 import { find } from "lodash";
 import { useGlobalStore } from "@/stores/global";

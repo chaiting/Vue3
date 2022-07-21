@@ -13,9 +13,7 @@
           <div class="errorPageContent">
             <div class="mainContent">親愛的主管/同仁，您好：</div>
             <div class="mainContent">
-              <font class="emp"
-                >使用者基本資料尚未建立，請與系統管理人員聯絡！</font
-              >
+              <p class="emp">使用者基本資料尚未建立，請與系統管理人員聯絡！</p>
             </div>
           </div>
         </div>

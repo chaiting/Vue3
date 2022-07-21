@@ -1,8 +1,8 @@
 <template>
   <Loading v-model:active="isShowLogoutSpinner">
     <div class="spinner-wrap">
-      <!-- <font-awesome-icon icon="cog" size="3x" spin fixed-width> </font-awesome-icon> -->
-      <font-awesome-icon icon="cog" size="3x"> </font-awesome-icon>
+      <font-awesome-icon icon="cog" size="3x" spin fixed-width>
+      </font-awesome-icon>
       {{ logoutMsg }}
     </div>
   </Loading>
@@ -21,9 +21,8 @@ const isShowLogoutSpinner = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .spinner-wrap {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   width: 300px;

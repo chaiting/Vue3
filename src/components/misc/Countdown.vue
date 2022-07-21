@@ -23,10 +23,6 @@
       </p>
     </Modal>
 
-    <!-- <BlockUI :message="logoutMsg" v-show="isShowSpinner">
-      <font-awesome-icon icon="cog" size="3x" spin fixed-width> </font-awesome-icon>
-    </BlockUI> -->
-
     <font-awesome-icon
       v-show="remainingMinutes >= 8"
       icon="hourglass-start"
@@ -56,14 +52,7 @@
 <script setup lang="ts">
 import { padStart } from "lodash";
 import moment from "moment";
-import {
-  getCurrentInstance,
-  onMounted,
-  computed,
-  ref,
-  watch,
-  type App,
-} from "vue";
+import { getCurrentInstance, onMounted, computed, ref, watch } from "vue";
 import { useGlobalStore } from "@/stores/global";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -75,8 +64,6 @@ const notifyUrl =
 // const notifyUrl = "http://localhost:8888" + "/message_bridge.html";
 
 const now = ref(moment());
-const logoutMsg = "系統登出中，請稍候!!";
-const isShowSpinner = ref(false);
 
 /** Session timeout時間 */
 const sessionExpiredTime = computed(() => {

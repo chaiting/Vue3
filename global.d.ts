@@ -6,3 +6,10 @@ declare global {
     [key: string]: any;
   }
 }
+
+// components
+declare module "@vue/runtime-core" {
+  export interface GlobalComponents {
+    MenuItem: typeof import("view-iu-plus")["MenuItem"];
+  }
+}

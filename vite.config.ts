@@ -1,4 +1,4 @@
-import { fileURLToPath, URL } from "url";
+// import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { visualizer } from "rollup-plugin-visualizer";
@@ -14,9 +14,9 @@ const config = defineConfig({
     },
   },
   build: {
-    sourcemap: true,
+    sourcemap: false, // false
     cssCodeSplit: true, // true
-    chunkSizeWarningLimit: 1000, // 500
+    chunkSizeWarningLimit: 2000, // 500
     reportCompressedSize: true, // true
     rollupOptions: {
       output: {

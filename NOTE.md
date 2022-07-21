@@ -9,6 +9,7 @@
 8. 壓縮 切檔(webpackChunkName) 路徑 browser cache(ex: hash:8)
 9. post message, ajax 轉圈, 時間倒數
 10. 既有元件轉 vue3 寫法
+----
 11. 登出後,keycloak.logoutFn()？
 12. 412 error彈窗
 13. v-charts -> vue-chart (https://github.com/ecomfe/vue-echarts)

@@ -1,4 +1,4 @@
-import type { User, Pagination } from "@/type/common";
+import type { User } from "@/type/common";
 import type MockAdapter from "axios-mock-adapter/types";
 
 const fakeData: User[] = Array(50)
