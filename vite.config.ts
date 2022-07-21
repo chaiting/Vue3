@@ -16,7 +16,7 @@ const config = defineConfig({
   build: {
     sourcemap: false, // false
     cssCodeSplit: true, // true
-    chunkSizeWarningLimit: 2000, // 500
+    chunkSizeWarningLimit: 10000, // 500
     reportCompressedSize: true, // true
     rollupOptions: {
       output: {

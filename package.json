@@ -12,6 +12,9 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "debug": "node --inspect-brk node_modules/vite/bin/vite.js",
+    "build.sit": "vite build --mode sit",
+    "build.uat": "vite build --mode uat",
+    "build.prod": "vite build --mode prod",
     "server": "npx nodemon server/index.js"
   },
   "dependencies": {
