@@ -30,10 +30,7 @@ const config = defineConfig({
   },
   css: {
     preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
-        // additionalData: `@import "${path.resolve(__dirname, "src/assets/theme.less")}";`,
-      },
+      less: { javascriptEnabled: true },
     },
   },
   server: {
