@@ -1,4 +1,5 @@
 ### Issue
+
 1. JS or TS => TS
 2. Vue3 + Vue router + Linter / Formatter => npm init@latest
 3. Pinia Pinia-plugin-persist
@@ -9,33 +10,37 @@
 8. 壓縮 切檔(webpackChunkName) 路徑 browser cache(ex: hash:8)
 9. post message, ajax 轉圈, 時間倒數
 10. 既有元件轉 vue3 寫法
-----
+
+---
+
 11. 登出後,keycloak.logoutFn()？
-12. 412 error彈窗
+12. 412 error 彈窗
 13. v-charts -> vue-chart (https://github.com/ecomfe/vue-echarts)
 
+**_環境_**
 
-***環境***
-- node: 16.16 
-- vscode: 1.67 
+- node: 16.16
+- vscode: 1.67
 - Vue Language Features (Volar): 0.38.5
 - TypeScript Vue Plugin (Volar): 0.38.5
 - 禁用 vetur
 - vue.js devtool (chrome): 6.2.1
 
-***i18n***
-> Warning: You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
-https://vue-i18n.intlify.dev/guide/advanced/optimization.html
-https://github.com/intlify/vue-i18n-next/issues/789
-***keycloak***
-https://www.keycloak.org/getting-started/getting-started-docker
-***Loading***
-BlockUI vs vue-loading-overlay vs iview(Spinner)
-***Volar***
-https://github.com/johnsoncodehk/volar/issues/1247#issuecomment-113979710
+**_i18n_**
 
-***countdown***
+> Warning: You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
+> https://vue-i18n.intlify.dev/guide/advanced/optimization.html
+> https://github.com/intlify/vue-i18n-next/issues/789
+> **_keycloak_**
+> https://www.keycloak.org/getting-started/getting-started-docker
+> **_Loading_**
+> BlockUI vs vue-loading-overlay vs iview(Spinner)
+> **_Volar_**
+> https://github.com/johnsoncodehk/volar/issues/1247#issuecomment-113979710
+
+**_countdown_**
 時間比較問題 (string vs number)
+
 ```js
 let diff = new Date() - new Date(); // x
 let diff = new Date().valueOf() - new Date.valueOf(); // v
@@ -43,3 +48,5 @@ let diff = new Date().valueOf() - new Date.valueOf(); // v
 
 TS
 https://stackoverflow.com/questions/42233987/how-to-configure-custom-global-interfaces-d-ts-files-for-typescript/42257742#42257742
+// https://github.com/rollup/rollup/issues/2793
+// https://github.com/rollup/rollup/blob/master/CHANGELOG.md#breaking-changes

@@ -8,6 +8,7 @@ import setupI18nConfig from "@/conf/i18n-config";
 import setupViewUiPlusConfig from "@/conf/view-ui-plus-config";
 import setupFontawesomeConfig from "@/conf/fontawesome-config";
 import setupVueEchartsConfig from "@/conf/vue-echarts-config";
+import setupEsunConfig from "@/conf/esun-ui-config";
 import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
 
 import "@/assets/commonStyle.css";
@@ -22,6 +23,7 @@ setupI18nConfig(app);
 setupViewUiPlusConfig(app);
 setupFontawesomeConfig(app);
 setupVueEchartsConfig(app);
+setupEsunConfig(app);
 
 /** myuser@gmail.com / myuser123 (帳號/密碼) */
 app.use(VueKeyCloak, {

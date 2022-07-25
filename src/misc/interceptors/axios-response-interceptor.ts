@@ -2,7 +2,7 @@ import type { AxiosError, AxiosResponse } from "axios";
 import { useGlobalStore } from "@/stores/global";
 import { IGNORE_GLOBAL_SPINNER_URLS } from "@/conf/app-config";
 import router from "@/router";
-import { delay } from "lodash";
+import { delay } from "lodash-es";
 
 /**
  * 攔截每個AJAX HTTP Response進行處理

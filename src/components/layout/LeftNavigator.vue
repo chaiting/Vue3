@@ -38,7 +38,7 @@ import { useProfileStore } from "@/stores/profile";
 import { computed } from "vue";
 import { ref, watch, nextTick } from "vue";
 import { useRoute } from "vue-router";
-import { find } from "lodash";
+import { find } from "lodash-es";
 import { useGlobalStore } from "@/stores/global";
 
 interface Menu {

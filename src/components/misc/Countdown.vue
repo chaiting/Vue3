@@ -50,7 +50,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { padStart } from "lodash";
+import { padStart } from "lodash-es";
 import moment from "moment";
 import { getCurrentInstance, onMounted, computed, ref, watch } from "vue";
 import { useGlobalStore } from "@/stores/global";

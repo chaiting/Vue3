@@ -2,7 +2,7 @@ import type { AxiosError, AxiosRequestConfig } from "axios";
 import { useGlobalStore } from "@/stores/global";
 import messageBridgeApi from "@/api/core/message-bridge-api";
 import { IGNORE_GLOBAL_SPINNER_URLS } from "@/conf/app-config";
-import { delay } from "lodash";
+import { delay } from "lodash-es";
 /**
  * 攔截每個AJAX HTTP Request進行處理
  */
