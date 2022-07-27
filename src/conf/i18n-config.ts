@@ -1,13 +1,16 @@
 import type { App } from "vue";
 import { createI18n } from "vue-i18n";
-import zh_TW from "view-ui-plus/dist/locale/zh-TW";
-import en from "view-ui-plus/dist/locale/en-US";
+import { locale } from "esun-ui";
+// import zh_TW from "view-ui-plus/dist/locale/zh-TW";
+// import en from "view-ui-plus/dist/locale/en-US";
+
+const { zh_TW, en } = locale;
 
 export const i18n = createI18n({
   locale: "zh-TW",
   messages: {
-    "zh-TW": { ...zh_TW, hi: "你好" },
-    "en-US": { ...en, hi: "hello" },
+    "zh-TW": { ...zh_TW, hi: "你好", apple: "蘋果" },
+    "en-US": { ...en, hi: "hello", apple: "Apple" },
   },
 });
 

@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h3>#esun-button</h3>
+    <esun-button />
     <Divider />
     <h3>#js-file-download</h3>
     <FileDownloadDemo />

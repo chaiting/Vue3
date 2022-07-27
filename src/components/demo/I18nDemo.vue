@@ -10,7 +10,10 @@
       <Col flex="auto">
         <p>{{ $t("hi") }} // $t("hi")</p>
         <p>{{ t("hi") }} // t('hi')</p>
+        <p>{{ $t("apple") }} // $t("apple")</p>
+        <p>{{ t("apple") }} // t('apple')</p>
       </Col>
+      <Col flex="auto"> </Col>
     </Row>
   </div>
 </template>
