@@ -32,6 +32,7 @@
     "moment": "^2.29.4",
     "pinia": "^2.0.16",
     "pinia-plugin-persistedstate": "^1.6.3",
+    "sweetalert2": "^11.4.24",
     "vue": "^3.2.37",
     "vue-echarts": "^6.2.3",
     "vue-i18n": "^9.1.10",
