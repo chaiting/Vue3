@@ -3,10 +3,11 @@ import App from "./App.vue";
 import router from "./router";
 import setupPiniaConfig from "@/conf/pinia-config";
 import setupAxiosConfig from "@/conf/axios-config";
-import setupEsunConfig from "@/conf/esun-ui-config";
+// import setupEsunConfig from "@/conf/esun-ui-config";
 import setupAxiosMockConfig from "@/conf/axios-mock-adapter-config";
 import setupI18nConfig from "@/conf/i18n-config";
-// import setupViewUiPlusConfig from "@/conf/view-ui-plus-config";
+import setupViewUiPlusConfig from "@/conf/view-ui-plus-config";
+import setupGlobalComponentConfig from "@/conf/global-component-config";
 import setupFontawesomeConfig from "@/conf/fontawesome-config";
 import setupVueEchartsConfig from "@/conf/vue-echarts-config";
 import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
@@ -19,8 +20,9 @@ setupAxiosConfig();
 setupAxiosMockConfig();
 setupPiniaConfig(app);
 setupI18nConfig(app);
-// setupViewUiPlusConfig(app);
-setupEsunConfig(app); // *****
+setupViewUiPlusConfig(app);
+setupGlobalComponentConfig(app);
+// setupEsunConfig(app); // *****
 setupFontawesomeConfig(app);
 setupVueEchartsConfig(app);
 

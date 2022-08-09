@@ -31,5 +31,4 @@ import LeftNavigator from "@/components/layout/LeftNavigator.vue";
 import FunctionTitle from "@/components/layout/FunctionTitle.vue";
 import Spinner from "./components/misc/Spinner.vue";
 import LogoutSpinner from "./components/misc/LogoutSpinner.vue";
-// import { BackTop } from "view-ui-plus";
 </script>

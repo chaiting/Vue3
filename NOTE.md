@@ -1,5 +1,4 @@
 ### Issue
-
 1. JS or TS => TS
 2. Vue3 + Vue router + Linter / Formatter => npm init@latest
 3. Pinia Pinia-plugin-persist
@@ -10,15 +9,25 @@
 8. 壓縮 切檔(webpackChunkName) 路徑 browser cache(ex: hash:8)
 9. post message, ajax 轉圈, 時間倒數
 10. 既有元件轉 vue3 寫法
-
----
-
 11. 登出後,keycloak.logoutFn()？
 12. 412 error 彈窗
 13. v-charts -> vue-chart (https://github.com/ecomfe/vue-echarts)
+--- 
+1. Input 預設clearable
+1. 跳轉500、401、403，關閉所有modal
+2. 數字format
+3. Table 欄位按照（字串靠左、數字靠右、日期靠中間）
+4. 單一input，form表單按下enter不要重整
+5. 前端仿照後端core
+6. 可顯示list訊息alert，string, array
+7. input 同時顯示clearable + show-word-limit
+8. 分頁邏輯hook
+9. 分頁顯示比數統一處理，若有特殊情境可自行定義
+10. bpm簽核歷程共用元件
+10. 補上共用utility，檢核規則參照A05
+11. esun-alert、esun-confirm，透過method呼叫。
 
 **_環境_**
-
 - node: 16.16
 - vscode: 1.67
 - Vue Language Features (Volar): 0.38.5
@@ -48,5 +57,5 @@ let diff = new Date().valueOf() - new Date.valueOf(); // v
 
 TS
 https://stackoverflow.com/questions/42233987/how-to-configure-custom-global-interfaces-d-ts-files-for-typescript/42257742#42257742
-// https://github.com/rollup/rollup/issues/2793
-// https://github.com/rollup/rollup/blob/master/CHANGELOG.md#breaking-changes
+https://github.com/rollup/rollup/issues/2793
+https://github.com/rollup/rollup/blob/master/CHANGELOG.md#breaking-changes

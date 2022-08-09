@@ -1,10 +1,7 @@
 import type { App } from "vue";
 import { createI18n } from "vue-i18n";
-import { locale } from "esun-ui";
-// import zh_TW from "view-ui-plus/dist/locale/zh-TW";
-// import en from "view-ui-plus/dist/locale/en-US";
-
-const { zh_TW, en } = locale;
+import zh_TW from "view-ui-plus/dist/locale/zh-TW";
+import en from "view-ui-plus/dist/locale/en-US";
 
 export const i18n = createI18n({
   locale: "zh-TW",

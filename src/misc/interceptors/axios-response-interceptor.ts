@@ -10,7 +10,9 @@ import { delay, size, join } from "lodash-es";
  */
 function handleResponse(response: AxiosResponse) {
   const globalStore = useGlobalStore();
-  const isIgnoreUrl = IGNORE_GLOBAL_SPINNER_URLS.some((url) => response.config.url === url);
+  const isIgnoreUrl = IGNORE_GLOBAL_SPINNER_URLS.some(
+    (url) => response.config.url === url
+  );
 
   if (!isIgnoreUrl) {
     delay(() => globalStore.doDecrementAjaxReq(), 500);
@@ -24,7 +26,9 @@ function handleResponse(response: AxiosResponse) {
  */
 function handleResponseError(error: AxiosError<any>) {
   const globalStore = useGlobalStore();
-  const isIgnoreUrl = IGNORE_GLOBAL_SPINNER_URLS.some((url) => error.config.url === url);
+  const isIgnoreUrl = IGNORE_GLOBAL_SPINNER_URLS.some(
+    (url) => error.config.url === url
+  );
 
   if (!isIgnoreUrl) {
     delay(() => globalStore.doDecrementAjaxReq(), 500);
