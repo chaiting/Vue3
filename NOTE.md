@@ -12,9 +12,8 @@
 11. 登出後,keycloak.logoutFn()？
 12. 412 error 彈窗
 13. v-charts -> vue-chart (https://github.com/ecomfe/vue-echarts)
---- 
-1. Input 預設clearable
-1. 跳轉500、401、403，關閉所有modal
+#### 08/10
+1. 跳轉500、401、403，關閉所有modal 
 2. 數字format
 3. Table 欄位按照（字串靠左、數字靠右、日期靠中間）
 4. 單一input，form表單按下enter不要重整
@@ -26,6 +25,7 @@
 10. bpm簽核歷程共用元件
 10. 補上共用utility，檢核規則參照A05
 11. esun-alert、esun-confirm，透過method呼叫。
+12. Input 預設clearable
 
 **_環境_**
 - node: 16.16

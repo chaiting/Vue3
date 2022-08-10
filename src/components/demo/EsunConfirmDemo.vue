@@ -1,5 +1,5 @@
 <template>
-  <esun-confirm v-model:value="isOpen" title="My confirm title">
+  <esun-confirm v-model:value="isOpen" title="Confirm title">
     confirm content ...
   </esun-confirm>
   <Button type="primary" @click="openEsunConfirm">Open Esun Confirm</Button>

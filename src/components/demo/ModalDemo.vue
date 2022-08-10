@@ -5,7 +5,6 @@
 </template>
 <script setup lang="ts">
 import { onDeactivated, ref, watch } from "vue";
-
 const props = defineProps(["value"]);
 const emit = defineEmits(["update:value"]);
 
