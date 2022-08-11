@@ -1,7 +1,9 @@
 import type MockAdapter from "axios-mock-adapter/types";
+import coreInit from "@/mock/core";
 import f01Init from "@/mock/f01";
 
 export default function (mock: MockAdapter) {
+  coreInit(mock);
   f01Init(mock);
   // f02Init(mock);
   // f03Init(mock);
@@ -76,6 +78,14 @@ export default function (mock: MockAdapter) {
                 redirectTypeCd: "P",
               },
             ],
+          },
+          {
+            menuSeqNo: "4-1",
+            itemNm: "公共元件",
+            itemUri: "/f040101scn",
+            iconText: "",
+            redirectTypeCd: "P",
+            subMenuList: [],
           },
         ],
       },

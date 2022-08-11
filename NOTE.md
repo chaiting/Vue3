@@ -18,14 +18,20 @@
 3. Table 欄位按照（字串靠左、數字靠右、日期靠中間）
 4. 單一input，form表單按下enter不要重整
 5. 前端仿照後端core
-6. 可顯示list訊息alert，string, array
-7. input 同時顯示clearable + show-word-limit
+6. 可顯示list訊息alert，string, array // 透過esun alert
+7. input 同時顯示clearable + show-word-limit // x
 8. 分頁邏輯hook
 9. 分頁顯示比數統一處理，若有特殊情境可自行定義
 10. bpm簽核歷程共用元件
-10. 補上共用utility，檢核規則參照A05
-11. esun-alert、esun-confirm，透過method呼叫。
-12. Input 預設clearable
+11. 補上共用utility，檢核規則參照A05 
+12. esun-alert、esun-confirm，透過method呼叫。 // 版本2
+13. Input 預設clearable
+
+**_修正_**
+1. **SysCdSelect** 將filterable改為props?
+2. **SysCdCheckbox** computed -> clearable 多餘？
+3. 共用元件的 api response data? (mock用)
+4. **InfoCard** data -> isCreditCardMember 多餘？
 
 **_環境_**
 - node: 16.16
@@ -59,3 +65,5 @@ TS
 https://stackoverflow.com/questions/42233987/how-to-configure-custom-global-interfaces-d-ts-files-for-typescript/42257742#42257742
 https://github.com/rollup/rollup/issues/2793
 https://github.com/rollup/rollup/blob/master/CHANGELOG.md#breaking-changes
+
+

@@ -3,9 +3,8 @@
     <Modal
       v-model="isVisible"
       @on-visible-change="$emit('update:value', $event)"
-      @on-cancel="cancel"
       width="40vh"
-      class="esun-confirm"
+      class="esun-alert"
     >
       <div class="alert-background" :class="classes"></div>
       <!-- 標題 -->
@@ -15,16 +14,27 @@
 
       <!-- 內文, slot的優先權大於content -->
       <p>
-        <slot>{{ content }}</slot>
+        <slot>
+          <template v-if="Array.isArray(content)">
+            <ul class="content-list">
+              <li v-for="(item, i) in content" :key="i">
+                {{ item }}
+              </li>
+            </ul>
+          </template>
+          <template v-else> {{ content }} </template>
+        </slot>
       </p>
 
       <!-- Button -->
       <template #footer>
         <div>
-          <Button class="cus-btn" type="info" size="large" @click="cancel">
-            取消
-          </Button>
-          <Button class="cus-btn" type="primary" size="large" @click="ok">
+          <Button
+            class="cus-btn"
+            type="primary"
+            size="large"
+            @click="closeModal"
+          >
             確定
           </Button>
         </div>
@@ -34,9 +44,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { ref, computed, watch } from "vue";
 
-const emit = defineEmits(["on-ok", "on-cancel", "update:value"]);
+const emit = defineEmits(["update:value", "on-ok"]);
 
 const props = defineProps({
   // 是否顯示訊息彈跳示窗
@@ -52,7 +62,7 @@ const props = defineProps({
   },
   // 內容
   content: {
-    type: String,
+    type: [String, Array],
     default: "",
     required: false,
   },
@@ -71,34 +81,21 @@ const classes = computed(() => {
   return props.type + "-background";
 });
 
-/**
- * 取消修改
- */
-function cancel() {
-  isVisible.value = false;
-  emit("on-cancel");
-}
-/**
- * 確認修改
- */
-function ok() {
-  isVisible.value = false;
+function closeModal() {
   emit("on-ok");
+  isVisible.value = false;
 }
+
 watch(
   () => props.value,
-  (newValue) => {
-    isVisible.value = newValue;
-  },
-  {
-    immediate: true,
-  }
+  (newValue) => (isVisible.value = newValue)
 );
 </script>
 
 <style lang="less">
-.esun-confirm {
+.esun-alert {
   text-align: center;
+  background-color: red;
   .ivu-modal-header {
     border-bottom: 0;
   }
@@ -130,6 +127,9 @@ watch(
   }
   .cus-btn {
     width: 40%;
+  }
+  .content-list {
+    list-style: none;
   }
 }
 </style>
