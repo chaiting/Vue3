@@ -1,57 +1,53 @@
 <template>
-  <div>
-    <Poptip content="content" placement="bottom" v-model="visible" transfer>
-      <!-- slot -->
-      <div @click="doGetEmployeeInfoCard" class="cardStyle">
-        <slot></slot>
-      </div>
-      <template #content>
-        <div class="slotPoptip infoCardContainer">
-          <div class="infoCardIconContainer">
-            <!-- 頭像 -->
-            <div class="infoCardIcon" :class="sex"></div>
+  <Poptip placement="bottom" transfer>
+    <!-- slot -->
+    <div @click="doGetEmployeeInfoCard" class="cardStyle">
+      <slot></slot>
+    </div>
+    <template #content>
+      <div class="infoCardContainer">
+        <div class="infoCardIconContainer">
+          <!-- 頭像 -->
+          <div class="infoCardIcon" :class="sex"></div>
+        </div>
+        <div class="infoCardContentContainer">
+          <!-- 人員名稱 -->
+          <div class="infoCardName">{{ userInfoCard.cname }} {{ userInfoCard.employeeNo }}</div>
+          <!-- 人員處級單位 -->
+          <div class="infoCardDivision">
+            {{ userDivision }}
           </div>
-          <div class="infoCardContentContainer">
-            <!-- 人員名稱 -->
-            <div class="infoCardName">
-              {{ userInfoCard.cname }} {{ userInfoCard.employeeNo }}
-            </div>
-            <!-- 人員處級單位 -->
-            <div class="infoCardDivision">
-              {{ userDivision }}
-            </div>
-            <!-- 人員部級以下單位 -->
-            <div class="infoCardDept">
-              {{ department }}
-            </div>
-            <!-- 人員職稱 -->
-            <div class="infoCardPosition">{{ userInfoCard.jobTitleName }}</div>
-            <!-- 人員電話號碼 -->
-            <div class="infoCardTel">
-              {{ telephone }}
-            </div>
-            <div class="infoCardBtnContainer">
-              <!-- 撥號功能 -->
-              <a @click.prevent="doAutoDial" v-if="dialable">
-                <div class="infoCardBtn phone-img"></div>
-              </a>
-              <!-- EMAIL功能 -->
-              <a v-if="userInfoCard.officeEmail" :href="emailLink">
-                <div class="infoCardBtn mail-img"></div>
-              </a>
-            </div>
+          <!-- 人員部級以下單位 -->
+          <div class="infoCardDept">
+            {{ department }}
+          </div>
+          <!-- 人員職稱 -->
+          <div class="infoCardPosition">{{ userInfoCard.jobTitleName }}</div>
+          <!-- 人員電話號碼 -->
+          <div class="infoCardTel">
+            {{ telephone }}
+          </div>
+          <div class="infoCardBtnContainer">
+            <!-- 撥號功能 -->
+            <a @click.prevent="doAutoDial" v-if="dialable">
+              <div class="infoCardBtn phone-img"></div>
+            </a>
+            <!-- EMAIL功能 -->
+            <a v-if="userInfoCard.officeEmail" :href="emailLink">
+              <div class="infoCardBtn mail-img"></div>
+            </a>
           </div>
         </div>
-      </template>
-    </Poptip>
+      </div>
+    </template>
+  </Poptip>
 
-    <!-- 系統撥號顯示 -->
-    <esun-alert
-      v-model:value="alertModal.loading"
-      :title="alertModal.title"
-      :content="alertModal.content"
-    ></esun-alert>
-  </div>
+  <!-- 系統撥號顯示 -->
+  <esun-alert
+    v-model:value="alertModal.loading"
+    :title="alertModal.title"
+    :content="alertModal.content"
+  ></esun-alert>
 </template>
 
 <script setup lang="ts">
@@ -68,10 +64,16 @@ const props = defineProps({
   },
 });
 
+const popOptions = {
+  onCreate: () => {
+    console.log(`xxx`);
+  },
+};
+
 // 顯示popTip
-const visible = ref(false);
+// const visible = ref(false);
 // 是否為信用卡處人員
-const isCreditCardMember = ref(false);
+// const isCreditCardMember = ref(false);
 // 被查詢者AD帳號
 const queriedAdAccount = ref("");
 // 使用者卡片資訊
@@ -112,9 +114,7 @@ const emailLink = computed(() => {
 /** 受話者電話號碼 */
 const telephone = computed(() => {
   if (userInfoCard.value.deptPhoneNo && userInfoCard.value.officePhoneext) {
-    return (
-      userInfoCard.value.deptPhoneNo + "#" + userInfoCard.value.officePhoneext
-    );
+    return userInfoCard.value.deptPhoneNo + "#" + userInfoCard.value.officePhoneext;
   }
   return userInfoCard.value.deptPhoneNo;
 });
@@ -129,6 +129,7 @@ const department = computed(() => {
 
 /** 受話者性別 */
 const sex = computed(() => {
+  if (!userInfoCard.value.genderCode) return;
   return userInfoCard.value.genderCode === "1" ? "male" : "female";
 });
 
@@ -181,7 +182,6 @@ onDeactivated(() => {
   alertModal.loading = false;
 });
 </script>
-
 <style lang="less" scoped>
 .cardStyle {
   font-weight: bold;
@@ -194,6 +194,8 @@ onDeactivated(() => {
 }
 .infoCardContainer {
   padding: 10px 5px 45px 5px;
+  // min-width: 360px;
+  // min-height: 180px;
   display: inline-block;
 }
 .infoCardIconContainer {
@@ -250,9 +252,6 @@ onDeactivated(() => {
 .infoCardBtn:hover {
   background-color: #fbfbfb;
   opacity: 1;
-}
-\deep\.ivu-poptip-inner {
-  border-radius: 10px;
 }
 .phone-img {
   background-image: url("@/assets/images/ic_gray_phone.svg");

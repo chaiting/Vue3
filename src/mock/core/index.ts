@@ -42,4 +42,6 @@ export default function (mock: MockAdapter) {
     msg: [],
     spanId: null,
   });
+
+  mock.onPost("/info_card/02").reply(200)
 }
