@@ -1,16 +1,15 @@
-export interface User {
-  id: number;
-  name: string;
-  time: string;
-  address: string;
+export interface FormRef {
+  validate: (cb?: (valid: boolean) => void) => void | Promise<boolean>;
+  resetFields: () => void;
 }
 
-export interface UserList {
-  data: User[];
-  total: number;
+export interface SortColumn {
+  column: string;
+  key: string;
+  order: "acs" | "desc" | "normal";
 }
 
-export type Pagination = {
-  page: number;
-  pageSize: number;
-};
+export interface SortOption {
+  sortColumn: string;
+  sortType: "ASC" | "DESC" | "NORMAL";
+}
