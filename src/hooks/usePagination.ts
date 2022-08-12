@@ -1,7 +1,7 @@
 import { reactive, watch } from "vue";
 import { DEFAULT_PAGE_SIZE_LIST } from "@/conf/app-config";
 
-export function usePagination(fetcher: () => void) {
+export function usePagination(opts: { fetcher: () => void }) {
   const pagination = reactive({
     page: 1,
     pageSize: 20,
@@ -18,7 +18,7 @@ export function usePagination(fetcher: () => void) {
   }
 
   watch([() => pagination.page, () => pagination.pageSize], () => {
-    fetcher();
+    opts.fetcher();
   });
 
   return { pagination, onChangePage, onChangePageSize };
