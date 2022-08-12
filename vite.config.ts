@@ -8,8 +8,7 @@ const config = defineConfig({
   plugins: [vue(), visualizer({ open: true })],
   resolve: {
     alias: {
-      // "@": fileURLToPath(new URL("./src", import.meta.url)),
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./src"), // fileURLToPath(new URL("./src", import.meta.url))
       "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js", // 消除warning
     },
   },

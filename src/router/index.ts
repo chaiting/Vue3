@@ -35,6 +35,12 @@ const router = createRouter({
       name: "F030201SCN",
       component: () => import("@/views/f03/F030201SCN.vue"),
     },
+    // f04
+    {
+      path: "/f040101scn",
+      name: "F040101SCN",
+      component: () => import("@/views/f04/F040101SCN.vue"),
+    },
     {
       path: "/forbidden",
       name: "Forbidden",

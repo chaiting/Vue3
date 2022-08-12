@@ -1,8 +1,9 @@
 <template>
   <Loading v-model:active="isShowSpinner" loader="bars">
     <div class="spinner-wrap">
-      <font-awesome-icon icon="cog" size="3x" spin fixed-width>
-      </font-awesome-icon>
+      <!-- <font-awesome-icon icon="cog" size="3x" spin fixed-width>
+      </font-awesome-icon> -->
+      <img src="@/assets/gear-solid.svg" class="spinner-icon" />
       {{ msg }}
     </div>
   </Loading>
@@ -33,5 +34,17 @@ const isShowSpinner = computed(() => {
   gap: 10px;
   border-radius: 10px;
   box-shadow: 0px 3px 10px 5px lightgrey;
+}
+.spinner-icon {
+  width: 50px;
+  animation: loop 1.5s infinite linear;
+}
+@keyframes loop {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

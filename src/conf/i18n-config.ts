@@ -6,8 +6,8 @@ import en from "view-ui-plus/dist/locale/en-US";
 export const i18n = createI18n({
   locale: "zh-TW",
   messages: {
-    "zh-TW": { ...zh_TW, hi: "你好" },
-    "en-US": { ...en, hi: "hello" },
+    "zh-TW": { ...zh_TW, hi: "你好", apple: "蘋果" },
+    "en-US": { ...en, hi: "hello", apple: "Apple" },
   },
 });
 

@@ -1,8 +1,9 @@
 import type { AxiosError, AxiosResponse } from "axios";
+import Swal from "sweetalert2";
 import { useGlobalStore } from "@/stores/global";
 import { IGNORE_GLOBAL_SPINNER_URLS } from "@/conf/app-config";
 import router from "@/router";
-import { delay } from "lodash-es";
+import { delay, size, join } from "lodash-es";
 
 /**
  * 攔截每個AJAX HTTP Response進行處理
@@ -62,8 +63,27 @@ function handleResponseError(error: AxiosError<any>) {
 }
 
 function showMessage(msgs: string[]) {
-  // todo，
-  alert(msgs);
+  if (!msgs || size(msgs) < 1) return;
+
+  let style = "'margin-left: 25px; text-align: left'";
+
+  let html = "<div style=" + style + "><ol><li>";
+  html += join(msgs, "</li><li>");
+  html += "</li></ol></div>";
+
+  Swal.fire({
+    icon: "warning",
+    html: html,
+    showCancelButton: false,
+    allowOutsideClick: false,
+    buttonsStyling: true,
+    allowEscapeKey: true,
+    focusCancel: false,
+    confirmButtonColor: "#006600",
+    cancelButtonColor: "#9C1003",
+    confirmButtonText: "確定",
+    cancelButtonText: "取消",
+  });
 }
 
 export { handleResponse, handleResponseError };
