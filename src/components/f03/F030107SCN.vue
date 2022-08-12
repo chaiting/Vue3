@@ -1,9 +1,12 @@
 <template>
   <Button type="info" @click="doShowConfirm">do showConfirm</Button>
+  <Button @click="doShowConfirmByStore">do showConfirm by store</Button>
 </template>
 
 <script setup lang="ts">
 import { useConfirm } from "@/hooks/useConfirm";
+import { useConfirmStore } from "@/stores/confirm";
+const confirmStore = useConfirmStore();
 
 const { showConfirm } = useConfirm();
 
@@ -18,6 +21,20 @@ function doShowConfirm() {
     },
     cancel: () => {
       console.log(`cancel`);
+    },
+  });
+}
+
+function doShowConfirmByStore() {
+  confirmStore.doShowConfirm({
+    title: "aaaa",
+    content: "bbbb",
+    type: "success",
+    ok: () => {
+      console.log(`ok [store]`);
+    },
+    cancel: () => {
+      console.log(`cancel [store]`);
     },
   });
 }

@@ -12,7 +12,9 @@
         </div>
         <div class="infoCardContentContainer">
           <!-- 人員名稱 -->
-          <div class="infoCardName">{{ userInfoCard.cname }} {{ userInfoCard.employeeNo }}</div>
+          <div class="infoCardName">
+            {{ userInfoCard.cname }} {{ userInfoCard.employeeNo }}
+          </div>
           <!-- 人員處級單位 -->
           <div class="infoCardDivision">
             {{ userDivision }}
@@ -64,12 +66,6 @@ const props = defineProps({
   },
 });
 
-const popOptions = {
-  onCreate: () => {
-    console.log(`xxx`);
-  },
-};
-
 // 顯示popTip
 // const visible = ref(false);
 // 是否為信用卡處人員
@@ -114,7 +110,9 @@ const emailLink = computed(() => {
 /** 受話者電話號碼 */
 const telephone = computed(() => {
   if (userInfoCard.value.deptPhoneNo && userInfoCard.value.officePhoneext) {
-    return userInfoCard.value.deptPhoneNo + "#" + userInfoCard.value.officePhoneext;
+    return (
+      userInfoCard.value.deptPhoneNo + "#" + userInfoCard.value.officePhoneext
+    );
   }
   return userInfoCard.value.deptPhoneNo;
 });
