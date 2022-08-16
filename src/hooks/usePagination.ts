@@ -9,12 +9,12 @@ import { camelCase2UnderscoreUppercase } from "@/utils/naming-converter";
  */
 interface PaginationOption {
   fetcher: () => void;
-  defaultColumn: string;
+  defaultColumn?: string;
 }
 
 export function usePagination(opts: PaginationOption) {
   const sortOption = reactive<SortOption>({
-    sortColumn: opts.defaultColumn,
+    sortColumn: opts.defaultColumn || "",
     sortType: "DESC",
   });
 
@@ -40,7 +40,7 @@ export function usePagination(opts: PaginationOption) {
     if (pagination.total == 0) return;
     /** 取消排序 */
     if (col.order === "normal") {
-      sortOption.sortColumn = opts.defaultColumn;
+      sortOption.sortColumn = opts.defaultColumn || "";
       sortOption.sortType = "DESC";
     }
     /** 排序 */
