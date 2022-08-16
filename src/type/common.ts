@@ -11,5 +11,5 @@ export interface SortColumn {
 
 export interface SortOption {
   sortColumn: string;
-  sortType: "ASC" | "DESC" | "NORMAL";
+  sortType: "ASC" | "DESC";
 }

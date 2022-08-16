@@ -59,7 +59,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { FormRef, SortOption } from "@/type/common";
+import type { FormRef } from "@/type/common";
 import f010101Api from "@/api/f01/f010101-api";
 import { ref, reactive } from "vue";
 import { usePagination } from "@/hooks/usePagination";
@@ -69,10 +69,10 @@ import { checkTaxIdValid } from "@/utils/tax-id-utils";
 
 const formRef = ref<FormRef | null>();
 
-const { pagination, onChangePage, onChangePageSize, onSortChange } =
+const { pagination, sortOption, onChangePage, onChangePageSize, onSortChange } =
   usePagination({
     fetcher: doQryCustomerList,
-    defaultCol: "ID",
+    defaultColumn: "ID",
   });
 
 const columns = reactive([
@@ -128,7 +128,7 @@ const formRules = reactive({
   ],
 });
 
-async function doQryCustomerList(sortOption?: SortOption) {
+async function doQryCustomerList() {
   const result = await f010101Api.doQryCustomerList({
     ...form, // 表單欄位
     ...sortOption, // 排序選項
@@ -148,11 +148,6 @@ async function doQryCustomerList(sortOption?: SortOption) {
 }
 
 async function submit() {
-  // formRef.value?.validate((valid: boolean) => {
-  //   if (valid) {
-  //     doQryCustomerList();
-  //   }
-  // });
   doQryCustomerList();
 }
 
