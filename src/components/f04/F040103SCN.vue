@@ -13,7 +13,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import { useConfirm } from "@/hooks/useConfirm";
+import { useConfirm } from "@/core/hook/useConfirm";
 
 const isOpen = ref(false);
 

@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import { useConfirm } from "@/hooks/useConfirm";
+import { useConfirm } from "@/core/hook/useConfirm";
 import { useConfirmStore } from "@/stores/confirm";
 const confirmStore = useConfirmStore();
 

@@ -62,10 +62,12 @@
 import type { FormRef } from "@/type/common";
 import f010101Api from "@/api/f01/f010101-api";
 import { ref, reactive } from "vue";
-import { usePagination } from "@/hooks/usePagination";
-import { checkIdNumberValid } from "@/utils/id-number-utils";
-import { isValidCreditCardNumber } from "@/utils/credit-card-number-utils";
-import { checkTaxIdValid } from "@/utils/tax-id-utils";
+import { usePagination } from "@/core/hook/usePagination";
+import {
+  isValidCreditCardNumber,
+  checkIdNumberValid,
+  checkTaxIdValid,
+} from "@/core/utils/validate-format";
 
 const formRef = ref<FormRef | null>();
 

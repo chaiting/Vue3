@@ -56,7 +56,7 @@
 import isBlank from "is-blank";
 import { onDeactivated, reactive, computed, ref } from "vue";
 import { split, head, drop, join } from "lodash-es";
-import infoCardApi from "@/api/core/info-card-api";
+import infoCardApi from "@/core/api/info-card-api";
 
 const props = defineProps({
   // 使用者AD帳號

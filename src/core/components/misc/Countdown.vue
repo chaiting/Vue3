@@ -54,7 +54,7 @@ import { padStart } from "lodash-es";
 import moment from "moment";
 import { getCurrentInstance, onMounted, computed, ref, watch } from "vue";
 import { useGlobalStore } from "@/stores/global";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/core/hook/useAuth";
 
 const app = getCurrentInstance();
 const { logout, doKeepSessionAlive } = useAuth();

@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { numberFormat, numberParser } from "@/utils/numberFormat";
+import { numberFormat, numberParser } from "@/core/utils/number-format";
 
 const numberValue = ref(0);
 </script>

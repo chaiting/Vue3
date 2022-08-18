@@ -1,16 +1,21 @@
-import messageBridgeApi from "@/api/core/message-bridge-api";
-import sessionKeeperApi from "@/api/core/session-keeper-api";
+import messageBridgeApi from "@/core/api/message-bridge-api";
+import sessionKeeperApi from "@/core/api//session-keeper-api";
 import { useGlobalStore } from "@/stores/global";
 import { getCurrentInstance } from "vue";
 
+/**
+ * 登入相關操作hook
+ */
 export function useAuth() {
   const app = getCurrentInstance();
   const globalStore = useGlobalStore();
 
+  /** 保持session不過期 */
   const doKeepSessionAlive = () => {
     sessionKeeperApi.doKeepSessionAlive();
   };
 
+  /** 登出 */
   const logout = () => {
     app?.appContext.config.globalProperties.$keycloak.logoutFn(); // todo
     messageBridgeApi.notifySingleLogout();

@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from "vue";
 import { find, includes } from "lodash-es";
-import codeApi from "@/api/core/code-api";
+import codeApi from "@/core/api/code-api";
 
 const emit = defineEmits(["update:value"]);
 

@@ -1,5 +1,5 @@
 import { throttle } from "lodash-es";
-import messageBridgeApi from "@/api/core/message-bridge-api";
+import messageBridgeApi from "@/core/api/message-bridge-api";
 
 const countdownNtifier = throttle(() => {
   messageBridgeApi.postMessage(

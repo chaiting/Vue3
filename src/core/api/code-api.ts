@@ -81,6 +81,6 @@ export default {
       cdId: cdId,
     });
 
-    return head(result.data.body)?.cdNm || "";
+    return head(result.data.body as any[])?.cdNm || "";
   },
 };

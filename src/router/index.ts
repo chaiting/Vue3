@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { useProfileStore } from "@/stores/profile";
-import userProfileApi from "@/api/core/user-profile-api";
-import frontendAccessLogApi from "@/api/core/frontend-access-log-api";
+import userProfileApi from "@/core/api/user-profile-api";
+import frontendAccessLogApi from "@/core/api/frontend-access-log-api";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,30 +44,30 @@ const router = createRouter({
     {
       path: "/forbidden",
       name: "Forbidden",
-      component: () => import("@/views/Forbidden.vue"),
+      component: () => import("@/core/views/Forbidden.vue"),
     },
     {
       path: "/notfound",
       name: "NotFound",
-      component: () => import("@/views/NotFound.vue"),
+      component: () => import("@/core/views/NotFound.vue"),
     },
     {
       /** 500 Server Internal Server Error */
       path: "/error",
       name: "UnknownError",
-      component: () => import("@/views/UnknownError.vue"),
+      component: () => import("@/core/views/UnknownError.vue"),
     },
     {
       /** 403 Forbidden */
       path: "/forbidden",
       name: "Forbidden",
-      component: () => import("@/views/Forbidden.vue"),
+      component: () => import("@/core/views/Forbidden.vue"),
     },
     {
       /** User Profile not found */
       path: "/user_profile_not_found",
       name: "UserProfileNotFound",
-      component: () => import("@/views/UserProfileNotFound.vue"),
+      component: () => import("@/core/views/UserProfileNotFound.vue"),
     },
     {
       path: "/:catchAll(.*)",

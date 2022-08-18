@@ -1,6 +1,6 @@
 import { createApp, ref, h } from "vue";
 import { Button, Modal } from "view-ui-plus";
-import EsunConfirm from "@/components/core/EsunConfirm.vue";
+import EsunConfirm from "@/core/components//EsunConfirm.vue";
 
 interface ConfirmOptions {
   title: string;
@@ -10,9 +10,13 @@ interface ConfirmOptions {
   cancel?: () => void;
 }
 
+/**
+ * 全局確認彈窗hook
+ */
 export function useConfirm() {
   const isShow = ref(false);
 
+  /** 顯示確認彈窗 */
   function showConfirm(opts: ConfirmOptions) {
     const container = document.createElement("div");
     document.body.appendChild(container);
