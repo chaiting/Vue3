@@ -1,10 +1,14 @@
 import type MockAdapter from "axios-mock-adapter/types";
 import coreInit from "@/mock/core";
+import bpmFormInit from "@/mock/core/bpm-form-api";
+import codeInit from "@/mock/core/code-api";
 import f01Init from "@/mock/f01";
 
 export default function (mock: MockAdapter) {
   coreInit(mock);
   f01Init(mock);
+  codeInit(mock);
+  bpmFormInit(mock);
   // f02Init(mock);
   // f03Init(mock);
   mock.onPost("/fronted_access_log/01").reply(200);
