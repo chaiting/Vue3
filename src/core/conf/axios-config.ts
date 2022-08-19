@@ -2,11 +2,11 @@ import axios from "axios";
 import {
   handleRequest,
   handleRequestError,
-} from "@/misc/interceptors/axios-request-interceptor";
+} from "@/core/interceptors/axios-request-interceptor";
 import {
   handleResponse,
   handleResponseError,
-} from "@/misc/interceptors/axios-response-interceptor";
+} from "@/core/interceptors/axios-response-interceptor";
 
 const {
   VITE_APP_AXIOS_BASE_URL,

@@ -1,7 +1,6 @@
-import type { User } from "@/type/common";
 import type MockAdapter from "axios-mock-adapter/types";
 
-const fakeData: User[] = Array(50)
+const fakeData: any[] = Array(50)
   .fill({})
   .map((e, idx) => ({
     id: idx + 1,

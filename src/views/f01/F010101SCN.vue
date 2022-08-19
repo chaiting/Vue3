@@ -24,17 +24,6 @@
             <Button @click="reset">Reset</Button>
           </div>
         </Col>
-        <Col>
-          <Tag>
-            {{
-              {
-                ...form,
-                page: pagination.page,
-                pageSize: pagination.pageSize,
-              }
-            }}
-          </Tag>
-        </Col>
       </Row>
     </Form>
     <Table
@@ -59,7 +48,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { FormRef } from "@/type/common";
+import type { FormRef } from "@/core/type/common";
 import f010101Api from "@/api/f01/f010101-api";
 import { ref, reactive } from "vue";
 import { usePagination } from "@/core/hook/usePagination";
@@ -67,15 +56,14 @@ import {
   isValidCreditCardNumber,
   checkIdNumberValid,
   checkTaxIdValid,
-} from "@/core/utils/validate-format";
+} from "@/core/utils/customer-info-validator";
 
 const formRef = ref<FormRef | null>();
 
-const { pagination, sortOption, onChangePage, onChangePageSize, onSortChange } =
-  usePagination({
-    fetcher: doQryCustomerList,
-    defaultColumn: "ID",
-  });
+const { pagination, sortOption, onChangePage, onChangePageSize, onSortChange } = usePagination({
+  fetcher: doQryCustomerList,
+  defaultColumn: "ID",
+});
 
 const columns = reactive([
   { key: "id", title: "ID", width: 100, align: "center", sortable: true },
@@ -104,9 +92,7 @@ const formRules = reactive({
     { message: "顧客ID必填", required: true },
     {
       validator: (rule: any, value: string, cb: (message?: Error) => void) => {
-        checkIdNumberValid(value)
-          ? cb()
-          : cb(new Error("檢查身分證字號是否正確"));
+        checkIdNumberValid(value) ? cb() : cb(new Error("檢查身分證字號是否正確"));
       },
     },
   ],
@@ -114,9 +100,7 @@ const formRules = reactive({
     { message: "信用卡號必填", required: true },
     {
       validator: (rule: any, value: string, cb: (message?: Error) => void) => {
-        isValidCreditCardNumber(value)
-          ? cb()
-          : cb(new Error("檢查信用卡卡號是否正確"));
+        isValidCreditCardNumber(value) ? cb() : cb(new Error("檢查信用卡卡號是否正確"));
       },
     },
   ],
