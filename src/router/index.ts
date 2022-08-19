@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { useProfileStore } from "@/stores/profile";
+import { useProfileStore } from "@/core/store/profile";
 import userProfileApi from "@/core/api/user-profile-api";
 import frontendAccessLogApi from "@/core/api/frontend-access-log-api";
 

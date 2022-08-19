@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useConfirmStore } from "@/stores/confirm";
+import { useConfirmStore } from "@/store/confirm";
 
 const confirmStore = useConfirmStore();
 

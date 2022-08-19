@@ -1,16 +1,14 @@
 <template>
   <Loading v-model:active="isShowSpinner" loader="bars">
     <div class="spinner-wrap">
-      <!-- <font-awesome-icon icon="cog" size="3x" spin fixed-width>
-      </font-awesome-icon> -->
-      <img src="@/assets/gear-solid.svg" class="spinner-icon" />
+      <img src="@/core/assets/gear-solid.svg" class="spinner-icon" />
       {{ msg }}
     </div>
   </Loading>
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from "@/stores/global";
+import { useGlobalStore } from "@/core/store/global";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 import { computed } from "vue";

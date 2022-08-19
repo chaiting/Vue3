@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useProfileStore } from "@/stores/profile";
+import { useProfileStore } from "@/core/store/profile";
 
 export default {
   doKeepSessionAlive: async function () {

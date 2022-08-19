@@ -34,12 +34,11 @@
 </template>
 
 <script setup lang="ts">
-import { useProfileStore } from "@/stores/profile";
-import { computed } from "vue";
-import { ref, watch, nextTick } from "vue";
+import { computed, ref, watch, nextTick } from "vue";
+import { useProfileStore } from "@/core/store/profile";
 import { useRoute } from "vue-router";
 import { find } from "lodash-es";
-import { useGlobalStore } from "@/stores/global";
+import { useGlobalStore } from "@/core/store/global";
 
 interface Menu {
   menuSeqNo: string;

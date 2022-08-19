@@ -1,8 +1,7 @@
 <template>
   <Loading v-model:active="isShowLogoutSpinner">
     <div class="spinner-wrap">
-      <font-awesome-icon icon="cog" size="3x" spin fixed-width>
-      </font-awesome-icon>
+      <img src="@/core/assets/gear-solid.svg" class="spinner-icon" />
       {{ logoutMsg }}
     </div>
   </Loading>
@@ -11,7 +10,7 @@
 <script setup lang="ts">
 import Loading from "vue-loading-overlay";
 import { computed } from "vue";
-import { useGlobalStore } from "@/stores/global";
+import { useGlobalStore } from "@/core/store/global";
 
 const globalStore = useGlobalStore();
 const logoutMsg = "系統登出中，請稍候!!";
@@ -33,5 +32,17 @@ const isShowLogoutSpinner = computed(() => {
   gap: 10px;
   border-radius: 10px;
   box-shadow: 0px 3px 10px 5px lightgrey;
+}
+.spinner-icon {
+  width: 50px;
+  animation: loop 1.5s infinite linear;
+}
+@keyframes loop {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

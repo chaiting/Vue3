@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 import { useConfirm } from "@/core/hook/useConfirm";
-import { useConfirmStore } from "@/stores/confirm";
+import { useConfirmStore } from "@/store/confirm";
 const confirmStore = useConfirmStore();
 
 const { showConfirm } = useConfirm();

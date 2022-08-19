@@ -5,7 +5,7 @@
         <div class="navPageLogo">
           <a :href="homeUrl" target="_blank">
             <img
-              src="@/assets/images/logo_white_esun.svg"
+              src="@/core/assets/images/logo_white_esun.svg"
               title="玉山銀行E.SUN Bank"
             />
           </a>
@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useProfileStore } from "@/stores/profile";
+import { useProfileStore } from "@/core/store/profile";
 import { useAuth } from "@/core/hook/useAuth";
 import Countdown from "@/core/components/misc/Countdown.vue";
 
@@ -87,7 +87,7 @@ const loginUserProfile = computed(() => {
   background-size: 24px;
   background-position: left center;
   background-repeat: no-repeat;
-  background-image: url("@/assets/images/ic_white_user.svg");
+  background-image: url("@/core/assets/images/ic_white_user.svg");
 }
 .btnUiStyle {
   height: 36px;
@@ -105,7 +105,7 @@ const loginUserProfile = computed(() => {
   background-size: 20px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("@/assets/images/ic_white_log_out.svg");
+  background-image: url("@/core/assets/images/ic_white_log_out.svg");
 }
 .btnNavImage:hover {
   background-color: rgba(0, 0, 0, 0.1);

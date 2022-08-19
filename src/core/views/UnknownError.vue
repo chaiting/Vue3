@@ -5,7 +5,7 @@
       <div class="formContent formErrorPage">
         <div class="formContentFirst">
           <div class="errorPageIcon">
-            <img src="@/assets/images/ic_big_red_alert.svg" />
+            <img src="@/core/assets/images/ic_big_red_alert.svg" />
           </div>
         </div>
 
@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from "@/stores/global";
+import { useGlobalStore } from "@/core/store/global";
 import { computed } from "vue";
 
 const globalStore = useGlobalStore();

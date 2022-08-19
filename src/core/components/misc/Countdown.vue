@@ -53,7 +53,7 @@
 import { padStart } from "lodash-es";
 import moment from "moment";
 import { getCurrentInstance, onMounted, computed, ref, watch } from "vue";
-import { useGlobalStore } from "@/stores/global";
+import { useGlobalStore } from "@/core/store/global";
 import { useAuth } from "@/core/hook/useAuth";
 
 const app = getCurrentInstance();
