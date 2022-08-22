@@ -1,7 +1,6 @@
 import axios from "axios";
-
-import { map, head } from "lodash-es";
 import isBlank from "is-blank";
+import { map, head } from "lodash-es";
 
 // 代碼對應快取暫存表
 const CODES_CACHE_MAP = new Map();
@@ -31,7 +30,6 @@ export default {
 
     if (!result) {
       result = await axios.post("/code/01", payload);
-      console.log(result)
       CODES_CACHE_MAP.set(cacheKey, result);
     }
 
@@ -57,12 +55,15 @@ export default {
    */
   doQryCodeLabelValueList: async function (payload: any) {
     let result = await this.doQryCodeList(payload);
-    return map(result.data.body, function (row: { cdId: string; cdNm: string }) {
-      return {
-        value: row.cdId,
-        label: payload.showCode ? `${row.cdId} ${row.cdNm}` : row.cdNm,
-      };
-    });
+    return map(
+      result.data.body,
+      function (row: { cdId: string; cdNm: string }) {
+        return {
+          value: row.cdId,
+          label: payload.showCode ? `${row.cdId} ${row.cdNm}` : row.cdNm,
+        };
+      }
+    );
   },
   /**
    * 代碼名稱查詢

@@ -7,8 +7,10 @@ export default {
    * @param payload 起單參數
    */
   doStartProcess: async function (flowCode: string, payload: any) {
-    let result = await axios.post("/bpm_form/do_start_process/" + flowCode, payload);
-
+    let result = await axios.post(
+      "/bpm_form/do_start_process/" + flowCode,
+      payload
+    );
     return result.data.body;
   },
   /**
@@ -69,7 +71,10 @@ export default {
     // Started: 起單、1: 傳送
     if (payload.actionId === "Started" || payload.actionId === "1") {
       // 取得下一關卡處理者資料
-      let result = await axios.post("/bpm_form/do_qry_next_stage_processor/" + flowCode, payload);
+      let result = await axios.post(
+        "/bpm_form/do_qry_next_stage_processor/" + flowCode,
+        payload
+      );
 
       return result.data.body;
     }
@@ -77,7 +82,10 @@ export default {
     // delegate: 處理權移轉
     if (payload.actionId === "delegate") {
       // 取得處理權移轉傳送對象
-      let result = await axios.post("/bpm_form/do_qry_transfer_processor", payload);
+      let result = await axios.post(
+        "/bpm_form/do_qry_transfer_processor",
+        payload
+      );
 
       return result.data.body;
     }
@@ -87,13 +95,16 @@ export default {
    * @param payload 業務單號
    */
   doQryNextStageAction: async function (payload: any) {
-    let result = await axios.post("/bpm_form/do_qry_next_stage_action", payload);
+    let result = await axios.post(
+      "/bpm_form/do_qry_next_stage_action",
+      payload
+    );
 
     return result.data.body;
   },
   /**
    * 取得BPM FORM資訊
-   * @param {*} formId 表單代碼
+   * @param {*} payload 表單代碼
    */
   doGetBpmForm: async function (payload: any) {
     let result = await axios.post("/bpm_form/do_get_bpm_form", payload);

@@ -7,5 +7,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const checkboxValue = ref([]);
+const checkboxValue = ref(["Y", "N"]);
 </script>

@@ -70,7 +70,6 @@
           </Col>
         </Row>
       </Form>
-      <!-- before: <div slot="footer"> -->
       <template #footer>
         <Button class="modal-btn" type="info" @click="doCancel">取消</Button>
         <Button
@@ -127,8 +126,8 @@
 import type { FormRef, Validator } from "../type/common";
 import { computed, reactive, watch, ref, onMounted } from "vue";
 import bpmFormApi from "@/core/api/bpm-form-api";
+import { find } from "lodash-es";
 import isBlank from "is-blank";
-import * as _ from "lodash-es";
 /**
  * 1. BpmSubmitter props
  *    |----------------------------------------------------------------------------------------------------------------------------------|
@@ -274,7 +273,7 @@ const verifySignComment: Validator<string> = (rule, value, callback) => {
   }
   return callback();
 };
-// this.refs -> ref(null)
+
 const stageUserFormRef = ref<FormRef | null>(); // this.$refs["stageUserForm"]
 const signFormRef = ref<FormRef | null>(); // this.$refs["signForm"]
 
@@ -387,20 +386,14 @@ function doFormSubmit(refName: string) {
       doEmitPreprocessEvent();
     }
   });
-  // this.$refs[refName].validate((valid) => {
-  //   if (valid) {
-  //     isShowStageUser.value = false;
-  //     isShowSignModal.value = false;
-  //     this.doEmitPreprocessEvent();
-  //   }
-  // });
 }
+
 /**
  * 傳送簽核者異動事件，並將簽核者ID、簽核者名稱給父元件
  */
 function doUpdSigner(processorId: string) {
   if (stageUserForm.processorId) {
-    let processorName = _.find(stageProcessors.value as any, {
+    let processorName = find(stageProcessors.value as any, {
       processorId: stageUserForm.processorId,
     }).processorName;
 
@@ -413,6 +406,7 @@ function doUpdSigner(processorId: string) {
     });
   }
 }
+
 /**
  * 傳送前置作業處理事件
  */
@@ -429,6 +423,7 @@ function doEmitPreprocessEvent() {
   ]).get(actionId.value);
   emit(stage as any);
 }
+
 /**
  * 起單作業，並將api執行結果傳給父元件
  */
@@ -450,11 +445,11 @@ async function doStartProcess() {
   returnData.bpmFormSeqNo = result.bpmFormSeqNo;
 
   isShowStageUser.value = false;
-  // this.$refs["stageUserForm"].resetFields();
   stageUserFormRef.value!.resetFields();
 
   emit("on-start-complete", returnData);
 }
+
 /**
  * 送單作業，並將api執行果傳給父元件
  */
@@ -467,10 +462,10 @@ async function doSendProcess() {
   let result = await bpmFormApi.doSendProcess(payload);
 
   isShowStageUser.value = false;
-  // this.$refs["stageUserForm"].resetFields();
   stageUserFormRef.value!.resetFields();
   emit("on-operate-complete", doBuildReturnBasicData(result));
 }
+
 /**
  * 處理權移轉作業，並將api執行結果傳給父元件
  */
@@ -486,6 +481,7 @@ async function doTransferProcess() {
   stageUserFormRef.value!.resetFields();
   emit("on-operate-complete", doBuildReturnBasicData(result));
 }
+
 /**
  * 退回作業，並將api執行結果傳給父元件
  */
@@ -499,6 +495,7 @@ async function doSendBack() {
 
   emit("on-returned", doBuildReturnBasicData(result));
 }
+
 /**
  * 銷案作業，並將api執行結果傳給父元件
  */
@@ -512,6 +509,7 @@ async function doRevokeProcess() {
 
   emit("on-revoked", doBuildReturnBasicData(result));
 }
+
 /**
  * 結案作業，並將api執行結果傳給父元件
  */
@@ -525,19 +523,19 @@ async function doCloseProcess() {
 
   emit("on-closed", doBuildReturnBasicData(result));
 }
+
 /**
  * 傳送取消傳送事件給父元件，並關閉簽核視窗及資料清空
  */
 function doCancel() {
-  // this.$refs["stageUserForm"].resetFields();
   stageUserFormRef.value!.resetFields();
-  // this.$refs["signForm"].resetFields();
   signFormRef.value!.resetFields();
   isShowStageUser.value = false;
   isShowSignModal.value = false;
   actionId.value = "";
   emit("on-cancel");
 }
+
 /**
  * 設定BPM按鈕類型
  */
@@ -559,6 +557,7 @@ function doGetButtonType(value: string) {
 
   return "info";
 }
+
 /**
  * 設定BPM按鈕class
  */
@@ -566,6 +565,7 @@ function doGetButtonClass(value: string) {
   // 8: 傳送(其他主管同仁)
   return value === "8" ? "process-wide-btn" : "process-btn";
 }
+
 /**
  * 組建流程所需基本欄位資料
  */
@@ -582,6 +582,7 @@ function doBuildProcBasicData(signComment: string) {
     },
   };
 }
+
 /**
  * 組建流程執行結果資料
  */

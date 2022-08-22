@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
-import * as _ from "lodash-es";
+import { find, includes, filter } from "lodash-es";
 import isBlank from "is-blank";
 import employeeApi from "@/core/api/employee-api";
 
@@ -84,10 +84,18 @@ const props = defineProps({
   },
 });
 
+interface User {
+  adAccount: string;
+  empNo: string;
+  empNm: string;
+  accSts: string;
+  usedAccount: string;
+  hireSts: string;
+}
 // 使用者清單
-const userList = ref<any[]>([]);
+const userList = ref<User[]>([]);
 // 選中的AD帳號清單
-const selectedUsers = ref([]);
+const selectedUsers = ref<string | string[]>();
 
 /**
  * 查詢使用者清單
@@ -95,18 +103,18 @@ const selectedUsers = ref([]);
 async function doQryUserList() {
   userList.value = [];
 
-  let grpId = _.filter(props.grpIdList, (row) => !isBlank(row)) || [];
+  let grpId = filter(props.grpIdList, (row) => !isBlank(row)) || [];
 
   if (grpId.length < 1) {
     return;
   }
 
-  userList.value = (await employeeApi.doQryUserList({
+  userList.value = await employeeApi.doQryUserList({
     grpIdList: grpId,
     isHiredOnly: props.isHiredOnly,
     allSubordinate: props.allSubordinate,
     valueType: props.valueType,
-  })) as any;
+  });
 }
 
 /**
@@ -115,13 +123,13 @@ async function doQryUserList() {
 async function doUpdateSelectedValue() {
   await doQryUserList();
 
-  selectedUsers.value = props.value as any;
+  selectedUsers.value = props.value as string | string[];
   if (!selectedUsers.value || selectedUsers.value.length < 1) {
     return;
   }
 
-  let isExists = _.find(userList.value, function (o: any) {
-    return _.includes(selectedUsers.value, o.usedAccount);
+  let isExists = find(userList.value, function (o: any) {
+    return includes(selectedUsers.value, o.usedAccount);
   });
 
   if (!isExists) {
@@ -145,6 +153,7 @@ watch(
   () => props.isHiredOnly,
   () => doUpdateSelectedValue()
 );
+
 onMounted(() => {
   doUpdateSelectedValue();
 });

@@ -3,10 +3,15 @@
     <Row>
       <!-- 縣市 -->
       <Col :span="colSpan">
-        <FormItem :label="cityLabel" :prop="cityItemNm" :class="formItemClass" half>
+        <FormItem
+          :label="cityLabel"
+          :prop="cityItemNm"
+          :class="formItemClass"
+          half
+        >
           <sys-cd-select
             :ctId="8"
-            :value.sync="selectedCityCd"
+            v-model:value="selectedCityCd"
             :readonly="cityReadonly"
             :suspend="suspend"
             placeholder="請選擇縣市"
@@ -16,10 +21,15 @@
       </Col>
       <!-- 鄉鎮市區 -->
       <Col :span="colSpan" :offset="colOffset">
-        <FormItem :label="postalLabel" :prop="postalItemNm" :class="formItemClass" half>
+        <FormItem
+          :label="postalLabel"
+          :prop="postalItemNm"
+          :class="formItemClass"
+          half
+        >
           <sys-cd-select
             :ctId="9"
-            :value.sync="selectedPostalCd"
+            v-model:value="selectedPostalCd"
             :readonly="postalReadonly"
             :flag01="postalParentCd"
             :key="postalKey"

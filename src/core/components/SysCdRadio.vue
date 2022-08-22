@@ -108,14 +108,14 @@ const props = defineProps({
   },
 });
 
-const selectedItem = ref<any>("");
-const items = ref<any>([]);
+const selectedItem = ref();
+const items = ref<{ value: string; label: string }[]>([]);
 
 /**
  * 選項異動處理
  */
-function onChangeHandler($event: any) {
-  emit("update:value", $event);
+function onChangeHandler(value: string) {
+  emit("update:value", value);
 }
 /**
  * 取得Radio選單選項清單

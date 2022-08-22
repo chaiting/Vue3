@@ -16,7 +16,7 @@ function handleRequest(config: AxiosRequestConfig) {
   if (!isIgnoreUrl) {
     delay(() => globalStore.doIncrementAjaxReq(), 500);
   }
-  if (window.keycloak.token) {
+  if (window.keycloak?.token) {
     config.headers!.Authorization = `Bearer ${window.keycloak.token}`;
   }
 

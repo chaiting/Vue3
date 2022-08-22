@@ -9,6 +9,7 @@ import EmployeeSelect from "@/core/components/EmployeeSelect.vue";
 import DepartmentSelect from "@/core/components/DepartmentSelect.vue";
 import DeptEmpSelect from "@/core/components/DeptEmpSelect.vue";
 import CityPostalSelect from "@/core/components/CityPostalSelect.vue";
+import BpmSubmitter from "@/core/components/BpmSubmitter.vue";
 
 export default (app: App) => {
   app.component("EsunAlert", EsunAlert);
@@ -21,4 +22,5 @@ export default (app: App) => {
   app.component("DepartmentSelect", DepartmentSelect);
   app.component("DeptEmpSelect", DeptEmpSelect);
   app.component("CityPostalSelect", CityPostalSelect);
+  app.component("BpmSubmitter", BpmSubmitter);
 };

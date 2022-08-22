@@ -17,8 +17,8 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
+import { find, includes, filter } from "lodash-es";
 import isBlank from "is-blank";
-import * as _ from "lodash-es";
 import departmentApi from "@/core/api/department-api";
 
 const emit = defineEmits(["update:value"]);
@@ -91,7 +91,7 @@ const selectedDept = ref<any>([]);
 async function doQryDeptList() {
   deptList.value = [];
 
-  let depts = _.filter(props.upGrpIdList, (row) => !isBlank(row)) || [];
+  let depts = filter(props.upGrpIdList, (row) => !isBlank(row)) || [];
 
   if (depts.length < 1) {
     return;
@@ -117,8 +117,8 @@ async function doUpdateSelectedValue() {
     return;
   }
 
-  let isExists = _.find(deptList.value, function (o: any) {
-    return _.includes(selectedDept.value, o.grpId);
+  let isExists = find(deptList.value, function (o: any) {
+    return includes(selectedDept.value, o.grpId);
   });
 
   if (!isExists) {

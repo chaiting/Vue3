@@ -1,8 +1,8 @@
 <template>
-  <!-- filterable -->
   <Select
     :element-id="elementId"
     v-model="selectedItems"
+    filterable
     :clearable="clearable"
     :placeholder="placeholder"
     :multiple="multiple"
@@ -117,8 +117,8 @@ const props = defineProps({
   },
 });
 
-const selectedItems = ref<any>("");
-const items = ref<any>([]);
+const selectedItems = ref();
+const items = ref<{ value: string; label: string }[]>([]);
 
 const clearable = computed(() => !props.readonly);
 
@@ -149,6 +149,7 @@ async function doQryCodeLabelValueList() {
     flag10: props.flag10,
   });
 }
+
 /**
  * 若選單中存在父元件選值則改選中值, 不存在則清空父元件選值
  * @param payload 執行參數

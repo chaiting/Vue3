@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed, onMounted } from "vue";
+import { ref, watch, onMounted } from "vue";
 import { find, includes } from "lodash-es";
 import codeApi from "@/core/api/code-api";
 
@@ -94,16 +94,14 @@ const props = defineProps({
   },
 });
 
-const selectedItems = ref<any>([]);
-const items = ref<any>([]);
-
-const clearable = computed(() => !props.readonly);
+const selectedItems = ref<string[]>([]);
+const items = ref<{ value: string; label: string }[]>([]);
 
 /**
  * 選項異動處理
  */
-function onChangeHandler($event: any) {
-  emit("update:value", $event);
+function onChangeHandler(value: string[]) {
+  emit("update:value", value);
 }
 /**
  * 取得Checkbox選單選項清單
@@ -136,7 +134,7 @@ async function doUpdateSelectedValue(payload: { forceReload: "Y" | "N" }) {
     await doQryCodeLabelValueList();
   }
 
-  selectedItems.value = props.value;
+  selectedItems.value = props.value as string[];
   if (!selectedItems.value || selectedItems.value.length < 1) {
     return;
   }

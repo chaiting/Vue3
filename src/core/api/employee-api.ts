@@ -1,4 +1,4 @@
-import * as _ from "lodash-es";
+import { forEach, filter } from "lodash-es";
 import axios from "axios";
 
 export default {
@@ -12,21 +12,21 @@ export default {
 
     // A: AD帳號 -----------------------------------------------------------------------------------------------------
     if (payload.valueType === "A") {
-      _.forEach(body, (o) => {
+      forEach(body, (o) => {
         o.usedAccount = o.adAccount;
       });
     }
 
     // E: 員工編號 ---------------------------------------------------------------------------------------------------
     if (payload.valueType === "E") {
-      _.forEach(body, (o) => {
+      forEach(body, (o) => {
         o.usedAccount = o.empNo;
       });
     }
 
     // 排除帳號為空值的資料、新增在職狀態欄位並回傳結果 ------------------------------------------------------------------
-    return _.forEach(
-      _.filter(body, (o) => {
+    return forEach(
+      filter(body, (o) => {
         return o.usedAccount != null;
       }),
       (row) => {

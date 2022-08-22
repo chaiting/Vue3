@@ -112,7 +112,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch, computed } from "vue";
 import departmentApi from "@/core/api/department-api";
-import * as _ from "lodash-es";
+import { find } from "lodash-es";
 
 const emit = defineEmits([
   "on-admin-division-change",
@@ -585,37 +585,37 @@ onMounted(async () => {
 
   // 總處級單位 -------------------------------------------------------------------------------------------------------
   selectedAdminDivision.value =
-    _.find(upperUnits, (row) => {
+    find(upperUnits, (row) => {
       return "L50" === row.grpUnitcode; // L50: 總處級單位
     })?.grpId || "";
 
   // 處級單位 ---------------------------------------------------------------------------------------------------------
   selectedDivision.value =
-    _.find(upperUnits, (row) => {
+    find(upperUnits, (row) => {
       return "L55" === row.grpUnitcode; // L55: 處級單位
     })?.grpId || "";
 
   // 部級單位 ---------------------------------------------------------------------------------------------------------
   selectedDepartment.value =
-    _.find(upperUnits, (row) => {
+    find(upperUnits, (row) => {
       return "L60" === row.grpUnitcode; // L60: 部級單位
     })?.grpId || "";
 
   // 區級單位 ---------------------------------------------------------------------------------------------------------
   selectedDistrict.value =
-    _.find(upperUnits, (row) => {
+    find(upperUnits, (row) => {
       return "L70" === row.grpUnitcode; // L70: 區級單位
     })?.grpId || "";
 
   // 中心/分行單位 ----------------------------------------------------------------------------------------------------
   selectedCenter.value =
-    _.find(upperUnits, (row) => {
+    find(upperUnits, (row) => {
       return "L80" === row.grpUnitcode; // L80: 中心/分行單位
     })?.grpId || "";
 
   // 科組單位 ---------------------------------------------------------------------------------------------------------
   selectedSection.value =
-    _.find(upperUnits, (row) => {
+    find(upperUnits, (row) => {
       return "L90" === row.grpUnitcode; // L90: 科組單位
     })?.grpId || "";
 
