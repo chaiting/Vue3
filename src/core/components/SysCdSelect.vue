@@ -1,10 +1,10 @@
 <template>
   <Select
-    :element-id="elementId"
     v-model="selectedItems"
-    filterable
+    :element-id="elementId"
     :clearable="clearable"
     :placeholder="placeholder"
+    :filterable="filterable"
     :multiple="multiple"
     :transfer="transfer"
     :disabled="readonly"
@@ -12,9 +12,12 @@
     @on-change="onChangeHandler"
     @on-clear="onChangeHandler"
   >
-    <Option v-for="item in items" :value="item.value" :key="item.value">{{
-      item.label
-    }}</Option>
+    <Option
+      v-for="item in items"
+      :value="item.value"
+      :key="item.value"
+      :label="item.label"
+    ></Option>
   </Select>
 </template>
 
@@ -55,6 +58,11 @@ const props = defineProps({
   },
   // 選項是否顯示明細代碼
   showCode: {
+    type: Boolean,
+    default: false,
+  },
+  // 是否啟用過濾
+  filterable: {
     type: Boolean,
     default: false,
   },

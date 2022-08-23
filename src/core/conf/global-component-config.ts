@@ -10,6 +10,12 @@ import DepartmentSelect from "@/core/components/DepartmentSelect.vue";
 import DeptEmpSelect from "@/core/components/DeptEmpSelect.vue";
 import CityPostalSelect from "@/core/components/CityPostalSelect.vue";
 import BpmSubmitter from "@/core/components/BpmSubmitter.vue";
+// Dial
+import NumericKeyboard from "@/core/components/dial/NumericKeyboard.vue";
+import Dialler from "@/core/components/dial/Dialler.vue";
+import CustomerPhone from "@/core/components/dial/CustomerPhone.vue";
+import CustomerPhoneList from "@/core/components/dial/CustomerPhoneList.vue";
+import CustomerDialler from "@/core/components/dial/CustomerDialler.vue";
 
 export default (app: App) => {
   app.component("EsunAlert", EsunAlert);
@@ -23,4 +29,10 @@ export default (app: App) => {
   app.component("DeptEmpSelect", DeptEmpSelect);
   app.component("CityPostalSelect", CityPostalSelect);
   app.component("BpmSubmitter", BpmSubmitter);
+  // Dial
+  app.component("NumericKeyboard", NumericKeyboard);
+  app.component("Dialler", Dialler);
+  app.component("CustomerPhone", CustomerPhone);
+  app.component("CustomerPhoneList", CustomerPhoneList);
+  app.component("CustomerDialler", CustomerDialler);
 };

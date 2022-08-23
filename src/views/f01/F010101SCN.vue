@@ -60,10 +60,11 @@ import {
 
 const formRef = ref<FormRef | null>();
 
-const { pagination, sortOption, onChangePage, onChangePageSize, onSortChange } = usePagination({
-  fetcher: doQryCustomerList,
-  defaultColumn: "ID",
-});
+const { pagination, sortOption, onChangePage, onChangePageSize, onSortChange } =
+  usePagination({
+    fetcher: doQryCustomerList,
+    defaultColumn: "ID",
+  });
 
 const columns = reactive([
   { key: "id", title: "ID", width: 100, align: "center", sortable: true },
@@ -92,7 +93,9 @@ const formRules = reactive({
     { message: "顧客ID必填", required: true },
     {
       validator: (rule: any, value: string, cb: (message?: Error) => void) => {
-        checkIdNumberValid(value) ? cb() : cb(new Error("檢查身分證字號是否正確"));
+        checkIdNumberValid(value)
+          ? cb()
+          : cb(new Error("檢查身分證字號是否正確"));
       },
     },
   ],
@@ -100,7 +103,9 @@ const formRules = reactive({
     { message: "信用卡號必填", required: true },
     {
       validator: (rule: any, value: string, cb: (message?: Error) => void) => {
-        isValidCreditCardNumber(value) ? cb() : cb(new Error("檢查信用卡卡號是否正確"));
+        isValidCreditCardNumber(value)
+          ? cb()
+          : cb(new Error("檢查信用卡卡號是否正確"));
       },
     },
   ],
