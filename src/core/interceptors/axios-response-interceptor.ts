@@ -34,13 +34,6 @@ function handleResponseError(error: AxiosError<any>) {
     delay(() => globalStore.doDecrementAjaxReq(), 500);
   }
   /**
-   * 401: (Unauthorized)代表客戶端錯誤，指的是由於缺乏目標資源要求的身份驗證憑證，發送的請求未得到滿足
-   */
-  if (error.response?.status === 401) {
-    router.push("/unauthorized");
-    return Promise.reject(error);
-  }
-  /**
    * 403: (Forbidden)代表客戶端錯誤，指的是服務器端有能力處理該請求，但是拒絕授權訪問
    */
   if (error.response?.status === 403) {
