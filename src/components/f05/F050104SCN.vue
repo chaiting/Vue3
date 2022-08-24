@@ -12,4 +12,6 @@
     ></CustomerPhone>
   </div>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import CustomerPhone from "@/core/components/dial/CustomerPhone.vue";
+</script>

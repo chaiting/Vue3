@@ -28,8 +28,9 @@
 
 <script setup lang="ts">
 import type { PropType } from "vue";
+import CustomerPhone from "@/core/components/dial/CustomerPhone.vue";
 
-const props = defineProps({
+defineProps({
   // 發話號碼
   callingNumber: {
     type: String,

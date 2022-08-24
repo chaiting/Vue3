@@ -91,5 +91,7 @@ export default function (mock: MockAdapter) {
     spanId: null,
   });
 
-  mock.onPost("/sys_dial/03").reply(200);
+  mock.onPost("/sys_dial/03").reply(200, {
+    body: {},
+  });
 }

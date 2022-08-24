@@ -106,15 +106,15 @@
 </template>
 
 <script setup lang="ts">
-import isBlank from "is-blank";
+import Dialler from "@/core/components/dial/Dialler.vue";
+import CustomerPhoneList from "@/core/components/dial/CustomerPhoneList.vue";
 import { ref, computed, watch } from "vue";
+import { truncate } from "lodash-es";
+import isBlank from "is-blank";
 import codeApi from "@/core/api/code-api";
 import sysDialApi from "@/core/api/sys-dial-api";
 import customerApi from "@/core/api/customer-api";
-import Dialler from "@/core/components/dial/Dialler.vue";
-import CustomerPhoneList from "@/core/components/dial/CustomerPhoneList.vue";
 import { useProfileStore } from "@/core/store/profile";
-import { truncate } from "lodash-es";
 
 const profileStore = useProfileStore();
 

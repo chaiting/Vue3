@@ -1,7 +1,7 @@
 import type { App } from "vue";
 // import esunUI, { locale } from "esun-ui";
-import { i18n } from "@/core/conf/i18n-config";
-import "esun-ui/dist/style.css";
+// import { i18n } from "@/core/conf/i18n-config";
+// import "esun-ui/dist/style.css";
 
 // console.log(esunUI, locale);
 

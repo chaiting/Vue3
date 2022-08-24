@@ -17,6 +17,7 @@ const router = createRouter({
       path: "/f010101scn",
       name: "F010101SCN",
       component: () => import("@/views/f01/F010101SCN.vue"),
+      meta: { noKeepAlive: true },
     },
     // f02
     {
@@ -93,10 +94,12 @@ router.beforeEach((to, from, next) => {
   ) {
     return next();
   }
+
   // 2. 如果是正式環境且要去代理人身份切換頁面，直接導到存取被拒頁
   if (import.meta.env.PROD && to.name === "Agent") {
     return next({ name: "forbidden" });
   }
+
   // 3. 如果已經登入過，發送一個request到server端紀錄Access Log
   if (profileStore.isLogin) {
     frontendAccessLogApi

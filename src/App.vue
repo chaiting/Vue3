@@ -11,8 +11,17 @@
             <FunctionTitle></FunctionTitle>
             <router-view v-slot="{ Component }">
               <keep-alive>
-                <component :is="Component" />
+                <component
+                  v-if="!$route.meta.noKeepAlive"
+                  :is="Component"
+                  :key="$route.name"
+                />
               </keep-alive>
+              <component
+                v-if="$route.meta.noKeepAlive"
+                :is="Component"
+                :key="$route.name"
+              />
             </router-view>
           </Content>
           <Footer :style="{ textAlign: 'center' }">© E.SUN BANK</Footer>
