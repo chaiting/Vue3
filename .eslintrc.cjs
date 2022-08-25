@@ -11,12 +11,12 @@ module.exports = {
   ],
   rules: {
     "vue/multi-word-component-names": "off",
-    "prefer-const": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "vue/no-reserved-component-names": "off",
     "@typescript-eslint/no-empty-function": "off",
+    "vue/no-reserved-component-names": "off",
+    "prefer-const": "off",
   },
   ignorePatterns: ["**/__tests__/**"],
 };
