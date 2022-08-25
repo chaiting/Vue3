@@ -123,7 +123,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRef, Validator } from "../type/common";
+import type { FormRef, Validator } from "@/core/type/common";
 import { computed, reactive, watch, ref, onMounted } from "vue";
 import bpmFormApi from "@/core/api/bpm-form-api";
 import { find } from "lodash-es";
@@ -266,7 +266,10 @@ const props = defineProps({
     required: false,
   },
 });
-// 簽核意見檢核
+
+/**
+ * 簽核意見檢核
+ */
 const verifySignComment: Validator<string> = (rule, value, callback) => {
   if (isBlank(value)) {
     return callback(new Error("請輸入簽核意見並且不可僅填入空白"));
@@ -274,8 +277,8 @@ const verifySignComment: Validator<string> = (rule, value, callback) => {
   return callback();
 };
 
-const stageUserFormRef = ref<FormRef | null>(); // this.$refs["stageUserForm"]
-const signFormRef = ref<FormRef | null>(); // this.$refs["signForm"]
+const stageUserFormRef = ref<FormRef>();
+const signFormRef = ref<FormRef>();
 
 // 關卡動作代碼, Ref DATASHARE.TB_SYS_CD.CD_ID, CT_ID=167
 const actionId = ref("");
@@ -348,8 +351,6 @@ async function doQryNextStageAction() {
 /**
  * 傳送預處理事件(如表單驗證)、動作代碼給父元件
  */
-// 因為作用域原因，actionId會指向參數
-// function doNotifyPreprocess(actionId) {
 function doNotifyPreprocess(val: string) {
   actionId.value = val;
   emit("on-open-preprocess", val);
@@ -359,7 +360,7 @@ function doNotifyPreprocess(val: string) {
  * 取得關卡處理者資料
  */
 async function doQryStageProcessor() {
-  let result = await bpmFormApi.doQryStageProcessor(props.flowCode as string, {
+  let result = await bpmFormApi.doQryStageProcessor(props.flowCode!, {
     actionId: actionId.value,
     formId: props.formId,
   });
@@ -368,6 +369,7 @@ async function doQryStageProcessor() {
   stageProcessors.value = result.stageProcessors;
   isShowStageUser.value = true;
 }
+
 /**
  * 表單驗證，並將簽核視窗關閉，及發出BPM表單即將送出的事件
  */
@@ -393,9 +395,9 @@ function doFormSubmit(refName: string) {
  */
 function doUpdSigner(processorId: string) {
   if (stageUserForm.processorId) {
-    let processorName = find(stageProcessors.value as any, {
+    let processorName = find(stageProcessors.value, {
       processorId: stageUserForm.processorId,
-    }).processorName;
+    })!.processorName;
 
     stageUserForm.processorName = processorName;
 
@@ -412,7 +414,7 @@ function doUpdSigner(processorId: string) {
  */
 function doEmitPreprocessEvent() {
   emit("on-submit-preprocess", actionId.value);
-  let stage = new Map([
+  const stage = new Map([
     ["Started", "on-start-preprocess"], // Started: 起單
     ["1", "on-send-preprocess"], // 1: 傳送
     ["2", "on-revoke-preprocess"], // 2: 銷案
@@ -436,10 +438,7 @@ async function doStartProcess() {
   payload.processorName = stageUserForm.processorName;
   payload.processorType = stageUserForm.processorType;
 
-  let result = await bpmFormApi.doStartProcess(
-    props.flowCode as string,
-    payload
-  );
+  let result = await bpmFormApi.doStartProcess(props.flowCode!, payload);
   let returnData: any = doBuildReturnBasicData(result);
 
   returnData.bpmFormSeqNo = result.bpmFormSeqNo;
@@ -477,7 +476,6 @@ async function doTransferProcess() {
   });
 
   isShowStageUser.value = false;
-  // this.$refs["stageUserForm"].resetFields();
   stageUserFormRef.value!.resetFields();
   emit("on-operate-complete", doBuildReturnBasicData(result));
 }
@@ -490,7 +488,6 @@ async function doSendBack() {
   let result = await bpmFormApi.doSendBack(payload);
 
   isShowSignModal.value = false;
-  // this.$refs["signForm"].resetFields();
   signFormRef.value!.resetFields();
 
   emit("on-returned", doBuildReturnBasicData(result));
@@ -504,7 +501,6 @@ async function doRevokeProcess() {
   let result = await bpmFormApi.doRevokeProcess(payload);
 
   isShowSignModal.value = false;
-  // this.$refs["signForm"].resetFields();
   signFormRef.value!.resetFields();
 
   emit("on-revoked", doBuildReturnBasicData(result));
@@ -518,7 +514,6 @@ async function doCloseProcess() {
   let result = await bpmFormApi.doCloseProcess(payload);
 
   isShowSignModal.value = false;
-  // this.$refs["signForm"].resetFields();
   signFormRef.value!.resetFields();
 
   emit("on-closed", doBuildReturnBasicData(result));
@@ -602,13 +597,13 @@ watch(
       actionId.value === "delegate" ||
       actionId.value === "1"
     ) {
-      stageUserForm.signComment = defaultComment.value as string;
+      stageUserForm.signComment = defaultComment.value!;
       doQryStageProcessor();
       return;
     }
 
     // 顯示簽核視窗
-    signForm.signComment = defaultComment.value as string;
+    signForm.signComment = defaultComment.value!;
     isShowSignModal.value = true;
   }
 );

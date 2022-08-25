@@ -37,17 +37,23 @@ export function usePagination(opts: PaginationOption) {
     pageSizeOpts: DEFAULT_PAGE_SIZE_LIST,
   });
 
-  /** 切換分頁 */
+  /**
+   * 切換分頁
+   */
   function onChangePage(value: number) {
     pagination.page = value;
   }
 
-  /** 切換分頁大小 */
+  /**
+   * 切換分頁大小
+   */
   function onChangePageSize(value: number) {
     pagination.pageSize = value;
   }
 
-  /** 欄位排序事件 */
+  /**
+   * 欄位排序事件
+   */
   function onSortChange(col: SortColumn) {
     if (pagination.total == 0) return;
     // 取消排序
@@ -62,7 +68,9 @@ export function usePagination(opts: PaginationOption) {
     }
   }
 
-  /** 監聽需觸發fetcher */
+  /**
+   * 監聽更新，觸發fetcher
+   */
   watch([() => pagination.page, () => pagination.pageSize, sortOption], () => {
     opts.fetcher();
   });

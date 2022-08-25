@@ -120,9 +120,9 @@ const props = defineProps({
   },
 });
 // 所選縣市代碼
-const selectedCityCd = ref<any>("");
+const selectedCityCd = ref("");
 // 所選鄉鎮市區代碼
-const selectedPostalCd = ref<any>("");
+const selectedPostalCd = ref("");
 // 鄉鎮市區代碼元件鍵值
 const postalKey = ref(0);
 
@@ -170,7 +170,7 @@ function onCityChangeHandler() {
 watch(
   () => props.cityCd,
   (newValue) => {
-    selectedCityCd.value = newValue;
+    selectedCityCd.value = newValue!;
   },
   {
     immediate: true,
@@ -183,7 +183,7 @@ watch(
 watch(
   () => props.postalCd,
   async (newValue) => {
-    selectedPostalCd.value = newValue;
+    selectedPostalCd.value = newValue!;
 
     if (isBlank(newValue)) {
       return;
@@ -191,7 +191,7 @@ watch(
 
     // 1. 查詢縣市別代碼 ----------------------------------------------------------------------------------------------
     let codeUnits = await codeApi.doQryCodeList({
-      ctId: "9", // 9: 鄉政區
+      ctId: 9, // 9: 鄉政區
       cdId: newValue,
     });
 
@@ -199,7 +199,7 @@ watch(
 
     // 2. 設定鄉鎮市區代碼 --------------------------------------------------------------------------------------------
     nextTick(() => {
-      selectedPostalCd.value = newValue;
+      selectedPostalCd.value = newValue!;
     });
   },
   { immediate: true }

@@ -1,7 +1,11 @@
 import axios from "axios";
 
 export default {
-  doSaveFrontedAccessLog: async function (payload: {
+  /**
+   * 儲存前端存取記錄log
+   * @param {*} payload 前端存取記錄儲存參數
+   */
+  doSaveFrontendAccessLog: async function (payload: {
     resourceUri: string;
     resourceType: string;
   }) {

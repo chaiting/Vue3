@@ -18,5 +18,5 @@ module.exports = {
     "vue/no-reserved-component-names": "off",
     "@typescript-eslint/no-empty-function": "off",
   },
-  ignorePatterns: ["**/__tests__/**", "**/server/**"],
+  ignorePatterns: ["**/__tests__/**"],
 };

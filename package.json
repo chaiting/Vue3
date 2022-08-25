@@ -13,8 +13,7 @@
     "debug": "node --inspect-brk node_modules/vite/bin/vite.js",
     "build.sit": "vite build --mode sit",
     "build.uat": "vite build --mode uat",
-    "build.prod": "vite build --mode prod",
-    "server": "npx nodemon server/index.js"
+    "build.prod": "vite build --mode prod"
   },
   "dependencies": {
     "@dsb-norge/vue-keycloak-js": "^2.1.5-beta",

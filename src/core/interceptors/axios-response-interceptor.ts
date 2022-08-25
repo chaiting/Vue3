@@ -48,7 +48,7 @@ function handleResponseError(error: AxiosError<any>) {
     return Promise.reject(error);
   }
   /**
-   * 401(Unauthorized)、403(Forbidden)及412: (Precondition Failed)以外，其他類型錯誤
+   * 403(Forbidden)及412: (Precondition Failed)以外，其他類型錯誤
    */
   globalStore.doUpdateAjaxSpanId({ spanId: error.response?.data.spanId });
   router.push("/error");

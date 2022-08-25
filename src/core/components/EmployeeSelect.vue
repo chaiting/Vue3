@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch, type PropType } from "vue";
 import { find, includes, filter } from "lodash-es";
 import isBlank from "is-blank";
 import employeeApi from "@/core/api/employee-api";
@@ -30,7 +30,7 @@ const emit = defineEmits(["update:value"]);
 const props = defineProps({
   // 下拉選單選中的值
   value: {
-    type: [String, Array],
+    type: [String, Array] as PropType<string[] | string>,
     required: false,
   },
   // 組織/群組代碼, Ref DATAASYNC.TB_GROUP.GRP_ID
@@ -123,7 +123,7 @@ async function doQryUserList() {
 async function doUpdateSelectedValue() {
   await doQryUserList();
 
-  selectedUsers.value = props.value as string | string[];
+  selectedUsers.value = props.value!;
   if (!selectedUsers.value || selectedUsers.value.length < 1) {
     return;
   }

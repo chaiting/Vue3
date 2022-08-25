@@ -81,9 +81,9 @@ const props = defineProps({
   },
 });
 // 組織/群組清單
-const deptList = ref<any>([]);
+const deptList = ref<{ grpId: string; grpNm: string }[]>([]);
 // 選中的組織/群組清單
-const selectedDept = ref<any>([]);
+const selectedDept = ref();
 
 /**
  * 查詢組織/群組清單
@@ -111,7 +111,7 @@ async function doQryDeptList() {
 async function doUpdateSelectedValue() {
   await doQryDeptList();
 
-  selectedDept.value = props.value as any;
+  selectedDept.value = props.value;
 
   if (!selectedDept.value || selectedDept.value.length < 1) {
     return;

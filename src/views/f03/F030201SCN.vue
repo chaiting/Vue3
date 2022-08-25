@@ -9,7 +9,6 @@
   </div>
 
   <div class="btn-group">
-    <Button type="error" @click="getError401">Error 401</Button>
     <Button type="error" @click="getError403">Error 403</Button>
     <Button type="error" @click="getError404">Error 404</Button>
     <Button type="error" @click="getError412">Error 412</Button>
@@ -18,10 +17,6 @@
 
 <script setup lang="ts">
 import f030201Api from "@/api/f03/f030201-api";
-
-function getError401() {
-  f030201Api.doGetError401();
-}
 
 function getError403() {
   f030201Api.doGetError403();

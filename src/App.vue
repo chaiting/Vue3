@@ -10,6 +10,7 @@
           <Content :style="{ padding: '40px 30px' }">
             <FunctionTitle></FunctionTitle>
             <router-view v-slot="{ Component }">
+              <!-- 緩存頁面 -->
               <keep-alive>
                 <component
                   v-if="!$route.meta.noKeepAlive"
@@ -17,6 +18,7 @@
                   :key="$route.name"
                 />
               </keep-alive>
+              <!-- 非緩存頁面 -->
               <component
                 v-if="$route.meta.noKeepAlive"
                 :is="Component"

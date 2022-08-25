@@ -52,7 +52,7 @@
         <TabPane :label="sysName" :name="sysName" v-if="isShowSysTab">
           <Row>
             <Col span="19" offset="5">
-              <customer-phone-list
+              <CustomerPhoneList
                 :callingNumber="extension"
                 :isDialable="isDialable"
                 :phoneList="customerTelList"
@@ -62,7 +62,7 @@
                 :businessId="businessId"
                 :srcFuncCode="srcFuncCode"
                 :srcFuncName="funcNameInfo"
-              ></customer-phone-list>
+              ></CustomerPhoneList>
             </Col>
           </Row>
         </TabPane>
@@ -222,7 +222,6 @@ const dialRecordList = ref([]);
 const optUserProfile = computed(() => {
   return profileStore.optUserProfile;
 });
-// ...mapGetters(["optUserProfile"]),
 /**
  * 系統名稱
  */
@@ -294,10 +293,7 @@ watch(
   () => props.customerSex,
   async () => {
     if (!isBlank(props.customerSex)) {
-      sexName.value = await codeApi.doGetCodeName(
-        "159",
-        props.customerSex as string
-      );
+      sexName.value = await codeApi.doGetCodeName(159, props.customerSex!);
     }
   },
   { immediate: true }
@@ -309,9 +305,11 @@ watch(
   font-weight: bold;
   color: #45b29d;
 }
+
 .margin-row {
   margin-top: 15px;
 }
+
 .dialler-content {
   margin-top: 15px;
   margin-bottom: 15px;

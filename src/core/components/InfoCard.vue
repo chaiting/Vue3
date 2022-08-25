@@ -172,8 +172,8 @@ async function doGetEmployeeInfoCard() {
 
   // 3. 取得被查詢者所屬單位清單 -------------------------------------------------------------------------------------
   let deptName = split(userInfoCard.value.deptName, " ");
-  userDivision.value = head(deptName) as string;
-  userDept.value = drop(deptName) as string[];
+  userDivision.value = head(deptName)!;
+  userDept.value = drop(deptName);
 }
 
 onDeactivated(() => {

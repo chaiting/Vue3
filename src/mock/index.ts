@@ -28,7 +28,6 @@ export default function (mock: MockAdapter) {
   mock.onPost("/session_keeper/01").reply(200);
   mock.onPost("/session_keeper/02").reply(200);
 
-  mock.onPost("/error401").reply(401);
   mock.onPost("/error403").reply(403);
   mock.onPost("/error404").reply(404, {
     status: "404",

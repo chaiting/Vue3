@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from "vue";
+import { ref, watch, onMounted, type PropType } from "vue";
 import { find, includes } from "lodash-es";
 import codeApi from "@/core/api/code-api";
 
@@ -22,7 +22,7 @@ const emit = defineEmits(["update:value"]);
 const props = defineProps({
   // 下拉選單選中的值
   value: {
-    type: Array,
+    type: Array as PropType<string[]>,
   },
   // 是否唯讀
   readonly: {
@@ -134,7 +134,7 @@ async function doUpdateSelectedValue(payload: { forceReload: "Y" | "N" }) {
     await doQryCodeLabelValueList();
   }
 
-  selectedItems.value = props.value as string[];
+  selectedItems.value = props.value!;
   if (!selectedItems.value || selectedItems.value.length < 1) {
     return;
   }

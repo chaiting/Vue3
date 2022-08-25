@@ -175,7 +175,7 @@ function doSystemCall() {
 watch(
   () => props.dialNumber,
   (value) => {
-    callExtForm.calledNumber = value as string;
+    callExtForm.calledNumber = value!;
   }
 );
 </script>

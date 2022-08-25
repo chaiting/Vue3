@@ -280,10 +280,7 @@ watch(
   () => props.customerSex,
   async () => {
     if (!isBlank(props.customerSex)) {
-      sexName.value = await codeApi.doGetCodeName(
-        "159",
-        props.customerSex as string
-      );
+      sexName.value = await codeApi.doGetCodeName(159, props.customerSex!);
     }
   },
   { immediate: true }
@@ -296,7 +293,7 @@ watch(
   () => props.telType,
   async () => {
     if (!isBlank(props.telType)) {
-      phoneTypeName.value = await codeApi.doGetCodeName("16", props.telType);
+      phoneTypeName.value = await codeApi.doGetCodeName(16, props.telType);
     }
   },
   { immediate: true }

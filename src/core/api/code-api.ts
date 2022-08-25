@@ -70,7 +70,7 @@ export default {
    * @param {*} ctId 類別代碼
    * @param {*} cdId 明細代碼
    */
-  doGetCodeName: async function (ctId: string, cdId: string) {
+  doGetCodeName: async function (ctId: number, cdId: string) {
     if (isBlank(ctId) || isBlank(cdId)) {
       return "";
     }

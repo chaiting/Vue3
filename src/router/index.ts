@@ -49,11 +49,19 @@ const router = createRouter({
       component: () => import("@/views/f05/F050101SCN.vue"),
     },
     {
+      /** 代理人身份切換 */
+      path: "/agent",
+      name: "Agent",
+      component: () => import("@/core/views/Agent.vue"),
+    },
+    {
+      /** 403 Forbidden */
       path: "/forbidden",
       name: "Forbidden",
       component: () => import("@/core/views/Forbidden.vue"),
     },
     {
+      /** Page not found */
       path: "/notfound",
       name: "NotFound",
       component: () => import("@/core/views/NotFound.vue"),
@@ -77,6 +85,7 @@ const router = createRouter({
       component: () => import("@/core/views/UserProfileNotFound.vue"),
     },
     {
+      /** Page not found */
       path: "/:catchAll(.*)",
       redirect: { name: "NotFound" },
     },
@@ -103,7 +112,7 @@ router.beforeEach((to, from, next) => {
   // 3. 如果已經登入過，發送一個request到server端紀錄Access Log
   if (profileStore.isLogin) {
     frontendAccessLogApi
-      .doSaveFrontedAccessLog({
+      .doSaveFrontendAccessLog({
         resourceUri: to.path,
         resourceType: "N",
       })

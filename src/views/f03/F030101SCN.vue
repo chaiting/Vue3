@@ -1,5 +1,6 @@
 <template>
   <h3>08/10 demo</h3>
+  <Button @click="$router.push('/agent')">Agent</Button>
   <Divider># Input 預設clearable</Divider>
   <F030102SCN></F030102SCN>
   <Divider># 單一input，form表單按下enter不要重整</Divider>
@@ -12,7 +13,7 @@
   <F030106SCN></F030106SCN>
   <Divider># esun-alert、esun-confirm，透過method呼叫</Divider>
   <F030107SCN></F030107SCN>
-  <Divider># 跳轉500、401、403，關閉所有modal</Divider>
+  <Divider># 跳轉500、403，關閉所有modal</Divider>
   <F030108SCN></F030108SCN>
 </template>
 

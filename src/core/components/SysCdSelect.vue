@@ -133,8 +133,8 @@ const clearable = computed(() => !props.readonly);
 /**
  * 選項異動處理
  */
-function onChangeHandler($event: any) {
-  emit("update:value", $event);
+function onChangeHandler(value: string) {
+  emit("update:value", value);
 }
 /**
  * 取得下拉選單選項清單
