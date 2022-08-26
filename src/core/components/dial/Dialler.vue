@@ -187,7 +187,7 @@ watch(
   border: 1px solid #cecece;
   border-radius: 10px;
   margin: 0px 10px;
-  background-image: url("../../assets/images/ic_white_phone.svg");
+  background-image: url("@/core/assets/images/ic_white_phone.svg");
   background-repeat: no-repeat;
   background-position: center;
 }

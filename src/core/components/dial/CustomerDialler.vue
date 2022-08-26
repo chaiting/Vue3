@@ -33,7 +33,7 @@
         <TabPane label="基本資料" name="基本資料">
           <Row>
             <Col span="19" offset="5">
-              <customer-phone-list
+              <CustomerPhoneList
                 :callingNumber="extension"
                 :isDialable="isDialable"
                 :phoneList="customerPhoneList"
@@ -43,7 +43,7 @@
                 :businessId="businessId"
                 :srcFuncCode="srcFuncCode"
                 :srcFuncName="funcNameInfo"
-              ></customer-phone-list>
+              ></CustomerPhoneList>
             </Col>
           </Row>
         </TabPane>
@@ -108,7 +108,7 @@
 <script setup lang="ts">
 import Dialler from "@/core/components/dial/Dialler.vue";
 import CustomerPhoneList from "@/core/components/dial/CustomerPhoneList.vue";
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, type PropType } from "vue";
 import { truncate } from "lodash-es";
 import isBlank from "is-blank";
 import codeApi from "@/core/api/code-api";
@@ -127,7 +127,7 @@ const props = defineProps({
   },
   // 顧客撥號清單, isShowSysTab = true 才有效
   customerTelList: {
-    type: Array,
+    type: Array as PropType<{ telNumber: string; telType: string }[]>,
     required: false,
     default: () => [],
   },
@@ -180,7 +180,7 @@ const isDialable = ref(false);
 // 顧客性別名稱
 const sexName = ref("");
 // 顧客電話清單
-const customerPhoneList = ref([]);
+const customerPhoneList = ref<{ telNumber: string; telType: string }[]>([]);
 // table header
 const columns = ref([
   {

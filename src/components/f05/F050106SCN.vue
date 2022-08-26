@@ -17,5 +17,5 @@
 <script setup lang="ts">
 import CustomerDialler from "@/core/components/dial/CustomerDialler.vue";
 
-const customerTelList = [[{ telNumber: "02-123456789", telType: "H" }]];
+const customerTelList = [{ telNumber: "02-123456789", telType: "H" }];
 </script>

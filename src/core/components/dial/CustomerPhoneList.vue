@@ -1,13 +1,8 @@
 <template>
   <div>
     <Row>
-      <Col
-        v-for="item in phoneList"
-        span="12"
-        class="margin-col"
-        :key="item.telType"
-      >
-        <customer-phone
+      <Col v-for="(item, i) in phoneList" span="12" class="margin-col" :key="i">
+        <CustomerPhone
           :callingNumber="callingNumber"
           :isDialable="isDialable"
           :customerId="customerId"
@@ -20,7 +15,7 @@
           :srcFuncName="srcFuncName"
           :dialBtnSpan="dialBtnSpan"
           :msgSpan="msgSpan"
-        ></customer-phone>
+        ></CustomerPhone>
       </Col>
     </Row>
   </div>
@@ -44,7 +39,7 @@ defineProps({
   },
   // 電話清單 Ex: [{ telNumber: "02-123456789", telType: "H" }]
   phoneList: {
-    type: Array as PropType<any[]>,
+    type: Array as PropType<{ telNumber: string; telType: string }[]>,
     required: true,
   },
   // 顧客ID
