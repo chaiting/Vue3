@@ -1,22 +1,23 @@
 <template>
-  <Button @click="doShowConfirmByStore">do showConfirm by store</Button>
+  <ModalDemo v-model:value="isOpen" title="標題123">
+    <div>內容123</div>
+  </ModalDemo>
+  <Button @click="openModal"> Open modal</Button>
 </template>
 
 <script setup lang="ts">
-import { useConfirmStore } from "@/store/confirm";
-const confirmStore = useConfirmStore();
+import { useRouter } from "vue-router";
+import { ref } from "vue";
+import ModalDemo from "../demo/ModalDemo.vue";
 
-function doShowConfirmByStore() {
-  confirmStore.doShowConfirm({
-    title: "aaaa",
-    content: "bbbb",
-    type: "success",
-    ok: () => {
-      console.log(`ok [store]`);
-    },
-    cancel: () => {
-      console.log(`cancel [store]`);
-    },
-  });
+const router = useRouter();
+
+const isOpen = ref(false);
+
+function openModal() {
+  isOpen.value = true;
+  setTimeout(() => {
+    router.push("/forbidden");
+  }, 2000);
 }
 </script>
