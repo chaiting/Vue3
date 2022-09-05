@@ -48,14 +48,14 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { FormRef } from "@/core/type/common";
+import type { FormRef } from "@/core/type/form";
 import f010101Api from "@/api/f01/f010101-api";
 import { ref, reactive } from "vue";
 import { usePagination } from "@/core/hook/usePagination";
 import {
-  isValidCreditCardNumber,
-  checkIdNumberValid,
-  checkTaxIdValid,
+  isValidCardNo,
+  isValidIdNumber,
+  isValidTaxId,
 } from "@/core/utils/customer-info-validator";
 
 const formRef = ref<FormRef | null>();
@@ -93,9 +93,7 @@ const formRules = reactive({
     { message: "顧客ID必填", required: true },
     {
       validator: (rule: any, value: string, cb: (message?: Error) => void) => {
-        checkIdNumberValid(value)
-          ? cb()
-          : cb(new Error("檢查身分證字號是否正確"));
+        isValidIdNumber(value) ? cb() : cb(new Error("檢查身分證字號是否正確"));
       },
     },
   ],
@@ -103,9 +101,7 @@ const formRules = reactive({
     { message: "信用卡號必填", required: true },
     {
       validator: (rule: any, value: string, cb: (message?: Error) => void) => {
-        isValidCreditCardNumber(value)
-          ? cb()
-          : cb(new Error("檢查信用卡卡號是否正確"));
+        isValidCardNo(value) ? cb() : cb(new Error("檢查信用卡卡號是否正確"));
       },
     },
   ],
@@ -113,7 +109,7 @@ const formRules = reactive({
     { message: "統一編號必填", required: true },
     {
       validator: (rule: any, value: string, cb: (message?: Error) => void) => {
-        checkTaxIdValid(value) ? cb() : cb(new Error("檢查統一編號是否正確"));
+        isValidTaxId(value) ? cb() : cb(new Error("檢查統一編號是否正確"));
       },
     },
   ],

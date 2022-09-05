@@ -26,6 +26,7 @@
     "axios-mock-adapter": "^1.21.1",
     "echarts": "^5.3.3",
     "is-blank": "^2.1.0",
+    "jquery": "^3.6.1",
     "js-file-download": "^0.4.12",
     "lodash-es": "^4.17.21",
     "moment": "^2.29.4",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/is-blank": "^2.1.0",
+    "@types/jquery": "^3.5.14",
     "@types/jsdom": "^16.2.14",
     "@types/lodash": "^4.14.182",
     "@types/lodash-es": "^4.17.6",

@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch, type PropType } from "vue";
 import { find, includes, filter } from "lodash-es";
 import isBlank from "is-blank";
 import departmentApi from "@/core/api/department-api";
@@ -31,7 +31,7 @@ const props = defineProps({
   },
   // 上層組織/群組代碼清單, Ref DATAASYNC.TB_GROUP.GRP_ID
   upGrpIdList: {
-    type: Array,
+    type: Array as PropType<string[]>,
     required: false,
   },
   // 組織/群組層級代碼, Ref DATASHARE.SYS_CD.CD_ID, CT_ID=32
@@ -99,8 +99,8 @@ async function doQryDeptList() {
 
   deptList.value = await departmentApi.doQryDeptList({
     upGrpIdList: depts,
-    grpUnitcode: props.grpUnitcode,
-    dataSrc: props.dataSrc,
+    grpUnitcode: props.grpUnitcode!,
+    dataSrc: props.dataSrc!,
     activatedGrp: props.activatedGrp,
     allSubordinate: props.allSubordinate,
   });

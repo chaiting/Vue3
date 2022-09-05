@@ -94,7 +94,7 @@ import codeApi from "@/core/api/code-api";
 import sysDialApi from "@/core/api/sys-dial-api";
 import { computed } from "vue";
 import { truncate } from "lodash-es";
-import type { FormRef } from "@/core/type/common";
+import type { FormRef } from "@/core/type/form";
 
 const props = defineProps({
   // 發話號碼
@@ -251,14 +251,14 @@ async function doAutoCall() {
     if (valid) {
       await sysDialApi.doSystemCall({
         callingNumber: props.callingNumber,
-        calledNumber: props.calledNumber,
+        calledNumber: props.calledNumber!,
         calledId: props.customerId,
-        calledInfo: props.customerName,
+        calledInfo: props.customerName!,
         calledNumberSrcField: props.telType,
         calledObjType: "A", // A: 顧客
         srcFuncCode: props.srcFuncCode,
         srcFuncName: props.srcFuncName,
-        refProcKey: props.businessId,
+        refProcKey: props.businessId!,
         reasonCd: callingReason.reasonCd,
         reasonDesc: callingReason.reasonDesc,
       });

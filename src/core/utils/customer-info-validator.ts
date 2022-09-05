@@ -3,7 +3,7 @@ import isBlank from "is-blank";
 /**
  * 驗證統一編號是否正確
  */
-export function checkTaxIdValid(taxId: string): boolean {
+export function isValidTaxId(taxId: string): boolean {
   const logic = [1, 2, 1, 2, 1, 2, 4, 1];
   if (isBlank(taxId)) {
     return false;
@@ -40,7 +40,7 @@ export function checkTaxIdValid(taxId: string): boolean {
  * 檢查信用卡卡號是否正確
  * @param cardNumber - 15 or 16碼卡號
  */
-export function isValidCreditCardNumber(cardNumber: string): boolean {
+export function isValidCardNo(cardNumber: string): boolean {
   // 檢查信用卡卡號
   if (isBlank(cardNumber)) {
     return false;
@@ -98,7 +98,7 @@ function getLastCardNumber(cardNumber: string) {
 /**
  * 檢查身分證字號是否正確
  */
-export function checkIdNumberValid(idNumber: string) {
+export function isValidIdNumber(idNumber: string) {
   const pidChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   const pidIdInts = [

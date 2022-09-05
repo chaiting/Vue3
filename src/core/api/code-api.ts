@@ -24,7 +24,21 @@ export default {
    *    flag10: 其它用途註記 10
    * }
    */
-  doQryCodeList: async function (payload: any) {
+  doQryCodeList: async function (payload: {
+    cdId?: string;
+    ctId: number;
+    flag01?: string;
+    flag02?: string;
+    flag03?: string;
+    flag04?: string;
+    flag05?: string;
+    flag06?: string;
+    flag07?: string;
+    flag08?: string;
+    flag09?: string;
+    flag10?: string;
+    suspend?: string;
+  }) {
     let cacheKey = JSON.stringify(payload);
     let result = CODES_CACHE_MAP.get(cacheKey);
 

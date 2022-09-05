@@ -35,7 +35,7 @@ const props = defineProps({
   },
   // 組織/群組代碼, Ref DATAASYNC.TB_GROUP.GRP_ID
   grpIdList: {
-    type: Array,
+    type: Array as PropType<string[]>,
     required: false,
   },
   // Value類型, A: AD帳號、E: 員工編號

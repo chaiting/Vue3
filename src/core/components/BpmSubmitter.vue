@@ -123,7 +123,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRef, Validator } from "@/core/type/common";
+import type { FormRef, Validator } from "@/core/type/form";
 import { computed, reactive, watch, ref, onMounted } from "vue";
 import bpmFormApi from "@/core/api/bpm-form-api";
 import { find } from "lodash-es";
@@ -414,7 +414,9 @@ function doUpdSigner(processorId: string) {
  */
 function doEmitPreprocessEvent() {
   emit("on-submit-preprocess", actionId.value);
-  const stage = new Map([
+  type EmitEvent = Parameters<typeof emit>;
+
+  const stage: EmitEvent[number] = new Map([
     ["Started", "on-start-preprocess"], // Started: 起單
     ["1", "on-send-preprocess"], // 1: 傳送
     ["2", "on-revoke-preprocess"], // 2: 銷案
@@ -423,7 +425,8 @@ function doEmitPreprocessEvent() {
     ["7", "on-return-orgin-preprocess"], // 7: 退回填表人
     ["delegate", "on-delegate-preprocess"], // delegate: 處理權移轉
   ]).get(actionId.value);
-  emit(stage as any);
+
+  emit(stage);
 }
 
 /**

@@ -19,7 +19,7 @@ export default {
   /**
    * 代理人身份切換
    */
-  doSwitchIdentify: async function (payload: any) {
+  doSwitchIdentify: async function (payload: { adAccount: string }) {
     let result = await axios.post("/user_profile/03", payload);
     let userProfile = result.data.body;
 

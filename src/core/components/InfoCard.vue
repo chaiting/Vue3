@@ -207,7 +207,7 @@ onDeactivated(() => {
   background-repeat: no-repeat;
   background-size: 24px;
   background-position: center;
-  background-image: url("@/core/assets/images/ic_gray_user.svg");
+  background-image: url("@/assets/images/ic_gray_user.svg");
 }
 .infoCardIcon.female {
   background-color: rgba(255, 165, 186, 0.15);
@@ -252,9 +252,9 @@ onDeactivated(() => {
   opacity: 1;
 }
 .phone-img {
-  background-image: url("@/core/assets/images/ic_gray_phone.svg");
+  background-image: url("@/assets/images/ic_gray_phone.svg");
 }
 .mail-img {
-  background-image: url("@/core/assets/images/ic_gray_mail.svg");
+  background-image: url("@/assets/images/ic_gray_mail.svg");
 }
 </style>

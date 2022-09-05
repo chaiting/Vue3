@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRef, Validator } from "@/core/type/common";
+import type { FormRef, Validator } from "@/core/type/form";
 import { reactive, ref, watch } from "vue";
 import isBlank from "is-blank";
 import sysDialApi from "@/core/api/sys-dial-api";
@@ -150,13 +150,13 @@ function doSystemCall() {
     if (valid) {
       await sysDialApi.doSystemCall({
         callingNumber: props.callingNumber,
-        calledId: props.calledId,
-        calledInfo: props.calledInfo,
+        calledId: props.calledId!,
+        calledInfo: props.calledInfo!,
         calledNumber: callExtForm.calledNumber,
         calledNumberSrcField: "S", // S: 手動撥號
         calledObjType: "F", // F: 快速撥號
-        srcFuncCode: props.srcFuncCode,
-        srcFuncName: props.srcFuncName,
+        srcFuncCode: props.srcFuncCode!,
+        srcFuncName: props.srcFuncName!,
         refProcKey: props.businessId,
         reasonCd: "01", // 01: 業務執行
       });
@@ -187,7 +187,7 @@ watch(
   border: 1px solid #cecece;
   border-radius: 10px;
   margin: 0px 10px;
-  background-image: url("@/core/assets/images/ic_white_phone.svg");
+  background-image: url("@/assets/images/ic_white_phone.svg");
   background-repeat: no-repeat;
   background-position: center;
 }

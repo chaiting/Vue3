@@ -1,7 +1,7 @@
 <template>
   <Loading v-model:active="isShowLogoutSpinner">
     <div class="spinner-wrap">
-      <img src="@/core/assets/gear-solid.svg" class="spinner-icon" />
+      <img src="@/assets/gear-solid.svg" class="spinner-icon" />
       {{ logoutMsg }}
     </div>
   </Loading>

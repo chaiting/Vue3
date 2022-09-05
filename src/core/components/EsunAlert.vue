@@ -114,15 +114,15 @@ watch(
     height: 100px;
   }
   .success-background {
-    background-image: url("@/core/assets/images/ic_big_green_success.svg");
+    background-image: url("@/assets/images/ic_big_green_success.svg");
     margin-bottom: 20px;
   }
   .error-background {
-    background-image: url("@/core/assets/images/ic_big_red_x.svg");
+    background-image: url("@/assets/images/ic_big_red_x.svg");
     margin-bottom: 20px;
   }
   .info-background {
-    background-image: url("@/core/assets/images/ic_big_red_alert.svg");
+    background-image: url("@/assets/images/ic_big_red_alert.svg");
     margin-bottom: 20px;
   }
   .cus-btn {

@@ -5,7 +5,7 @@
         <div class="navPageLogo">
           <a :href="homeUrl" target="_blank">
             <img
-              src="@/core/assets/images/logo_white_esun.svg"
+              src="@/assets/images/logo_white_esun.svg"
               title="玉山銀行E.SUN Bank"
             />
           </a>
@@ -87,7 +87,7 @@ const loginUserProfile = computed(() => {
   background-size: 24px;
   background-position: left center;
   background-repeat: no-repeat;
-  background-image: url("@/core/assets/images/ic_white_user.svg");
+  background-image: url("@/assets/images/ic_white_user.svg");
 }
 .btnUiStyle {
   height: 36px;
@@ -105,7 +105,7 @@ const loginUserProfile = computed(() => {
   background-size: 20px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("@/core/assets/images/ic_white_log_out.svg");
+  background-image: url("@/assets/images/ic_white_log_out.svg");
 }
 .btnNavImage:hover {
   background-color: rgba(0, 0, 0, 0.1);

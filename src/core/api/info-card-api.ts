@@ -5,7 +5,7 @@ export default {
    * 取得行內使用者資訊卡片資訊
    * @param payload 查詢參數
    */
-  doGetEmployeeInfoCard: async function (payload: any) {
+  doGetEmployeeInfoCard: async function (payload: { adAccount: string }) {
     let result = await axios.post("/info_card/01", payload);
     return result.data.body;
   },
@@ -13,7 +13,14 @@ export default {
    * 系統撥號
    * @param payload 撥號參數
    */
-  callAutoDial: async function (payload: any) {
+  callAutoDial: async function (payload: {
+    userExtension: string | null;
+    employeeNo: string;
+    cname: string;
+    isCreditCardMember: string;
+    officePhoneext: string;
+    deptPhoneNo: string;
+  }) {
     let result = await axios.post("/info_card/02", {
       callingNumber: payload.userExtension,
       calledId: payload.employeeNo,

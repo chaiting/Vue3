@@ -1,7 +1,7 @@
 <template>
   <Loading v-model:active="isShowSpinner" loader="bars">
     <div class="spinner-wrap">
-      <img src="@/core/assets/gear-solid.svg" class="spinner-icon" />
+      <img src="@/assets/gear-solid.svg" class="spinner-icon" />
       {{ msg }}
     </div>
   </Loading>

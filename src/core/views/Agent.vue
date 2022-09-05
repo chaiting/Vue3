@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRef } from "@/core/type/common";
+import type { FormRef } from "@/core/type/form";
 import userProfileApi from "@/core/api/user-profile-api";
 import { getCurrentInstance, reactive, ref } from "vue";
 import { toUpper } from "lodash-es";

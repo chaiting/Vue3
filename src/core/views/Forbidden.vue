@@ -5,7 +5,7 @@
       <div class="formContent formErrorPage">
         <div class="formContentFirst">
           <div class="errorPageIcon">
-            <img src="@/core/assets/images/ic_big_red_alert.svg" />
+            <img src="@/assets/images/ic_big_red_alert.svg" />
           </div>
         </div>
 

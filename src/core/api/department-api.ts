@@ -11,7 +11,13 @@ export default {
    * 查詢組織/群組清單
    * @param {*} payload 查詢參數
    */
-  doQryDeptList: async function (payload: any) {
+  doQryDeptList: async function (payload: {
+    activatedGrp: string;
+    allSubordinate: string;
+    dataSrc: string;
+    grpUnitcode: string;
+    upGrpIdList: string[];
+  }) {
     let cacheKey = JSON.stringify(payload);
     let result = DEPTS_CACHE_MAP.get(cacheKey);
 

@@ -2,17 +2,26 @@ import { reactive, watch } from "vue";
 import { DEFAULT_PAGE_SIZE_LIST } from "@/conf/app-config";
 import { camelCase2UnderscoreUppercase } from "@/core/utils/naming-converter";
 
+/**
+ * 更新排序回調參數
+ */
 export interface SortColumn {
   column: string;
   key: string;
   order: "asc" | "desc" | "normal";
 }
 
+/**
+ * 排序參數
+ */
 export interface SortOption {
   sortColumn: string;
   sortType: "ASC" | "DESC";
 }
 
+/**
+ * 分頁參數
+ */
 interface PaginationOption {
   fetcher: () => void;
   defaultColumn?: string;
