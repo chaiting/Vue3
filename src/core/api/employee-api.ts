@@ -7,10 +7,10 @@ export default {
    * @param {*} payload 查詢條件
    */
   doQryUserList: async function (payload: {
-    allSubordinate: string;
-    grpIdList: string[];
-    isHiredOnly: string;
-    valueType: string;
+    allSubordinate?: string;
+    grpIdList?: string[];
+    isHiredOnly?: string;
+    valueType?: string;
   }) {
     let result = await axios.post("/employee/01", payload);
     let body = result.data.body;

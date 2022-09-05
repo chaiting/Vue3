@@ -253,12 +253,12 @@ async function doAutoCall() {
         callingNumber: props.callingNumber,
         calledNumber: props.calledNumber!,
         calledId: props.customerId,
-        calledInfo: props.customerName!,
+        calledInfo: props.customerName,
         calledNumberSrcField: props.telType,
         calledObjType: "A", // A: 顧客
         srcFuncCode: props.srcFuncCode,
         srcFuncName: props.srcFuncName,
-        refProcKey: props.businessId!,
+        refProcKey: props.businessId,
         reasonCd: callingReason.reasonCd,
         reasonDesc: callingReason.reasonDesc,
       });

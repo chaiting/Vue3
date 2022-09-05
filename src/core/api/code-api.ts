@@ -25,8 +25,8 @@ export default {
    * }
    */
   doQryCodeList: async function (payload: {
-    cdId?: string;
     ctId: number;
+    cdId?: string;
     flag01?: string;
     flag02?: string;
     flag03?: string;

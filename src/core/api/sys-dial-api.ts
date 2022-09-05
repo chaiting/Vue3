@@ -26,16 +26,16 @@ export default {
    * @param {*} payload 撥號參數
    */
   doSystemCall: async function (payload: {
-    callingNumber: string;
     calledNumber: string;
-    calledId: string;
-    calledInfo: string;
     calledNumberSrcField: string;
     calledObjType: string;
-    srcFuncCode: string;
-    srcFuncName: string;
-    refProcKey: string;
+    callingNumber: string;
     reasonCd: string;
+    calledId?: string;
+    calledInfo?: string;
+    srcFuncCode?: string;
+    srcFuncName?: string;
+    refProcKey?: string;
     reasonDesc?: string;
   }) {
     let result = await axios.post("/sys_dial/03", payload);

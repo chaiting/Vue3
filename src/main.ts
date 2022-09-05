@@ -3,7 +3,6 @@ import App from "./App.vue";
 import router from "./router";
 import setupPiniaConfig from "@/core/conf/pinia-config";
 import setupAxiosConfig from "@/core/conf/axios-config";
-// import setupEsunConfig from "@/core/conf/esun-ui-config";
 import setupAxiosMockConfig from "@/core/conf/axios-mock-adapter-config";
 import setupI18nConfig from "@/core/conf/i18n-config";
 import setupViewUiPlusConfig from "@/core/conf/view-ui-plus-config";
@@ -22,7 +21,6 @@ setupPiniaConfig(app);
 setupI18nConfig(app);
 setupViewUiPlusConfig(app);
 setupGlobalComponentConfig(app);
-// setupEsunConfig(app); // *****
 setupFontawesomeConfig(app);
 setupVueEchartsConfig(app);
 

@@ -12,11 +12,11 @@ export default {
    * @param {*} payload 查詢參數
    */
   doQryDeptList: async function (payload: {
-    activatedGrp: string;
-    allSubordinate: string;
-    dataSrc: string;
-    grpUnitcode: string;
-    upGrpIdList: string[];
+    activatedGrp?: string;
+    allSubordinate?: string;
+    dataSrc?: string;
+    grpUnitcode?: string;
+    upGrpIdList?: string[];
   }) {
     let cacheKey = JSON.stringify(payload);
     let result = DEPTS_CACHE_MAP.get(cacheKey);
@@ -32,7 +32,10 @@ export default {
    * 查詢上層組織/群組清單
    * @param {*} payload 查詢參數
    */
-  doQryUpperUnits: async function (payload: any) {
+  doQryUpperUnits: async function (payload: {
+    activatedGrp?: string;
+    grpId?: string;
+  }) {
     let cacheKey = JSON.stringify(payload);
     let result = UPPER_DEPTS_CACHE_MAP.get(cacheKey);
 
