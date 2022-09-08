@@ -36,12 +36,12 @@ export default {
   /**
    * 查詢上層組織/群組清單
    * @param {*} payload 查詢參數
-   * @param {*} payload.activatedGrp 是否限啟用組織/群組(Y|N)
    * @param {*} payload.grpId 組織/群組代碼
+   * @param {*} payload.activatedGrp 是否限啟用組織/群組(Y|N)
    */
   doQryUpperUnits: async function (payload: {
+    grpId: string;
     activatedGrp?: string;
-    grpId?: string;
   }) {
     let cacheKey = JSON.stringify(payload);
     let result = UPPER_DEPTS_CACHE_MAP.get(cacheKey);
