@@ -433,13 +433,16 @@ function doEmitPreprocessEvent() {
  * 起單作業，並將api執行結果傳給父元件
  */
 async function doStartProcess() {
-  let payload: any = doBuildProcBasicData(stageUserForm.signComment);
-  payload.businessCode = props.businessCode;
-  payload.customerId = props.customerId;
-  payload.formMemo = props.formMemo;
-  payload.processorId = stageUserForm.processorId;
-  payload.processorName = stageUserForm.processorName;
-  payload.processorType = stageUserForm.processorType;
+  const basicData = doBuildProcBasicData(stageUserForm.signComment);
+  const payload = {
+    ...basicData,
+    businessCode: props.businessCode,
+    customerId: props.customerId,
+    formMemo: props.formMemo,
+    processorId: stageUserForm.processorId,
+    processorName: stageUserForm.processorName,
+    processorType: stageUserForm.processorType,
+  };
 
   let result = await bpmFormApi.doStartProcess(props.flowCode!, payload);
   let returnData: any = doBuildReturnBasicData(result);
@@ -473,7 +476,7 @@ async function doSendProcess() {
  */
 async function doTransferProcess() {
   let result = await bpmFormApi.doTransferProcess({
-    formId: props.formId,
+    formId: props.formId!,
     newProcessorId: stageUserForm.processorId,
     signComment: stageUserForm.signComment,
   });
@@ -569,7 +572,7 @@ function doGetButtonClass(value: string) {
  */
 function doBuildProcBasicData(signComment: string) {
   return {
-    formId: props.formId,
+    formId: props.formId!,
     signComment: signComment,
     actionId: actionId.value,
     formUrl: props.formUrl,

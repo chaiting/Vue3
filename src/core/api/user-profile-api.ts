@@ -18,6 +18,8 @@ export default {
   },
   /**
    * 代理人身份切換
+   * @param {*} payload 代理人身份切換參數
+   * @param {*} payload.account AD帳號
    */
   doSwitchIdentify: async function (payload: { adAccount: string }) {
     let result = await axios.post("/user_profile/03", payload);

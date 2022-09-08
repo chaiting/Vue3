@@ -1,57 +1,69 @@
 import axios from "axios";
 
-/**
- * bpm作業參數
- */
+// bpm作業參數
 interface ProcessPayload {
+  // 表單代碼
+  formId: string;
+  // 流程代碼
   flowCode?: string;
-  formId?: string;
-  mail?: {
+  // 簽核意見
+  signComment: string;
+  // 寄件資訊
+  mail: {
+    // 內容
     content?: string;
-    mailParams?: {
-      additionalProp1?: string;
-      additionalProp2?: string;
-      additionalProp3?: string;
-    };
+    // 主旨
     subject?: string;
+    // 信件參數(參照content中定義的變數, Ex: ${url})
+    mailParams?: {
+      [key: string]: string;
+    };
   };
-  signComment?: string;
 }
 
-/**
- * 退回、結案、銷案作業參數
- */
+// 退回、結案、銷案作業參數
 interface ActionProcessPayload extends ProcessPayload {
+  // 關卡動作
   actionId?: string;
 }
 
-/**
- * 送單參數
- */
+// 送單參數
 interface SendProcessPayload extends ProcessPayload {
-  processorId?: string;
-  processorName?: string;
-  processorType?: string;
-  signComment?: string;
+  // 傳送對象
+  processorId: string;
+  // 傳送對象名稱
+  processorName: string;
+  // 傳送對象類型
+  processorType: string;
 }
 
-/**
- * 起單參數
- */
+// 起單參數
 interface StartProcessPayload extends ProcessPayload {
+  // 業務別代碼
   businessCode?: string;
+  // 顧客ID
   customerId?: string;
+  // 表單註記
   formMemo?: string;
+  // 表單網址
   formUrl?: string;
+  // 傳送對象(員工編號/角色代號)
+  processorId: string;
+  // 傳送對象名稱(員工姓名/角色名稱)
+  processorName: string;
+  // 傳送對象類型
+  processorType: string;
 }
 
-/**
- * 轉移處理權參數
- */
+// 轉移處理權參數
 interface TransferProcessPayload {
-  formId?: string;
-  newProcessorId?: string;
-  signComment?: string;
+  // 表單代碼
+  formId: string;
+  // 新處理人員編
+  newProcessorId: string;
+  // 簽核意見
+  signComment: string;
+  // 系統代碼
   sysId?: string;
 }
 
@@ -72,7 +84,7 @@ export default {
     return result.data.body;
   },
   /**
-   * 送單作業
+   * 送單
    * @param payload 送單參數
    */
   doSendProcess: async function (payload: SendProcessPayload) {
@@ -123,7 +135,9 @@ export default {
   /**
    * 取得關卡處理者資料
    * @param flowCode 流程代碼
-   * @param payload 關卡參數
+   * @param payload 查詢參數
+   * @param payload.actionId 關卡動作代碼
+   * @param payload.formId 表單代碼
    */
   doQryStageProcessor: async function (
     flowCode: string,
@@ -153,7 +167,8 @@ export default {
   },
   /**
    * 取得送單傳送類型
-   * @param payload 業務單號
+   * @param {*} payload 查詢參數
+   * @param {*} payload.formId 表單代碼
    */
   doQryNextStageAction: async function (payload: { formId?: string }) {
     let result = await axios.post(
@@ -165,7 +180,8 @@ export default {
   },
   /**
    * 取得BPM FORM資訊
-   * @param {*} payload 表單代碼
+   * @param {*} payload 查詢參數
+   * @param {*} payload.formId 表單代碼
    */
   doGetBpmForm: async function (payload: { formId?: string }) {
     let result = await axios.post("/bpm_form/do_get_bpm_form", payload);

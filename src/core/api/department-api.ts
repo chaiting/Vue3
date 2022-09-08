@@ -10,6 +10,11 @@ export default {
   /**
    * 查詢組織/群組清單
    * @param {*} payload 查詢參數
+   * @param {*} payload.activatedGrp 是否限啟用組織/群組(Y|N)
+   * @param {*} payload.allSubordinate 是否包含所有子單位(Y|N)
+   * @param {*} payload.dataSrc 組織/群組資料來源
+   * @param {*} payload.grpUnitcode 單位層級代碼
+   * @param {*} payload.upGrpIdList 上層組織/群組代碼清單
    */
   doQryDeptList: async function (payload: {
     activatedGrp?: string;
@@ -31,6 +36,8 @@ export default {
   /**
    * 查詢上層組織/群組清單
    * @param {*} payload 查詢參數
+   * @param {*} payload.activatedGrp 是否限啟用組織/群組(Y|N)
+   * @param {*} payload.grpId 組織/群組代碼
    */
   doQryUpperUnits: async function (payload: {
     activatedGrp?: string;
