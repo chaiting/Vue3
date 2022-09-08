@@ -360,7 +360,7 @@ function doNotifyPreprocess(val: string) {
  * 取得關卡處理者資料
  */
 async function doQryStageProcessor() {
-  let result = await bpmFormApi.doQryStageProcessor(props.flowCode!, {
+  let result = await bpmFormApi.doQryStageProcessor(props.flowCode, {
     actionId: actionId.value,
     formId: props.formId,
   });

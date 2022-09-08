@@ -140,7 +140,7 @@ export default {
    * @param payload.formId 表單代碼
    */
   doQryStageProcessor: async function (
-    flowCode: string,
+    flowCode: string | undefined,
     payload: { actionId: string; formId?: string }
   ) {
     // Started: 起單、1: 傳送

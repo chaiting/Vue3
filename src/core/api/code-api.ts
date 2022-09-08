@@ -2,6 +2,28 @@ import axios from "axios";
 import isBlank from "is-blank";
 import { map, head } from "lodash-es";
 
+// 代碼清單查詢參數
+interface CodePayload {
+  ctId: number;
+  cdId?: string;
+  flag01?: string;
+  flag02?: string;
+  flag03?: string;
+  flag04?: string;
+  flag05?: string;
+  flag06?: string;
+  flag07?: string;
+  flag08?: string;
+  flag09?: string;
+  flag10?: string;
+  suspend?: string;
+}
+
+// 代碼{label,value}清單查詢參數
+interface CodeLabelPayload extends CodePayload {
+  showCode: boolean;
+}
+
 // 代碼對應快取暫存表
 const CODES_CACHE_MAP = new Map();
 
@@ -24,21 +46,7 @@ export default {
    *    flag10: 其它用途註記 10
    * }
    */
-  doQryCodeList: async function (payload: {
-    ctId: number;
-    cdId?: string;
-    flag01?: string;
-    flag02?: string;
-    flag03?: string;
-    flag04?: string;
-    flag05?: string;
-    flag06?: string;
-    flag07?: string;
-    flag08?: string;
-    flag09?: string;
-    flag10?: string;
-    suspend?: string;
-  }) {
+  doQryCodeList: async function (payload: CodePayload) {
     let cacheKey = JSON.stringify(payload);
     let result = CODES_CACHE_MAP.get(cacheKey);
 
@@ -67,7 +75,7 @@ export default {
    *    flag10: 其它用途註記 10
    * }
    */
-  doQryCodeLabelValueList: async function (payload: any) {
+  doQryCodeLabelValueList: async function (payload: CodeLabelPayload) {
     let result = await this.doQryCodeList(payload);
     return map(
       result.data.body,
