@@ -11,6 +11,6 @@ export default {
     resourceUri: string;
     resourceType: string;
   }) {
-    return await axios.post("/fronted_access_log/01", payload);
+    return await axios.post("/frontend_access_log/01", payload);
   },
 };
