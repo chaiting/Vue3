@@ -229,6 +229,7 @@ const props = defineProps({
   flowCode: {
     type: String,
     required: false,
+    default: "",
   },
   // 業務別代碼(起單時需要)
   businessCode: {
@@ -444,7 +445,7 @@ async function doStartProcess() {
     processorType: stageUserForm.processorType,
   };
 
-  let result = await bpmFormApi.doStartProcess(props.flowCode!, payload);
+  let result = await bpmFormApi.doStartProcess(props.flowCode, payload);
   let returnData: any = doBuildReturnBasicData(result);
 
   returnData.bpmFormSeqNo = result.bpmFormSeqNo;

@@ -1,6 +1,8 @@
 import axios from "axios";
 
-// bpm作業參數
+/**
+ * bpm作業參數
+ */
 interface ProcessPayload {
   // 表單代碼
   formId: string;
@@ -21,13 +23,17 @@ interface ProcessPayload {
   };
 }
 
-// 退回、結案、銷案作業參數
+/**
+ * 退回、結案、銷案作業參數
+ */
 interface ActionProcessPayload extends ProcessPayload {
   // 關卡動作
   actionId?: string;
 }
 
-// 送單參數
+/**
+ * 送單參數
+ */
 interface SendProcessPayload extends ProcessPayload {
   // 傳送對象
   processorId: string;
@@ -37,7 +43,9 @@ interface SendProcessPayload extends ProcessPayload {
   processorType: string;
 }
 
-// 起單參數
+/**
+ * 起單參數
+ */
 interface StartProcessPayload extends ProcessPayload {
   // 業務別代碼
   businessCode?: string;
@@ -55,7 +63,9 @@ interface StartProcessPayload extends ProcessPayload {
   processorType: string;
 }
 
-// 轉移處理權參數
+/**
+ * 轉移處理權參數
+ */
 interface TransferProcessPayload {
   // 表單代碼
   formId: string;
@@ -140,7 +150,7 @@ export default {
    * @param payload.formId 表單代碼
    */
   doQryStageProcessor: async function (
-    flowCode: string | undefined,
+    flowCode: string,
     payload: { actionId: string; formId?: string }
   ) {
     // Started: 起單、1: 傳送

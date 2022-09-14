@@ -3,38 +3,16 @@ import { DEFAULT_PAGE_SIZE_LIST } from "@/conf/app-config";
 import { camelCase2UnderscoreUppercase } from "@/core/utils/naming-converter";
 
 /**
- * 更新排序回調參數
- */
-export interface SortColumn {
-  column: string;
-  key: string;
-  order: "asc" | "desc" | "normal";
-}
-
-/**
- * 排序參數
- */
-export interface SortOption {
-  sortColumn: string;
-  sortType: "ASC" | "DESC";
-}
-
-/**
- * 分頁參數
- */
-interface PaginationOption {
-  fetcher: () => void;
-  defaultColumn?: string;
-}
-
-/**
  * 表格分頁hook
  * @param {*} opts - 表格分頁hook選項
  * @param {*} opts.fetcher - 更新時呼叫的API
- * @param {*} opts.department - 預設表格排序欄位
+ * @param {*} opts.defaultColumn - 預設表格排序欄位
  */
-export function usePagination(opts: PaginationOption) {
-  const sortOption = reactive<SortOption>({
+export function usePagination(opts: {
+  fetcher: () => void;
+  defaultColumn?: string;
+}) {
+  const sortOption = reactive({
     sortColumn: opts.defaultColumn || "",
     sortType: "DESC",
   });
@@ -48,6 +26,7 @@ export function usePagination(opts: PaginationOption) {
 
   /**
    * 切換分頁
+   * @param value 分頁
    */
   function onChangePage(value: number) {
     pagination.page = value;
@@ -55,6 +34,7 @@ export function usePagination(opts: PaginationOption) {
 
   /**
    * 切換分頁大小
+   * @param value 分頁大小
    */
   function onChangePageSize(value: number) {
     pagination.pageSize = value;
@@ -62,18 +42,26 @@ export function usePagination(opts: PaginationOption) {
 
   /**
    * 欄位排序事件
+   * @param col 欄位
+   * @param col.key 欄位key
+   * @param col.order 排序方式
    */
-  function onSortChange(col: SortColumn) {
+  function onSortChange(col: {
+    key: string;
+    order: "asc" | "desc" | "normal";
+  }) {
     if (pagination.total == 0) return;
+
     // 取消排序
     if (col.order === "normal") {
       sortOption.sortColumn = opts.defaultColumn || "";
       sortOption.sortType = "DESC";
     }
+
     // 排序
     if (col.order !== "normal") {
       sortOption.sortColumn = camelCase2UnderscoreUppercase(col.key);
-      sortOption.sortType = col.order.toUpperCase() as "DESC" | "ASC";
+      sortOption.sortType = col.order.toUpperCase();
     }
   }
 

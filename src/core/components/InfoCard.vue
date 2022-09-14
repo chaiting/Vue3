@@ -65,11 +65,6 @@ const props = defineProps({
     required: true,
   },
 });
-
-// 顯示popTip
-// const visible = ref(false);
-// 是否為信用卡處人員
-// const isCreditCardMember = ref(false);
 // 被查詢者AD帳號
 const queriedAdAccount = ref("");
 // 使用者卡片資訊

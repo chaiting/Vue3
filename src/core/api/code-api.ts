@@ -2,25 +2,43 @@ import axios from "axios";
 import isBlank from "is-blank";
 import { map, head } from "lodash-es";
 
-// 代碼清單查詢參數
+/**
+ * 代碼清單查詢參數
+ */
 interface CodePayload {
+  // 類別代碼
   ctId: number;
+  // 明細代碼
   cdId?: string;
+  // 其它用途註記 01
   flag01?: string;
+  // 其它用途註記 02
   flag02?: string;
+  // 其它用途註記 03
   flag03?: string;
+  // 其它用途註記 04
   flag04?: string;
+  // 其它用途註記 05
   flag05?: string;
+  // 其它用途註記 06
   flag06?: string;
+  // 其它用途註記 07
   flag07?: string;
+  // 其它用途註記 08
   flag08?: string;
+  // 其它用途註記 09
   flag09?: string;
+  // 其它用途註記 10
   flag10?: string;
+  // 是否停用
   suspend?: string;
 }
 
-// 代碼{label,value}清單查詢參數
+/**
+ * 代碼{label,value}清單查詢參數
+ */
 interface CodeLabelPayload extends CodePayload {
+  // 是否顯示代碼
   showCode: boolean;
 }
 
@@ -30,21 +48,7 @@ const CODES_CACHE_MAP = new Map();
 export default {
   /**
    * 代碼清單查詢
-   * @param payload {
-   *    ctId: 類別代碼
-   *    cdId: 明細代碼
-   *    suspend: 是否停用
-   *    flag01: 其它用途註記 01
-   *    flag02: 其它用途註記 02
-   *    flag03: 其它用途註記 03
-   *    flag04: 其它用途註記 04
-   *    flag05: 其它用途註記 05
-   *    flag06: 其它用途註記 06
-   *    flag07: 其它用途註記 07
-   *    flag08: 其它用途註記 08
-   *    flag09: 其它用途註記 09
-   *    flag10: 其它用途註記 10
-   * }
+   * @param payload 代碼清單查詢參數
    */
   doQryCodeList: async function (payload: CodePayload) {
     let cacheKey = JSON.stringify(payload);
@@ -59,21 +63,7 @@ export default {
   },
   /**
    * 代碼{label,value}清單查詢
-   * @param payload {
-   *    ctId: 類別代碼
-   *    cdId: 明細代碼
-   *    suspend: 是否停用
-   *    flag01: 其它用途註記 01
-   *    flag02: 其它用途註記 02
-   *    flag03: 其它用途註記 03
-   *    flag04: 其它用途註記 04
-   *    flag05: 其它用途註記 05
-   *    flag06: 其它用途註記 06
-   *    flag07: 其它用途註記 07
-   *    flag08: 其它用途註記 08
-   *    flag09: 其它用途註記 09
-   *    flag10: 其它用途註記 10
-   * }
+   * @param payload 代碼{label,value}清單查詢參數
    */
   doQryCodeLabelValueList: async function (payload: CodeLabelPayload) {
     let result = await this.doQryCodeList(payload);
