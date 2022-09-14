@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { Nullable } from "@/core/type/utils";
 
 export default {
   /**
@@ -24,7 +25,7 @@ export default {
     cname: string;
     employeeNo: string;
     deptPhoneNo: string;
-    userExtension: string | null;
+    userExtension: Nullable<string>;
     officePhoneext: string;
     isCreditCardMember: string;
   }) {

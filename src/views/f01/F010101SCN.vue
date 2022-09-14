@@ -53,10 +53,10 @@ import f010101Api from "@/api/f01/f010101-api";
 import { ref, reactive } from "vue";
 import { usePagination } from "@/core/hook/usePagination";
 import {
-  isValidCardNo,
   isValidIdNumber,
   isValidTaxId,
 } from "@/core/utils/customer-info-validator";
+import { isValidCardNo } from "@/core/utils/card-validator";
 
 const formRef = ref<FormRef | null>();
 
