@@ -1,7 +1,6 @@
 import axios from "axios";
 import isBlank from "is-blank";
 import { map, head } from "lodash-es";
-
 /**
  * 代碼清單查詢參數
  */
@@ -59,7 +58,7 @@ export default {
       CODES_CACHE_MAP.set(cacheKey, result);
     }
 
-    return result;
+    return result.data.body;
   },
   /**
    * 代碼{label,value}清單查詢
@@ -67,15 +66,12 @@ export default {
    */
   doQryCodeLabelValueList: async function (payload: CodeLabelPayload) {
     let result = await this.doQryCodeList(payload);
-    return map(
-      result.data.body,
-      function (row: { cdId: string; cdNm: string }) {
-        return {
-          value: row.cdId,
-          label: payload.showCode ? `${row.cdId} ${row.cdNm}` : row.cdNm,
-        };
-      }
-    );
+    return map(result, (row) => {
+      return {
+        value: row.cdId,
+        label: payload.showCode ? `${row.cdId} ${row.cdNm}` : row.cdNm,
+      };
+    });
   },
   /**
    * 代碼名稱查詢
@@ -92,6 +88,6 @@ export default {
       cdId: cdId,
     });
 
-    return head(result.data.body as any[])?.cdNm || "";
+    return head(result as any[])?.cdNm || "";
   },
 };

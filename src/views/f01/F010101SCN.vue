@@ -28,7 +28,7 @@
     </Form>
     <Table
       :columns="columns"
-      :data="list.data"
+      :data="list"
       stripe
       :border="true"
       @on-sort-change="onSortChange"
@@ -80,7 +80,7 @@ const columns = reactive([
   { key: "address", title: "地址" },
 ]);
 
-const list = reactive({ data: [] });
+const list = ref<any[]>([]);
 
 const form = reactive({
   customerId: "",
@@ -131,7 +131,7 @@ async function doQryCustomerList() {
   });
 
   pagination.total = result.total;
-  list.data = result.data;
+  list.value = result.data;
 }
 
 async function submit() {

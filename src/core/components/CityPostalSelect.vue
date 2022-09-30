@@ -195,7 +195,7 @@ watch(
       cdId: newValue,
     });
 
-    selectedCityCd.value = codeUnits.data.body[0]?.flag01 || "";
+    selectedCityCd.value = codeUnits[0]?.flag01 || "";
 
     // 2. 設定鄉鎮市區代碼 --------------------------------------------------------------------------------------------
     nextTick(() => {
