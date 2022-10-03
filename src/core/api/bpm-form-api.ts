@@ -4,14 +4,14 @@ import type {
   StartProcessPayload,
   ActionProcessPayload,
   TransferProcessPayload,
-  doStartProcessResponse,
-  doSendProcessResponse,
-  doSendBackResponse,
-  doCloseProcessResponse,
-  doRevokeProcessResponse,
-  doQryStageProcessorResponse,
-  doQryNextStageActionResponse,
-  doGetBpmFormResponse,
+  doStartProcessResPayload,
+  doSendProcessResPayload,
+  doSendBackResPayload,
+  doCloseProcessResPayload,
+  doRevokeProcessResPayload,
+  doQryStageProcessorResPayload,
+  doQryNextStageActionResPayload,
+  doGetBpmFormResPayload,
 } from "@/core/type/bpm-form-api";
 
 export default {
@@ -23,7 +23,7 @@ export default {
   doStartProcess: async function (
     flowCode: string,
     payload: StartProcessPayload
-  ): doStartProcessResponse {
+  ): doStartProcessResPayload {
     let result = await axios.post(
       "/bpm_form/do_start_process/" + flowCode,
       payload
@@ -36,7 +36,7 @@ export default {
    */
   doSendProcess: async function (
     payload: SendProcessPayload
-  ): doSendProcessResponse {
+  ): doSendProcessResPayload {
     let result = await axios.post("/bpm_form/do_send_process", payload);
     return result.data.body;
   },
@@ -54,7 +54,7 @@ export default {
    */
   doSendBack: async function (
     payload: ActionProcessPayload
-  ): doSendBackResponse {
+  ): doSendBackResPayload {
     // 4: 退回前一關
     if (payload.actionId === "4") {
       let result = await axios.post("/bpm_form/do_send_to_previous", payload);
@@ -73,7 +73,7 @@ export default {
    */
   doCloseProcess: async function (
     payload: ActionProcessPayload
-  ): doCloseProcessResponse {
+  ): doCloseProcessResPayload {
     let result = await axios.post("/bpm_form/do_close_process", payload);
     return result.data.body;
   },
@@ -83,7 +83,7 @@ export default {
    */
   doRevokeProcess: async function (
     payload: ActionProcessPayload
-  ): doRevokeProcessResponse {
+  ): doRevokeProcessResPayload {
     let result = await axios.post("/bpm_form/do_revoke_process", payload);
     return result.data.body;
   },
@@ -97,7 +97,7 @@ export default {
   doQryStageProcessor: async function (
     flowCode: string,
     payload: { actionId: string; formId?: string }
-  ): doQryStageProcessorResponse {
+  ): doQryStageProcessorResPayload {
     // Started: 起單、1: 傳送
     if (payload.actionId === "Started" || payload.actionId === "1") {
       // 取得下一關卡處理者資料
@@ -127,7 +127,7 @@ export default {
    */
   doQryNextStageAction: async function (payload: {
     formId?: string;
-  }): doQryNextStageActionResponse {
+  }): doQryNextStageActionResPayload {
     let result = await axios.post(
       "/bpm_form/do_qry_next_stage_action",
       payload
@@ -142,7 +142,7 @@ export default {
    */
   doGetBpmForm: async function (payload: {
     formId?: string;
-  }): doGetBpmFormResponse {
+  }): doGetBpmFormResPayload {
     let result = await axios.post("/bpm_form/do_get_bpm_form", payload);
     return result.data.body;
   },

@@ -226,7 +226,7 @@ const optUserProfile = computed(() => {
  * 系統名稱
  */
 const sysName = computed(() => {
-  return optUserProfile.value.system.sysNm || "";
+  return optUserProfile.value.system?.sysNm || "";
 });
 /**
  * 功能名稱資訊

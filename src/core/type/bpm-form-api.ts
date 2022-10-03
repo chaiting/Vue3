@@ -82,19 +82,19 @@ interface ProcessResponse {
   statusCode: string;
 }
 
-export type doStartProcessResponse = Promise<
+export type doStartProcessResPayload = Promise<
   ProcessResponse & { bpmFormSeqNo: string }
 >;
 
-export type doSendProcessResponse = Promise<ProcessResponse>;
+export type doSendProcessResPayload = Promise<ProcessResponse>;
 
-export type doSendBackResponse = Promise<ProcessResponse | undefined>;
+export type doSendBackResPayload = Promise<ProcessResponse | undefined>;
 
-export type doCloseProcessResponse = Promise<ProcessResponse>;
+export type doCloseProcessResPayload = Promise<ProcessResponse>;
 
-export type doRevokeProcessResponse = Promise<ProcessResponse>;
+export type doRevokeProcessResPayload = Promise<ProcessResponse>;
 
-export type doQryStageProcessorResponse = Promise<
+export type doQryStageProcessorResPayload = Promise<
   | (ProcessResponse & {
       processorType: string;
       stageProcessors: { processorId: string; processorName: string }[];
@@ -108,11 +108,11 @@ type StageAction = {
   >;
 };
 
-export type doQryNextStageActionResponse = Promise<
+export type doQryNextStageActionResPayload = Promise<
   ProcessResponse & StageAction
 >;
 
-export type doGetBpmFormResponse = Promise<{
+export type doGetBpmFormResPayload = Promise<{
   bpmFormSeqNo: string;
   bpmHistorySeqNo: string;
   flowCode: string;

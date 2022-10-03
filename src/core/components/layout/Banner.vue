@@ -44,7 +44,7 @@ const profileStore = useProfileStore();
 const homeUrl = import.meta.env.VITE_APP_EPSP_HOME_URL;
 
 const systemTitle = computed(() => {
-  return `${profileStore.loginUserProfile.system.sysId} ${profileStore.loginUserProfile.system.sysNm}`;
+  return `${profileStore.loginUserProfile.system?.sysId} ${profileStore.loginUserProfile.system?.sysNm}`;
 });
 
 const loginUserProfile = computed(() => {

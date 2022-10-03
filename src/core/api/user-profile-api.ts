@@ -1,27 +1,36 @@
 import axios from "axios";
 import { useProfileStore } from "@/core/store/profile";
+import type {
+  doFetchLoginUserProfileResPayload,
+  doFetchOptUserProfileProfileResPayload,
+  doSwitchIdentifyProfileResPayload,
+} from "@/core/type/user-profile-api";
 
 export default {
   /**
    * 取得登入者基本資料
    */
-  doFetchLoginUserProfile: async function () {
-    let result = await axios.post("/user_profile/01");
-    return result.data.body;
-  },
+  doFetchLoginUserProfile:
+    async function (): doFetchLoginUserProfileResPayload {
+      let result = await axios.post("/user_profile/01");
+      return result.data.body;
+    },
   /**
    * 取得操作者基本資料
    */
-  doFetchOptUserProfile: async function () {
-    let result = await axios.post("/user_profile/02");
-    return result.data.body;
-  },
+  doFetchOptUserProfile:
+    async function (): doFetchOptUserProfileProfileResPayload {
+      let result = await axios.post("/user_profile/02");
+      return result.data.body;
+    },
   /**
    * 代理人身份切換
    * @param {*} payload 代理人身份切換參數
    * @param {*} payload.account AD帳號
    */
-  doSwitchIdentify: async function (payload: { adAccount: string }) {
+  doSwitchIdentify: async function (payload: {
+    adAccount: string;
+  }): doSwitchIdentifyProfileResPayload {
     let result = await axios.post("/user_profile/03", payload);
     let userProfile = result.data.body;
 

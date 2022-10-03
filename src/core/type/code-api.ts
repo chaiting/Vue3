@@ -44,7 +44,7 @@ export interface CodeLabelPayload extends CodePayload {
   showCode: boolean;
 }
 
-export type doQryCodeListResponse = Promise<
+export type doQryCodeListResPayload = Promise<
   Array<
     {
       // 明細代碼
@@ -59,8 +59,8 @@ export type doQryCodeListResponse = Promise<
   >
 >;
 
-export type doQryCodeLabelValueListResponse = Promise<
+export type doQryCodeLabelValueListResPayload = Promise<
   { value: string; label: string }[]
 >;
 
-export type doGetCodeNameResponse = Promise<string>;
+export type doGetCodeNameResPayload = Promise<string>;

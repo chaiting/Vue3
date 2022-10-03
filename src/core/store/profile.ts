@@ -1,30 +1,14 @@
 import { defineStore } from "pinia";
-
-interface UserProfile {
-  empName: string;
-  empNo: string;
-  grpNm: string;
-  adAccount: null;
-  system: {
-    sysId: string;
-    sysNm: string;
-    grpNm: string;
-    leftMenuList: never[];
-  };
-}
+import type { LeftMenuList, Profile } from "@/core/type/user-profile-api";
 
 const INIT_USER_PROFILE = {
   empName: "",
   empNo: "",
-  grpNm: "",
-  adAccount: null, // 需添加 for ts
   system: {
-    sysId: "",
     sysNm: "",
-    grpNm: "",
-    leftMenuList: [],
+    leftMenuList: [] as LeftMenuList,
   },
-};
+} as Partial<Profile>;
 
 export const useProfileStore = defineStore({
   id: "profile",
@@ -40,7 +24,7 @@ export const useProfileStore = defineStore({
       return state.userProfile.optUserProfile.adAccount !== null;
     },
     leftMenus: (state) => {
-      return state.userProfile.optUserProfile.system.leftMenuList;
+      return state.userProfile.optUserProfile.system!.leftMenuList;
     },
     loginUserProfile: (state) => {
       return state.userProfile.loginUserProfile;
@@ -54,7 +38,7 @@ export const useProfileStore = defineStore({
      * 儲存使用者基本資料
      * @param {*} payload 使用者基本資料
      */
-    doStoredUserProfile(payload: UserProfile) {
+    doStoredUserProfile(payload: Profile) {
       this.userProfile.optUserProfile = payload;
       this.userProfile.loginUserProfile = payload;
     },

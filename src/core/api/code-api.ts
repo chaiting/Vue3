@@ -4,9 +4,9 @@ import { map, head } from "lodash-es";
 import type {
   CodePayload,
   CodeLabelPayload,
-  doQryCodeListResponse,
-  doGetCodeNameResponse,
-  doQryCodeLabelValueListResponse,
+  doQryCodeListResPayload,
+  doGetCodeNameResPayload,
+  doQryCodeLabelValueListResPayload,
 } from "@/core/type/code-api";
 
 // 代碼對應快取暫存表
@@ -17,7 +17,9 @@ export default {
    * 代碼清單查詢
    * @param payload 代碼清單查詢參數
    */
-  doQryCodeList: async function (payload: CodePayload): doQryCodeListResponse {
+  doQryCodeList: async function (
+    payload: CodePayload
+  ): doQryCodeListResPayload {
     let cacheKey = JSON.stringify(payload);
     let result = CODES_CACHE_MAP.get(cacheKey);
 
@@ -34,7 +36,7 @@ export default {
    */
   doQryCodeLabelValueList: async function (
     payload: CodeLabelPayload
-  ): doQryCodeLabelValueListResponse {
+  ): doQryCodeLabelValueListResPayload {
     const result = await this.doQryCodeList(payload);
     return map(result, (row) => {
       return {
@@ -51,7 +53,7 @@ export default {
   doGetCodeName: async function (
     ctId: number,
     cdId: string
-  ): doGetCodeNameResponse {
+  ): doGetCodeNameResPayload {
     if (isBlank(ctId) || isBlank(cdId)) {
       return "";
     }
