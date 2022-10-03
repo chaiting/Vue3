@@ -366,8 +366,8 @@ async function doQryStageProcessor() {
     formId: props.formId,
   });
 
-  stageUserForm.processorType = result.processorType;
-  stageProcessors.value = result.stageProcessors;
+  stageUserForm.processorType = result!.processorType;
+  stageProcessors.value = result!.stageProcessors;
   isShowStageUser.value = true;
 }
 
