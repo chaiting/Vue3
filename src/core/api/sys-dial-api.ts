@@ -1,10 +1,16 @@
 import axios from "axios";
+import type {
+  doGetEmployeeDialInfoResPayload,
+  doQryCustomerDialHistoryResPayload,
+  doSystemCallReqPayload,
+  doSystemCallResPayload,
+} from "@/core/type/sys-dial-api";
 
 export default {
   /**
    * 查詢行內使用者撥號資訊
    */
-  doGetEmployeeDialInfo: async function () {
+  doGetEmployeeDialInfo: async function (): doGetEmployeeDialInfoResPayload {
     let result = await axios.post("/sys_dial/01");
     return result.data.body;
   },
@@ -12,7 +18,9 @@ export default {
    * 取得顧客撥號紀錄清單
    * @param {*} payload 查詢條件
    */
-  doQryCustomerDialHistory: async function (payload: string) {
+  doQryCustomerDialHistory: async function (
+    payload: string
+  ): doQryCustomerDialHistoryResPayload {
     let result = await axios.post("/sys_dial/02", {
       customerId: payload,
       pageNo: "1",
@@ -35,19 +43,9 @@ export default {
    * @param {*} payload.refProcKey 業務鍵值
    * @param {*} payload.reasonDesc 通話原因備註
    */
-  doSystemCall: async function (payload: {
-    calledNumber: string;
-    calledNumberSrcField: string;
-    calledObjType: string;
-    callingNumber: string;
-    reasonCd: string;
-    calledId?: string;
-    calledInfo?: string;
-    srcFuncCode?: string;
-    srcFuncName?: string;
-    refProcKey?: string;
-    reasonDesc?: string;
-  }) {
+  doSystemCall: async function (
+    payload: doSystemCallReqPayload
+  ): doSystemCallResPayload {
     let result = await axios.post("/sys_dial/03", payload);
     return result.data.body;
   },

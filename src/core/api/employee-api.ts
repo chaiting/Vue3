@@ -1,5 +1,6 @@
 import { forEach, filter } from "lodash-es";
 import axios from "axios";
+import type { doQryUserListResPayload } from "@/core/type/employee-api";
 
 export default {
   /**
@@ -8,14 +9,14 @@ export default {
    * @param {*} payload.allSubordinate 是否包含單位層級(含子單位)以下所有人(Y|N)
    * @param {*} payload.grpIdList 組織/群組代碼清單
    * @param {*} payload.isHiredOnly 是否限在職人員(Y|N)
-   * @param {*} payload.valueType Value類型, A: AD帳號、E: 員工編號
+   * @param {*} payload.valueType value類型, A: AD帳號、E: 員工編號
    */
   doQryUserList: async function (payload: {
     allSubordinate?: string;
     grpIdList?: string[];
     isHiredOnly?: string;
     valueType?: string;
-  }) {
+  }): doQryUserListResPayload {
     let result = await axios.post("/employee/01", payload);
     let body = result.data.body;
 

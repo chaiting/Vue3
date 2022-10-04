@@ -115,6 +115,7 @@ import codeApi from "@/core/api/code-api";
 import sysDialApi from "@/core/api/sys-dial-api";
 import customerApi from "@/core/api/customer-api";
 import { useProfileStore } from "@/core/store/profile";
+import type { CustomerDialList } from "@/core/type/sys-dial-api";
 
 const profileStore = useProfileStore();
 
@@ -217,7 +218,7 @@ const columns = ref([
   },
 ]);
 // 顧客撥號記錄清單
-const dialRecordList = ref([]);
+const dialRecordList = ref<CustomerDialList>([]);
 
 const optUserProfile = computed(() => {
   return profileStore.optUserProfile;
@@ -277,7 +278,7 @@ async function doGetDialInfo() {
 
   // 3. 查詢顧客撥號紀錄 -----------------------------------------------------------------------------------------------
   let result = await sysDialApi.doQryCustomerDialHistory(props.customerId);
-  dialRecordList.value = result.customerDialList;
+  dialRecordList.value = result.customerDialList || [];
 }
 /**
  * 關閉視窗

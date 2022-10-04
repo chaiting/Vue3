@@ -57,6 +57,7 @@ import isBlank from "is-blank";
 import { onDeactivated, reactive, computed, ref } from "vue";
 import { split, head, drop, join } from "lodash-es";
 import infoCardApi from "@/core/api/info-card-api";
+import type { Nullable } from "../type/utils";
 
 const props = defineProps({
   // 使用者AD帳號
@@ -68,11 +69,11 @@ const props = defineProps({
 // 被查詢者AD帳號
 const queriedAdAccount = ref("");
 // 使用者卡片資訊
-const userInfoCard = ref({
+const userInfoCard = reactive({
   cname: "",
   deptName: "",
   deptPhoneNo: "",
-  lempDeptSectId: "",
+  empDeptSectId: "",
   employeeNo: "",
   genderCode: "",
   genderName: "",
@@ -84,7 +85,7 @@ const userInfoCard = ref({
   officePhoneext: "",
   positionCode: "",
   positionName: "",
-  userExtension: null,
+  userExtension: null as Nullable<string>,
 });
 // 使用者處級單位名稱
 const userDivision = ref("");
@@ -99,17 +100,15 @@ const alertModal = reactive({
 
 /** 信箱連結 */
 const emailLink = computed(() => {
-  return "mailto:" + userInfoCard.value.officeEmail;
+  return "mailto:" + userInfoCard.officeEmail;
 });
 
 /** 受話者電話號碼 */
 const telephone = computed(() => {
-  if (userInfoCard.value.deptPhoneNo && userInfoCard.value.officePhoneext) {
-    return (
-      userInfoCard.value.deptPhoneNo + "#" + userInfoCard.value.officePhoneext
-    );
+  if (userInfoCard.deptPhoneNo && userInfoCard.officePhoneext) {
+    return userInfoCard.deptPhoneNo + "#" + userInfoCard.officePhoneext;
   }
-  return userInfoCard.value.deptPhoneNo;
+  return userInfoCard.deptPhoneNo;
 });
 
 /** 受話者部門層級以下單位 */
@@ -122,13 +121,13 @@ const department = computed(() => {
 
 /** 受話者性別 */
 const sex = computed(() => {
-  if (!userInfoCard.value.genderCode) return;
-  return userInfoCard.value.genderCode === "1" ? "male" : "female";
+  if (!userInfoCard.genderCode) return;
+  return userInfoCard.genderCode === "1" ? "male" : "female";
 });
 
 /** 是否可進行撥號 */
 const dialable = computed(() => {
-  return userInfoCard.value.isDialable === "Y" || true; // Y: 可撥號
+  return userInfoCard.isDialable === "Y" || true; // Y: 可撥號
 });
 
 /**
@@ -139,7 +138,7 @@ async function doAutoDial() {
   alertModal.content = "系統撥號中...";
   alertModal.loading = true;
 
-  await infoCardApi.callAutoDial(userInfoCard.value);
+  await infoCardApi.callAutoDial(userInfoCard);
 
   setTimeout(() => {
     alertModal.loading = false;
@@ -161,12 +160,29 @@ async function doGetEmployeeInfoCard() {
 
   // 2. 查詢資訊小卡片資訊 -------------------------------------------------------------------------------------------
   queriedAdAccount.value = props.adAccount;
-  userInfoCard.value = await infoCardApi.doGetEmployeeInfoCard({
+  const result = await infoCardApi.doGetEmployeeInfoCard({
     adAccount: props.adAccount,
   });
 
+  userInfoCard.cname = result.cname;
+  userInfoCard.deptName = result.deptName;
+  userInfoCard.deptPhoneNo = result.deptPhoneNo || "";
+  userInfoCard.empDeptSectId = result.empDeptSectId;
+  userInfoCard.employeeNo = result.employeeNo;
+  userInfoCard.genderCode = result.genderCode || "";
+  userInfoCard.genderName = result.genderName || "";
+  userInfoCard.isCreditCardMember = result.isCreditCardMember;
+  userInfoCard.isDialable = result.isDialable;
+  userInfoCard.jobTitleCode = result.jobTitleCode;
+  userInfoCard.jobTitleName = result.jobTitleName;
+  userInfoCard.officeEmail = result.officeEmail || "";
+  userInfoCard.officePhoneext = result.officePhoneext || "";
+  userInfoCard.positionCode = result.positionCode || "";
+  userInfoCard.positionName = result.positionName || "";
+  userInfoCard.userExtension = result.userExtension;
+
   // 3. 取得被查詢者所屬單位清單 -------------------------------------------------------------------------------------
-  let deptName = split(userInfoCard.value.deptName, " ");
+  let deptName = split(userInfoCard.deptName, " ");
   userDivision.value = head(deptName)!;
   userDept.value = drop(deptName);
 }

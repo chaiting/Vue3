@@ -10,7 +10,7 @@ export default {
   doSaveFrontendAccessLog: async function (payload: {
     resourceUri: string;
     resourceType: string;
-  }) {
+  }): Promise<number> {
     return await axios.post("/frontend_access_log/01", payload);
   },
 };
