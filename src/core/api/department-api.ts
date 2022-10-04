@@ -1,4 +1,10 @@
 import axios from "axios";
+import type {
+  doQryDeptListReqPayload,
+  doQryDeptListResPayload,
+  doQryUpperUnitsReqPayload,
+  doQryUpperUnitsResPayload,
+} from "@/core/type/department-api";
 
 // 組織/群組清單對應快取暫存表
 const DEPTS_CACHE_MAP = new Map();
@@ -16,13 +22,9 @@ export default {
    * @param {*} payload.grpUnitcode 單位層級代碼
    * @param {*} payload.upGrpIdList 上層組織/群組代碼清單
    */
-  doQryDeptList: async function (payload: {
-    activatedGrp?: string;
-    allSubordinate?: string;
-    dataSrc?: string;
-    grpUnitcode?: string;
-    upGrpIdList?: string[];
-  }) {
+  doQryDeptList: async function (
+    payload: doQryDeptListReqPayload
+  ): doQryDeptListResPayload {
     let cacheKey = JSON.stringify(payload);
     let result = DEPTS_CACHE_MAP.get(cacheKey);
 
@@ -39,10 +41,9 @@ export default {
    * @param {*} payload.grpId 組織/群組代碼
    * @param {*} payload.activatedGrp 是否限啟用組織/群組(Y|N)
    */
-  doQryUpperUnits: async function (payload: {
-    grpId: string;
-    activatedGrp?: string;
-  }) {
+  doQryUpperUnits: async function (
+    payload: doQryUpperUnitsReqPayload
+  ): doQryUpperUnitsResPayload {
     let cacheKey = JSON.stringify(payload);
     let result = UPPER_DEPTS_CACHE_MAP.get(cacheKey);
 
