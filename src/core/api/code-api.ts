@@ -47,8 +47,8 @@ export default {
   },
   /**
    * 代碼名稱查詢
-   * @param {*} ctId 類別代碼
-   * @param {*} cdId 明細代碼
+   * @param ctId 類別代碼
+   * @param cdId 明細代碼
    */
   doGetCodeName: async function (
     ctId: number,

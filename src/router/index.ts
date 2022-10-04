@@ -94,6 +94,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const profileStore = useProfileStore();
+  console.log(profileStore);
   // 1. 如果到下面頁面，直接放行
   if (
     to.name === "NotFound" ||
@@ -110,7 +111,7 @@ router.beforeEach((to, from, next) => {
   }
 
   // 3. 如果已經登入過，發送一個request到server端紀錄Access Log
-  if (profileStore.isLogin) {
+  if (profileStore.optUserProfile.adAccount) {
     frontendAccessLogApi
       .doSaveFrontendAccessLog({
         resourceUri: to.path,
@@ -120,7 +121,7 @@ router.beforeEach((to, from, next) => {
   }
 
   // 4. 如果尚未取得基本資料，發送一個 request到server端取得，並放入store裡
-  if (!profileStore.isLogin) {
+  if (!profileStore.optUserProfile.adAccount) {
     userProfileApi.doFetchLoginUserProfile().then((userProfile) => {
       if (userProfile?.adAccount) {
         profileStore.doStoredUserProfile(userProfile);

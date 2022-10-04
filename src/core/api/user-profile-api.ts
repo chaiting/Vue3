@@ -4,6 +4,7 @@ import type {
   doFetchLoginUserProfileResPayload,
   doFetchOptUserProfileProfileResPayload,
   doSwitchIdentifyProfileResPayload,
+  Profile,
 } from "@/core/type/user-profile-api";
 
 export default {
@@ -25,8 +26,8 @@ export default {
     },
   /**
    * 代理人身份切換
-   * @param {*} payload 代理人身份切換參數
-   * @param {*} payload.account AD帳號
+   * @param payload 代理人身份切換參數
+   * @param payload.account AD帳號
    */
   doSwitchIdentify: async function (payload: {
     adAccount: string;
@@ -37,7 +38,7 @@ export default {
     const profileStore = useProfileStore();
 
     if (userProfile) {
-      profileStore.doUpdateOptUserProfile(result.data.body);
+      profileStore.doUpdateOptUserProfile(result.data.body as Profile);
     }
 
     return userProfile;

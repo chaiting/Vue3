@@ -3,9 +3,9 @@ import axios from "axios";
 export default {
   /**
    * 查詢顧客電話清單
-   * @param {*} payload 查詢參數
-   * @param {*} payload.customerId 顧客ID
-   * @param {*} payload.customerType 顧客類別
+   * @param payload 查詢參數
+   * @param payload.customerId 顧客ID
+   * @param payload.customerType 顧客類別
    */
   doQryCustomerPhones: async function (payload: {
     customerId: string;
@@ -16,10 +16,10 @@ export default {
   },
   /**
    * 查詢顧客地址清單
-   * @param {*} payload 查詢參數
-   * @param {*} payload.customerId 顧客ID
-   * @param {*} payload.customerType 顧客類別
-   * @param {*} payload.addressType 地址類別
+   * @param payload 查詢參數
+   * @param payload.customerId 顧客ID
+   * @param payload.customerType 顧客類別
+   * @param payload.addressType 地址類別
    */
   doQryCustomerAddresses: async function (payload: {
     customerId: string;

@@ -62,8 +62,8 @@ let diff = new Date().valueOf() - new Date.valueOf(); // v
 ```
 
 TS
-https://stackoverflow.com/questions/42233987/how-to-configure-custom-global-interfaces-d-ts-files-for-typescript/42257742#42257742
-https://github.com/rollup/rollup/issues/2793
-https://github.com/rollup/rollup/blob/master/CHANGELOG.md#breaking-changes
+- https://stackoverflow.com/questions/42233987/how-to-configure-custom-global-interfaces-d-ts-files-for-typescript/42257742#42257742
+- https://github.com/rollup/rollup/issues/2793
+- https://github.com/rollup/rollup/blob/master/CHANGELOG.md#breaking-changes
 
 

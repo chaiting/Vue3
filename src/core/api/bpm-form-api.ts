@@ -122,8 +122,8 @@ export default {
   },
   /**
    * 取得送單傳送類型
-   * @param {*} payload 查詢參數
-   * @param {*} payload.formId 表單代碼
+   * @param payload 查詢參數
+   * @param payload.formId 表單代碼
    */
   doQryNextStageAction: async function (payload: {
     formId?: string;
@@ -137,8 +137,8 @@ export default {
   },
   /**
    * 取得BPM FORM資訊
-   * @param {*} payload 查詢參數
-   * @param {*} payload.formId 表單代碼
+   * @param payload 查詢參數
+   * @param payload.formId 表單代碼
    */
   doGetBpmForm: async function (payload: {
     formId?: string;

@@ -24,8 +24,8 @@ const singleLogoutNtifier = throttle(() => {
 export default {
   /**
    * 以postMessage的方式，廣播訊息給各介接子系統
-   * @param {*} message 通知訊息
-   * @param {*} targetOrigin 指定哪些窗口能接收到消息事件
+   * @param message 通知訊息
+   * @param targetOrigin 指定哪些窗口能接收到消息事件
    */
   postMessage: function (message: string, targetOrigin: string) {
     window.frames["message_bridge_iframe"].postMessage(message, targetOrigin);
