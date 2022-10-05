@@ -2,7 +2,7 @@
   <div>
     <Row :gutter="20">
       <Col flex="300px">
-        <Select v-model="locale">
+        <Select v-model="$i18n.locale">
           <Option value="zh-TW">中文</Option>
           <Option value="en-US">English</Option>
         </Select>
@@ -20,5 +20,5 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
 </script>

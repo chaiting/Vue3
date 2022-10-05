@@ -94,7 +94,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const profileStore = useProfileStore();
-  console.log(profileStore);
   // 1. 如果到下面頁面，直接放行
   if (
     to.name === "NotFound" ||

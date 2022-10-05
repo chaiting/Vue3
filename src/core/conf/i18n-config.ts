@@ -4,6 +4,10 @@ import zh_TW from "view-ui-plus/dist/locale/zh-TW";
 import en from "view-ui-plus/dist/locale/en-US";
 
 export const i18n = createI18n({
+  allowComposition: true,
+  globalInjection: true,
+  legacy: false,
+  fallbackLocale: "zh-TW",
   locale: "zh-TW",
   messages: {
     "zh-TW": { ...zh_TW, hi: "你好", apple: "蘋果" },
