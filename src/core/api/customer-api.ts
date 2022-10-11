@@ -1,4 +1,10 @@
 import axios from "axios";
+import type {
+  CustomerAddressReqType,
+  CustomerAddressResType,
+  CustomerPhoneReqType,
+  CustomerPhoneResType,
+} from "@/core/type/customer-api";
 
 export default {
   /**
@@ -7,10 +13,9 @@ export default {
    * @param payload.customerId 顧客ID
    * @param payload.customerType 顧客類別
    */
-  doQryCustomerPhones: async function (payload: {
-    customerId: string;
-    customerType: string;
-  }) {
+  doQryCustomerPhones: async function (
+    payload: CustomerPhoneReqType
+  ): CustomerPhoneResType {
     let result = await axios.post("/customer/01", payload);
     return result.data.body;
   },
@@ -21,11 +26,9 @@ export default {
    * @param payload.customerType 顧客類別
    * @param payload.addressType 地址類別
    */
-  doQryCustomerAddresses: async function (payload: {
-    customerId: string;
-    customerType: string;
-    addressType?: string;
-  }) {
+  doQryCustomerAddresses: async function (
+    payload: CustomerAddressReqType
+  ): CustomerAddressResType {
     let result = await axios.post("/customer/02", payload);
     return result.data.body;
   },

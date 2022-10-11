@@ -1,16 +1,15 @@
 import axios from "axios";
 import type {
-  doGetEmployeeDialInfoResPayload,
-  doQryCustomerDialHistoryResPayload,
-  doSystemCallReqPayload,
-  doSystemCallResPayload,
+  EmpDialInfoResType,
+  DialHistoryListResType,
+  SysDialReqType,
 } from "@/core/type/sys-dial-api";
 
 export default {
   /**
    * 查詢行內使用者撥號資訊
    */
-  doGetEmployeeDialInfo: async function (): doGetEmployeeDialInfoResPayload {
+  doGetEmployeeDialInfo: async function (): EmpDialInfoResType {
     let result = await axios.post("/sys_dial/01");
     return result.data.body;
   },
@@ -20,7 +19,7 @@ export default {
    */
   doQryCustomerDialHistory: async function (
     payload: string
-  ): doQryCustomerDialHistoryResPayload {
+  ): DialHistoryListResType {
     let result = await axios.post("/sys_dial/02", {
       customerId: payload,
       pageNo: "1",
@@ -43,9 +42,7 @@ export default {
    * @param payload.refProcKey 業務鍵值
    * @param payload.reasonDesc 通話原因備註
    */
-  doSystemCall: async function (
-    payload: doSystemCallReqPayload
-  ): doSystemCallResPayload {
+  doSystemCall: async function (payload: SysDialReqType): Promise<boolean> {
     let result = await axios.post("/sys_dial/03", payload);
     return result.data.body;
   },

@@ -1,4 +1,4 @@
-export interface doQryDeptListReqPayload {
+export interface DepartmentReqType {
   activatedGrp?: string;
   allSubordinate?: string;
   dataSrc?: string;
@@ -6,16 +6,16 @@ export interface doQryDeptListReqPayload {
   upGrpIdList?: string[];
 }
 
-export interface doQryUpperUnitsReqPayload {
+export type DepartmentResType = Promise<
+  Array<{ grpId: string; grpNm: string }>
+>;
+
+export interface DepartmentUnitReqType {
   grpId: string;
   activatedGrp?: string;
 }
 
-export type doQryDeptListResPayload = Promise<
-  Array<{ grpId: string; grpNm: string }>
->;
-
-export type doQryUpperUnitsResPayload = Promise<
+export type DepartmentUnitResType = Promise<
   Array<{
     grpId: string;
     grpNm: string;

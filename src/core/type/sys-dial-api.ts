@@ -1,3 +1,9 @@
+export type EmpDialInfoResType = Promise<{
+  extension?: string;
+  isCreditCardMember: string;
+  isDialable: string;
+}>;
+
 export type CustomerDialList = Array<{
   callStatus: string;
   callStatusNm: string;
@@ -14,7 +20,7 @@ export type CustomerDialList = Array<{
   userNo: string;
 }>;
 
-export interface doSystemCallReqPayload {
+export interface SysDialReqType {
   calledNumber: string;
   calledNumberSrcField: string;
   calledObjType: string;
@@ -28,16 +34,8 @@ export interface doSystemCallReqPayload {
   reasonDesc?: string;
 }
 
-export type doGetEmployeeDialInfoResPayload = Promise<{
-  extension?: string;
-  isCreditCardMember: string;
-  isDialable: string;
-}>;
-
-export type doQryCustomerDialHistoryResPayload = Promise<{
+export type DialHistoryListResType = Promise<{
   customerDialList?: CustomerDialList;
   pageNo: number;
   totalCount: number;
 }>;
-
-export type doSystemCallResPayload = Promise<boolean>;

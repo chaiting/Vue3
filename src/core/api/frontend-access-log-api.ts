@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { AccessLogReqType } from "@/core/type/frontend-access-log-api";
 
 export default {
   /**
@@ -7,10 +8,9 @@ export default {
    * @param payload.resourceUri 資源URI
    * @param payload.resourceType 資源類型
    */
-  doSaveFrontendAccessLog: async function (payload: {
-    resourceUri: string;
-    resourceType: string;
-  }): Promise<number> {
+  doSaveFrontendAccessLog: async function (
+    payload: AccessLogReqType
+  ): Promise<number> {
     return await axios.post("/frontend_access_log/01", payload);
   },
 };

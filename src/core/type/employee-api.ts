@@ -7,4 +7,11 @@ export type UserList = Array<{
   hireSts: "hired" | "left" | "";
 }>;
 
-export type doQryUserListResPayload = Promise<UserList>;
+export interface EmployeeReqType {
+  allSubordinate?: string;
+  grpIdList?: string[];
+  isHiredOnly?: string;
+  valueType?: string;
+}
+
+export type EmployeeResType = Promise<UserList>;

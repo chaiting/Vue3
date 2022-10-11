@@ -116,6 +116,7 @@ import sysDialApi from "@/core/api/sys-dial-api";
 import customerApi from "@/core/api/customer-api";
 import { useProfileStore } from "@/core/store/profile";
 import type { CustomerDialList } from "@/core/type/sys-dial-api";
+import type { CustomerPhoneList as CustomerPhoneListType } from "@/core/type/customer-api";
 
 const profileStore = useProfileStore();
 
@@ -181,7 +182,7 @@ const isDialable = ref(false);
 // 顧客性別名稱
 const sexName = ref("");
 // 顧客電話清單
-const customerPhoneList = ref<{ telNumber: string; telType: string }[]>([]);
+const customerPhoneList = ref<CustomerPhoneListType>([]);
 // table header
 const columns = ref([
   {

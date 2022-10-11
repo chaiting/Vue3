@@ -1,8 +1,8 @@
 import axios from "axios";
 import type {
-  callAutoDialReqPayload,
-  callAutoDialResPayload,
-  doGetEmployeeInfoCardResPayload,
+  InfoCardReqType,
+  EmployeeInfoCardResType,
+  callAutoDialReqType,
 } from "@/core/type/info-card-api";
 
 export default {
@@ -11,9 +11,9 @@ export default {
    * @param payload 查詢參數
    * @param payload.adAccount AD帳號
    */
-  doGetEmployeeInfoCard: async function (payload: {
-    adAccount: string;
-  }): doGetEmployeeInfoCardResPayload {
+  doGetEmployeeInfoCard: async function (
+    payload: InfoCardReqType
+  ): EmployeeInfoCardResType {
     let result = await axios.post("/info_card/01", payload);
     return result.data.body;
   },
@@ -28,8 +28,8 @@ export default {
    * @param payload.isCreditCardMember 是否為卡處人員
    */
   callAutoDial: async function (
-    payload: callAutoDialReqPayload
-  ): callAutoDialResPayload {
+    payload: callAutoDialReqType
+  ): Promise<boolean> {
     let result = await axios.post("/info_card/02", {
       callingNumber: payload.userExtension,
       calledId: payload.employeeNo,

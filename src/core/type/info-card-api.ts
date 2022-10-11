@@ -1,15 +1,10 @@
 import type { Nullable } from "@/core/type/utils";
 
-export type callAutoDialReqPayload = {
-  cname: string;
-  employeeNo: string;
-  deptPhoneNo: string;
-  userExtension: Nullable<string>;
-  officePhoneext: string;
-  isCreditCardMember: string;
-};
+export interface InfoCardReqType {
+  adAccount: string;
+}
 
-export type doGetEmployeeInfoCardResPayload = Promise<{
+export type EmployeeInfoCardResType = Promise<{
   cname: string;
   deptName: string;
   deptPhoneNo?: string;
@@ -28,4 +23,11 @@ export type doGetEmployeeInfoCardResPayload = Promise<{
   userExtension: Nullable<string>;
 }>;
 
-export type callAutoDialResPayload = Promise<boolean>;
+export type callAutoDialReqType = {
+  cname: string;
+  employeeNo: string;
+  deptPhoneNo: string;
+  userExtension: Nullable<string>;
+  officePhoneext: string;
+  isCreditCardMember: string;
+};

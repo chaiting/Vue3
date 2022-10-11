@@ -82,7 +82,7 @@ type UpperGrpList = Array<{
   grpUnitcode: string;
 }>;
 
-export type Profile = {
+export type UserProfile = {
   adAccount: string;
   email?: string;
   empName: string;
@@ -111,8 +111,4 @@ export type Profile = {
   upperGrpList: UpperGrpList;
 };
 
-export type doFetchLoginUserProfileResPayload = Promise<Profile>;
-
-export type doFetchOptUserProfileProfileResPayload = Promise<Profile>;
-
-export type doSwitchIdentifyProfileResPayload = Promise<Profile>;
+export type UserProfileResType = Promise<UserProfile>;

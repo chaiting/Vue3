@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { cloneDeep } from "lodash-es";
-import type { LeftMenuList, Profile } from "@/core/type/user-profile-api";
+import type { LeftMenuList, UserProfile } from "@/core/type/user-profile-api";
 
 const INIT_USER_PROFILE = {
   empName: "",
@@ -9,7 +9,7 @@ const INIT_USER_PROFILE = {
     sysNm: "",
     leftMenuList: [] as LeftMenuList,
   },
-} as Partial<Profile>;
+} as Partial<UserProfile>;
 
 export const useProfileStore = defineStore({
   id: "profile",
@@ -36,7 +36,7 @@ export const useProfileStore = defineStore({
      * 儲存使用者基本資料
      * @param payload 使用者基本資料
      */
-    doStoredUserProfile(payload: Profile) {
+    doStoredUserProfile(payload: UserProfile) {
       this.userProfile.optUserProfile = payload;
       this.userProfile.loginUserProfile = payload;
     },
@@ -44,7 +44,7 @@ export const useProfileStore = defineStore({
      * 更新操作使用者基本資料
      * @param payload 操作者基本資料
      */
-    doUpdateOptUserProfile(payload: Profile) {
+    doUpdateOptUserProfile(payload: UserProfile) {
       this.userProfile.optUserProfile = payload;
     },
     /**

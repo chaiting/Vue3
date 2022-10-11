@@ -3,7 +3,7 @@ import type { Flag } from "@/core/type/code-api";
 /**
  * bpm作業參數
  */
-interface ProcessPayload {
+interface FormBase {
   // 表單代碼
   formId: string;
   // 流程代碼
@@ -26,7 +26,7 @@ interface ProcessPayload {
 /**
  * 退回、結案、銷案作業參數
  */
-export interface ActionProcessPayload extends ProcessPayload {
+export interface FormSendBackReqType extends FormBase {
   // 關卡動作
   actionId?: string;
 }
@@ -34,7 +34,7 @@ export interface ActionProcessPayload extends ProcessPayload {
 /**
  * 送單參數
  */
-export interface SendProcessPayload extends ProcessPayload {
+export interface FormSendReqType extends FormBase {
   // 傳送對象
   processorId: string;
   // 傳送對象名稱
@@ -46,7 +46,7 @@ export interface SendProcessPayload extends ProcessPayload {
 /**
  * 起單參數
  */
-export interface StartProcessPayload extends ProcessPayload {
+export interface ProcessStartReqType extends FormBase {
   // 業務別代碼
   businessCode?: string;
   // 顧客ID
@@ -66,7 +66,7 @@ export interface StartProcessPayload extends ProcessPayload {
 /**
  * 轉移處理權參數
  */
-export interface TransferProcessPayload {
+export interface FormTransferReqType {
   // 表單代碼
   formId: string;
   // 新處理人員編
@@ -77,25 +77,26 @@ export interface TransferProcessPayload {
   sysId?: string;
 }
 
-interface ProcessResponse {
+interface ProcessRes {
   message: string[];
   statusCode: string;
 }
 
-export type doStartProcessResPayload = Promise<
-  ProcessResponse & { bpmFormSeqNo: string }
->;
+export interface FormReqType {
+  actionId?: string; // todo
+  formId?: string;
+}
 
-export type doSendProcessResPayload = Promise<ProcessResponse>;
+export type FormStartResType = Promise<ProcessRes & { bpmFormSeqNo: string }>;
 
-export type doSendBackResPayload = Promise<ProcessResponse | undefined>;
+export type FormSendResType = Promise<ProcessRes | undefined>;
 
-export type doCloseProcessResPayload = Promise<ProcessResponse>;
+export type doCloseProcessResType = Promise<ProcessRes>;
 
-export type doRevokeProcessResPayload = Promise<ProcessResponse>;
+export type doRevokeProcessResType = Promise<ProcessRes>;
 
-export type doQryStageProcessorResPayload = Promise<
-  | (ProcessResponse & {
+export type StageProcessorResType = Promise<
+  | (ProcessRes & {
       processorType: string;
       stageProcessors: { processorId: string; processorName: string }[];
     })
@@ -108,11 +109,9 @@ type StageAction = {
   >;
 };
 
-export type doQryNextStageActionResPayload = Promise<
-  ProcessResponse & StageAction
->;
+export type StageActionResType = Promise<ProcessRes & StageAction>;
 
-export type doGetBpmFormResPayload = Promise<{
+export type FormInfoResType = Promise<{
   bpmFormSeqNo: string;
   bpmHistorySeqNo: string;
   flowCode: string;

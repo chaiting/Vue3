@@ -4,7 +4,7 @@
 
 ```ts
 // 命名規則待確認
-import type { callAutoDialReqPayload, callAutoDialResPayload } from "@/core/type/info-card-api"; 
+import type { callAutoDialReqType, callAutoDialResType } from "@/core/type/info-card-api"; 
 
 export default {
   /**
@@ -17,7 +17,7 @@ export default {
    * @param payload.officePhoneext 單位分機
    * @param payload.isCreditCardMember 是否為卡處人員
    */
-  callAutoDial: async function (payload: callAutoDialReqPayload): callAutoDialResPayload {
+  callAutoDial: async function (payload: callAutoDialReqType): callAutoDialResType {
     let result = await axios.post("/info_card/02", {
       callingNumber: payload.userExtension,
       calledId: payload.employeeNo,
@@ -47,7 +47,7 @@ export default {
   doStartProcess: async function (
     flowCode: string,
     payload: StartProcessPayload
-  ): doStartProcessResPayload {
+  ): doStartProcessResType {
     let result = await axios.post("/bpm_form/do_start_process/" + flowCode, payload);
     return result.data.body;
   }

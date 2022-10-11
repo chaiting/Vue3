@@ -27,7 +27,7 @@ export interface Flag {
 /**
  * 代碼清單查詢參數
  */
-export interface CodePayload extends Flag {
+export interface CodeReqType extends Flag {
   // 類別代碼
   ctId: number;
   // 明細代碼
@@ -39,12 +39,12 @@ export interface CodePayload extends Flag {
 /**
  * 代碼{label,value}清單查詢參數
  */
-export interface CodeLabelPayload extends CodePayload {
+export interface CodeLabelReqType extends CodeReqType {
   // 是否顯示代碼
   showCode: boolean;
 }
 
-export type doQryCodeListResPayload = Promise<
+export type CodeResType = Promise<
   Array<
     {
       // 明細代碼
@@ -59,8 +59,6 @@ export type doQryCodeListResPayload = Promise<
   >
 >;
 
-export type doQryCodeLabelValueListResPayload = Promise<
-  { value: string; label: string }[]
->;
+export type CodeLabelResType = Promise<Array<{ value: string; label: string }>>;
 
-export type doGetCodeNameResPayload = Promise<string>;
+export type CodeNameResType = Promise<string>;

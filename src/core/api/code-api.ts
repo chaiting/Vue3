@@ -2,11 +2,11 @@ import axios from "axios";
 import isBlank from "is-blank";
 import { map, head } from "lodash-es";
 import type {
-  CodePayload,
-  CodeLabelPayload,
-  doQryCodeListResPayload,
-  doGetCodeNameResPayload,
-  doQryCodeLabelValueListResPayload,
+  CodeReqType,
+  CodeResType,
+  CodeLabelReqType,
+  CodeLabelResType,
+  CodeNameResType,
 } from "@/core/type/code-api";
 
 // 代碼對應快取暫存表
@@ -17,9 +17,7 @@ export default {
    * 代碼清單查詢
    * @param payload 代碼清單查詢參數
    */
-  doQryCodeList: async function (
-    payload: CodePayload
-  ): doQryCodeListResPayload {
+  doQryCodeList: async function (payload: CodeReqType): CodeResType {
     let cacheKey = JSON.stringify(payload);
     let result = CODES_CACHE_MAP.get(cacheKey);
 
@@ -35,8 +33,8 @@ export default {
    * @param payload 代碼{label,value}清單查詢參數
    */
   doQryCodeLabelValueList: async function (
-    payload: CodeLabelPayload
-  ): doQryCodeLabelValueListResPayload {
+    payload: CodeLabelReqType
+  ): CodeLabelResType {
     const result = await this.doQryCodeList(payload);
     return map(result, (row) => {
       return {
@@ -50,10 +48,7 @@ export default {
    * @param ctId 類別代碼
    * @param cdId 明細代碼
    */
-  doGetCodeName: async function (
-    ctId: number,
-    cdId: string
-  ): doGetCodeNameResPayload {
+  doGetCodeName: async function (ctId: number, cdId: string): CodeNameResType {
     if (isBlank(ctId) || isBlank(cdId)) {
       return "";
     }

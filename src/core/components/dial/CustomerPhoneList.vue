@@ -39,7 +39,7 @@ defineProps({
   },
   // 電話清單 Ex: [{ telNumber: "02-123456789", telType: "H" }]
   phoneList: {
-    type: Array as PropType<{ telNumber: string; telType: string }[]>,
+    type: Array as PropType<{ telNumber?: string; telType: string }[]>,
     required: true,
   },
   // 顧客ID
