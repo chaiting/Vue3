@@ -44,6 +44,9 @@ export interface CodeLabelReqType extends CodeReqType {
   showCode: boolean;
 }
 
+/**
+ * 代碼清單
+ */
 export type CodeResType = Promise<
   Array<
     {
@@ -59,6 +62,14 @@ export type CodeResType = Promise<
   >
 >;
 
-export type CodeLabelResType = Promise<Array<{ value: string; label: string }>>;
-
-export type CodeNameResType = Promise<string>;
+/**
+ * 代碼{label,value}清單
+ */
+export type CodeLabelResType = Promise<
+  Array<{
+    // 明細代碼
+    value: string;
+    // 明細名稱
+    label: string;
+  }>
+>;

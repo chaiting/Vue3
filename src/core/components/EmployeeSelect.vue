@@ -41,7 +41,7 @@ const props = defineProps({
   },
   // Value類型, A: AD帳號、E: 員工編號
   valueType: {
-    type: String,
+    type: String as PropType<"A" | "E">,
     required: false,
     default: "A",
     validator: function (value: string) {
@@ -50,7 +50,7 @@ const props = defineProps({
   },
   // 是否限在職人員(Y|N)
   isHiredOnly: {
-    type: String,
+    type: String as PropType<"Y" | "N">,
     required: false,
     default: "Y",
     validator: function (value: string) {
@@ -59,7 +59,7 @@ const props = defineProps({
   },
   // 是否包含單位層級(含子單位)以下所有人(Y|N)
   allSubordinate: {
-    type: String,
+    type: String as PropType<"Y" | "N">,
     required: false,
     default: "N",
     validator: function (value: string) {

@@ -18,3 +18,5 @@ export const i18n = createI18n({
 export default (app: App) => {
   app.use(i18n);
 };
+
+// https://www.iviewui.com/view-ui-plus/guide/i18n

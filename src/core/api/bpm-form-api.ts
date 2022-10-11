@@ -16,7 +16,7 @@ export default {
   /**
    * 起單作業
    * @param flowCode 流程代碼
-   * @param payload 起單參數
+   * @param payload 起單作業參數
    */
   doStartProcess: async function (
     flowCode: string,
@@ -29,8 +29,8 @@ export default {
     return result.data.body;
   },
   /**
-   * 送單
-   * @param payload 送單參數
+   * 送單作業
+   * @param payload 送單作業參數
    */
   doSendProcess: async function (payload: FormSendReqType): FormSendResType {
     let result = await axios.post("/bpm_form/do_send_process", payload);
@@ -87,8 +87,6 @@ export default {
    * 取得關卡處理者資料
    * @param flowCode 流程代碼
    * @param payload 查詢參數
-   * @param payload.actionId 關卡動作代碼
-   * @param payload.formId 表單代碼
    */
   doQryStageProcessor: async function (
     flowCode: string,
@@ -117,9 +115,8 @@ export default {
     }
   },
   /**
-   * 取得送單傳送類型
-   * @param payload 查詢參數
-   * @param payload.formId 表單代碼
+   * 取得表單傳送類型
+   * @param payload 表單參數
    */
   doQryNextStageAction: async function (
     payload: FormReqType
@@ -134,7 +131,6 @@ export default {
   /**
    * 取得BPM FORM資訊
    * @param payload 查詢參數
-   * @param payload.formId 表單代碼
    */
   doGetBpmForm: async function (payload: FormReqType): FormInfoResType {
     let result = await axios.post("/bpm_form/do_get_bpm_form", payload);

@@ -110,7 +110,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch, computed } from "vue";
+import { onMounted, ref, watch, computed, type PropType } from "vue";
 import departmentApi from "@/core/api/department-api";
 import { find } from "lodash-es";
 
@@ -268,7 +268,7 @@ const props = defineProps({
   },
   // 是否限啟用組織/群組(Y|N)
   activatedGrp: {
-    type: String,
+    type: String as PropType<"Y" | "N">,
     required: false,
     default: "Y", // Y: 限啟用組織/群組
   },

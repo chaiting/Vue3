@@ -46,7 +46,7 @@ const props = defineProps({
   },
   // 是否限啟用組織/群組(Y|N)
   activatedGrp: {
-    type: String,
+    type: String as PropType<"Y" | "N">,
     required: false,
     default: "Y",
     validator: function (value: string) {
@@ -55,7 +55,7 @@ const props = defineProps({
   },
   // 是否包含所有子單位(Y|N)
   allSubordinate: {
-    type: String,
+    type: String as PropType<"Y" | "N">,
     required: false,
     default: "N",
     validator: function (value: string) {

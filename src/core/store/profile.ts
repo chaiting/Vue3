@@ -1,13 +1,13 @@
 import { defineStore } from "pinia";
 import { cloneDeep } from "lodash-es";
-import type { LeftMenuList, UserProfile } from "@/core/type/user-profile-api";
+import type { MenuList, UserProfile } from "@/core/type/user-profile-api";
 
 const INIT_USER_PROFILE = {
   empName: "",
   empNo: "",
   system: {
     sysNm: "",
-    leftMenuList: [] as LeftMenuList,
+    leftMenuList: [] as MenuList,
   },
 } as Partial<UserProfile>;
 

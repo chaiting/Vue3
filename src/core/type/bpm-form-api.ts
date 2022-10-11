@@ -32,7 +32,7 @@ export interface FormSendBackReqType extends FormBase {
 }
 
 /**
- * 送單參數
+ * 送單作業參數
  */
 export interface FormSendReqType extends FormBase {
   // 傳送對象
@@ -44,7 +44,7 @@ export interface FormSendReqType extends FormBase {
 }
 
 /**
- * 起單參數
+ * 起單作業參數
  */
 export interface ProcessStartReqType extends FormBase {
   // 業務別代碼
@@ -64,7 +64,7 @@ export interface ProcessStartReqType extends FormBase {
 }
 
 /**
- * 轉移處理權參數
+ * 處理權移轉參數
  */
 export interface FormTransferReqType {
   // 表單代碼
@@ -82,27 +82,40 @@ interface ProcessRes {
   statusCode: string;
 }
 
+/**
+ * 表單參數
+ */
 export interface FormReqType {
-  actionId?: string; // todo
+  // 關卡動作代碼
+  actionId?: string;
+  // 表單代碼
   formId?: string;
 }
 
+/**
+ * 起單作業處理結果
+ */
 export type FormStartResType = Promise<ProcessRes & { bpmFormSeqNo: string }>;
 
+/**
+ * 送單、處理權移轉、退回、結案、銷案作業處理結果
+ */
 export type FormSendResType = Promise<ProcessRes | undefined>;
 
-export type doCloseProcessResType = Promise<ProcessRes>;
-
-export type doRevokeProcessResType = Promise<ProcessRes>;
-
+/**
+ * 關卡處理者資料
+ */
 export type StageProcessorResType = Promise<
   | (ProcessRes & {
       processorType: string;
-      stageProcessors: { processorId: string; processorName: string }[];
+      stageProcessors: Array<{ processorId: string; processorName: string }>;
     })
   | undefined
 >;
 
+/**
+ * 關卡動作資訊
+ */
 type StageAction = {
   stageAction: Array<
     Flag & { cdId: string; cdNm: string; ctId: number; typeNm: string }

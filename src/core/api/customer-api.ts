@@ -10,8 +10,6 @@ export default {
   /**
    * 查詢顧客電話清單
    * @param payload 查詢參數
-   * @param payload.customerId 顧客ID
-   * @param payload.customerType 顧客類別
    */
   doQryCustomerPhones: async function (
     payload: CustomerPhoneReqType

@@ -9,10 +9,6 @@ export default {
   /**
    * 查詢使用者清單
    * @param payload 查詢條件
-   * @param payload.allSubordinate 是否包含單位層級(含子單位)以下所有人(Y|N)
-   * @param payload.grpIdList 組織/群組代碼清單
-   * @param payload.isHiredOnly 是否限在職人員(Y|N)
-   * @param payload.valueType value類型, A: AD帳號、E: 員工編號
    */
   doQryUserList: async function (payload: EmployeeReqType): EmployeeResType {
     let result = await axios.post("/employee/01", payload);

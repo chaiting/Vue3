@@ -3,6 +3,7 @@ import { useProfileStore } from "@/core/store/profile";
 import type {
   UserProfileResType,
   UserProfile,
+  AgentProfileReqType,
 } from "@/core/type/user-profile-api";
 
 export default {
@@ -25,9 +26,9 @@ export default {
    * @param payload 代理人身份切換參數
    * @param payload.account AD帳號
    */
-  doSwitchIdentify: async function (payload: {
-    adAccount: string;
-  }): UserProfileResType {
+  doSwitchIdentify: async function (
+    payload: AgentProfileReqType
+  ): UserProfileResType {
     let result = await axios.post("/user_profile/03", payload);
     let userProfile = result.data.body;
 

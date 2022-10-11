@@ -9,7 +9,6 @@ export default {
   /**
    * 取得行內使用者資訊卡片資訊
    * @param payload 查詢參數
-   * @param payload.adAccount AD帳號
    */
   doGetEmployeeInfoCard: async function (
     payload: InfoCardReqType
@@ -20,12 +19,6 @@ export default {
   /**
    * 系統撥號
    * @param payload 撥號參數
-   * @param payload.cname 人員名稱
-   * @param payload.employeeNo 員工編號
-   * @param payload.deptPhoneNo 單位電話
-   * @param payload.userExtension 撥號參數
-   * @param payload.officePhoneext 單位分機
-   * @param payload.isCreditCardMember 是否為卡處人員
    */
   callAutoDial: async function (
     payload: callAutoDialReqType
