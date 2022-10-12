@@ -77,6 +77,9 @@ export interface FormTransferReqType {
   sysId?: string;
 }
 
+/**
+ * BPM作業處理結果
+ */
 interface ProcessRes {
   message: string[];
   statusCode: string;
@@ -122,8 +125,14 @@ type StageAction = {
   >;
 };
 
+/**
+ * 表單傳送類型
+ */
 export type StageActionResType = Promise<ProcessRes & StageAction>;
 
+/**
+ * BPM FORM資訊
+ */
 export type FormInfoResType = Promise<{
   bpmFormSeqNo: string;
   bpmHistorySeqNo: string;

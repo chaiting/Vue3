@@ -10,6 +10,7 @@ export default {
   /**
    * 查詢顧客電話清單
    * @param payload 查詢參數
+   * @returns 顧客電話清單
    */
   doQryCustomerPhones: async function (
     payload: CustomerPhoneReqType
@@ -20,9 +21,7 @@ export default {
   /**
    * 查詢顧客地址清單
    * @param payload 查詢參數
-   * @param payload.customerId 顧客ID
-   * @param payload.customerType 顧客類別
-   * @param payload.addressType 地址類別
+   * @returns 顧客地址清單
    */
   doQryCustomerAddresses: async function (
     payload: CustomerAddressReqType

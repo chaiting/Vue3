@@ -15,6 +15,7 @@ export default {
   /**
    * 代碼清單查詢
    * @param payload 代碼清單查詢參數
+   * @returns 代碼清單
    */
   doQryCodeList: async function (payload: CodeReqType): CodeResType {
     let cacheKey = JSON.stringify(payload);
@@ -30,6 +31,7 @@ export default {
   /**
    * 代碼{label,value}清單查詢
    * @param payload 代碼{label,value}清單查詢參數
+   * @return 代碼{label,value}清單
    */
   doQryCodeLabelValueList: async function (
     payload: CodeLabelReqType
@@ -46,6 +48,7 @@ export default {
    * 代碼名稱查詢
    * @param ctId 類別代碼
    * @param cdId 明細代碼
+   * @return 代碼名稱
    */
   doGetCodeName: async function (ctId: number, cdId: string): Promise<string> {
     if (isBlank(ctId) || isBlank(cdId)) {

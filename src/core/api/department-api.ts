@@ -16,6 +16,7 @@ export default {
   /**
    * 查詢組織/群組清單
    * @param payload 查詢參數
+   * @returns 組織/群組清單
    */
   doQryDeptList: async function (
     payload: DepartmentReqType
@@ -33,6 +34,7 @@ export default {
   /**
    * 查詢上層組織/群組清單
    * @param payload 查詢參數
+   * @returns 上層組織/群組清單
    */
   doQryUpperUnits: async function (
     payload: DepartmentUnitReqType

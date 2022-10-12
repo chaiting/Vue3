@@ -9,6 +9,7 @@ export default {
   /**
    * 取得行內使用者資訊卡片資訊
    * @param payload 查詢參數
+   * @returns 行內使用者資訊卡片資訊
    */
   doGetEmployeeInfoCard: async function (
     payload: InfoCardReqType
@@ -19,6 +20,7 @@ export default {
   /**
    * 系統撥號
    * @param payload 撥號參數
+   * @returns 撥號結果
    */
   callAutoDial: async function (
     payload: callAutoDialReqType

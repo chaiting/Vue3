@@ -9,6 +9,7 @@ export default {
   /**
    * 查詢使用者清單
    * @param payload 查詢條件
+   * @returns 使用者清單
    */
   doQryUserList: async function (payload: EmployeeReqType): EmployeeResType {
     let result = await axios.post("/employee/01", payload);

@@ -9,6 +9,7 @@ import type {
 export default {
   /**
    * 取得登入者基本資料
+   * @returns 登入者基本資料
    */
   doFetchLoginUserProfile: async function (): UserProfileResType {
     let result = await axios.post("/user_profile/01");
@@ -16,6 +17,7 @@ export default {
   },
   /**
    * 取得操作者基本資料
+   * @returns 操作者基本資料
    */
   doFetchOptUserProfile: async function (): UserProfileResType {
     let result = await axios.post("/user_profile/02");
@@ -23,8 +25,8 @@ export default {
   },
   /**
    * 代理人身份切換
-   * @param payload 代理人身份切換參數
-   * @param payload.account AD帳號
+   * @param payload 被代理人資料
+   * @returns 被代理人基本資料
    */
   doSwitchIdentify: async function (
     payload: AgentProfileReqType

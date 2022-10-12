@@ -5,6 +5,7 @@ export default {
   /**
    * 儲存前端存取記錄log
    * @param payload 前端存取記錄儲存參數
+   * @returns 執行結果
    */
   doSaveFrontendAccessLog: async function (
     payload: AccessLogReqType
