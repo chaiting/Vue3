@@ -4,7 +4,7 @@ import type {
   UserProfileResType,
   UserProfile,
   AgentProfileReqType,
-} from "@/core/type/user-profile-api";
+} from "@/core/type/user-profile-types";
 
 export default {
   /**

@@ -10,7 +10,7 @@ import type {
   FormReqType,
   StageActionResType,
   FormInfoResType,
-} from "@/core/type/bpm-form-api";
+} from "@/core/type/bpm-form-types";
 
 export default {
   /**

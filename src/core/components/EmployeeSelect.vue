@@ -24,7 +24,7 @@ import { onMounted, ref, watch, type PropType } from "vue";
 import { find, includes, filter } from "lodash-es";
 import isBlank from "is-blank";
 import employeeApi from "@/core/api/employee-api";
-import type { UserList } from "@/core/type/employee-api";
+import type { UserList } from "@/core/type/employee-types";
 
 const emit = defineEmits(["update:value"]);
 

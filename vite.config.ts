@@ -1,4 +1,3 @@
-// import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { visualizer } from "rollup-plugin-visualizer";
@@ -10,7 +9,7 @@ const config = defineConfig(({ mode }) => {
     plugins: [vue(), visualizer({ open: true })],
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, "./src"), // fileURLToPath(new URL("./src", import.meta.url))
+        "@": path.resolve(__dirname, "./src"),
         "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js", // 消除warning
       },
     },

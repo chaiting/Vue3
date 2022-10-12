@@ -3,7 +3,7 @@ import axios from "axios";
 import type {
   EmployeeReqType,
   EmployeeResType,
-} from "@/core/type/employee-api";
+} from "@/core/type/employee-types";
 
 export default {
   /**

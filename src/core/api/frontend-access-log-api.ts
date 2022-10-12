@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { AccessLogReqType } from "@/core/type/frontend-access-log-api";
+import type { AccessLogReqType } from "@/core/type/frontend-access-log-types";
 
 export default {
   /**

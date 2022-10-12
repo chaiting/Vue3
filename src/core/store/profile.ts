@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { cloneDeep } from "lodash-es";
-import type { MenuList, UserProfile } from "@/core/type/user-profile-api";
+import type { MenuList, UserProfile } from "@/core/type/user-profile-types";
 
 const INIT_USER_PROFILE = {
   empName: "",

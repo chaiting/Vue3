@@ -4,7 +4,7 @@ import type {
   DepartmentResType,
   DepartmentUnitReqType,
   DepartmentUnitResType,
-} from "@/core/type/department-api";
+} from "@/core/type/department-types";
 
 // 組織/群組清單對應快取暫存表
 const DEPTS_CACHE_MAP = new Map();

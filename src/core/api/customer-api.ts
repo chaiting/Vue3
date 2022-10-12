@@ -4,7 +4,7 @@ import type {
   CustomerAddressResType,
   CustomerPhoneReqType,
   CustomerPhoneResType,
-} from "@/core/type/customer-api";
+} from "@/core/type/customer-types";
 
 export default {
   /**

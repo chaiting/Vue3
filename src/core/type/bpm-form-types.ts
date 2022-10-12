@@ -1,4 +1,4 @@
-import type { Flag } from "@/core/type/code-api";
+import type { Flag } from "@/core/type/code-types";
 
 /**
  * bpm作業參數

@@ -3,7 +3,7 @@ import type {
   InfoCardReqType,
   EmployeeInfoCardResType,
   callAutoDialReqType,
-} from "@/core/type/info-card-api";
+} from "@/core/type/info-card-types";
 
 export default {
   /**

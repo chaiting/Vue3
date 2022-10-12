@@ -3,7 +3,7 @@ import type {
   EmpDialInfoResType,
   DialHistoryListResType,
   SysDialReqType,
-} from "@/core/type/sys-dial-api";
+} from "@/core/type/sys-dial-types";
 
 export default {
   /**

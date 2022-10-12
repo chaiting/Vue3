@@ -39,7 +39,7 @@ import { useProfileStore } from "@/core/store/profile";
 import { useRoute } from "vue-router";
 import { find } from "lodash-es";
 import { useGlobalStore } from "@/core/store/global";
-import type { MenuList } from "@/core/type/user-profile-api";
+import type { MenuList } from "@/core/type/user-profile-types";
 
 // interface Menu {
 //   menuSeqNo: string;

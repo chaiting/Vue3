@@ -6,7 +6,7 @@ import type {
   CodeResType,
   CodeLabelReqType,
   CodeLabelResType,
-} from "@/core/type/code-api";
+} from "@/core/type/code-types";
 
 // 代碼對應快取暫存表
 const CODES_CACHE_MAP = new Map();

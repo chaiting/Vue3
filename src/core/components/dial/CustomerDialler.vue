@@ -115,8 +115,8 @@ import codeApi from "@/core/api/code-api";
 import sysDialApi from "@/core/api/sys-dial-api";
 import customerApi from "@/core/api/customer-api";
 import { useProfileStore } from "@/core/store/profile";
-import type { CustomerDialList } from "@/core/type/sys-dial-api";
-import type { CustomerPhoneList as CustomerPhoneListType } from "@/core/type/customer-api";
+import type { CustomerDialList } from "@/core/type/sys-dial-types";
+import type { CustomerPhoneList as CustomerPhoneListType } from "@/core/type/customer-types";
 
 const profileStore = useProfileStore();
 
