@@ -51,3 +51,5 @@ function getChunkName(id: string) {
   if (id.includes("/views/f02")) return "f02";
   if (id.includes("/views/f03")) return "f03";
 }
+
+// https://vitejs.dev/guide/build.html#chunking-strategy

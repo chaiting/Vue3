@@ -1,12 +1,23 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { visualizer } from "rollup-plugin-visualizer";
+import viteCompression from "vite-plugin-compression";
 import path from "path";
 // https://vitejs.dev/config/
 
 const config = defineConfig(({ mode }) => {
   return {
-    plugins: [vue(), visualizer({ open: true })],
+    plugins: [
+      vue(),
+      visualizer({ open: false }),
+      viteCompression({
+        disable: true,
+        filter: /\.(js|mjs|json|css|html)$/i,
+        algorithm: "gzip",
+        threshold: 0,
+        deleteOriginFile: false,
+      }),
+    ],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
@@ -17,7 +28,7 @@ const config = defineConfig(({ mode }) => {
       sourcemap: ["dev", "sit", "uat"].includes(mode),
       cssCodeSplit: true, // true
       chunkSizeWarningLimit: 10000, // 500
-      reportCompressedSize: true, // true
+      reportCompressedSize: false, // true
       rollupOptions: {
         output: {
           chunkFileNames: "js/[name].[hash].js",
