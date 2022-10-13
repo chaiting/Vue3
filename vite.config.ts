@@ -11,7 +11,7 @@ const config = defineConfig(({ mode }) => {
       vue(),
       visualizer({ open: false }),
       viteCompression({
-        disable: true,
+        disable: !["sit", "uat", "prod"].includes(mode),
         filter: /\.(js|mjs|json|css|html)$/i,
         algorithm: "gzip",
         threshold: 0,

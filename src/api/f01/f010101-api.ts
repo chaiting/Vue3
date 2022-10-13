@@ -1,31 +1,18 @@
 import axios from "axios";
-
-interface Payload {
-  customerId: string;
-  creditCardNumber: string;
-  taxId: string;
-  sortColumn: string;
-  sortType: string;
-  page: number;
-  pageSize: number;
-}
-
-interface ApiResponse {
-  total: number;
-  data: any[];
-}
+import type {
+  CustomerListReqType,
+  CustomerListResType,
+} from "@/type/f010101-types";
 
 export default {
-  doQryCustomerList: async function (payload: Payload): Promise<ApiResponse> {
+  /**
+   * @param payload 查詢顧客列表參數
+   * @returns 顧客列表
+   */
+  doQryCustomerList: async function (
+    payload: CustomerListReqType
+  ): Promise<CustomerListResType> {
     let result = await axios.post("/f010101/01", payload);
     return result.data.body;
   },
 };
-
-// // Before
-// export default {
-//   doQryCustomerList: async function (payload: any) {
-//     let result = await axios.post("/f010101/01", payload);
-//     return result.data.body;
-//   }
-// };

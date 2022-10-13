@@ -14,7 +14,7 @@ import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
 import "@/assets/style.scss";
 
 const app = createApp(App);
-/** setup config*/
+/** setup config */
 setupAxiosConfig();
 setupAxiosMockConfig();
 setupPiniaConfig(app);
