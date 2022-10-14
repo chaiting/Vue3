@@ -1,15 +1,13 @@
-// import { fileURLToPath, URL } from "url";
 import { defineConfig, splitVendorChunkPlugin } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { visualizer } from "rollup-plugin-visualizer";
 import path from "path";
+
 // https://vitejs.dev/config/
 const config = defineConfig({
-  // plugins: [splitVendorChunkPlugin(),vue(), visualizer({ open: true })],
   plugins: [splitVendorChunkPlugin(), vue(), visualizer({ open: true })],
   resolve: {
     alias: {
-      // "@": fileURLToPath(new URL("./src", import.meta.url)),
       "@": path.resolve(__dirname, "./src"),
       "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js", // 消除warning
     },
@@ -22,6 +20,8 @@ const config = defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
+          // { getModuleIds, getModuleInfo }
+          // console.log(getModuleInfo(id)!.dynamicImporters, id);
           return getChunkName(id);
         },
       },
@@ -29,7 +29,13 @@ const config = defineConfig({
   },
   css: {
     preprocessorOptions: {
-      less: { javascriptEnabled: true },
+      less: {
+        javascriptEnabled: true,
+        additionalData: `@import "${path.resolve(
+          __dirname,
+          "src/assets/variable.less"
+        )}";`,
+      },
     },
   },
   server: {

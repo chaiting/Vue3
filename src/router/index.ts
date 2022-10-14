@@ -55,12 +55,6 @@ const router = createRouter({
       component: () => import("@/core/views/Agent.vue"),
     },
     {
-      /** 403 Forbidden */
-      path: "/forbidden",
-      name: "Forbidden",
-      component: () => import("@/core/views/Forbidden.vue"),
-    },
-    {
       /** Page not found */
       path: "/notfound",
       name: "NotFound",
@@ -105,7 +99,7 @@ router.beforeEach((to, from, next) => {
   }
 
   // 2. 如果是正式環境且要去代理人身份切換頁面，直接導到存取被拒頁
-  if (import.meta.env.PROD && to.name === "Agent") {
+  if (import.meta.env.MODE === "prod" && to.name === "Agent") {
     return next({ name: "forbidden" });
   }
 
