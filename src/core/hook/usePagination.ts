@@ -6,14 +6,14 @@ import { camelCase2UnderscoreUppercase } from "@/core/utils/naming-converter";
  * 表格分頁hook
  * @param opts - 表格分頁hook選項
  * @param opts.fetcher - 更新時呼叫的API
- * @param opts.defaultColumn - 預設表格排序欄位
+ * @param opts.defaultSortColumn - 預設表格排序欄位
  */
 export function usePagination(opts: {
   fetcher: () => void;
-  defaultColumn?: string;
+  defaultSortColumn?: string;
 }) {
   const sortOption = reactive({
-    sortColumn: opts.defaultColumn || "",
+    sortColumn: opts.defaultSortColumn || "",
     sortType: "DESC",
   });
 
@@ -54,7 +54,7 @@ export function usePagination(opts: {
 
     // 取消排序
     if (col.order === "normal") {
-      sortOption.sortColumn = opts.defaultColumn || "";
+      sortOption.sortColumn = opts.defaultSortColumn || "";
       sortOption.sortType = "DESC";
     }
 

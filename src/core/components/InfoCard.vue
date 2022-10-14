@@ -57,7 +57,7 @@ import isBlank from "is-blank";
 import { onDeactivated, reactive, computed, ref } from "vue";
 import { split, head, drop, join } from "lodash-es";
 import infoCardApi from "@/core/api/info-card-api";
-import type { Nullable } from "../type/utils";
+import type { Nullable } from "@/core/type/utils-types";
 
 const props = defineProps({
   // 使用者AD帳號

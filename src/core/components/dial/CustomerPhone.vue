@@ -94,7 +94,7 @@ import codeApi from "@/core/api/code-api";
 import sysDialApi from "@/core/api/sys-dial-api";
 import { computed } from "vue";
 import { truncate } from "lodash-es";
-import type { FormRef } from "@/core/type/form";
+import type { FormRef } from "@/core/type/form-types";
 
 const props = defineProps({
   // 發話號碼

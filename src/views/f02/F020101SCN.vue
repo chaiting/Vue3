@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- <h3>#esun-confirm</h3>
-    <EsunConfirmDemo />
-    <Divider />
-    <h3>#esun-button</h3>
-    <esun-button /> -->
-    <!-- <Divider /> -->
     <h3>#js-file-download</h3>
     <FileDownloadDemo />
     <Divider />
@@ -23,5 +17,4 @@ import FileDownloadDemo from "@/components/demo/FileDownloadDemo.vue";
 import I18nDemo from "@/components/demo/I18nDemo.vue";
 import PieChartDemo from "@/components/demo/PieChartDemo.vue";
 import BarChartDemo from "@/components/demo/BarChartDemo.vue";
-// import EsunConfirmDemo from "@/components/demo/EsunConfirmDemo.vue";
 </script>

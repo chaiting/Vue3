@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRef, Validator } from "@/core/type/form";
+import type { FormRef, Validator } from "@/core/type/form-types";
 import { reactive, ref, watch } from "vue";
 import isBlank from "is-blank";
 import sysDialApi from "@/core/api/sys-dial-api";

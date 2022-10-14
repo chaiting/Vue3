@@ -4,16 +4,15 @@
   "scripts": {
     "dev": "vite --mode dev",
     "build": "run-p type-check build-only",
-    "build.demo": "vite build --c vite.demo.config.ts",
-    "preview": "vite preview --port 4173",
-    "test:unit": "vitest --environment jsdom",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "debug": "node --inspect-brk node_modules/vite/bin/vite.js",
     "build.sit": "vite build --mode sit",
     "build.uat": "vite build --mode uat",
-    "build.prod": "vite build --mode prod"
+    "build.prod": "vite build --mode prod",
+    "build-only": "vite build",
+    "preview": "vite preview --port 4173",
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "test:unit": "vitest --environment jsdom",
+    "debug": "node --inspect-brk node_modules/vite/bin/vite.js"
   },
   "dependencies": {
     "@dsb-norge/vue-keycloak-js": "^2.1.5-beta",

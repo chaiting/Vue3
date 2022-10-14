@@ -123,7 +123,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRef, Validator } from "@/core/type/form";
+import type { FormRef, Validator } from "@/core/type/form-types";
 import { computed, reactive, watch, ref, onMounted } from "vue";
 import bpmFormApi from "@/core/api/bpm-form-api";
 import { find } from "lodash-es";

@@ -48,7 +48,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { FormRef } from "@/core/type/form";
+import type { FormRef } from "@/core/type/form-types";
 import f010101Api from "@/api/f01/f010101-api";
 import { ref, reactive } from "vue";
 import { usePagination } from "@/core/hook/usePagination";
@@ -64,7 +64,7 @@ const formRef = ref<FormRef | null>();
 const { pagination, sortOption, onChangePage, onChangePageSize, onSortChange } =
   usePagination({
     fetcher: doQryCustomerList,
-    defaultColumn: "ID", // defaultSortColumn
+    defaultSortColumn: "ID",
   });
 
 const columns = reactive([

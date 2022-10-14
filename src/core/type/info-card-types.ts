@@ -1,4 +1,4 @@
-import type { Nullable } from "@/core/type/utils";
+import type { Nullable } from "@/core/type/utils-types";
 
 /**
  * 取得行內使用者資訊卡片資訊參數
