@@ -1,12 +1,12 @@
 /**
- * 顧客電話清單
+ * 顧客電話
  */
-export type CustomerPhoneList = Array<{
+export type CustomerPhoneType = {
   extNumber?: string;
   telNumber?: string;
   telType: string;
   telTypeNm: string;
-}>;
+};
 
 /**
  * 查詢顧客電話清單參數
@@ -21,7 +21,7 @@ export interface CustomerPhoneReqType {
 /**
  * 顧客電話清單
  */
-export type CustomerPhoneResType = Promise<CustomerPhoneList>;
+export type CustomerPhoneResType = Promise<CustomerPhoneType[]>;
 
 /**
  * 查詢顧客地址清單參數

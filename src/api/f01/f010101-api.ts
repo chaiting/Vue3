@@ -2,7 +2,7 @@ import axios from "axios";
 import type {
   CustomerListReqType,
   CustomerListResType,
-} from "@/type/f010101-types";
+} from "@/type/f01/f010101-types";
 
 export default {
   /**

@@ -73,3 +73,5 @@ export type CodeLabelResType = Promise<
     label: string;
   }>
 >;
+
+export type CodeNameResType = Promise<string>;

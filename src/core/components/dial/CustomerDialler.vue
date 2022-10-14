@@ -106,17 +106,17 @@
 </template>
 
 <script setup lang="ts">
-import Dialler from "@/core/components/dial/Dialler.vue";
-import CustomerPhoneList from "@/core/components/dial/CustomerPhoneList.vue";
-import { ref, computed, watch, type PropType } from "vue";
-import { truncate } from "lodash-es";
 import isBlank from "is-blank";
 import codeApi from "@/core/api/code-api";
 import sysDialApi from "@/core/api/sys-dial-api";
 import customerApi from "@/core/api/customer-api";
-import { useProfileStore } from "@/core/store/profile";
+import Dialler from "@/core/components/dial/Dialler.vue";
+import CustomerPhoneList from "@/core/components/dial/CustomerPhoneList.vue";
 import type { CustomerDialList } from "@/core/type/sys-dial-types";
-import type { CustomerPhoneList as CustomerPhoneListType } from "@/core/type/customer-types";
+import type { CustomerPhoneType } from "@/core/type/customer-types";
+import { ref, computed, watch, type PropType } from "vue";
+import { truncate } from "lodash-es";
+import { useProfileStore } from "@/core/store/profile";
 
 const profileStore = useProfileStore();
 
@@ -182,7 +182,7 @@ const isDialable = ref(false);
 // 顧客性別名稱
 const sexName = ref("");
 // 顧客電話清單
-const customerPhoneList = ref<CustomerPhoneListType>([]);
+const customerPhoneList = ref<CustomerPhoneType[]>([]);
 // table header
 const columns = ref([
   {

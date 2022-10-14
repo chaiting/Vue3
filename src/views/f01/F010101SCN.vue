@@ -57,13 +57,14 @@ import {
   isValidTaxId,
 } from "@/core/utils/customer-info-validator";
 import { isValidCardNo } from "@/core/utils/card-validator";
+import type { CustomerList } from "@/type/f01/f010101-types";
 
 const formRef = ref<FormRef | null>();
 
 const { pagination, sortOption, onChangePage, onChangePageSize, onSortChange } =
   usePagination({
     fetcher: doQryCustomerList,
-    defaultColumn: "ID",
+    defaultColumn: "ID", // defaultSortColumn
   });
 
 const columns = reactive([
@@ -80,7 +81,7 @@ const columns = reactive([
   { key: "address", title: "地址" },
 ]);
 
-const list = ref<any[]>([]);
+const list = ref<CustomerList>([]);
 
 const form = reactive({
   customerId: "",

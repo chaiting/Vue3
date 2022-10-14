@@ -6,6 +6,7 @@ import type {
   CodeResType,
   CodeLabelReqType,
   CodeLabelResType,
+  CodeNameResType,
 } from "@/core/type/code-types";
 
 // 代碼對應快取暫存表
@@ -50,7 +51,7 @@ export default {
    * @param cdId 明細代碼
    * @return 代碼名稱
    */
-  doGetCodeName: async function (ctId: number, cdId: string): Promise<string> {
+  doGetCodeName: async function (ctId: number, cdId: string): CodeNameResType {
     if (isBlank(ctId) || isBlank(cdId)) {
       return "";
     }
