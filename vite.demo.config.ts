@@ -31,10 +31,6 @@ const config = defineConfig({
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
-        additionalData: `@import "${path.resolve(
-          __dirname,
-          "src/assets/variable.less"
-        )}";`,
       },
     },
   },
@@ -52,6 +48,7 @@ const config = defineConfig({
 export default config;
 
 function getChunkName(id: string) {
+  // if (id.includes("@fortawesome")) return "fortawesome"
   if (id.includes("node_modules")) return "vendor";
   if (id.includes("/views/f01")) return "f01";
   if (id.includes("/views/f02")) return "f02";
