@@ -76,7 +76,7 @@ const warningDateTime = computed(() => {
 
 /** 剩餘時間(分) */
 const remainingMinutes = computed(() => {
-  let distance =
+  const distance =
     moment(sessionExpiredTime.value.valueOf()).toDate().valueOf() -
     now.value.toDate().valueOf();
   return Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -84,8 +84,7 @@ const remainingMinutes = computed(() => {
 
 /** 剩餘時間(秒) */
 const remainingSeconds = computed(() => {
-  // let distance = moment(sessionExpiredTime.value).toDate() - now.value.toDate(); // ts錯誤
-  let distance =
+  const distance =
     moment(sessionExpiredTime.value.valueOf()).toDate().valueOf() -
     now.value.toDate().valueOf();
   return Math.floor((distance % (1000 * 60)) / 1000);

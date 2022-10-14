@@ -190,7 +190,7 @@ watch(
     }
 
     // 1. 查詢縣市別代碼 ----------------------------------------------------------------------------------------------
-    let codeUnits = await codeApi.doQryCodeList({
+    const codeUnits = await codeApi.doQryCodeList({
       ctId: 9, // 9: 鄉政區
       cdId: newValue,
     });

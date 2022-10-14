@@ -14,7 +14,7 @@ const config = defineConfig(({ mode }) => {
         disable: !["sit", "uat", "prod"].includes(mode),
         filter: /\.(js|mjs|json|css|html)$/i,
         algorithm: "gzip",
-        threshold: 0,
+        threshold: 1025,
         deleteOriginFile: false,
       }),
     ],
@@ -42,7 +42,7 @@ const config = defineConfig(({ mode }) => {
       },
     },
     server: {
-      port: 8888,
+      port: 3001,
       proxy: {
         "/api": {
           target: "http://localhost:9000",

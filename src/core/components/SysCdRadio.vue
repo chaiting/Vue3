@@ -153,7 +153,7 @@ async function doUpdateSelectedValue(payload: { forceReload: "Y" | "N" }) {
     return;
   }
 
-  let isExists = find(items.value, function (o: any) {
+  const isExists = find(items.value, function (o: any) {
     return includes(selectedItem.value, o.value);
   });
 

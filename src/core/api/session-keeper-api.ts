@@ -7,7 +7,7 @@ export default {
    * @returns 執行結果
    */
   doKeepSessionAlive: async function () {
-    let result = await axios.post("/session_keeper/01");
+    const result = await axios.post("/session_keeper/01");
     return result;
   },
   /**
@@ -17,7 +17,7 @@ export default {
   doLogOut: async function () {
     const profileStore = useProfileStore();
     profileStore.doCleanUserProfile();
-    let result = await axios.post("/session_keeper/02");
+    const result = await axios.post("/session_keeper/02");
     return result;
   },
 };

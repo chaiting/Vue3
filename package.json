@@ -2,7 +2,7 @@
   "name": "vue3_demo",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode dev",
     "build": "run-p type-check build-only",
     "build.demo": "vite build --c vite.demo.config.ts",
     "preview": "vite preview --port 4173",

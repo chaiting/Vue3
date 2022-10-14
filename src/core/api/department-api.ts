@@ -21,7 +21,7 @@ export default {
   doQryDeptList: async function (
     payload: DepartmentReqType
   ): DepartmentResType {
-    let cacheKey = JSON.stringify(payload);
+    const cacheKey = JSON.stringify(payload);
     let result = DEPTS_CACHE_MAP.get(cacheKey);
 
     if (!result) {
@@ -39,7 +39,7 @@ export default {
   doQryUpperUnits: async function (
     payload: DepartmentUnitReqType
   ): DepartmentUnitResType {
-    let cacheKey = JSON.stringify(payload);
+    const cacheKey = JSON.stringify(payload);
     let result = UPPER_DEPTS_CACHE_MAP.get(cacheKey);
 
     if (!result) {

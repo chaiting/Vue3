@@ -11,7 +11,7 @@ export default {
    * @returns 行內使用者撥號資訊
    */
   doGetEmployeeDialInfo: async function (): EmpDialInfoResType {
-    let result = await axios.post("/sys_dial/01");
+    const result = await axios.post("/sys_dial/01");
     return result.data.body;
   },
   /**
@@ -22,7 +22,7 @@ export default {
   doQryCustomerDialHistory: async function (
     payload: string
   ): DialHistoryListResType {
-    let result = await axios.post("/sys_dial/02", {
+    const result = await axios.post("/sys_dial/02", {
       customerId: payload,
       pageNo: "1",
       pageSize: "5",
@@ -35,7 +35,7 @@ export default {
    * @returns 撥號結果
    */
   doSystemCall: async function (payload: SysDialReqType): Promise<boolean> {
-    let result = await axios.post("/sys_dial/03", payload);
+    const result = await axios.post("/sys_dial/03", payload);
     return result.data.body;
   },
 };

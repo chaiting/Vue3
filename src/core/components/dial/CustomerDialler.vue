@@ -272,13 +272,13 @@ async function doGetDialInfo() {
   });
 
   // 2. 查詢行內使用者撥號資訊 -----------------------------------------------------------------------------------------
-  let dialInfo = await sysDialApi.doGetEmployeeDialInfo();
+  const dialInfo = await sysDialApi.doGetEmployeeDialInfo();
 
   extension.value = dialInfo.extension || "****";
   isDialable.value = "Y" == dialInfo.isCreditCardMember; // Y: 是信用卡處人員
 
   // 3. 查詢顧客撥號紀錄 -----------------------------------------------------------------------------------------------
-  let result = await sysDialApi.doQryCustomerDialHistory(props.customerId);
+  const result = await sysDialApi.doQryCustomerDialHistory(props.customerId);
   dialRecordList.value = result.customerDialList || [];
 }
 /**

@@ -91,7 +91,7 @@ const selectedDept = ref();
 async function doQryDeptList() {
   deptList.value = [];
 
-  let depts = filter(props.upGrpIdList, (row) => !isBlank(row)) || [];
+  const depts = filter(props.upGrpIdList, (row) => !isBlank(row)) || [];
 
   if (depts.length < 1) {
     return;
@@ -117,7 +117,7 @@ async function doUpdateSelectedValue() {
     return;
   }
 
-  let isExists = find(deptList.value, function (o: any) {
+  const isExists = find(deptList.value, function (o: any) {
     return includes(selectedDept.value, o.grpId);
   });
 

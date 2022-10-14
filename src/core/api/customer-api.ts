@@ -15,7 +15,7 @@ export default {
   doQryCustomerPhones: async function (
     payload: CustomerPhoneReqType
   ): CustomerPhoneResType {
-    let result = await axios.post("/customer/01", payload);
+    const result = await axios.post("/customer/01", payload);
     return result.data.body;
   },
   /**
@@ -26,7 +26,7 @@ export default {
   doQryCustomerAddresses: async function (
     payload: CustomerAddressReqType
   ): CustomerAddressResType {
-    let result = await axios.post("/customer/02", payload);
+    const result = await axios.post("/customer/02", payload);
     return result.data.body;
   },
 };

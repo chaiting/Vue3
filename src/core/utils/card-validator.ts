@@ -35,7 +35,7 @@ function getLastCardNumber(cardNumber: string) {
     return "";
   }
 
-  let reverseCardNumber = cardNumber.split("").reverse().join("");
+  const reverseCardNumber = cardNumber.split("").reverse().join("");
 
   let resultSum = 0;
   for (let i = 0; i < reverseCardNumber.length; i++) {

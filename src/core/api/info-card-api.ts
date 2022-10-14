@@ -14,7 +14,7 @@ export default {
   doGetEmployeeInfoCard: async function (
     payload: InfoCardReqType
   ): EmployeeInfoCardResType {
-    let result = await axios.post("/info_card/01", payload);
+    const result = await axios.post("/info_card/01", payload);
     return result.data.body;
   },
   /**
@@ -25,7 +25,7 @@ export default {
   callAutoDial: async function (
     payload: callAutoDialReqType
   ): Promise<boolean> {
-    let result = await axios.post("/info_card/02", {
+    const result = await axios.post("/info_card/02", {
       callingNumber: payload.userExtension,
       calledId: payload.employeeNo,
       calledInfo: payload.cname,

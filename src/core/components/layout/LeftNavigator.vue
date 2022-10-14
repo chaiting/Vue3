@@ -70,7 +70,7 @@ function doFocusLeftMenuItem(itemUri: string) {
     }
 
     // 2. 第二層選單 ------------------------------------------------------------------------------------------------
-    let item = find(element.subMenuList, { itemUri: itemUri });
+    const item = find(element.subMenuList, { itemUri: itemUri });
     if (item) {
       itemName.value = item.itemNm;
       openItem.value = [element.menuSeqNo];

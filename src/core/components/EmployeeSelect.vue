@@ -96,7 +96,7 @@ const selectedUsers = ref<string | string[]>();
 async function doQryUserList() {
   userList.value = [];
 
-  let grpId = filter(props.grpIdList, (row) => !isBlank(row)) || [];
+  const grpId = filter(props.grpIdList, (row) => !isBlank(row)) || [];
 
   if (grpId.length < 1) {
     return;
@@ -121,7 +121,7 @@ async function doUpdateSelectedValue() {
     return;
   }
 
-  let isExists = find(userList.value, function (o: any) {
+  const isExists = find(userList.value, function (o: any) {
     return includes(selectedUsers.value, o.usedAccount);
   });
 

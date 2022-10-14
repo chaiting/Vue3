@@ -12,7 +12,7 @@ export default {
   doQryCustomerList: async function (
     payload: CustomerListReqType
   ): Promise<CustomerListResType> {
-    let result = await axios.post("/f010101/01", payload);
+    const result = await axios.post("/f010101/01", payload);
     return result.data.body;
   },
 };

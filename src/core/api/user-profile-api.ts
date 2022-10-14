@@ -12,7 +12,7 @@ export default {
    * @returns 登入者基本資料
    */
   doFetchLoginUserProfile: async function (): UserProfileResType {
-    let result = await axios.post("/user_profile/01");
+    const result = await axios.post("/user_profile/01");
     return result.data.body;
   },
   /**
@@ -20,7 +20,7 @@ export default {
    * @returns 操作者基本資料
    */
   doFetchOptUserProfile: async function (): UserProfileResType {
-    let result = await axios.post("/user_profile/02");
+    const result = await axios.post("/user_profile/02");
     return result.data.body;
   },
   /**
@@ -31,8 +31,8 @@ export default {
   doSwitchIdentify: async function (
     payload: AgentProfileReqType
   ): UserProfileResType {
-    let result = await axios.post("/user_profile/03", payload);
-    let userProfile = result.data.body;
+    const result = await axios.post("/user_profile/03", payload);
+    const userProfile = result.data.body;
 
     const profileStore = useProfileStore();
 

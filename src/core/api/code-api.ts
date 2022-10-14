@@ -19,7 +19,7 @@ export default {
    * @returns 代碼清單
    */
   doQryCodeList: async function (payload: CodeReqType): CodeResType {
-    let cacheKey = JSON.stringify(payload);
+    const cacheKey = JSON.stringify(payload);
     let result = CODES_CACHE_MAP.get(cacheKey);
 
     if (!result) {

@@ -343,7 +343,7 @@ const defaultComment = computed(() => {
  */
 async function doQryNextStageAction() {
   if (props.formId) {
-    let result = await bpmFormApi.doQryNextStageAction({
+    const result = await bpmFormApi.doQryNextStageAction({
       formId: props.formId,
     });
     stageActionList.value = result.stageAction;
@@ -361,7 +361,7 @@ function doNotifyPreprocess(val: string) {
  * 取得關卡處理者資料
  */
 async function doQryStageProcessor() {
-  let result = await bpmFormApi.doQryStageProcessor(props.flowCode, {
+  const result = await bpmFormApi.doQryStageProcessor(props.flowCode, {
     actionId: actionId.value,
     formId: props.formId,
   });
@@ -396,7 +396,7 @@ function doFormSubmit(refName: string) {
  */
 function doUpdSigner(processorId: string) {
   if (stageUserForm.processorId) {
-    let processorName = find(stageProcessors.value, {
+    const processorName = find(stageProcessors.value, {
       processorId: stageUserForm.processorId,
     })!.processorName;
 
@@ -445,8 +445,8 @@ async function doStartProcess() {
     processorType: stageUserForm.processorType,
   };
 
-  let result = await bpmFormApi.doStartProcess(props.flowCode, payload);
-  let returnData: any = doBuildReturnBasicData(result);
+  const result = await bpmFormApi.doStartProcess(props.flowCode, payload);
+  const returnData: any = doBuildReturnBasicData(result);
 
   returnData.bpmFormSeqNo = result.bpmFormSeqNo;
 
@@ -460,12 +460,12 @@ async function doStartProcess() {
  * 送單作業，並將api執行果傳給父元件
  */
 async function doSendProcess() {
-  let payload: any = doBuildProcBasicData(stageUserForm.signComment);
+  const payload: any = doBuildProcBasicData(stageUserForm.signComment);
   payload.processorType = stageUserForm.processorType;
   payload.processorId = stageUserForm.processorId;
   payload.processorName = stageUserForm.processorName;
 
-  let result = await bpmFormApi.doSendProcess(payload);
+  const result = await bpmFormApi.doSendProcess(payload);
 
   isShowStageUser.value = false;
   stageUserFormRef.value!.resetFields();
@@ -476,7 +476,7 @@ async function doSendProcess() {
  * 處理權移轉作業，並將api執行結果傳給父元件
  */
 async function doTransferProcess() {
-  let result = await bpmFormApi.doTransferProcess({
+  const result = await bpmFormApi.doTransferProcess({
     formId: props.formId!,
     newProcessorId: stageUserForm.processorId,
     signComment: stageUserForm.signComment,
@@ -491,8 +491,8 @@ async function doTransferProcess() {
  * 退回作業，並將api執行結果傳給父元件
  */
 async function doSendBack() {
-  let payload = doBuildProcBasicData(signForm.signComment);
-  let result = await bpmFormApi.doSendBack(payload);
+  const payload = doBuildProcBasicData(signForm.signComment);
+  const result = await bpmFormApi.doSendBack(payload);
 
   isShowSignModal.value = false;
   signFormRef.value!.resetFields();
@@ -504,8 +504,8 @@ async function doSendBack() {
  * 銷案作業，並將api執行結果傳給父元件
  */
 async function doRevokeProcess() {
-  let payload = doBuildProcBasicData(signForm.signComment);
-  let result = await bpmFormApi.doRevokeProcess(payload);
+  const payload = doBuildProcBasicData(signForm.signComment);
+  const result = await bpmFormApi.doRevokeProcess(payload);
 
   isShowSignModal.value = false;
   signFormRef.value!.resetFields();
@@ -517,8 +517,8 @@ async function doRevokeProcess() {
  * 結案作業，並將api執行結果傳給父元件
  */
 async function doCloseProcess() {
-  let payload = doBuildProcBasicData(signForm.signComment);
-  let result = await bpmFormApi.doCloseProcess(payload);
+  const payload = doBuildProcBasicData(signForm.signComment);
+  const result = await bpmFormApi.doCloseProcess(payload);
 
   isShowSignModal.value = false;
   signFormRef.value!.resetFields();

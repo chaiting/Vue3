@@ -578,7 +578,7 @@ watch(selectedUser, () => {
 
 onMounted(async () => {
   // 查詢上層組織/群組清單 --------------------------------------------------------------------------------------------
-  let upperUnits = await departmentApi.doQryUpperUnits({
+  const upperUnits = await departmentApi.doQryUpperUnits({
     grpId: leafPropsGrpId.value,
     activatedGrp: props.activatedGrp,
   });

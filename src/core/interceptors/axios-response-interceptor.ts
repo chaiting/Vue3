@@ -58,7 +58,7 @@ function handleResponseError(error: AxiosError<any>) {
 function showMessage(msgs: string[]) {
   if (!msgs || size(msgs) < 1) return;
 
-  let style = "'margin-left: 25px; text-align: left'";
+  const style = "'margin-left: 25px; text-align: left'";
 
   let html = "<div style=" + style + "><ol><li>";
   html += join(msgs, "</li><li>");

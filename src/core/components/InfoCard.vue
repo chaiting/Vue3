@@ -182,7 +182,7 @@ async function doGetEmployeeInfoCard() {
   userInfoCard.userExtension = result.userExtension;
 
   // 3. 取得被查詢者所屬單位清單 -------------------------------------------------------------------------------------
-  let deptName = split(userInfoCard.deptName, " ");
+  const deptName = split(userInfoCard.deptName, " ");
   userDivision.value = head(deptName)!;
   userDept.value = drop(deptName);
 }

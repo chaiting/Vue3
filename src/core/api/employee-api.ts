@@ -12,8 +12,8 @@ export default {
    * @returns 使用者清單
    */
   doQryUserList: async function (payload: EmployeeReqType): EmployeeResType {
-    let result = await axios.post("/employee/01", payload);
-    let body = result.data.body;
+    const result = await axios.post("/employee/01", payload);
+    const body = result.data.body;
 
     // A: AD帳號 -----------------------------------------------------------------------------------------------------
     if (payload.valueType === "A") {
