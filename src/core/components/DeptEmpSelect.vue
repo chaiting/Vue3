@@ -111,8 +111,8 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch, computed, type PropType } from "vue";
-import departmentApi from "@/core/api/department-api";
 import { find } from "lodash-es";
+import departmentApi from "@/core/api/department-api";
 
 const emit = defineEmits([
   "on-admin-division-change",

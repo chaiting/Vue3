@@ -1,6 +1,5 @@
 import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router";
+import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
 import setupPiniaConfig from "@/core/conf/pinia-config";
 import setupAxiosConfig from "@/core/conf/axios-config";
 import setupAxiosMockConfig from "@/core/conf/axios-mock-adapter-config";
@@ -9,7 +8,8 @@ import setupViewUiPlusConfig from "@/core/conf/view-ui-plus-config";
 import setupGlobalComponentConfig from "@/core/conf/global-component-config";
 import setupFontawesomeConfig from "@/core/conf/fontawesome-config";
 import setupVueEchartsConfig from "@/core/conf/vue-echarts-config";
-import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
+import App from "./App.vue";
+import router from "./router";
 
 import "@/assets/style.scss";
 

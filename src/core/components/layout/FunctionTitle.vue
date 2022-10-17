@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from "@/core/store/global";
 import { computed } from "vue";
+import { useGlobalStore } from "@/core/store/global";
 
 const globalStore = useGlobalStore();
 

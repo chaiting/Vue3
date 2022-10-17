@@ -1,9 +1,9 @@
-import type { AxiosError, AxiosResponse } from "axios";
 import Swal from "sweetalert2";
+import { delay, size, join } from "lodash-es";
 import { useGlobalStore } from "@/core/store/global";
 import { IGNORE_GLOBAL_SPINNER_URLS } from "@/conf/app-config";
 import router from "@/router";
-import { delay, size, join } from "lodash-es";
+import type { AxiosError, AxiosResponse } from "axios";
 
 /**
  * 攔截每個AJAX HTTP Response進行處理

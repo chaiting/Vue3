@@ -44,8 +44,8 @@
 
 <script setup lang="ts">
 import isBlank from "is-blank";
-import codeApi from "@/core/api/code-api";
 import { ref, computed, watch, nextTick } from "vue";
+import codeApi from "@/core/api/code-api";
 
 const emit = defineEmits([
   "on-city-change",

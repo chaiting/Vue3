@@ -22,8 +22,8 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from "vue";
 import CustomerPhone from "@/core/components/dial/CustomerPhone.vue";
+import type { PropType } from "vue";
 
 defineProps({
   // 發話號碼

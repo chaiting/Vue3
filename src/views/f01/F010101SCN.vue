@@ -48,15 +48,15 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { FormRefType } from "@/core/type/form-types";
-import f010101Api from "@/api/f01/f010101-api";
 import { ref, reactive } from "vue";
+import f010101Api from "@/api/f01/f010101-api";
 import { usePagination } from "@/core/hook/usePagination";
 import {
   isValidIdNumber,
   isValidTaxId,
 } from "@/core/utils/customer-info-validator-utils";
 import { isValidCardNo } from "@/core/utils/card-validator-utils";
+import type { FormRefType } from "@/core/type/form-types";
 import type { CustomerList } from "@/type/f01/f010101-types";
 
 const formRef = ref<FormRefType>();

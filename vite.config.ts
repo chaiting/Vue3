@@ -1,9 +1,9 @@
+import path from "path";
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { visualizer } from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
 import { createHtmlPlugin } from "vite-plugin-html";
-import path from "path";
 // https://vitejs.dev/config/
 
 const config = defineConfig(({ mode }) => {

@@ -1,6 +1,3 @@
-import type { App } from "vue";
-import globalMixin from "@/core/mixin/global-mixin";
-
 import EsunConfirm from "@/core/components/EsunConfirm.vue";
 import SysCdSelect from "@/core/components/SysCdSelect.vue";
 import SysCdCheckbox from "@/core/components/SysCdCheckbox.vue";
@@ -12,6 +9,8 @@ import DepartmentSelect from "@/core/components/DepartmentSelect.vue";
 import DeptEmpSelect from "@/core/components/DeptEmpSelect.vue";
 import CityPostalSelect from "@/core/components/CityPostalSelect.vue";
 import BpmSubmitter from "@/core/components/BpmSubmitter.vue";
+import globalMixin from "@/core/mixin/global-mixin";
+import type { App } from "vue";
 
 export default (app: App) => {
   app.mixin(globalMixin);

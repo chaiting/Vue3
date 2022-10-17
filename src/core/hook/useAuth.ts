@@ -1,7 +1,7 @@
+import { getCurrentInstance } from "vue";
 import messageBridgeApi from "@/core/api/message-bridge-api";
 import sessionKeeperApi from "@/core/api//session-keeper-api";
 import { useGlobalStore } from "@/core/store/global";
-import { getCurrentInstance } from "vue";
 
 /**
  * 登入相關操作hook

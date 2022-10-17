@@ -43,10 +43,10 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRefType, ValidatorType } from "@/core/type/form-types";
 import { reactive, ref, watch } from "vue";
 import isBlank from "is-blank";
 import sysDialApi from "@/core/api/sys-dial-api";
+import type { FormRefType, ValidatorType } from "@/core/type/form-types";
 
 const props = defineProps({
   // 發話號碼

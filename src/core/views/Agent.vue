@@ -25,10 +25,10 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRefType } from "@/core/type/form-types";
-import userProfileApi from "@/core/api/user-profile-api";
 import { getCurrentInstance, reactive, ref } from "vue";
 import { toUpper } from "lodash-es";
+import userProfileApi from "@/core/api/user-profile-api";
+import type { FormRefType } from "@/core/type/form-types";
 
 const app = getCurrentInstance();
 const agentProfileRef = ref<FormRefType>();

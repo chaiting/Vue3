@@ -123,12 +123,12 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRefType, ValidatorType } from "@/core/type/form-types";
 import { computed, reactive, watch, ref, onMounted } from "vue";
-import bpmFormApi from "@/core/api/bpm-form-api";
 import { find } from "lodash-es";
 import isBlank from "is-blank";
+import bpmFormApi from "@/core/api/bpm-form-api";
 import type { ProcessResType } from "@/core/type/bpm-form-types";
+import type { FormRefType, ValidatorType } from "@/core/type/form-types";
 
 /**
  * 1. BpmSubmitter props

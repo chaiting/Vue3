@@ -35,9 +35,9 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import Countdown from "@/core/components/misc/Countdown.vue";
 import { useProfileStore } from "@/core/store/profile";
 import { useAuth } from "@/core/hook/useAuth";
-import Countdown from "@/core/components/misc/Countdown.vue";
 
 const { logout } = useAuth();
 const profileStore = useProfileStore();

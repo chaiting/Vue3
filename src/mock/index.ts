@@ -1,4 +1,3 @@
-import type MockAdapter from "axios-mock-adapter/types";
 // core
 import codeInit from "@/mock/core/code-api";
 import bpmFormInit from "@/mock/core/bpm-form-api";
@@ -10,6 +9,7 @@ import departmentInit from "@/mock/core/department-api";
 import userProfileInit from "@/mock/core/user-profile-api";
 // view
 import f01Init from "@/mock/f01";
+import type MockAdapter from "axios-mock-adapter/types";
 
 export default function (mock: MockAdapter) {
   codeInit(mock);

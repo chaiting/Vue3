@@ -8,10 +8,10 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from "@/core/store/global";
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
 import { computed } from "vue";
+import Loading from "vue-loading-overlay";
+import { useGlobalStore } from "@/core/store/global";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 const msg = "資料處理中，請稍候...";
 const globalStore = useGlobalStore();
