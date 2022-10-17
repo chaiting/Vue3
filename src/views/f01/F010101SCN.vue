@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div>
     <pre> // A123456789 // 4108304590880810 // 00000000</pre>
     <Form ref="formRef" :label-width="110" :rules="formRules" :model="form">
       <Row :gutter="10">
@@ -20,8 +20,8 @@
         </Col>
         <Col span="6">
           <div class="btn-group">
-            <Button @click="submit" type="primary">Submit</Button>
-            <Button @click="reset">Reset</Button>
+            <Button @click="submit" type="primary">查詢</Button>
+            <Button @click="reset">重置</Button>
           </div>
         </Col>
       </Row>
@@ -57,7 +57,7 @@ import {
   isValidTaxId,
 } from "@/core/utils/customer-info-validator-utils";
 import type { FormRefType } from "@/core/type/form-types";
-import type { CustomerList } from "@/type/f01/f010101-types";
+import type { CustomerType } from "@/type/f01/f010101-types";
 
 const formRef = ref<FormRefType>();
 
@@ -81,7 +81,7 @@ const columns = reactive([
   { key: "address", title: "地址" },
 ]);
 
-const list = ref<CustomerList>([]);
+const list = ref<CustomerType[]>([]);
 
 const form = reactive({
   customerId: "",
@@ -118,14 +118,7 @@ const formRules = reactive({
 
 async function doQryCustomerList() {
   const result = await f010101Api.doQryCustomerList({
-    ...form, // 表單欄位
-    ...sortOption, // 排序選項
-    page: pagination.page,
-    pageSize: pagination.pageSize,
-  });
-
-  console.log({
-    ...form, // 表單欄位
+    ...form,
     ...sortOption,
     page: pagination.page,
     pageSize: pagination.pageSize,
@@ -140,6 +133,6 @@ async function submit() {
 }
 
 async function reset() {
-  formRef.value?.resetFields();
+  formRef.value!.resetFields();
 }
 </script>
