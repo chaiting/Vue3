@@ -1,20 +1,14 @@
 <template>
   <div>
     <h3>#js-file-download</h3>
-    <FileDownloadDemo />
+    <F020102SCN />
     <Divider />
     <h3>#i18n</h3>
+    <F020103SCN />
     <I18nDemo />
-    <Divider />
-    <h3>#vue-echarts (pie)</h3>
-    <PieChartDemo />
-    <h3>#vue-echarts (bar)</h3>
-    <BarChartDemo />
   </div>
 </template>
 <script setup lang="ts">
-import BarChartDemo from "@/components/demo/BarChartDemo.vue";
-import FileDownloadDemo from "@/components/demo/FileDownloadDemo.vue";
-import I18nDemo from "@/components/demo/I18nDemo.vue";
-import PieChartDemo from "@/components/demo/PieChartDemo.vue";
+import F020102SCN from "@/components/f02/F020102SCN.vue";
+import F020103SCN from "@/components/f02/F020103SCN.vue";
 </script>

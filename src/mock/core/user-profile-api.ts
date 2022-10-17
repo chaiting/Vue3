@@ -42,13 +42,6 @@ export default function (mock: MockAdapter) {
                 iconText: "",
                 redirectTypeCd: "P",
               },
-              {
-                menuSeqNo: "3-2-2",
-                itemNm: "備忘錄二",
-                itemUri: "/f030201scn",
-                iconText: "",
-                redirectTypeCd: "P",
-              },
             ],
           },
           {

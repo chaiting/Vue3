@@ -22,6 +22,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+// 單選值
 const singleValue = ref("");
+// 多選值
 const multipleValue = ref([]);
 </script>

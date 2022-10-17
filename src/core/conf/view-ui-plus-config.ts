@@ -7,7 +7,4 @@ import "@/assets/commonStyle.css";
 
 export default (app: App) => {
   app.use(ViewUIPlus, { i18n });
-  app.component("EInput", {
-    template: `<Input clearable></Input>`,
-  });
 };

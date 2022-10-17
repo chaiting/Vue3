@@ -12,6 +12,7 @@
 <script setup lang="ts">
 import CustomerPhoneList from "@/core/components/dial/CustomerPhoneList.vue";
 
+// 電話清單
 const phoneList = [
   { telNumber: "02-123456789", telType: "H" },
   { telNumber: "03-123456789", telType: "H" },

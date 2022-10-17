@@ -11,5 +11,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+// 是否開啟EsunConfirm
 const isOpen = ref(false);
 </script>
