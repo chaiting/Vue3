@@ -1,7 +1,7 @@
 import { delay } from "lodash-es";
-import { useGlobalStore } from "@/core/store/global";
-import messageBridgeApi from "@/core/api/message-bridge-api";
 import { IGNORE_GLOBAL_SPINNER_URLS } from "@/conf/app-config";
+import messageBridgeApi from "@/core/api/message-bridge-api";
+import { useGlobalStore } from "@/core/store/global";
 import type { AxiosError, AxiosRequestConfig } from "axios";
 /**
  * 攔截每個AJAX HTTP Request進行處理

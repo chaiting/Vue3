@@ -13,8 +13,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import BarChartDemo from "@/components/demo/BarChartDemo.vue";
 import FileDownloadDemo from "@/components/demo/FileDownloadDemo.vue";
 import I18nDemo from "@/components/demo/I18nDemo.vue";
 import PieChartDemo from "@/components/demo/PieChartDemo.vue";
-import BarChartDemo from "@/components/demo/BarChartDemo.vue";
 </script>

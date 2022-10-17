@@ -43,8 +43,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, watch } from "vue";
 import isBlank from "is-blank";
+import { reactive, ref, watch } from "vue";
 import sysDialApi from "@/core/api/sys-dial-api";
 import type { FormRefType, ValidatorType } from "@/core/type/form-types";
 

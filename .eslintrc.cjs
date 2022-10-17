@@ -35,12 +35,17 @@ module.exports = {
           "builtin",
           "external",
           "internal",
-          "parent",
           "sibling",
+          "parent",
           "index",
           "object",
           "type",
         ],
+        alphabetize: {
+          order:
+            "asc" /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
+          caseInsensitive: true /* ignore case. Options: [true, false] */,
+        },
         // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md
       },
     ],

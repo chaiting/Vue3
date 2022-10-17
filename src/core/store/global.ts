@@ -1,5 +1,5 @@
-import { defineStore } from "pinia";
 import moment from "moment";
+import { defineStore } from "pinia";
 
 export const useGlobalStore = defineStore("global", {
   state: () => ({

@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import Loading from "vue-loading-overlay";
 import { computed } from "vue";
+import Loading from "vue-loading-overlay";
 import { useGlobalStore } from "@/core/store/global";
 
 const globalStore = useGlobalStore();

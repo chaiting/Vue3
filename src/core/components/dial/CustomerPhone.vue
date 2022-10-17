@@ -88,11 +88,11 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, ref, watch, computed } from "vue";
 import isBlank from "is-blank";
 import { truncate } from "lodash-es";
-import sysDialApi from "@/core/api/sys-dial-api";
+import { onMounted, reactive, ref, watch, computed } from "vue";
 import codeApi from "@/core/api/code-api";
+import sysDialApi from "@/core/api/sys-dial-api";
 import type { FormRefType } from "@/core/type/form-types";
 
 const props = defineProps({

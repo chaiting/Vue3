@@ -1,6 +1,6 @@
 import { getCurrentInstance } from "vue";
-import messageBridgeApi from "@/core/api/message-bridge-api";
 import sessionKeeperApi from "@/core/api//session-keeper-api";
+import messageBridgeApi from "@/core/api/message-bridge-api";
 import { useGlobalStore } from "@/core/store/global";
 
 /**

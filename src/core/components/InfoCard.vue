@@ -54,8 +54,8 @@
 
 <script setup lang="ts">
 import isBlank from "is-blank";
-import { onDeactivated, reactive, computed, ref } from "vue";
 import { split, head, drop, join } from "lodash-es";
+import { onDeactivated, reactive, computed, ref } from "vue";
 import infoCardApi from "@/core/api/info-card-api";
 import type { NullableType } from "@/core/type/utils-types";
 

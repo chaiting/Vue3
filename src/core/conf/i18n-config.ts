@@ -1,6 +1,6 @@
-import { createI18n } from "vue-i18n";
-import zh_TW from "view-ui-plus/dist/locale/zh-TW";
 import en from "view-ui-plus/dist/locale/en-US";
+import zh_TW from "view-ui-plus/dist/locale/zh-TW";
+import { createI18n } from "vue-i18n";
 import type { App } from "vue";
 
 export const i18n = createI18n({

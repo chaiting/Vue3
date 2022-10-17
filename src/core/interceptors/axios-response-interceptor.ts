@@ -1,7 +1,7 @@
-import Swal from "sweetalert2";
 import { delay, size, join } from "lodash-es";
-import { useGlobalStore } from "@/core/store/global";
+import Swal from "sweetalert2";
 import { IGNORE_GLOBAL_SPINNER_URLS } from "@/conf/app-config";
+import { useGlobalStore } from "@/core/store/global";
 import router from "@/router";
 import type { AxiosError, AxiosResponse } from "axios";
 

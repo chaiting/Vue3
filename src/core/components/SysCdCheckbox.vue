@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, type PropType } from "vue";
 import { find, includes } from "lodash-es";
+import { ref, watch, onMounted, type PropType } from "vue";
 import codeApi from "@/core/api/code-api";
 
 const emit = defineEmits(["update:value"]);

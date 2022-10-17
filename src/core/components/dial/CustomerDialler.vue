@@ -106,17 +106,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, type PropType } from "vue";
-import { truncate } from "lodash-es";
 import isBlank from "is-blank";
-import Dialler from "@/core/components/dial/Dialler.vue";
-import CustomerPhoneList from "@/core/components/dial/CustomerPhoneList.vue";
+import { truncate } from "lodash-es";
+import { ref, computed, watch } from "vue";
 import codeApi from "@/core/api/code-api";
-import sysDialApi from "@/core/api/sys-dial-api";
 import customerApi from "@/core/api/customer-api";
+import sysDialApi from "@/core/api/sys-dial-api";
+import CustomerPhoneList from "@/core/components/dial/CustomerPhoneList.vue";
+import Dialler from "@/core/components/dial/Dialler.vue";
 import { useProfileStore } from "@/core/store/profile";
-import type { CustomerDial } from "@/core/type/sys-dial-types";
 import type { CustomerPhoneType } from "@/core/type/customer-types";
+import type { CustomerDial } from "@/core/type/sys-dial-types";
+import type { PropType } from "vue";
 
 const profileStore = useProfileStore();
 

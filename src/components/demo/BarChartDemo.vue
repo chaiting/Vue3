@@ -3,8 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { use } from "echarts/core";
-import { CanvasRenderer } from "echarts/renderers";
 import { BarChart } from "echarts/charts";
 import {
   TitleComponent,
@@ -12,6 +10,8 @@ import {
   LegendComponent,
   GridComponent,
 } from "echarts/components";
+import { use } from "echarts/core";
+import { CanvasRenderer } from "echarts/renderers";
 import { ref } from "vue";
 
 use([

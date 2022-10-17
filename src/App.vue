@@ -38,8 +38,8 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 import Banner from "@/core/components/layout/Banner.vue";
-import LeftNavigator from "@/core/components/layout/LeftNavigator.vue";
 import FunctionTitle from "@/core/components/layout/FunctionTitle.vue";
-import Spinner from "@/core/components/misc/Spinner.vue";
+import LeftNavigator from "@/core/components/layout/LeftNavigator.vue";
 import LogoutSpinner from "@/core/components/misc/LogoutSpinner.vue";
+import Spinner from "@/core/components/misc/Spinner.vue";
 </script>

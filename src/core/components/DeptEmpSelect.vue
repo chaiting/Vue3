@@ -110,8 +110,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch, computed, type PropType } from "vue";
 import { find } from "lodash-es";
+import { onMounted, ref, watch, computed, type PropType } from "vue";
 import departmentApi from "@/core/api/department-api";
 
 const emit = defineEmits([

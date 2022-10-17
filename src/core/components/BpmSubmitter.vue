@@ -123,9 +123,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, watch, ref, onMounted } from "vue";
-import { find } from "lodash-es";
 import isBlank from "is-blank";
+import { find } from "lodash-es";
+import { computed, reactive, watch, ref, onMounted } from "vue";
 import bpmFormApi from "@/core/api/bpm-form-api";
 import type { ProcessResType } from "@/core/type/bpm-form-types";
 import type { FormRefType, ValidatorType } from "@/core/type/form-types";

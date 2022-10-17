@@ -1,11 +1,11 @@
 // core
-import codeInit from "@/mock/core/code-api";
 import bpmFormInit from "@/mock/core/bpm-form-api";
-import sysDialInit from "@/mock/core/sys-dial-api";
+import codeInit from "@/mock/core/code-api";
 import customerInit from "@/mock/core/customer-api";
+import departmentInit from "@/mock/core/department-api";
 import employeeInit from "@/mock/core/employee-api";
 import infoCardInit from "@/mock/core/info-card-api";
-import departmentInit from "@/mock/core/department-api";
+import sysDialInit from "@/mock/core/sys-dial-api";
 import userProfileInit from "@/mock/core/user-profile-api";
 // view
 import f01Init from "@/mock/f01";

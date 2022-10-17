@@ -16,10 +16,11 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch, type PropType } from "vue";
-import { find, includes, filter } from "lodash-es";
 import isBlank from "is-blank";
+import { find, includes, filter } from "lodash-es";
+import { onMounted, ref, watch } from "vue";
 import departmentApi from "@/core/api/department-api";
+import type { PropType } from "vue";
 
 const emit = defineEmits(["update:value"]);
 
