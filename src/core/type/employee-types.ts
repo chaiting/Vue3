@@ -1,14 +1,14 @@
 /**
  * 使用者清單
  */
-export type UserList = Array<{
+export type User = {
   accSts?: string;
   adAccount: string;
   empNm: string;
   empNo?: string;
   usedAccount: string;
   hireSts: "hired" | "left" | "";
-}>;
+};
 
 /**
  * 查詢使用者清單參數
@@ -27,4 +27,4 @@ export interface EmployeeReqType {
 /**
  * 使用者清單
  */
-export type EmployeeResType = Promise<UserList>;
+export type EmployeeResType = Promise<User[]>;

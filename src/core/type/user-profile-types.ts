@@ -1,7 +1,7 @@
 /**
  * 授權資訊清單
  */
-type PermissionList = Array<{
+type PermissionListType = Array<{
   // 資源等級代碼
   confLvCd: string;
   // 資源等級名稱
@@ -31,7 +31,7 @@ type PermissionList = Array<{
 /**
  * 角色屬性清單
  */
-type RoleAttrList = Array<{
+type RoleAttrListType = Array<{
   // 屬性鍵
   attrKey: string;
   // 屬性說明
@@ -51,12 +51,12 @@ type RoleAttrList = Array<{
 /**
  * 角色資源屬性清單
  */
-type RoleRsrcAttrList = RoleAttrList & RsrcAttrList;
+type RoleRsrcAttrListType = RoleAttrListType & RsrcAttrListType;
 
 /**
  * 角色屬性清單
  */
-type RsrcAttrList = Array<{
+type RsrcAttrListType = Array<{
   // 屬性鍵
   attrKey: string;
   // 屬性說明
@@ -84,7 +84,7 @@ type RsrcAttrList = Array<{
 /**
  * 選單清單
  */
-export type MenuList = Array<{
+export type MenuListType = Array<{
   // 文字圖示
   iconText: string;
   // 選單名稱
@@ -104,7 +104,7 @@ export type MenuList = Array<{
 /**
  * 上層組織/群組清單(含本身所在群組)
  */
-type UpperGrpList = Array<{
+type UpperGrpListType = Array<{
   // 組織/群組代碼
   grpId: string;
   // 組織/群組名稱
@@ -118,7 +118,7 @@ type UpperGrpList = Array<{
 /**
  * 操作者基本資訊
  */
-export type UserProfile = {
+export type UserProfileType = {
   // AD帳號
   adAccount: string;
   // 公司EMAIL
@@ -132,7 +132,7 @@ export type UserProfile = {
   // 組織/群組名稱
   grpNm: string;
   // 授權資訊清單
-  permissionList?: PermissionList;
+  permissionList?: PermissionListType;
   // 分機號碼
   phoneExt?: string;
   // 職位代碼
@@ -142,13 +142,13 @@ export type UserProfile = {
   // 資源清單
   resources?: string[];
   // 角色屬性清單
-  roleAttrList?: RoleAttrList;
+  roleAttrList?: RoleAttrListType;
   // 角色資源屬性清單
-  roleRsrcAttrList?: RoleRsrcAttrList;
+  roleRsrcAttrList?: RoleRsrcAttrListType;
   // 角色清單
   roles?: string[];
   // 資源屬性清單
-  rsrcAttrList?: RsrcAttrList;
+  rsrcAttrList?: RsrcAttrListType;
   // 系統資訊
   system: {
     // 系統代碼
@@ -160,22 +160,22 @@ export type UserProfile = {
     // 系統網址
     url: string;
     // 左側選單清單
-    leftMenuList: MenuList;
+    leftMenuList: MenuListType;
     // 上方選單清單
-    topMenuList: MenuList;
+    topMenuList: MenuListType;
   };
   // 職稱代碼
   titleCd?: string;
   // 職稱名稱
   titleNm?: string;
   // 上層組織/群組清單(含本身所在群組)
-  upperGrpList: UpperGrpList;
+  upperGrpList: UpperGrpListType;
 };
 
 /**
  * 操作者基本資訊
  */
-export type UserProfileResType = Promise<UserProfile>;
+export type UserProfileResType = Promise<UserProfileType>;
 
 /**
  * 被代理人切換參數

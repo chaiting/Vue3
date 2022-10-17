@@ -1,4 +1,4 @@
-import type { Nullable } from "@/core/type/utils-types";
+import type { NullableType } from "@/core/type/utils-types";
 
 /**
  * 取得行內使用者資訊卡片資訊參數
@@ -43,7 +43,7 @@ export type EmployeeInfoCardResType = Promise<{
   // 職務代碼名稱
   positionName?: string;
   // 查詢者分機
-  userExtension: Nullable<string>;
+  userExtension: NullableType<string>;
 }>;
 
 /**
@@ -57,7 +57,7 @@ export type callAutoDialReqType = {
   // 單位電話
   deptPhoneNo: string;
   // 撥號參數
-  userExtension: Nullable<string>;
+  userExtension: NullableType<string>;
   // 單位分機
   officePhoneext: string;
   // 是否為卡處人員

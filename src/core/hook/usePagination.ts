@@ -1,6 +1,6 @@
 import { reactive, watch } from "vue";
 import { DEFAULT_PAGE_SIZE_LIST } from "@/conf/app-config";
-import { camelCase2UnderscoreUppercase } from "@/core/utils/naming-converter";
+import { camelCase2UnderscoreUppercase } from "@/core/utils/naming-converter-utils";
 
 /**
  * 表格分頁hook

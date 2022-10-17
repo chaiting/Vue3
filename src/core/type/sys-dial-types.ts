@@ -13,7 +13,7 @@ export type EmpDialInfoResType = Promise<{
 /**
  * 撥號紀錄清單
  */
-export type CustomerDialList = Array<{
+export type CustomerDial = {
   // 撥號狀態
   callStatus: string;
   // 撥號狀態名稱
@@ -40,7 +40,7 @@ export type CustomerDialList = Array<{
   userNm: string;
   // 發話人員編號
   userNo: string;
-}>;
+};
 
 /**
  * 系統撥號參數
@@ -75,7 +75,7 @@ export interface SysDialReqType {
  */
 export type DialHistoryListResType = Promise<{
   // 撥號紀錄清單
-  customerDialList?: CustomerDialList;
+  customerDialList?: CustomerDial[];
   // 實際頁次
   pageNo: number;
   // 資料總筆數

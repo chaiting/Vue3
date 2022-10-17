@@ -1,18 +1,20 @@
 import { defineStore } from "pinia";
 import { cloneDeep } from "lodash-es";
-import type { MenuList, UserProfile } from "@/core/type/user-profile-types";
+import type {
+  MenuListType,
+  UserProfileType,
+} from "@/core/type/user-profile-types";
 
 const INIT_USER_PROFILE = {
   empName: "",
   empNo: "",
   system: {
     sysNm: "",
-    leftMenuList: [] as MenuList,
+    leftMenuList: [] as MenuListType,
   },
-} as Partial<UserProfile>;
+} as Partial<UserProfileType>;
 
-export const useProfileStore = defineStore({
-  id: "profile",
+export const useProfileStore = defineStore("profile", {
   state: () => ({
     defaultUserProfile: cloneDeep(INIT_USER_PROFILE),
     userProfile: {
@@ -36,7 +38,7 @@ export const useProfileStore = defineStore({
      * 儲存使用者基本資料
      * @param payload 使用者基本資料
      */
-    doStoredUserProfile(payload: UserProfile) {
+    doStoredUserProfile(payload: UserProfileType) {
       this.userProfile.optUserProfile = payload;
       this.userProfile.loginUserProfile = payload;
     },
@@ -44,7 +46,7 @@ export const useProfileStore = defineStore({
      * 更新操作使用者基本資料
      * @param payload 操作者基本資料
      */
-    doUpdateOptUserProfile(payload: UserProfile) {
+    doUpdateOptUserProfile(payload: UserProfileType) {
       this.userProfile.optUserProfile = payload;
     },
     /**

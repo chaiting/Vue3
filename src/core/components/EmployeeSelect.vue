@@ -24,7 +24,7 @@ import { onMounted, ref, watch, type PropType } from "vue";
 import { find, includes, filter } from "lodash-es";
 import isBlank from "is-blank";
 import employeeApi from "@/core/api/employee-api";
-import type { UserList } from "@/core/type/employee-types";
+import type { User } from "@/core/type/employee-types";
 
 const emit = defineEmits(["update:value"]);
 
@@ -86,7 +86,7 @@ const props = defineProps({
 });
 
 // 使用者清單
-const userList = ref<UserList>([]);
+const userList = ref<User[]>([]);
 // 選中的AD帳號清單
 const selectedUsers = ref<string | string[]>();
 
@@ -107,7 +107,7 @@ async function doQryUserList() {
     isHiredOnly: props.isHiredOnly,
     allSubordinate: props.allSubordinate,
     valueType: props.valueType,
-  })) as UserList;
+  })) as User[];
 }
 
 /**

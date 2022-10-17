@@ -1,7 +1,7 @@
 /**
  * Form組件的Ref
  */
-export interface FormRef {
+export interface FormRefType {
   // 驗證表單
   validate: (cb?: (valid: boolean) => void) => void | Promise<boolean>;
   // 清空表單
@@ -11,7 +11,7 @@ export interface FormRef {
 /**
  * 表單欄位自定義驗證
  */
-export type Validator<T> = (
+export type ValidatorType<T> = (
   // 表單規則
   rule: any,
   // 欄位值

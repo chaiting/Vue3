@@ -1,8 +1,7 @@
 import { defineStore } from "pinia";
 import moment from "moment";
 
-export const useGlobalStore = defineStore({
-  id: "global",
+export const useGlobalStore = defineStore("global", {
   state: () => ({
     // Axios AJAX訊息
     axios: {

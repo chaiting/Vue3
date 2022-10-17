@@ -39,16 +39,7 @@ import { useProfileStore } from "@/core/store/profile";
 import { useRoute } from "vue-router";
 import { find } from "lodash-es";
 import { useGlobalStore } from "@/core/store/global";
-import type { MenuList } from "@/core/type/user-profile-types";
-
-// interface Menu {
-//   menuSeqNo: string;
-//   itemNm: string;
-//   itemUri: string;
-//   iconText: string;
-//   redirectTypeCd: string;
-//   subMenuList: Menu[] | [];
-// }
+import type { MenuListType } from "@/core/type/user-profile-types";
 
 const route = useRoute();
 const globalStore = useGlobalStore();
@@ -58,7 +49,7 @@ const openItem = ref<string[]>([]);
 const activeItem = ref("");
 const itemName = ref("");
 
-const leftMenus = computed<MenuList>(() => profileStore.leftMenus);
+const leftMenus = computed<MenuListType>(() => profileStore.leftMenus);
 
 /** Focus左側選單項目 */
 function doFocusLeftMenuItem(itemUri: string) {

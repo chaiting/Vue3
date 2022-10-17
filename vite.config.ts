@@ -1,14 +1,24 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { visualizer } from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
+import { createHtmlPlugin } from "vite-plugin-html";
 import path from "path";
 // https://vitejs.dev/config/
 
 const config = defineConfig(({ mode }) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
   return {
     plugins: [
       vue(),
+      createHtmlPlugin({
+        minify: true,
+        inject: {
+          data: {
+            title: process.env.VITE_APP_SYSTEM_NAME,
+          },
+        },
+      }),
       visualizer({ open: false }),
       viteCompression({
         disable: !["sit", "uat", "prod"].includes(mode),

@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRef, Validator } from "@/core/type/form-types";
+import type { FormRefType, ValidatorType } from "@/core/type/form-types";
 import { reactive, ref, watch } from "vue";
 import isBlank from "is-blank";
 import sysDialApi from "@/core/api/sys-dial-api";
@@ -87,7 +87,7 @@ const props = defineProps({
   },
 });
 
-const validatePhone: Validator<string> = (rule, value, callback) => {
+const validatePhone: ValidatorType<string> = (rule, value, callback) => {
   //字元檢查，判斷字串是否為數字、*、-
   if (!/^(\*|-|\d)*$/.test(value)) {
     return callback(new Error("格式錯誤"));
@@ -116,7 +116,7 @@ const validatePhone: Validator<string> = (rule, value, callback) => {
   return callback();
 };
 
-const callExtFormRef = ref<FormRef | null>(null);
+const callExtFormRef = ref<FormRefType>();
 // 未設定分機顯示
 const extAlert = ref(false);
 

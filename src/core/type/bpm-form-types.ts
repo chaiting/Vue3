@@ -3,7 +3,7 @@ import type { Flag } from "@/core/type/code-types";
 /**
  * bpm作業參數
  */
-interface FormBase {
+interface FormBaseType {
   // 表單代碼
   formId: string;
   // 流程代碼
@@ -26,7 +26,7 @@ interface FormBase {
 /**
  * 退回、結案、銷案作業參數
  */
-export interface FormSendBackReqType extends FormBase {
+export interface FormSendBackReqType extends FormBaseType {
   // 關卡動作
   actionId?: string;
 }
@@ -34,7 +34,7 @@ export interface FormSendBackReqType extends FormBase {
 /**
  * 送單作業參數
  */
-export interface FormSendReqType extends FormBase {
+export interface FormSendReqType extends FormBaseType {
   // 傳送對象
   processorId: string;
   // 傳送對象名稱
@@ -46,7 +46,7 @@ export interface FormSendReqType extends FormBase {
 /**
  * 起單作業參數
  */
-export interface ProcessStartReqType extends FormBase {
+export interface ProcessStartReqType extends FormBaseType {
   // 業務別代碼
   businessCode?: string;
   // 顧客ID
@@ -80,7 +80,7 @@ export interface FormTransferReqType {
 /**
  * BPM作業處理結果
  */
-interface ProcessRes {
+export interface ProcessResType {
   message: string[];
   statusCode: string;
 }
@@ -98,18 +98,20 @@ export interface FormReqType {
 /**
  * 起單作業處理結果
  */
-export type FormStartResType = Promise<ProcessRes & { bpmFormSeqNo: string }>;
+export type FormStartResType = Promise<
+  ProcessResType & { bpmFormSeqNo: string }
+>;
 
 /**
  * 送單、處理權移轉、退回、結案、銷案作業處理結果
  */
-export type FormSendResType = Promise<ProcessRes | undefined>;
+export type FormSendResType = Promise<ProcessResType | undefined>;
 
 /**
  * 關卡處理者資料
  */
 export type StageProcessorResType = Promise<
-  | (ProcessRes & {
+  | (ProcessResType & {
       processorType: string;
       stageProcessors: Array<{ processorId: string; processorName: string }>;
     })
@@ -119,7 +121,7 @@ export type StageProcessorResType = Promise<
 /**
  * 關卡動作資訊
  */
-type StageAction = {
+type StageActionType = {
   stageAction: Array<
     Flag & { cdId: string; cdNm: string; ctId: number; typeNm: string }
   >;
@@ -128,7 +130,7 @@ type StageAction = {
 /**
  * 表單傳送類型
  */
-export type StageActionResType = Promise<ProcessRes & StageAction>;
+export type StageActionResType = Promise<ProcessResType & StageActionType>;
 
 /**
  * BPM FORM資訊

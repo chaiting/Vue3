@@ -123,11 +123,13 @@
 </template>
 
 <script setup lang="ts">
-import type { FormRef, Validator } from "@/core/type/form-types";
+import type { FormRefType, ValidatorType } from "@/core/type/form-types";
 import { computed, reactive, watch, ref, onMounted } from "vue";
 import bpmFormApi from "@/core/api/bpm-form-api";
 import { find } from "lodash-es";
 import isBlank from "is-blank";
+import type { ProcessResType } from "@/core/type/bpm-form-types";
+
 /**
  * 1. BpmSubmitter props
  *    |----------------------------------------------------------------------------------------------------------------------------------|
@@ -271,15 +273,15 @@ const props = defineProps({
 /**
  * 簽核意見檢核
  */
-const verifySignComment: Validator<string> = (rule, value, callback) => {
+const verifySignComment: ValidatorType<string> = (rule, value, callback) => {
   if (isBlank(value)) {
     return callback(new Error("請輸入簽核意見並且不可僅填入空白"));
   }
   return callback();
 };
 
-const stageUserFormRef = ref<FormRef>();
-const signFormRef = ref<FormRef>();
+const stageUserFormRef = ref<FormRefType>();
+const signFormRef = ref<FormRefType>();
 
 // 關卡動作代碼, Ref DATASHARE.TB_SYS_CD.CD_ID, CT_ID=167
 const actionId = ref("");
@@ -446,30 +448,33 @@ async function doStartProcess() {
   };
 
   const result = await bpmFormApi.doStartProcess(props.flowCode, payload);
-  const returnData: any = doBuildReturnBasicData(result);
-
-  returnData.bpmFormSeqNo = result.bpmFormSeqNo;
+  const returnData = doBuildReturnBasicData(result);
 
   isShowStageUser.value = false;
   stageUserFormRef.value!.resetFields();
 
-  emit("on-start-complete", returnData);
+  emit("on-start-complete", {
+    ...returnData,
+    bpmFormSeqNo: result.bpmFormSeqNo,
+  });
 }
 
 /**
  * 送單作業，並將api執行果傳給父元件
  */
 async function doSendProcess() {
-  const payload: any = doBuildProcBasicData(stageUserForm.signComment);
-  payload.processorType = stageUserForm.processorType;
-  payload.processorId = stageUserForm.processorId;
-  payload.processorName = stageUserForm.processorName;
+  const payload = doBuildProcBasicData(stageUserForm.signComment);
 
-  const result = await bpmFormApi.doSendProcess(payload);
+  const result = await bpmFormApi.doSendProcess({
+    ...payload,
+    processorType: stageUserForm.processorType,
+    processorId: stageUserForm.processorId,
+    processorName: stageUserForm.processorName,
+  });
 
   isShowStageUser.value = false;
   stageUserFormRef.value!.resetFields();
-  emit("on-operate-complete", doBuildReturnBasicData(result));
+  emit("on-operate-complete", doBuildReturnBasicData(result!));
 }
 
 /**
@@ -484,7 +489,7 @@ async function doTransferProcess() {
 
   isShowStageUser.value = false;
   stageUserFormRef.value!.resetFields();
-  emit("on-operate-complete", doBuildReturnBasicData(result));
+  emit("on-operate-complete", doBuildReturnBasicData(result!));
 }
 
 /**
@@ -497,7 +502,7 @@ async function doSendBack() {
   isShowSignModal.value = false;
   signFormRef.value!.resetFields();
 
-  emit("on-returned", doBuildReturnBasicData(result));
+  emit("on-returned", doBuildReturnBasicData(result!));
 }
 
 /**
@@ -510,7 +515,7 @@ async function doRevokeProcess() {
   isShowSignModal.value = false;
   signFormRef.value!.resetFields();
 
-  emit("on-revoked", doBuildReturnBasicData(result));
+  emit("on-revoked", doBuildReturnBasicData(result!));
 }
 
 /**
@@ -523,7 +528,7 @@ async function doCloseProcess() {
   isShowSignModal.value = false;
   signFormRef.value!.resetFields();
 
-  emit("on-closed", doBuildReturnBasicData(result));
+  emit("on-closed", doBuildReturnBasicData(result!));
 }
 
 /**
@@ -588,7 +593,7 @@ function doBuildProcBasicData(signComment: string) {
 /**
  * 組建流程執行結果資料
  */
-function doBuildReturnBasicData(result: any) {
+function doBuildReturnBasicData(result: ProcessResType) {
   return {
     message: result.message,
     statusCode: result.statusCode,

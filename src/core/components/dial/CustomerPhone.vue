@@ -94,7 +94,7 @@ import codeApi from "@/core/api/code-api";
 import sysDialApi from "@/core/api/sys-dial-api";
 import { computed } from "vue";
 import { truncate } from "lodash-es";
-import type { FormRef } from "@/core/type/form-types";
+import type { FormRefType } from "@/core/type/form-types";
 
 const props = defineProps({
   // 發話號碼
@@ -168,7 +168,7 @@ const props = defineProps({
   },
 });
 
-const callingReasonRef = ref<FormRef>();
+const callingReasonRef = ref<FormRefType>();
 // 撥號提示顯示
 const dialAlert = ref(false);
 // 撥號提示標題

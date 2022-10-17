@@ -57,7 +57,7 @@ import isBlank from "is-blank";
 import { onDeactivated, reactive, computed, ref } from "vue";
 import { split, head, drop, join } from "lodash-es";
 import infoCardApi from "@/core/api/info-card-api";
-import type { Nullable } from "@/core/type/utils-types";
+import type { NullableType } from "@/core/type/utils-types";
 
 const props = defineProps({
   // 使用者AD帳號
@@ -85,7 +85,7 @@ const userInfoCard = reactive({
   officePhoneext: "",
   positionCode: "",
   positionName: "",
-  userExtension: null as Nullable<string>,
+  userExtension: null as NullableType<string>,
 });
 // 使用者處級單位名稱
 const userDivision = ref("");

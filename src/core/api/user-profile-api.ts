@@ -2,7 +2,7 @@ import axios from "axios";
 import { useProfileStore } from "@/core/store/profile";
 import type {
   UserProfileResType,
-  UserProfile,
+  UserProfileType,
   AgentProfileReqType,
 } from "@/core/type/user-profile-types";
 
@@ -37,7 +37,7 @@ export default {
     const profileStore = useProfileStore();
 
     if (userProfile) {
-      profileStore.doUpdateOptUserProfile(result.data.body as UserProfile);
+      profileStore.doUpdateOptUserProfile(result.data.body as UserProfileType);
     }
 
     return userProfile;
