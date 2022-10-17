@@ -9,7 +9,6 @@ module.exports = {
     "@vue/eslint-config-typescript/recommended",
     "@vue/eslint-config-prettier",
     "plugin:import/recommended",
-    "plugin:import/typescript",
   ],
   settings: {
     "import/resolver": {
@@ -42,9 +41,8 @@ module.exports = {
           "type",
         ],
         alphabetize: {
-          order:
-            "asc" /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
-          caseInsensitive: true /* ignore case. Options: [true, false] */,
+          order: "asc", // 'ignore', 'asc', 'desc'
+          caseInsensitive: true,
         },
         // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md
       },

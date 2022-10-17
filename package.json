@@ -46,7 +46,7 @@
     "@types/jquery": "^3.5.14",
     "@types/jsdom": "^16.2.14",
     "@types/lodash-es": "^4.17.6",
-    "@types/node": "^18.0.0",
+    "@types/node": "18.0.0",
     "@vitejs/plugin-vue": "^3.0.1",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
     "@vue/eslint-config-prettier": "^7.0.0",

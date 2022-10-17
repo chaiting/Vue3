@@ -59,14 +59,17 @@ import {
 import type { FormRefType } from "@/core/type/form-types";
 import type { CustomerType } from "@/type/f01/f010101-types";
 
+// 表單Ref
 const formRef = ref<FormRefType>();
-
-const { pagination, sortOption, onChangePage, onChangePageSize, onSortChange } =
-  usePagination({
-    fetcher: doQryCustomerList,
-    defaultSortColumn: "ID",
-  });
-
+// 顧客列表
+const list = ref<CustomerType[]>([]);
+// 表單
+const form = reactive({
+  customerId: "",
+  creditCardNumber: "",
+  taxId: "",
+});
+// 表格欄位
 const columns = reactive([
   { key: "id", title: "ID", width: 100, align: "center", sortable: true },
   { key: "name", title: "顧客名稱", width: 150, sortable: true },
@@ -81,14 +84,7 @@ const columns = reactive([
   { key: "address", title: "地址" },
 ]);
 
-const list = ref<CustomerType[]>([]);
-
-const form = reactive({
-  customerId: "",
-  creditCardNumber: "",
-  taxId: "",
-});
-
+// 表單規則
 const formRules = reactive({
   customerId: [
     { message: "顧客ID必填", required: true },
@@ -116,6 +112,16 @@ const formRules = reactive({
   ],
 });
 
+// 分頁hook
+const { pagination, sortOption, onChangePage, onChangePageSize, onSortChange } =
+  usePagination({
+    fetcher: doQryCustomerList,
+    defaultSortColumn: "ID",
+  });
+
+/**
+ * 查詢顧客列表
+ */
 async function doQryCustomerList() {
   const result = await f010101Api.doQryCustomerList({
     ...form,
@@ -128,10 +134,16 @@ async function doQryCustomerList() {
   list.value = result.data;
 }
 
+/**
+ * 查詢
+ */
 async function submit() {
   doQryCustomerList();
 }
 
+/**
+ * 重置
+ */
 async function reset() {
   formRef.value!.resetFields();
 }
