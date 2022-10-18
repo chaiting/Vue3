@@ -1,14 +1,14 @@
 /**
  * Form組件的Ref
  */
-export interface FormRefType {
+export type FormRefType = {
   // 驗證表單
   validate: (cb?: (valid: boolean) => void) => void | Promise<boolean>;
   // 清空表單
   resetFields: () => void;
   // 驗證單一欄位
   validateField: (field: string, cb?: () => void) => void;
-}
+};
 
 /**
  * 表單欄位自定義驗證

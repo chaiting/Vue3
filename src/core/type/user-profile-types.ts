@@ -180,7 +180,7 @@ export type UserProfileResType = Promise<UserProfileType>;
 /**
  * 被代理人切換參數
  */
-export interface AgentProfileReqType {
+export type AgentProfileReqType = {
   // AD帳號
   adAccount: string;
-}
+};

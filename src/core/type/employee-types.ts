@@ -13,7 +13,7 @@ export type User = {
 /**
  * 查詢使用者清單參數
  */
-export interface EmployeeReqType {
+export type EmployeeReqType = {
   // 是否包含單位層級(含子單位)以下所有人
   allSubordinate?: "Y" | "N";
   // 組織/群組代碼清單
@@ -22,7 +22,7 @@ export interface EmployeeReqType {
   isHiredOnly?: "Y" | "N";
   // value類型, A: AD帳號、E: 員工編號
   valueType?: "A" | "E";
-}
+};
 
 /**
  * 使用者清單

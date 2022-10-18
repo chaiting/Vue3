@@ -1,7 +1,7 @@
 /**
  * 其他用途註記
  */
-export interface Flag {
+export type Flag = {
   // 其它用途註記 01
   flag01?: string;
   // 其它用途註記 02
@@ -22,27 +22,27 @@ export interface Flag {
   flag09?: string;
   // 其它用途註記 10
   flag10?: string;
-}
+};
 
 /**
  * 代碼清單查詢參數
  */
-export interface CodeReqType extends Flag {
+export type CodeReqType = Flag & {
   // 類別代碼
   ctId: number;
   // 明細代碼
   cdId?: string;
   // 是否停用
   suspend?: string;
-}
+};
 
 /**
  * 代碼{label,value}清單查詢參數
  */
-export interface CodeLabelReqType extends CodeReqType {
+export type CodeLabelReqType = CodeReqType & {
   // 是否顯示代碼
   showCode: boolean;
-}
+};
 
 /**
  * 代碼清單

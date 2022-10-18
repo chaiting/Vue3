@@ -1,7 +1,7 @@
 /**
  * 查詢組織/群組清單參數
  */
-export interface DepartmentReqType {
+export type DepartmentReqType = {
   // 是否限啟用組織/群組
   activatedGrp?: "Y" | "N";
   // 是否包含所有子單位
@@ -12,7 +12,7 @@ export interface DepartmentReqType {
   grpUnitcode?: string;
   // 上層組織/群組代碼清單
   upGrpIdList?: string[];
-}
+};
 
 /**
  * 組織/群組清單
@@ -29,12 +29,12 @@ export type DepartmentResType = Promise<
 /**
  * 查詢上層組織/群組清單參數
  */
-export interface DepartmentUnitReqType {
+export type DepartmentUnitReqType = {
   // 組織/群組代碼
   grpId: string;
   // 是否限啟用組織/群組
   activatedGrp?: "Y" | "N";
-}
+};
 
 /**
  * 上層組織/群組清單

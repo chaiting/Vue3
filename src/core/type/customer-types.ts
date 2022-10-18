@@ -11,12 +11,12 @@ export type CustomerPhoneType = {
 /**
  * 查詢顧客電話清單參數
  */
-export interface CustomerPhoneReqType {
+export type CustomerPhoneReqType = {
   // 顧客ID
   customerId: string;
   // 顧客類別
   customerType: string;
-}
+};
 
 /**
  * 顧客電話清單
@@ -26,14 +26,14 @@ export type CustomerPhoneResType = Promise<CustomerPhoneType[]>;
 /**
  * 查詢顧客地址清單參數
  */
-export interface CustomerAddressReqType {
+export type CustomerAddressReqType = {
   // 顧客ID
   customerId: string;
   // 顧客類別
   customerType: string;
   // 地址類別地址類別
   addressType?: string;
-}
+};
 
 /**
  * 顧客地址清單

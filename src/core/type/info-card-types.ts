@@ -3,10 +3,10 @@ import type { NullableType } from "@/core/type/utils-types";
 /**
  * 取得行內使用者資訊卡片資訊參數
  */
-export interface InfoCardReqType {
+export type InfoCardReqType = {
   // AD帳號
   adAccount: string;
-}
+};
 
 /**
  * 行內使用者資訊卡片資訊

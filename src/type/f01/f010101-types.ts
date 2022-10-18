@@ -1,7 +1,7 @@
 /**
  * 查詢顧客列表參數
  */
-export interface CustomerListReqType {
+export type CustomerListReqType = {
   // 顧客ID
   customerId: string;
   // 信用卡號
@@ -16,7 +16,7 @@ export interface CustomerListReqType {
   page: number;
   // 分頁大小
   pageSize: number;
-}
+};
 
 /**
  * 顧客列表

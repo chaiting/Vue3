@@ -45,7 +45,7 @@ export type CustomerDial = {
 /**
  * 系統撥號參數
  */
-export interface SysDialReqType {
+export type SysDialReqType = {
   // 受話者鍵值
   calledId?: string;
   // 受話者名稱
@@ -68,7 +68,7 @@ export interface SysDialReqType {
   refProcKey?: string;
   // 業務鍵值
   reasonDesc?: string;
-}
+};
 
 /**
  * 顧客撥號紀錄清單

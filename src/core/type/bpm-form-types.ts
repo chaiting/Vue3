@@ -3,7 +3,7 @@ import type { Flag } from "@/core/type/code-types";
 /**
  * bpm作業參數
  */
-interface FormBaseType {
+type FormBaseType = {
   // 表單代碼
   formId: string;
   // 流程代碼
@@ -21,32 +21,32 @@ interface FormBaseType {
       [key: string]: string;
     };
   };
-}
+};
 
 /**
  * 退回、結案、銷案作業參數
  */
-export interface FormSendBackReqType extends FormBaseType {
+export type FormSendBackReqType = FormBaseType & {
   // 關卡動作
   actionId?: string;
-}
+};
 
 /**
  * 送單作業參數
  */
-export interface FormSendReqType extends FormBaseType {
+export type FormSendReqType = FormBaseType & {
   // 傳送對象
   processorId: string;
   // 傳送對象名稱
   processorName: string;
   // 傳送對象類型
   processorType: string;
-}
+};
 
 /**
  * 起單作業參數
  */
-export interface ProcessStartReqType extends FormBaseType {
+export type ProcessStartReqType = FormBaseType & {
   // 業務別代碼
   businessCode?: string;
   // 顧客ID
@@ -61,12 +61,12 @@ export interface ProcessStartReqType extends FormBaseType {
   processorName: string;
   // 傳送對象類型
   processorType: string;
-}
+};
 
 /**
  * 處理權移轉參數
  */
-export interface FormTransferReqType {
+export type FormTransferReqType = {
   // 表單代碼
   formId: string;
   // 新處理人員編
@@ -75,27 +75,27 @@ export interface FormTransferReqType {
   signComment: string;
   // 系統代碼
   sysId?: string;
-}
+};
 
 /**
  * BPM作業處理結果
  */
-export interface ProcessResType {
+export type ProcessResType = {
   // 回應訊息清單
   message: string[];
   // API回應代碼
   statusCode: string;
-}
+};
 
 /**
  * 表單參數
  */
-export interface FormReqType {
+export type FormReqType = {
   // 關卡動作代碼
   actionId?: string;
   // 表單代碼
   formId?: string;
-}
+};
 
 /**
  * 起單作業處理結果
