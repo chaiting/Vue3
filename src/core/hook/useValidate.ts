@@ -7,6 +7,7 @@ import type { Ref } from "vue";
  * @param formRef 表單Ref
  */
 export function useValidate(formRef: Ref<FormRefType | undefined>) {
+  // 蒐集錯誤欄位
   const erorrFields = ref(new Set<string>());
 
   /**
