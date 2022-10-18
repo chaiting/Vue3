@@ -600,6 +600,9 @@ function doBuildReturnBasicData(result: ProcessResType) {
   };
 }
 
+/**
+ * 監聽開啟BPM視窗次數計數器
+ */
 watch(
   () => props.fireOpenCounter,
   () => {
@@ -620,6 +623,9 @@ watch(
   }
 );
 
+/**
+ * 監聽BPM表單送出次數計數器
+ */
 watch(
   () => props.fireSubmitCounter,
   () => {

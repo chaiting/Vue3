@@ -1,5 +1,8 @@
 /// <reference types="vite/client" />
 
+/**
+ * import.meta.env自定義屬性類型
+ */
 interface ImportMetaEnv {
   readonly VITE_APP_ENABLE_MOCK: string;
   readonly VITE_APP_AXIOS_BASE_URL: string;

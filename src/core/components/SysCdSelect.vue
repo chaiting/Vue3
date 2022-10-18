@@ -182,11 +182,17 @@ async function doUpdateSelectedValue(payload: { forceReload: "Y" | "N" }) {
   }
 }
 
+/**
+ * 監聽是否刷新選中值
+ */
 watch(
   () => props.value,
   () => doUpdateSelectedValue({ forceReload: "N" })
 );
 
+/**
+ * 監聽是否強制刷新選中值
+ */
 watch(
   [
     () => props.cdId,

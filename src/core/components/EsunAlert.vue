@@ -77,15 +77,24 @@ const props = defineProps({
 // 是否顯示modal
 const isVisible = ref(false);
 
+/**
+ * alert樣式類型
+ */
 const classes = computed(() => {
   return props.type + "-background";
 });
 
+/**
+ * 關閉alert
+ */
 function closeModal() {
   emit("on-ok");
   isVisible.value = false;
 }
 
+/**
+ * 監聽是否開啟alert
+ */
 watch(
   () => props.value,
   (newValue) => (isVisible.value = newValue)

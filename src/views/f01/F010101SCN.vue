@@ -65,8 +65,11 @@ const formRef = ref<FormRefType>();
 const list = ref<CustomerType[]>([]);
 // 表單
 const form = reactive({
+  // 顧客ID
   customerId: "",
+  // 信用卡號
   creditCardNumber: "",
+  // 統一編號
   taxId: "",
 });
 // 表格欄位

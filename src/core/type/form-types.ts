@@ -6,6 +6,8 @@ export interface FormRefType {
   validate: (cb?: (valid: boolean) => void) => void | Promise<boolean>;
   // 清空表單
   resetFields: () => void;
+  // 驗證單一欄位
+  validateField: (field: string, cb?: () => void) => void;
 }
 
 /**

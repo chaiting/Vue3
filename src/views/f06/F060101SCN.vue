@@ -1,63 +1,27 @@
 <template>
-  <h3>限制特定日期</h3>
-  <Space size="large" wrap>
-    <DatePicker
-      type="date"
-      placeholder="起始日期"
-      format="yyyy/MM/dd"
-      :options="restrictSpecificSDate(form1.eDate)"
-      @on-change="form1.sDate = $event"
-      style="width: 200px"
-    />
-    <DatePicker
-      type="date"
-      placeholder="結束日期"
-      format="yyyy/MM/dd"
-      :options="restrictSpecificEDate(form1.sDate)"
-      @on-change="form1.eDate = $event"
-      style="width: 200px"
-    />
-  </Space>
-  <pre>{{ form1 }}</pre>
-  <h3>限制特定區間</h3>
-  <Space size="large" wrap>
-    <DatePicker
-      type="date"
-      placeholder="起始日期"
-      format="yyyy/MM/dd"
-      :options="restrictPeriodSDate(form2.eDate, 'd', 10)"
-      @on-change="form2.sDate = $event"
-      style="width: 200px"
-    />
-    <DatePicker
-      type="date"
-      placeholder="結束日期"
-      format="yyyy/MM/dd"
-      :options="restrictPeriodEDate(form2.sDate, 'd', 10)"
-      @on-change="form2.eDate = $event"
-      style="width: 200px"
-    />
-  </Space>
-  <pre>{{ form2 }}</pre>
+  <Card title="日期欄位驗證相依">
+    <F060102SCN></F060102SCN>
+  </Card>
+  <Card title="限制特定日期 & 區間">
+    <F060103SCN></F060103SCN>
+  </Card>
 </template>
 <script setup lang="ts">
-import { reactive } from "vue";
-import {
-  restrictSpecificSDate,
-  restrictSpecificEDate,
-  restrictPeriodSDate,
-  restrictPeriodEDate,
-} from "@/core/utils/date-restrict-utils";
-
-// 表單1
-const form1 = reactive({
-  sDate: "",
-  eDate: "",
-});
-
-// 表單2
-const form2 = reactive({
-  sDate: "",
-  eDate: "",
-});
+import F060102SCN from "@/components/f06/F060102SCN.vue";
+import F060103SCN from "@/components/f06/F060103SCN.vue";
 </script>
+
+<style scoped>
+.ivu-card + .ivu-card {
+  margin-top: 20px;
+}
+
+:deep(.ivu-card-head) {
+  background-color: gray;
+}
+:deep(.ivu-card-head p) {
+  font-style: italic;
+  font-weight: bold;
+  color: white;
+}
+</style>

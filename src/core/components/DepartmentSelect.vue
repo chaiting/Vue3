@@ -106,6 +106,7 @@ async function doQryDeptList() {
     allSubordinate: props.allSubordinate,
   });
 }
+
 /**
  * 若選單中存在父元件選值則改選中值, 不存在則清空父元件選值
  */

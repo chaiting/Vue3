@@ -85,6 +85,10 @@ function ok() {
   isVisible.value = false;
   emit("on-ok");
 }
+
+/**
+ * 監聽是否開啟confirm
+ */
 watch(
   () => props.value,
   (newValue) => {

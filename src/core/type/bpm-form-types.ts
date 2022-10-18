@@ -81,7 +81,9 @@ export interface FormTransferReqType {
  * BPM作業處理結果
  */
 export interface ProcessResType {
+  // 回應訊息清單
   message: string[];
+  // API回應代碼
   statusCode: string;
 }
 
@@ -112,8 +114,15 @@ export type FormSendResType = Promise<ProcessResType | undefined>;
  */
 export type StageProcessorResType = Promise<
   | (ProcessResType & {
+      // 傳送對象類型
       processorType: string;
-      stageProcessors: Array<{ processorId: string; processorName: string }>;
+      // 傳送下一關對象名稱(員工姓名/角色名稱)
+      stageProcessors: Array<{
+        // 傳送下一關對象(員工編號/角色代號)
+        processorId: string;
+        // 傳送下一關對象名稱(員工姓名/角色名稱)
+        processorName: string;
+      }>;
     })
   | undefined
 >;
@@ -122,8 +131,18 @@ export type StageProcessorResType = Promise<
  * 關卡動作資訊
  */
 type StageActionType = {
+  // 表單傳送類型清單
   stageAction: Array<
-    Flag & { cdId: string; cdNm: string; ctId: number; typeNm: string }
+    Flag & {
+      // 明細代碼
+      cdId: string;
+      // 明細名稱
+      cdNm: string;
+      // 類別代碼
+      ctId: number;
+      // 類別名稱
+      typeNm: string;
+    }
   >;
 };
 
@@ -136,16 +155,28 @@ export type StageActionResType = Promise<ProcessResType & StageActionType>;
  * BPM FORM資訊
  */
 export type FormInfoResType = Promise<{
+  // BPM表單主鍵
   bpmFormSeqNo: string;
+  // 此表單最新一筆歷史記錄主鍵
   bpmHistorySeqNo: string;
+  // 流程代碼
   flowCode: string;
+  // FlowStage表單代碼
   flowStageFormCode: string;
+  // 表單網址
   formUrl?: string;
+  // JBPM表單代碼
   jbpmFormCode: string;
+  // JBPM UID單號
   jbpmUid: string;
+  // 簽核記錄編號
   seqNo: number;
+  // 關卡流程
   stageSeq: number;
+  // 表單案件狀態
   status: string;
+  // 任務代號
   taskId: number;
+  // 流通總關卡數
   totalStage: number;
 }>;
