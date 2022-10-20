@@ -41,12 +41,19 @@ import { useProfileStore } from "@/core/store/profile";
 
 const { logout } = useAuth();
 const profileStore = useProfileStore();
+// 首頁URL
 const homeUrl = import.meta.env.VITE_APP_EPSP_HOME_URL;
 
+/**
+ * 系統標題
+ */
 const systemTitle = computed(() => {
   return `${profileStore.loginUserProfile.system?.sysId} ${profileStore.loginUserProfile.system?.sysNm}`;
 });
 
+/**
+ * 登入者基本資料
+ */
 const loginUserProfile = computed(() => {
   return profileStore.loginUserProfile;
 });

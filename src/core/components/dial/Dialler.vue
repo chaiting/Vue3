@@ -119,7 +119,6 @@ const validatePhone: ValidatorType<string> = (rule, value, callback) => {
 const callExtFormRef = ref<FormRefType>();
 // 未設定分機顯示
 const extAlert = ref(false);
-
 // 未設定分機標題
 const extAlertTitle = ref("");
 // 未設定分機內容

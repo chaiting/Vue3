@@ -8,6 +8,9 @@ import { useGlobalStore } from "@/core/store/global";
 
 const globalStore = useGlobalStore();
 
+/**
+ * 標題
+ */
 const title = computed(() => {
   return globalStore.title;
 });

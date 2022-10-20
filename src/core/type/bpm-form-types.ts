@@ -1,4 +1,4 @@
-import type { Flag } from "@/core/type/code-types";
+import type { FlagType } from "@/core/type/code-types";
 
 /**
  * bpm作業參數
@@ -133,7 +133,7 @@ export type StageProcessorResType = Promise<
 type StageActionType = {
   // 表單傳送類型清單
   stageAction: Array<
-    Flag & {
+    FlagType & {
       // 明細代碼
       cdId: string;
       // 明細名稱

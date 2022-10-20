@@ -125,9 +125,11 @@ const props = defineProps({
   },
 });
 
+// 選中選項
 const selectedItems = ref();
+// 選項
 const items = ref<{ value: string; label: string }[]>([]);
-
+// 是否可清空
 const clearable = computed(() => !props.readonly);
 
 /**

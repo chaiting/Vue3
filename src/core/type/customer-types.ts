@@ -2,9 +2,13 @@
  * 顧客電話
  */
 export type CustomerPhoneType = {
+  // 電話分機
   extNumber?: string;
+  // 電話號碼
   telNumber?: string;
+  // 電話類別
   telType: string;
+  // 電話類別名稱
   telTypeNm: string;
 };
 

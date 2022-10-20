@@ -12,11 +12,12 @@ export function usePagination(opts: {
   fetcher: () => void;
   defaultSortColumn?: string;
 }) {
+  // 排序選項
   const sortOption = reactive({
     sortColumn: opts.defaultSortColumn || "",
     sortType: "DESC",
   });
-
+  // 分頁設定
   const pagination = reactive({
     page: 1,
     pageSize: 20,

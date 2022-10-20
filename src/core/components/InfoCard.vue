@@ -70,21 +70,37 @@ const props = defineProps({
 const queriedAdAccount = ref("");
 // 使用者卡片資訊
 const userInfoCard = reactive({
+  // 中文姓名
   cname: "",
+  // 單位名稱
   deptName: "",
+  // 公司電話
   deptPhoneNo: "",
+  // 所屬單位科別代碼
   empDeptSectId: "",
+  // 員工編號
   employeeNo: "",
+  // 性別
   genderCode: "",
+  // 性別名稱
   genderName: "",
+  // 是否為卡處人員
   isCreditCardMember: "",
+  // 是否允許撥號
   isDialable: "",
+  // 職務代碼
   jobTitleCode: "",
+  // 職務名稱
   jobTitleName: "",
+  // 公司EMAIL
   officeEmail: "",
+  // 分機
   officePhoneext: "",
+  // 職務代碼
   positionCode: "",
+  // 職務代碼名稱
   positionName: "",
+  // 查詢者分機
   userExtension: null as NullableType<string>,
 });
 // 使用者處級單位名稱

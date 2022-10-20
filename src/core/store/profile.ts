@@ -5,11 +5,17 @@ import type {
   UserProfileType,
 } from "@/core/type/user-profile-types";
 
+// 初始使用者資料
 const INIT_USER_PROFILE = {
+  // 員工姓名
   empName: "",
+  // 員工編號
   empNo: "",
+  // 系統資訊
   system: {
+    // 系統名稱
     sysNm: "",
+    // 左側選單清單
     leftMenuList: [] as MenuListType,
   },
 } as Partial<UserProfileType>;
@@ -23,12 +29,15 @@ export const useProfileStore = defineStore("profile", {
     },
   }),
   getters: {
+    /** 左側選單 */
     leftMenus: (state) => {
       return state.userProfile.optUserProfile.system!.leftMenuList;
     },
+    /** 登入者基本資料 */
     loginUserProfile: (state) => {
       return state.userProfile.loginUserProfile;
     },
+    /** 操作者基本資料 */
     optUserProfile: (state) => {
       return state.userProfile.optUserProfile;
     },

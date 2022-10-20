@@ -116,7 +116,7 @@ import CustomerPhoneList from "@/core/components/dial/CustomerPhoneList.vue";
 import Dialler from "@/core/components/dial/Dialler.vue";
 import { useProfileStore } from "@/core/store/profile";
 import type { CustomerPhoneType } from "@/core/type/customer-types";
-import type { CustomerDial } from "@/core/type/sys-dial-types";
+import type { CustomerDialType } from "@/core/type/sys-dial-types";
 import type { PropType } from "vue";
 
 const profileStore = useProfileStore();
@@ -220,8 +220,11 @@ const columns = ref([
   },
 ]);
 // 顧客撥號記錄清單
-const dialRecordList = ref<CustomerDial[]>([]);
+const dialRecordList = ref<CustomerDialType[]>([]);
 
+/**
+ * 操作者基本資料
+ */
 const optUserProfile = computed(() => {
   return profileStore.optUserProfile;
 });

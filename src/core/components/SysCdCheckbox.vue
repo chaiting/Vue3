@@ -94,7 +94,9 @@ const props = defineProps({
   },
 });
 
+// 選中選項
 const selectedItems = ref<string[]>([]);
+// 選項
 const items = ref<{ value: string; label: string }[]>([]);
 
 /**

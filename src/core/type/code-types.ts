@@ -1,7 +1,7 @@
 /**
  * 其他用途註記
  */
-export type Flag = {
+export type FlagType = {
   // 其它用途註記 01
   flag01?: string;
   // 其它用途註記 02
@@ -27,7 +27,7 @@ export type Flag = {
 /**
  * 代碼清單查詢參數
  */
-export type CodeReqType = Flag & {
+export type CodeReqType = FlagType & {
   // 類別代碼
   ctId: number;
   // 明細代碼
@@ -58,7 +58,7 @@ export type CodeResType = Promise<
       ctId: number;
       // 類別名稱
       typeNm: string;
-    } & Flag
+    } & FlagType
   >
 >;
 

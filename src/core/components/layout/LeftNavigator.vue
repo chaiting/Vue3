@@ -44,9 +44,13 @@ import type { MenuListType } from "@/core/type/user-profile-types";
 const route = useRoute();
 const globalStore = useGlobalStore();
 const profileStore = useProfileStore();
-const leftMenusRef = ref<any>(null);
+// 左側菜單Ref
+const leftMenusRef = ref<any>();
+// 開啟選項
 const openItem = ref<string[]>([]);
+// 當前選項
 const activeItem = ref("");
+// 選項名稱
 const itemName = ref("");
 
 const leftMenus = computed<MenuListType>(() => profileStore.leftMenus);
@@ -77,6 +81,9 @@ function doFocusLeftMenuItem(itemUri: string) {
   globalStore.doUpdateFunctionTitle({ title: itemName.value });
 }
 
+/**
+ * 根據route變化focus菜單選項
+ */
 watch(route, () => {
   activeItem.value = route.path;
   doFocusLeftMenuItem(route.path);

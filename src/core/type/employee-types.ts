@@ -2,11 +2,17 @@
  * 使用者清單
  */
 export type User = {
+  // 在職狀態碼
   accSts?: string;
+  // AD帳號
   adAccount: string;
+  // 員工姓名
   empNm: string;
+  // 員工編號
   empNo?: string;
+  // 帳號
   usedAccount: string;
+  // 在職狀態
   hireSts: "hired" | "left" | "";
 };
 

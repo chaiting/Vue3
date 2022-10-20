@@ -2,7 +2,7 @@ import axios from "axios";
 import type {
   InfoCardReqType,
   EmployeeInfoCardResType,
-  callAutoDialReqType,
+  CallAutoDialReqType,
 } from "@/core/type/info-card-types";
 
 export default {
@@ -23,7 +23,7 @@ export default {
    * @returns 撥號結果
    */
   callAutoDial: async function (
-    payload: callAutoDialReqType
+    payload: CallAutoDialReqType
   ): Promise<boolean> {
     const result = await axios.post("/info_card/02", {
       callingNumber: payload.userExtension,

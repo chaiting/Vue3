@@ -32,7 +32,7 @@ export type EmployeeInfoCardResType = Promise<{
   isDialable: "Y" | "N";
   // 職務代碼
   jobTitleCode: string;
-  // 職務帶名稱
+  // 職務名稱
   jobTitleName: string;
   // 公司EMAIL
   officeEmail?: string;
@@ -49,7 +49,7 @@ export type EmployeeInfoCardResType = Promise<{
 /**
  * 系統撥號參數
  */
-export type callAutoDialReqType = {
+export type CallAutoDialReqType = {
   // 人員名稱
   cname: string;
   // 員工編號
