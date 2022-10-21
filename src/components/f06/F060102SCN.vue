@@ -26,11 +26,11 @@
 import isBlank from "is-blank";
 import moment from "moment";
 import { reactive, ref } from "vue";
-import { useValidate } from "@/core/hook/useValidate";
+import { useFormValidate } from "@/core/hook/useFormValidate";
 import type { FormRefType, ValidatorType } from "@/core/type/form-types";
 
 const formRef = ref<FormRefType>();
-const { validateHandle, flushErrorFields } = useValidate(formRef);
+const { validateHandle, flushErrorFields } = useFormValidate(formRef);
 
 /**
  * 驗證起始日期
