@@ -22,4 +22,5 @@ interface ImportMeta {
 
 declare module "view-ui-plus/dist/locale/zh-TW";
 declare module "view-ui-plus/dist/locale/en-US";
+declare module "html2pdf.js";
 // declare module "*";

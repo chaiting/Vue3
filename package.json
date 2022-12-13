@@ -24,6 +24,7 @@
     "axios": "^0.27.2",
     "axios-mock-adapter": "^1.21.1",
     "echarts": "^5.3.3",
+    "html2pdf.js": "^0.10.1",
     "is-blank": "^2.1.0",
     "jquery": "^3.6.1",
     "js-file-download": "^0.4.12",
