@@ -14,7 +14,7 @@
         <MenuItem
           v-for="(subItem, index) in item.subMenuList"
           :key="index"
-          :name="subItem.itemUri"
+          :name="subItem.itemUri || ''"
           :to="subItem.itemUri"
           :target="subItem.redirectTypeCd == 'P' ? '_self' : '_blank'"
         >

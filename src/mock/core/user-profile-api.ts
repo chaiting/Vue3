@@ -2,6 +2,7 @@ import type MockAdapter from "axios-mock-adapter/types";
 
 export default function (mock: MockAdapter) {
   mock.onPost("/user_profile/01").reply(200, {
+    msg: "",
     body: {
       adAccount: "PRO-019",
       email: "pro-019@testesunbank.com.tw",
@@ -74,6 +75,7 @@ export default function (mock: MockAdapter) {
   });
 
   mock.onPost("/user_profile/03").reply(200, {
+    msg: "",
     body: {
       adAccount: "AGENT-PRO-019",
       email: "agent-pro-019@testesunbank.com.tw",

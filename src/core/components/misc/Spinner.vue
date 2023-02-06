@@ -1,5 +1,5 @@
 <template>
-  <Loading v-model:active="isShowSpinner" loader="bars">
+  <Loading :active="isShowSpinner">
     <div class="spinner-wrap">
       <img src="@/assets/gear-solid.svg" class="spinner-icon" />
       {{ msg }}

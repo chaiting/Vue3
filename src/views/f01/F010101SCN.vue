@@ -38,7 +38,7 @@
       class="pagination"
       show-sizer
       show-total
-      :total="pagination.total"
+      :total="pagination.totalCount"
       :page-size="pagination.pageSize"
       @on-change="onChangePage"
       @on-page-size-change="onChangePageSize"
@@ -129,11 +129,11 @@ async function doQryCustomerList() {
   const result = await f010101Api.doQryCustomerList({
     ...form,
     ...sortOption,
-    page: pagination.page,
+    page: pagination.pageNo,
     pageSize: pagination.pageSize,
   });
 
-  pagination.total = result.total;
+  pagination.totalCount = result.total;
   list.value = result.data;
 }
 

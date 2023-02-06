@@ -27,6 +27,7 @@ module.exports = {
     "@typescript-eslint/no-this-alias": "off",
     "vue/no-reserved-component-names": "off",
     "prefer-const": "error",
+    "prettier/prettier": ["error", { endOfLine: "crlf" }],
     "import/order": [
       "error",
       {

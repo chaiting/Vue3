@@ -7,7 +7,7 @@ export type FormRefType = {
   // 清空表單
   resetFields: () => void;
   // 驗證單一欄位
-  validateField: (field: string, cb?: () => void) => void;
+  validateField: (field: string, cb?: (error?: string) => void) => void;
 };
 
 /**

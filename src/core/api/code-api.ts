@@ -37,11 +37,12 @@ export default {
   doQryCodeLabelValueList: async function (
     payload: CodeLabelReqType
   ): CodeLabelResType {
-    const result = await this.doQryCodeList(payload);
+    const { showCode, ...codeListPayload } = payload;
+    const result = await this.doQryCodeList(codeListPayload);
     return map(result, (row) => {
       return {
         value: row.cdId,
-        label: payload.showCode ? `${row.cdId} ${row.cdNm}` : row.cdNm,
+        label: showCode ? `${row.cdId} ${row.cdNm}` : row.cdNm,
       };
     });
   },

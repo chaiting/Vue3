@@ -320,7 +320,7 @@ const signFormValidate = reactive({
   signComment: [
     {
       required: true,
-      message: "請填寫簽核意見",
+      message: verifySignComment,
       trigger: "blur",
     },
   ],

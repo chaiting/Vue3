@@ -1,4 +1,15 @@
 import { KeycloakInstance } from "keycloak-js";
+import BpmSubmitter from "@/core/components/BpmSubmitter.vue";
+import CityPostalSelect from "@/core/components/CityPostalSelect.vue";
+import DepartmentSelect from "@/core/components/DepartmentSelect.vue";
+import DeptEmpSelect from "@/core/components/DeptEmpSelect.vue";
+import EmployeeSelect from "@/core/components/EmployeeSelect.vue";
+import EsunAlert from "@/core/components/EsunAlert.vue";
+import EsunConfirm from "@/core/components/EsunConfirm.vue";
+import InfoCard from "@/core/components/InfoCard.vue";
+import SysCdCheckbox from "@/core/components/SysCdCheckbox.vue";
+import SysCdRadio from "@/core/components/SysCdRadio.vue";
+import SysCdSelect from "@/core/components/SysCdSelect.vue";
 
 /**
  * 全局window

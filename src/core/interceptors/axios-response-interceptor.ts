@@ -15,9 +15,9 @@ function handleResponse(response: AxiosResponse) {
   );
 
   if (!isIgnoreUrl) {
-    delay(() => globalStore.doDecrementAjaxReq(), 500);
+    globalStore.doDecrementAjaxReq();
   }
-
+  showMessage(response.data?.msg);
   return response;
 }
 

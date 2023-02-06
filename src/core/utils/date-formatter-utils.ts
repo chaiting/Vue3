@@ -30,7 +30,7 @@ export function formatDate(date: string | Date | Moment, outType: string) {
     return moment(date, patterns).format(outTypeMap.get(outType));
   }
 
-  return date;
+  return "";
 }
 
 /**
@@ -53,7 +53,7 @@ export function formatTime(time: string, outType: string) {
     return moment(time, patterns).format(outTypeMap.get(outType));
   }
 
-  return time;
+  return "";
 }
 
 /**
@@ -102,5 +102,5 @@ export function formatDateTime(
     return moment(datetime, patterns).format(outTypeMap.get(outType));
   }
 
-  return datetime;
+  return "";
 }

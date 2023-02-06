@@ -24,10 +24,13 @@ export function useFormValidate(formRef: Ref<FormRefType | undefined>) {
    */
   function flushErrorFields() {
     setTimeout(() => {
-      erorrFields.value.forEach((field) => {
-        formRef.value!.validateField(field);
+      [...erorrFields.value].forEach((field) => {
+        formRef.value!.validateField(field, (error) => {
+          if (!error) {
+            erorrFields.value.delete(field);
+          }
+        });
       });
-      erorrFields.value.clear();
     });
   }
 

@@ -9,7 +9,7 @@ import { camelCase2UnderscoreUppercase } from "@/core/utils/naming-converter-uti
  * @param opts.defaultSortColumn - 預設表格排序欄位
  */
 export function usePagination(opts: {
-  fetcher: () => void;
+  fetcher: (...args: any[]) => any;
   defaultSortColumn?: string;
 }) {
   // 排序選項
@@ -19,9 +19,9 @@ export function usePagination(opts: {
   });
   // 分頁設定
   const pagination = reactive({
-    page: 1,
+    pageNo: 1,
     pageSize: 20,
-    total: 0,
+    totalCount: 0,
     pageSizeOpts: DEFAULT_PAGE_SIZE_LIST,
   });
 
@@ -30,7 +30,7 @@ export function usePagination(opts: {
    * @param value 分頁
    */
   function onChangePage(value: number) {
-    pagination.page = value;
+    pagination.pageNo = value;
   }
 
   /**
@@ -51,7 +51,7 @@ export function usePagination(opts: {
     key: string;
     order: "asc" | "desc" | "normal";
   }) {
-    if (pagination.total == 0) return;
+    if (pagination.totalCount == 0) return;
 
     // 取消排序
     if (col.order === "normal") {
@@ -69,9 +69,12 @@ export function usePagination(opts: {
   /**
    * 監聽更新，觸發fetcher
    */
-  watch([() => pagination.page, () => pagination.pageSize, sortOption], () => {
-    opts.fetcher();
-  });
+  watch(
+    [() => pagination.pageNo, () => pagination.pageSize, sortOption],
+    () => {
+      opts.fetcher();
+    }
+  );
 
   return {
     pagination,
