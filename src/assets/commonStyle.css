@@ -1,5 +1,5 @@
 /* 基本樣式 */
-/* @import "https://cdn.esunbank.com.tw/ajax/libs/esun-eudc/css/eudc.css"; */
+@import "https://cdn.esunbank.com.tw/ajax/libs/esun-eudc/css/eudc.css";
  /* 將eudc列為最後的備選字型，於前面字型都無法顯示時採用 */ 
  
  #app {

@@ -1,13 +1,34 @@
 <template>
-  <div class="btn-group">
-    <Button @click="$router.push('/notfound')">NotFound</Button>
-    <Button @click="$router.push('/error')">error</Button>
-    <Button @click="$router.push('/forbidden')">forbidden</Button>
-    <Button @click="$router.push('/user_profile_not_found')"
-      >UserProfileNotFound</Button
-    >
-  </div>
-  <div></div>
+  <Row :gutter="20" :align="'bottom'">
+    <Col flex="300px">
+      <Input type="textarea" v-model="textContent"></Input
+    ></Col>
+    <Col> <Button type="text" @click="downloadFile">下載</Button></Col>
+  </Row>
 </template>
+<script setup lang="ts">
+import jsFileDownload from "js-file-download";
+import { ref, watch } from "vue";
+import { useActivated } from "@/core/hook/useActivated";
 
-<script setup lang="ts"></script>
+// text內容
+const textContent = ref("");
+// 確認Keep-alive組件是否activated
+const { isComponentActivated } = useActivated();
+
+/**
+ * 下載檔案
+ */
+function downloadFile() {
+  jsFileDownload(textContent.value, "download.txt");
+}
+
+/**
+ * 監聽text內容變化
+ */
+watch(textContent, () => {
+  if (isComponentActivated.value) {
+    // todo something...
+  }
+});
+</script>

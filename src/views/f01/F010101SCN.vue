@@ -20,7 +20,9 @@
         </Col>
         <Col span="6">
           <div class="btn-group">
-            <Button @click="submit" type="primary">查詢</Button>
+            <Button @click="submit" type="primary" icon="md-search"
+              >查詢</Button
+            >
             <Button @click="reset">重置</Button>
           </div>
         </Col>

@@ -31,6 +31,16 @@ const router = createRouter({
       name: "F030101SCN",
       component: () => import("@/views/f03/F030101SCN.vue"),
     },
+    {
+      path: "/f030201scn",
+      name: "F030201SCN",
+      component: () => import("@/views/f03/F030201SCN.vue"),
+    },
+    {
+      path: "/f030301scn",
+      name: "F030301SCN",
+      component: () => import("@/views/f03/F030301SCN.vue"),
+    },
     // f04
     {
       path: "/f040101scn",
@@ -48,6 +58,12 @@ const router = createRouter({
       path: "/f060101scn",
       name: "F060101SCN",
       component: () => import("@/views/f06/F060101SCN.vue"),
+    },
+    // f06
+    {
+      path: "/f070101scn",
+      name: "F070101SCN",
+      component: () => import("@/views/f07/F070101SCN.vue"),
     },
     {
       /** 代理人身份切換 */
