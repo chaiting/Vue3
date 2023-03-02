@@ -79,6 +79,14 @@ const LEFT_MENU_LIST = [
     redirectTypeCd: "P",
     subMenuList: [],
   },
+  {
+    menuSeqNo: "8-1",
+    itemNm: "Test",
+    itemUri: "/f080101scn",
+    iconText: "",
+    redirectTypeCd: "P",
+    subMenuList: [],
+  },
 ];
 
 export default function (mock: MockAdapter) {

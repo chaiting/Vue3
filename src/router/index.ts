@@ -66,6 +66,11 @@ const router = createRouter({
       component: () => import("@/views/f07/F070101SCN.vue"),
     },
     {
+      path: "/f080101scn",
+      name: "F080101SCN",
+      component: () => import("@/views/f08/F080101SCN.vue"),
+    },
+    {
       /** 代理人身份切換 */
       path: "/agent",
       name: "Agent",
