@@ -11,7 +11,7 @@
 import { computed } from "vue";
 import Loading from "vue-loading-overlay";
 import { useGlobalStore } from "@/core/store/global";
-import "vue-loading-overlay/dist/vue-loading.css";
+import "vue-loading-overlay/dist/css/index.css";
 
 const msg = "資料處理中，請稍候...";
 const globalStore = useGlobalStore();

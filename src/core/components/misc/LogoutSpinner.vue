@@ -10,6 +10,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 import { useGlobalStore } from "@/core/store/global";
 
 const globalStore = useGlobalStore();
