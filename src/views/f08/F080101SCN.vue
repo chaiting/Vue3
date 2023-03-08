@@ -6,6 +6,7 @@
     :data="dataList"
     :row-class-name="rowClassName"
     @on-cell-click="onRowClick"
+    :border="true"
   >
     <template #select="{ row }">
       <Checkbox
@@ -25,7 +26,7 @@ const columns = [
   {
     slot: "select",
     align: "center",
-    width: 100,
+    width: 70,
   },
   {
     type: "expand",
@@ -139,16 +140,22 @@ function submit() {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 :deep(.ivu-table-expanded-cell) {
   padding: 0px 0px;
-  padding-left: 50px;
+  padding-left: 30px;
 }
 :deep(.ivu-table-cell.ivu-table-cell-with-expand) {
   display: none;
 }
-:deep(.ivu-table-row.multiple) {
-  background-color: #2db7f5 !important;
-  color: red;
+:deep(.ivu-table-row.multiple) td {
+  background-color: #eefcff;
+  cursor: pointer;
+}
+:deep(.ivu-table-wrapper.sub-table) .ivu-table-header th {
+  background-color: rgb(255, 230, 185);
+}
+:deep(.ivu-table-wrapper.sub-table .ivu-table) td {
+  background-color: rgb(249, 242, 228);
 }
 </style>

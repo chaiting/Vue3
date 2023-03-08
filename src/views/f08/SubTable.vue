@@ -1,5 +1,5 @@
 <template>
-  <Table :columns="columns" :data="props.list">
+  <Table :columns="columns" :data="props.list" class="sub-table">
     <template #select="{ row }">
       <Checkbox
         :model-value="row.isSelected"
@@ -18,7 +18,7 @@ const props = defineProps({
 
 const columns = [
   {
-    width: 100,
+    width: 70,
     slot: "select",
     align: "center",
   },
@@ -54,5 +54,13 @@ function onChangeSelect(value: boolean, row: any) {
 
 onMounted(() => {
   console.log(`mounted*`);
+  // const dom = document.querySelector(".sub-table")
+  // console.log(dom);
 });
 </script>
+<style lang="scss" scoped>
+:deep(.ivu-table-wrapper.sub-table) .ivu-table-header th {
+  background-color: red !important;
+  color: red !important;
+}
+</style>
