@@ -8,6 +8,7 @@ import setupI18nConfig from "@/core/conf/i18n-config";
 import setupPiniaConfig from "@/core/conf/pinia-config";
 import setupViewUiPlusConfig from "@/core/conf/view-ui-plus-config";
 import setupVueEchartsConfig from "@/core/conf/vue-echarts-config";
+import setupWatermarkDirectiveConfig from "@/core/conf/watermark-directive-config";
 import App from "./App.vue";
 import router from "./router";
 
@@ -23,6 +24,7 @@ setupViewUiPlusConfig(app);
 setupGlobalComponentConfig(app);
 setupFontawesomeConfig(app);
 setupVueEchartsConfig(app);
+setupWatermarkDirectiveConfig(app);
 
 /** myuser@gmail.com / myuser123 (帳號/密碼) */
 app.use(VueKeyCloak, {
